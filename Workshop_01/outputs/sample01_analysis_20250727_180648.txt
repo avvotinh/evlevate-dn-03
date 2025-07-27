@@ -1,0 +1,59 @@
+Financial Data Analysis Report (CSV Source)
+=============================================
+Source File: samples/sample01.csv
+Company: Unknown
+Document Type: Unknown
+Period: Unknown
+Analysis Date: 2025-07-27 18:06:48
+Model Used: GPT-4o-mini
+=============================================
+
+Here is the extracted and analyzed financial data for TOKEN CORPORATION (東建コーポレーション株式会社):
+
+### Company Information
+- **Company Name (English)**: TOKEN CORPORATION
+- **Company Name (Japanese)**: 東建コーポレーション株式会社
+- **EDINET Code**: E00281
+- **Document Type**: 第三号様式
+- **Document ID**: sample01
+
+### Financial Indicators
+#### 1. Revenue
+- **Value**: ¥366,640 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 2. Operating Profit
+- **Value**: ¥222,580 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 3. Net Profit
+- **Value**: ¥15,778 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 4. Total Assets
+- **Value**: ¥228,663 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 5. Total Liabilities
+- **Value**: ¥94,910 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 6. Cash Flow from Operating Activities
+- **Value**: ¥227,140 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+#### 7. Equity
+- **Value**: ¥133,751 million
+- **Fiscal Period**: FY2024 (ending April 2024)
+
+### Summary
+- **Report Period**: FY2024 (ending April 2024)
+- **Total Revenue**: ¥366,640 million
+- **Operating Profit**: ¥222,580 million
+- **Net Profit**: ¥15,778 million
+- **Total Assets**: ¥228,663 million
+- **Total Liabilities**: ¥94,910 million
+- **Cash Flow from Operating Activities**: ¥227,140 million
+- **Equity**: ¥133,751 million
+
+This structured summary provides a clear overview of the key financial indicators for TOKEN CORPORATION based on the extracted data.
