@@ -1,0 +1,88 @@
+2025-08-02 11:30:51,460 - INFO - Starting Simple Financial Analyzer
+2025-08-02 11:30:51,516 - INFO - Analyzer initialized successfully
+2025-08-02 11:30:51,516 - INFO - Extracting data from: samples/sample01.csv
+2025-08-02 11:30:51,547 - INFO - Successfully read 1458 records
+2025-08-02 11:30:51,550 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-02 11:30:51,551 - INFO - Processing sample query 1: What is the company's basic information including ...
+2025-08-02 11:30:52,413 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:53,312 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:53,315 - INFO - Processing sample query 2: Calculate and analyze the growth rate for net inco...
+2025-08-02 11:30:53,836 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:56,120 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:56,125 - INFO - Processing sample query 3: Please calculate ROE, ROA, and equity ratio to ass...
+2025-08-02 11:30:56,660 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:59,733 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:30:59,738 - INFO - Processing sample query 4: Analyze the Earnings Per Share (EPS) performance a...
+2025-08-02 11:31:00,313 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:31:02,720 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:31:02,725 - INFO - Processing sample query 5: Create a comprehensive investment analysis summary...
+2025-08-02 11:31:03,384 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:31:03,388 - INFO - Investment summary generated - Rating: Hold
+2025-08-02 11:31:07,484 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:31:07,489 - INFO - Analysis completed successfully
+2025-08-02 11:43:41,842 - INFO - Starting Simple Financial Analyzer
+2025-08-02 11:43:41,900 - INFO - Analyzer initialized successfully
+2025-08-02 11:43:41,900 - INFO - Extracting data from: samples/sample01.csv
+2025-08-02 11:43:41,929 - INFO - Successfully read 1458 records
+2025-08-02 11:43:41,931 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-02 11:43:41,932 - INFO - Processing sample query 1: What is the company's basic information including ...
+2025-08-02 11:43:42,885 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:44,061 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:44,062 - INFO - Processing sample query 2: Calculate and analyze the growth rate for net inco...
+2025-08-02 11:43:44,680 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:47,184 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:47,186 - INFO - Processing sample query 3: Please calculate ROE, ROA, and equity ratio to ass...
+2025-08-02 11:43:47,857 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:51,568 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:51,571 - INFO - Processing sample query 4: Analyze the Earnings Per Share (EPS) performance a...
+2025-08-02 11:43:52,136 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:55,139 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:55,143 - INFO - Processing sample query 5: Create a comprehensive investment analysis summary...
+2025-08-02 11:43:55,922 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:55,923 - INFO - Investment summary generated - Rating: Hold
+2025-08-02 11:43:59,462 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:43:59,465 - INFO - Analysis completed successfully
+2025-08-02 11:44:28,872 - INFO - Starting Simple Financial Analyzer
+2025-08-02 11:44:28,930 - INFO - Analyzer initialized successfully
+2025-08-02 11:44:28,930 - INFO - Extracting data from: samples/sample01.csv
+2025-08-02 11:44:28,960 - INFO - Successfully read 1458 records
+2025-08-02 11:44:28,962 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-02 11:44:28,962 - INFO - Processing sample query 1: What is the company's basic information including ...
+2025-08-02 11:44:33,248 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:34,320 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:34,321 - INFO - Processing sample query 2: Calculate and analyze the growth rate for net inco...
+2025-08-02 11:44:34,942 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:39,146 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:39,147 - INFO - Processing sample query 3: Please calculate ROE, ROA, and equity ratio to ass...
+2025-08-02 11:44:40,340 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:44,576 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:44,577 - INFO - Processing sample query 4: Analyze the Earnings Per Share (EPS) performance a...
+2025-08-02 11:44:45,795 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:50,331 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:50,333 - INFO - Processing sample query 5: Create a comprehensive investment analysis summary...
+2025-08-02 11:44:51,615 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:51,618 - INFO - Investment summary generated - Rating: Hold
+2025-08-02 11:44:55,290 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:44:55,295 - INFO - Analysis completed successfully
+2025-08-02 11:51:10,704 - INFO - Starting Simple Financial Analyzer
+2025-08-02 11:51:10,761 - INFO - Analyzer initialized successfully
+2025-08-02 11:51:10,761 - INFO - Extracting data from: samples/sample02.csv
+2025-08-02 11:51:10,786 - INFO - Successfully read 540 records
+2025-08-02 11:51:10,787 - INFO - Successfully processed data for: Canon Electronics Inc.
+2025-08-02 11:51:10,788 - INFO - Processing sample query 1: What is the company's basic information including ...
+2025-08-02 11:51:11,589 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:13,163 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:13,167 - INFO - Processing sample query 2: Calculate and analyze the growth rate for net inco...
+2025-08-02 11:51:13,725 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:15,905 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:15,908 - INFO - Processing sample query 3: Please calculate ROE, ROA, and equity ratio to ass...
+2025-08-02 11:51:16,482 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:20,130 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:20,135 - INFO - Processing sample query 4: Analyze the Earnings Per Share (EPS) performance a...
+2025-08-02 11:51:20,715 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:23,036 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:23,040 - INFO - Processing sample query 5: Create a comprehensive investment analysis summary...
+2025-08-02 11:51:23,707 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:23,709 - INFO - Investment summary generated - Rating: Sell
+2025-08-02 11:51:26,673 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
+2025-08-02 11:51:26,677 - INFO - Analysis completed successfully
