@@ -10,15 +10,15 @@ openai.api_version = os.getenv("AZURE_OPENAI_API_VERSION")
 
 def stream_chat_completion(messages):
     """
-    Gọi Azure OpenAI với stream=True.
-    Trả về generator các token.
+    Gọi Azure OpenAI với stream=True, trả về generator các token.
     """
-    response = openai.ChatCompletion.create(
-        engine=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
+    response = openai.chat.completions.create(
+        model=os.getenv("AZURE_OPENAI_DEPLOYMENT"),
         messages=messages,
         temperature=0.1,
         stream=True
     )
     for chunk in response:
-        delta = chunk.choices[0].delta.get("content", "")
-        yield delta
+        # Lấy nội dung token mới nhất, nếu không có trả về ""
+        delta = getattr(chunk.choices[0].delta, "content", "")
+        yield delta or ""
