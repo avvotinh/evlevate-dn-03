@@ -45,7 +45,7 @@ A comprehensive financial analysis tool that processes Japanese financial data f
 
    ```bash
    # Copy the example environment file
-   cp .env.example .env
+   cp .env .env
 
    # Edit .env with your Azure OpenAI credentials
    nano .env

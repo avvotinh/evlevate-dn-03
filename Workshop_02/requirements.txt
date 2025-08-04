@@ -3,3 +3,5 @@ openai
 chardet
 python-dotenv
 tenacity
+streamlit
+streamlit-chat
