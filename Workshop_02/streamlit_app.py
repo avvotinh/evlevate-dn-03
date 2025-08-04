@@ -29,20 +29,13 @@ def main():
     # Sidebar - File upload và controls
     with st.sidebar:
         st.header("📂 Quản lý File")
-
-        # Upload file
         file_handler.upload_file_widget()
-
-        # Hiển thị thông tin file
         file_handler.display_file_info()
 
         st.divider()
-
-        # Controls
         st.header("⚙️ Điều khiển")
         chat_interface.clear_chat_history()
 
-        # Thông tin ứng dụng
         st.divider()
         st.markdown("### ℹ️ Thông tin")
         st.markdown("""
@@ -54,30 +47,37 @@ def main():
         *Phiên bản: 1.0.0*
         """)
 
-    # Main area - Chat interface
+    # Main area - Chat interface + câu hỏi gợi ý
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        # Chat history
+        # Hiển thị lịch sử chat
         chat_interface.display_chat_history()
 
-        # Chat input
+        # Input chat
         chat_interface.chat_input_handler()
 
-    with col2:
-        # Sample questions (chỉ hiển thị khi đã upload file)
+        # Hiển thị câu hỏi gợi ý dưới chat
         if st.session_state.get('file_processed', False):
-            chat_interface.display_sample_questions()
+            st.markdown("### 💡 Câu hỏi gợi ý:")
+            for i, question in enumerate(chat_interface.get_sample_questions()):
+                if st.button(question, key=f"sample_{i}", use_container_width=True):
+                    chat_interface.process_user_message(question)
+                    st.experimental_rerun()
+
+    with col2:
+        # Thêm không gian cho tương lai (metrics, biểu đồ...)
+        st.markdown("## 📈 Thống kê nhanh")
+        if st.session_state.get('file_processed', False):
+            st.info(f"Đang phân tích: **{st.session_state.company_name}**")
+        else:
+            st.write("Chưa có dữ liệu để hiển thị.")
 
 
 def add_custom_css():
     """Thêm CSS tùy chỉnh"""
     st.markdown("""
     <style>
-    .main {
-        padding-top: 1rem;
-    }
-
     .stButton > button {
         width: 100%;
         border-radius: 8px;
@@ -88,27 +88,10 @@ def add_custom_css():
         font-size: 0.9rem;
         transition: all 0.2s;
     }
-
     .stButton > button:hover {
         background-color: #e9ecef;
         border-color: #0066cc;
         color: #0066cc;
-    }
-
-    .chat-message {
-        padding: 1rem;
-        margin: 0.5rem 0;
-        border-radius: 8px;
-    }
-
-    .user-message {
-        background-color: #e3f2fd;
-        border-left: 4px solid #2196f3;
-    }
-
-    .assistant-message {
-        background-color: #f5f5f5;
-        border-left: 4px solid #4caf50;
     }
     </style>
     """, unsafe_allow_html=True)

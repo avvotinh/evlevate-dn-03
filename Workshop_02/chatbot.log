@@ -86,3 +86,36 @@
 2025-08-02 11:51:23,709 - INFO - Investment summary generated - Rating: Sell
 2025-08-02 11:51:26,673 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-07-01-preview "HTTP/1.1 200 OK"
 2025-08-02 11:51:26,677 - INFO - Analysis completed successfully
+2025-08-04 21:27:24,059 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmpdcrltv6s.csv
+2025-08-04 21:27:24,105 - INFO - Successfully read 1458 records
+2025-08-04 21:27:24,106 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:27:40,044 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmpj62ur98m.csv
+2025-08-04 21:27:40,082 - INFO - Successfully read 1458 records
+2025-08-04 21:27:40,084 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:27:41,285 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:27:44,333 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:28:03,330 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmp9_407aj9.csv
+2025-08-04 21:28:03,364 - INFO - Successfully read 1458 records
+2025-08-04 21:28:03,365 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:28:04,439 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:28:05,796 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:30:57,898 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmp92sjnw3y.csv
+2025-08-04 21:30:57,935 - INFO - Successfully read 1458 records
+2025-08-04 21:30:57,937 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:30:58,267 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmpny2f49xv.csv
+2025-08-04 21:30:58,303 - INFO - Successfully read 1458 records
+2025-08-04 21:30:58,304 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:31:04,148 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmpx30c7fy_.csv
+2025-08-04 21:31:04,182 - INFO - Successfully read 1458 records
+2025-08-04 21:31:04,183 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:31:05,082 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:31:05,083 - INFO - Investment summary generated - Rating: Hold
+2025-08-04 21:31:09,368 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:35:06,914 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmp5b8oju_g.csv
+2025-08-04 21:35:06,978 - INFO - Successfully read 1458 records
+2025-08-04 21:35:06,980 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:35:09,291 - INFO - Extracting data from: C:\Users\LONGHU~1\AppData\Local\Temp\tmp8ftctv32.csv
+2025-08-04 21:35:09,325 - INFO - Successfully read 1458 records
+2025-08-04 21:35:09,326 - INFO - Successfully processed data for: TOKEN CORPORATION
+2025-08-04 21:35:10,400 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
+2025-08-04 21:35:11,409 - INFO - HTTP Request: POST https://aiportalapi.stu-platform.live/jpe/openai/deployments/GPT-4o-mini/chat/completions?api-version=2024-02-15-preview "HTTP/1.1 200 OK"
