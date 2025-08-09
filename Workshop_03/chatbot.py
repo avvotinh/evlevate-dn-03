@@ -2,8 +2,8 @@ import os
 import logging
 import chromadb
 from openai import AzureOpenAI
-from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech, SpeechT5HifiGan
-from datasets import load_dataset
+from transformers import VitsModel, AutoTokenizer
+import scipy.io.wavfile
 import torch
 import soundfile as sf
 from datetime import datetime
@@ -18,8 +18,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('chatbot.log'),
-        logging.StreamHandler()
+        logging.FileHandler('chatbot.log')
     ]
 )
 logger = logging.getLogger(__name__)
@@ -52,29 +51,26 @@ class EntertainmentBot:
         self.collection = self.chroma_client.get_or_create_collection(name="entertainment_knowledge")
         
         # Initialize TTS components
-        self.tts_processor = None
         self.tts_model = None
-        self.vocoder = None
-        self.speaker_embeddings = None
+        self.tts_tokenizer = None
         
         logger.info("Entertainment Bot initialized successfully")
         
     def initialize_tts(self):
-        """Initialize Text-to-Speech models (lazy loading for performance)."""
+        """Initialize Text-to-Speech models using Facebook MMS TTS."""
         try:
-            logger.info("Loading TTS models...")
-            self.tts_processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-            self.tts_model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
-            self.vocoder = SpeechT5HifiGan.from_pretrained("microsoft/speecht5_hifigan")
+            logger.info("Loading MMS TTS models...")
             
-            # Load speaker embeddings
-            embeddings_dataset = load_dataset("Matthijs/cmu-arctic-xvectors", split="validation")
-            self.speaker_embeddings = torch.tensor(embeddings_dataset[7306]["xvector"]).unsqueeze(0)
+            # Load Facebook MMS TTS model and tokenizer
+            self.tts_model = VitsModel.from_pretrained("facebook/mms-tts-eng")
+            self.tts_tokenizer = AutoTokenizer.from_pretrained("facebook/mms-tts-eng")
             
-            logger.info("TTS models loaded successfully")
+            logger.info("MMS TTS models loaded successfully")
         except Exception as e:
             logger.error(f"Failed to load TTS models: {e}")
-            self.tts_processor = None
+            logger.info("Bot will continue without TTS functionality")
+            self.tts_model = None
+            self.tts_tokenizer = None
     
     def load_sample_data(self):
         """Load sample entertainment data into ChromaDB if collection is empty."""
@@ -217,26 +213,22 @@ class EntertainmentBot:
                 context += f"- {item['type']}: {item['title']} ({item['year']}) - {item['description']} [Genres: {item['genres']}, Rating: {item['rating']}/10]\n"
             
             # Create prompt for personalized recommendations
-            prompt = f"""You are an enthusiastic entertainment recommendation bot. Based on the user's preferences and the similar content found, provide 2-3 personalized recommendations.
+            prompt = f"""You are an entertainment recommendation bot. Based on the user's preferences and the similar content found, provide 2-3 personalized recommendations.
+
+Create a natural, conversational response that introduces the recommendations. Include the titles in your response but make it sound natural and engaging.
+
+Example format: "Based on your interests, I recommend checking out [Title 1], [Title 2], and [Title 3]. These should be perfect for what you're looking for!"
 
 User's request: {user_input}
 
 {context}
-
-Please provide recommendations that:
-1. Match the user's preferences and mood
-2. Include both the retrieved items if they're good matches AND suggest similar content
-3. Explain WHY each recommendation fits their request
-4. Mention key details like genre, year, and what makes it special
-5. Keep the tone friendly and engaging
-
-Format your response as a conversational recommendation with explanations."""
+"""
 
             # Generate recommendation using Azure OpenAI
             response = self.llm_client.chat.completions.create(
                 model=self.llm_model,
                 messages=[
-                    {"role": "system", "content": "You are a friendly and knowledgeable entertainment recommendation bot. You love movies and TV shows and enjoy helping people discover great content. Be enthusiastic but not overwhelming."},
+                    {"role": "system", "content": "You are a friendly entertainment recommendation bot. Create natural, conversational responses that include movie/TV show titles in an engaging way. Keep responses concise but warm."},
                     {"role": "user", "content": prompt}
                 ],
                 max_tokens=500,
@@ -255,32 +247,44 @@ Format your response as a conversational recommendation with explanations."""
             return f"Sorry, I encountered an error while generating recommendations: {str(e)}"
     
     def text_to_speech(self, text, filename=None):
-        """Convert text to speech and save as audio file."""
-        if not self.tts_processor:
+        """Convert text to speech and save as audio file using MMS TTS."""
+        if not self.tts_model or not self.tts_tokenizer:
             logger.warning("TTS not initialized. Skipping audio generation.")
             return None
         
         try:
+            # Create results directory if it doesn't exist
+            results_dir = "results"
+            if not os.path.exists(results_dir):
+                os.makedirs(results_dir)
+            
             if filename is None:
                 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 filename = f"recommendation_{timestamp}.wav"
             
-            # Truncate text if too long for TTS
-            if len(text) > 500:
-                text = text[:500] + "..."
+            # Add results directory to filename path
+            filename = os.path.join(results_dir, filename)
             
-            # Process text for TTS
-            inputs = self.tts_processor(text=text, return_tensors="pt")
+            print(f"Text: {text}")
+            print("Generating audio...")
             
-            # Generate speech
-            speech = self.tts_model.generate_speech(
-                inputs["input_ids"],
-                self.speaker_embeddings,
-                vocoder=self.vocoder
-            )
+            # Convert text to tokens
+            inputs = self.tts_tokenizer(text, return_tensors="pt")
             
-            # Save audio file
-            sf.write(filename, speech.numpy(), samplerate=16000)
+            # Generate audio
+            with torch.no_grad():
+                output = self.tts_model(**inputs)
+                waveform = output.waveform
+            
+            # Convert to numpy array
+            audio_array = waveform.squeeze().cpu().numpy()
+            sampling_rate = self.tts_model.config.sampling_rate
+            
+            print("✓ Audio generated successfully!")
+            print(f"Audio duration: {len(audio_array) / sampling_rate:.2f} seconds")
+            
+            # Save audio file using scipy
+            scipy.io.wavfile.write(filename, sampling_rate, audio_array)
             
             logger.info(f"Audio saved as {filename}")
             return filename
@@ -305,9 +309,14 @@ Format your response as a conversational recommendation with explanations."""
         # Initialize TTS (optional)
         try:
             self.initialize_tts()
-            print("🔊 Text-to-speech enabled! Recommendations will be saved as audio files.")
+            if self.tts_model and self.tts_tokenizer:
+                print("🔊 Text-to-speech enabled! Recommendations will be saved as audio files.")
+            else:
+                print("⚠️  Text-to-speech disabled (MMS TTS models not available)")
+                print("   Installing required models in background...")
         except Exception as e:
             print("⚠️  Text-to-speech not available (continuing without audio)")
+            logger.error(f"TTS initialization error: {e}")
         
         # Load sample data
         self.load_sample_data()
@@ -342,13 +351,17 @@ Format your response as a conversational recommendation with explanations."""
                 recommendation = self.generate_recommendation(user_input)
                 
                 print(f"\n🤖 Bot: {recommendation}")
+
+                logger.info(f"TTS Model available: {self.tts_model is not None}")
                 
                 # Generate audio if TTS is available
-                if self.tts_processor:
+                if self.tts_model and self.tts_tokenizer:
                     print("\n🔊 Generating audio...")
                     audio_file = self.text_to_speech(recommendation)
                     if audio_file:
                         print(f"💾 Audio saved as: {audio_file}")
+                    else:
+                        print("⚠️  Audio generation failed")
                 
             except KeyboardInterrupt:
                 print("\n\n👋 Goodbye!")
