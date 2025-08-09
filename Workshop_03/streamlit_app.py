@@ -1,124 +1,128 @@
 # streamlit_app.py
 
 import os
-import json
 import streamlit as st
-from dotenv import load_dotenv
-from chromadb import Client
-from chromadb.config import Settings
-from azure.core.credentials import AzureKeyCredential
-from azure.ai.openai import OpenAIClient
-from transformers import SpeechT5Processor, SpeechT5ForTextToSpeech
-import soundfile as sf
-import tempfile
+from datetime import datetime
+from chatbot import EntertainmentBot
 
 # -----------------------------------------
-# 1. Thiết lập môi trường và kết nối dịch vụ
+# 1. Streamlit Configuration
 # -----------------------------------------
-load_dotenv()
-
-# Azure OpenAI
-AZURE_BASE = os.getenv("AZURE_OPENAI_API_BASE")
-AZURE_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
-AZURE_KEY_EMBED = os.getenv("AZURE_OPENAI_EMBEDDING_API_KEY")
-AZURE_KEY_LLM   = os.getenv("AZURE_OPENAI_LLM_API_KEY")
-EMBED_MODEL     = os.getenv("AZURE_OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
-LLM_MODEL       = os.getenv("AZURE_OPENAI_LLM_MODEL", "gpt-4o-mini")
-
-client_llm = OpenAIClient(
-    endpoint=AZURE_BASE,
-    credential=AzureKeyCredential(AZURE_KEY_LLM),
-    api_version=AZURE_VERSION,
+st.set_page_config(
+    page_title="🎬 Entertainment Bot",
+    page_icon="🎬",
+    layout="centered"
 )
 
-# ChromaDB
-chroma_client = Client(Settings(
-    persist_directory="./chroma_db",
-    anonymized_telemetry=False,
-))
-collection = chroma_client.get_or_create_collection(name="entertainment")
+# Simple CSS
+st.markdown("""
+<style>
+    .main-header {
+        text-align: center;
+        color: #FF6B6B;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+    .result-box {
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+</style>
+""", unsafe_allow_html=True)
 
-# SpeechT5
-processor = SpeechT5Processor.from_pretrained("microsoft/speecht5_tts")
-tts_model = SpeechT5ForTextToSpeech.from_pretrained("microsoft/speecht5_tts")
-
-# Load sample data nếu database rỗng
+# -----------------------------------------
+# 2. Initialize Entertainment Bot
+# -----------------------------------------
 @st.cache_resource
-def init_data():
-    if collection.count() == 0:
-        with open("sample.json", "r", encoding="utf-8") as f:
-            records = json.load(f)
-        texts = [r["description"] for r in records]
-        meta  = [{"title": r["title"], "type": r["type"], "year": r["year"]} for r in records]
-        embeddings = client_llm.get_embeddings(
-            model=EMBED_MODEL, input=texts
-        ).data
-        emb_list = [d.embedding for d in embeddings]
-        collection.add(documents=texts, metadatas=meta, embeddings=emb_list)
-    return collection
+def initialize_bot():
+    """Initialize the EntertainmentBot instance."""
+    with st.spinner("🚀 Initializing Bot..."):
+        bot = EntertainmentBot()
+        bot.load_sample_data()
+        bot.initialize_tts()
+        return bot
 
-init_data()
+# Initialize session state
+if 'messages' not in st.session_state:
+    st.session_state.messages = []
+if 'current_audio' not in st.session_state:
+    st.session_state.current_audio = None
+if 'current_response' not in st.session_state:
+    st.session_state.current_response = None
+if 'clear_input' not in st.session_state:
+    st.session_state.clear_input = False
+
+# Initialize bot
+if 'bot' not in st.session_state:
+    st.session_state.bot = initialize_bot()
 
 # -----------------------------------------
-# 2. Giao diện Streamlit
+# 3. Main Interface
 # -----------------------------------------
-st.set_page_config(page_title="🎬 Entertainment Bot", layout="wide")
-st.title("🎬 Entertainment Recommendation Bot")
 
-# Chat history lưu tạm
-if "history" not in st.session_state:
-    st.session_state.history = []
+# Header
+st.markdown('<h1 class="main-header">🎬 Entertainment Bot</h1>', unsafe_allow_html=True)
 
-def semantic_search(query, k=3):
-    q_emb = client_llm.get_embeddings(model=EMBED_MODEL, input=[query]).data[0].embedding
-    results = collection.query(query_embeddings=[q_emb], n_results=k)
-    docs = results["documents"]
-    metas = results["metadatas"]
-    return docs, metas
+# Input
+user_input = st.text_input(
+    "What are you looking for?",
+    placeholder="e.g. Sci-fi movies like Inception",
+    key="user_input",
+    value="" if st.session_state.clear_input else st.session_state.get("user_input", "")
+)
 
-def generate_response(query):
-    docs, metas = semantic_search(query)
-    # Chuẩn bị prompt
-    context = "\n".join([f"- {m['title']} ({m['year']}): {doc}" for m, doc in zip(metas, docs)])
-    prompt = (f"Bạn là một bot gợi ý giải trí. Dưới đây là các nội dung liên quan:\n"
-              f"{context}\n\n"
-              f"Người dùng nói: \"{query}\"\n"
-              f"Hãy đưa ra 3 đề xuất phù hợp nhất với giải thích ngắn gọn.")
-    chat_resp = client_llm.get_completions(
-        model=LLM_MODEL,
-        messages=[{"role":"system","content":prompt}]
-    ).choices[0].message.content
-    return chat_resp
+# Reset clear flag after clearing
+if st.session_state.clear_input:
+    st.session_state.clear_input = False
 
-def text_to_speech(text):
-    inputs = processor(text=text, return_tensors="pt")
-    speech = tts_model.generate_speech(
-        inputs["input_ids"], speaker="alloy", sample_rate=16000
-    )
-    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
-    sf.write(tmp.name, speech.numpy(), 16000)
-    return tmp.name
+# Submit button
+if st.button("🔍 Search", type="primary"):
+    if user_input:
+        with st.spinner("Searching..."):
+            try:
+                # Generate recommendation
+                bot_response = st.session_state.bot.generate_recommendation(user_input)
+                st.session_state.current_response = bot_response
+                
+                # Clear previous audio
+                st.session_state.current_audio = None
+                
+            except Exception as e:
+                st.error(f"Error: {str(e)}")
 
-# Form nhập truy vấn
-with st.form("chat_form", clear_on_submit=True):
-    user_input = st.text_input("Bạn muốn xem gì hôm nay?", "")
-    submit = st.form_submit_button("Gửi")
-
-if submit and user_input:
-    st.session_state.history.append({"role": "user", "text": user_input})
-    with st.spinner("Đang xử lý…"):
-        bot_text = generate_response(user_input)
-        st.session_state.history.append({"role": "bot", "text": bot_text})
-        # TTS
-        wav_path = text_to_speech(bot_text)
-    # Hiển thị
-    for msg in st.session_state.history:
-        if msg["role"] == "user":
-            st.markdown(f"**Bạn:** {msg['text']}")
-        else:
-            st.markdown(f"**Bot:** {msg['text']}")
-    st.audio(wav_path, format="audio/wav")
-
-# Footer hướng dẫn
-st.write("---")
-st.write("Gõ `exit` hoặc `quit` để kết thúc.")  
+# Display results
+if st.session_state.current_response:
+    st.markdown("### 📋 Results")
+    
+    # Display the response in a container with styling
+    with st.container():
+        st.info(st.session_state.current_response)
+    
+    # Auto-generate audio if TTS is available and no audio generated yet
+    if st.session_state.bot.tts_model and not st.session_state.current_audio:
+        with st.spinner("Generating audio..."):
+            try:
+                audio_file = st.session_state.bot.text_to_speech(st.session_state.current_response)
+                st.session_state.current_audio = audio_file
+                st.rerun()
+            except Exception as e:
+                st.error(f"Audio generation failed: {str(e)}")
+    
+    # Audio player - only show if audio exists
+    if st.session_state.current_audio and os.path.exists(st.session_state.current_audio):
+        st.markdown("### 🎤 Listen to Results")
+        with open(st.session_state.current_audio, 'rb') as f:
+            audio_bytes = f.read()
+        st.audio(audio_bytes, format='audio/wav')
+    
+    # Clear button
+    if st.button("🗑️ Clear Results"):
+        st.session_state.current_response = None
+        st.session_state.current_audio = None
+        st.session_state.clear_input = True  # Set flag to clear input
+        st.rerun()  

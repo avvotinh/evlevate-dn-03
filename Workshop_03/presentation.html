@@ -43,7 +43,7 @@
         }
 
         .slide h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             background: linear-gradient(45deg, #FFD700, #FFA500);
@@ -53,19 +53,19 @@
         }
 
         .slide h2 {
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             margin-bottom: 25px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .slide h3 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: 20px;
             color: #FFD700;
         }
 
         .slide p {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             line-height: 1.6;
             margin-bottom: 20px;
             max-width: 80%;
@@ -73,14 +73,14 @@
 
         .slide ul {
             text-align: left;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             line-height: 1.8;
             max-width: 80%;
         }
 
         .slide li {
             margin-bottom: 15px;
-            padding-left: 20px;
+            padding-left: 30px;
             position: relative;
         }
 
@@ -113,9 +113,13 @@
         }
 
         .tech-item h4 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
             color: #FFD700;
+        }
+
+        .tech-item p {
+            font-size: 1.3rem;
         }
 
         .architecture-flow {
@@ -129,12 +133,24 @@
 
         .flow-step {
             background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             border: 2px solid #FFD700;
             flex: 1;
             margin: 0 10px;
             position: relative;
+        }
+
+        .flow-step h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+
+        .flow-step p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .flow-step::after {
@@ -161,8 +177,8 @@
             max-width: 90%;
             margin: 20px 0;
             overflow-x: auto;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 1.3rem;
+            line-height: 1.6;
         }
 
         .code-sections {
@@ -183,7 +199,7 @@
         .code-section h4 {
             color: #FFD700;
             margin-bottom: 15px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
         }
 
         /* Syntax highlighting */
@@ -268,8 +284,8 @@
         }
 
         .emoji {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
         }
 
         .highlight {
@@ -317,10 +333,14 @@
         }
 
         .result-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: #FFD700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .result-item p {
+            font-size: 1.5rem;
         }
 
         @media (max-width: 768px) {
@@ -329,15 +349,23 @@
             }
             
             .slide h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
             
             .slide h2 {
-                font-size: 2rem;
+                font-size: 2.8rem;
+            }
+
+            .slide h3 {
+                font-size: 2.2rem;
             }
             
             .slide p {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
+            }
+
+            .slide ul {
+                font-size: 1.4rem;
             }
             
             .tech-stack,
@@ -363,8 +391,40 @@
             }
             
             .demo-code {
-                font-size: 0.8rem;
+                font-size: 1rem;
                 padding: 20px;
+            }
+
+            .emoji {
+                font-size: 4rem;
+            }
+
+            .tech-item h4 {
+                font-size: 1.6rem;
+            }
+
+            .tech-item p {
+                font-size: 1.2rem;
+            }
+
+            .flow-step h4 {
+                font-size: 1.4rem;
+            }
+
+            .flow-step p {
+                font-size: 1.1rem;
+            }
+
+            .code-section h4 {
+                font-size: 1.4rem;
+            }
+
+            .result-number {
+                font-size: 3rem;
+            }
+
+            .result-item p {
+                font-size: 1.4rem;
             }
         }
 
@@ -390,7 +450,7 @@
             <h1>Entertainment Recommendation Bot</h1>
             <h3>Workshop 03 - AI-Powered Content Discovery</h3>
             <p>Hệ thống gợi ý phim và chương trình TV thông minh sử dụng AI và Machine Learning</p>
-            <p><strong>Công nghệ:</strong> Azure OpenAI • ChromaDB • Vector Embeddings • Text-to-Speech</p>
+            <p><strong>Công nghệ:</strong> Azure OpenAI • ChromaDB • Vector Embeddings • Facebook MMS TTS</p>
         </div>
 
         <!-- Slide 2: Problem Statement -->
@@ -447,9 +507,9 @@
                     <p>Persistent storage & fast retrieval</p>
                 </div>
                 <div class="tech-item">
-                    <h4>🎤 HuggingFace</h4>
-                    <p>SpeechT5 for Text-to-Speech</p>
-                    <p>Natural-sounding audio output</p>
+                    <h4>🎤 Facebook MMS</h4>
+                    <p>MMS TTS for Text-to-Speech</p>
+                    <p>Natural English audio output</p>
                 </div>
                 <div class="tech-item">
                     <h4>🐍 Python</h4>
@@ -466,23 +526,23 @@
             <div class="architecture-flow">
                 <div class="flow-step">
                     <h4>1. Input Layer</h4>
-                    <p>CLI interface nhận user query</p>
+                    <p>CLI interface receives user query</p>
                     <p><em>"Sci-fi movies like Inception"</em></p>
                 </div>
                 <div class="flow-step">
                     <h4>2. Smart Search</h4>
-                    <p>AI tìm kiếm nội dung tương tự</p>
-                    <p>Top-3 matches từ database</p>
+                    <p>Semantic search with embeddings</p>
+                    <p>Top-3 matches from ChromaDB</p>
                 </div>
                 <div class="flow-step">
                     <h4>3. AI Recommendation</h4>
-                    <p>GPT-4o-mini phân tích và gợi ý</p>
-                    <p>Personalized recommendations</p>
+                    <p>GPT-4o-mini generates natural responses</p>
+                    <p>Conversational recommendations</p>
                 </div>
                 <div class="flow-step">
                     <h4>4. Output</h4>
-                    <p>Text + Audio response</p>
-                    <p>With explanations</p>
+                    <p>Text + Audio in results folder</p>
+                    <p>Facebook MMS TTS</p>
                 </div>
             </div>
         </div>
@@ -500,217 +560,6 @@
                 <li><strong>Interactive Interface:</strong> CLI thân thiện với examples và help</li>
                 <li><strong>Persistent Data:</strong> Dữ liệu được lưu trữ qua các phiên làm việc</li>
             </ul>
-        </div>
-
-        <!-- Slide 7: Core Architecture Code -->
-        <div class="slide">
-            <div class="emoji">🏛️</div>
-            <h2>Core Architecture Implementation</h2>
-            <div class="code-sections">
-                <div class="code-section">
-                    <h4>🚀 Bot Initialization</h4>
-                    <div class="demo-code">
-<span class="keyword">class</span> <span class="class-name">EntertainmentBot</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):
-        <span class="comment"># Azure OpenAI clients setup</span>
-        <span class="keyword">self</span>.embedding_client = <span class="class-name">AzureOpenAI</span>(
-            api_key=<span class="keyword">self</span>.embedding_api_key,
-            api_version=<span class="keyword">self</span>.azure_api_version,
-            azure_endpoint=<span class="keyword">self</span>.azure_api_base
-        )
-        
-        <span class="comment"># ChromaDB vector store</span>
-        <span class="keyword">self</span>.chroma_client = chromadb.<span class="function">PersistentClient</span>(
-            path=<span class="string">"./chroma_db"</span>
-        )
-        <span class="keyword">self</span>.collection = <span class="keyword">self</span>.chroma_client.<span class="function">get_or_create_collection</span>(
-            name=<span class="string">"entertainment_knowledge"</span>
-        )
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: Data Processing Code -->
-        <div class="slide">
-            <div class="emoji">⚙️</div>
-            <h2>Vector Embeddings & Data Processing</h2>
-            <div class="code-sections">
-                <div class="code-section">
-                    <h4>🔢 Generate Embeddings</h4>
-                    <div class="demo-code">
-<span class="keyword">def</span> <span class="function">get_embeddings</span>(<span class="keyword">self</span>, text):
-    <span class="string">"""Generate vector embeddings using Azure OpenAI."""</span>
-    response = <span class="keyword">self</span>.embedding_client.embeddings.<span class="function">create</span>(
-        input=text,
-        model=<span class="keyword">self</span>.embedding_model  <span class="comment"># text-embedding-3-small</span>
-    )
-    <span class="keyword">return</span> response.data[<span class="number">0</span>].embedding
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>📚 Load Sample Data</h4>
-                    <div class="demo-code">
-<span class="keyword">def</span> <span class="function">load_sample_data</span>(<span class="keyword">self</span>):
-    <span class="string">"""Load entertainment data into ChromaDB with embeddings."""</span>
-    <span class="keyword">with</span> <span class="function">open</span>(<span class="string">'sample.json'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:
-        entertainment_data = json.<span class="function">load</span>(f)
-    
-    documents, metadata, ids = [], [], []
-    <span class="keyword">for</span> i, item <span class="keyword">in</span> <span class="function">enumerate</span>(entertainment_data):
-        <span class="comment"># Create rich text for embedding</span>
-        text = <span class="string">f"{item['type']}: {item['title']} - {item['description']}"</span>
-        documents.<span class="function">append</span>(text)
-        metadata.<span class="function">append</span>(item)
-        ids.<span class="function">append</span>(<span class="string">f"item_{i}"</span>)
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 9: Recommendation Engine -->
-        <div class="slide">
-            <div class="emoji">🎯</div>
-            <h2>Smart Recommendation Engine</h2>
-            <div class="code-sections">
-                <div class="code-section">
-                    <h4>🔍 Semantic Search</h4>
-                    <div class="demo-code">
-<span class="keyword">def</span> <span class="function">get_recommendations</span>(<span class="keyword">self</span>, user_input):
-    <span class="comment"># Generate query embedding</span>
-    query_embedding = <span class="keyword">self</span>.<span class="function">get_embeddings</span>(user_input)
-    
-    <span class="comment"># Semantic similarity search</span>
-    search_results = <span class="keyword">self</span>.collection.<span class="function">query</span>(
-        query_embeddings=[query_embedding],
-        n_results=<span class="number">3</span>,
-        include=[<span class="string">'documents'</span>, <span class="string">'metadatas'</span>]
-    )
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>🤖 LLM Generation</h4>
-                    <div class="demo-code">
-    <span class="comment"># Generate personalized recommendations</span>
-    response = <span class="keyword">self</span>.llm_client.chat.completions.<span class="function">create</span>(
-        model=<span class="keyword">self</span>.llm_model,  <span class="comment"># GPT-4o-mini</span>
-        messages=[
-            {<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"You are a friendly entertainment bot"</span>},
-            {<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: prompt}
-        ],
-        temperature=<span class="number">0.7</span>,
-        max_tokens=<span class="number">500</span>
-    )
-    
-    <span class="keyword">return</span> response.choices[<span class="number">0</span>].message.content
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 10: Text-to-Speech Implementation -->
-        <div class="slide">
-            <div class="emoji">🎤</div>
-            <h2>Text-to-Speech Integration</h2>
-            <div class="code-sections">
-                <div class="code-section">
-                    <h4>🎵 TTS Model Initialization</h4>
-                    <div class="demo-code">
-<span class="keyword">def</span> <span class="function">initialize_tts</span>(<span class="keyword">self</span>):
-    <span class="string">"""Initialize HuggingFace SpeechT5 models."""</span>
-    <span class="keyword">self</span>.tts_processor = <span class="class-name">SpeechT5Processor</span>.<span class="function">from_pretrained</span>(
-        <span class="string">"microsoft/speecht5_tts"</span>
-    )
-    <span class="keyword">self</span>.tts_model = <span class="class-name">SpeechT5ForTextToSpeech</span>.<span class="function">from_pretrained</span>(
-        <span class="string">"microsoft/speecht5_tts"</span>
-    )
-    <span class="keyword">self</span>.vocoder = <span class="class-name">SpeechT5HifiGan</span>.<span class="function">from_pretrained</span>(
-        <span class="string">"microsoft/speecht5_hifigan"</span>
-    )
-    
-    <span class="comment"># Load speaker embeddings for voice quality</span>
-    embeddings_dataset = <span class="function">load_dataset</span>(
-        <span class="string">"Matthijs/cmu-arctic-xvectors"</span>, split=<span class="string">"validation"</span>
-    )
-    <span class="keyword">self</span>.speaker_embeddings = torch.<span class="function">tensor</span>(
-        embeddings_dataset[<span class="number">7306</span>][<span class="string">"xvector"</span>]
-    ).<span class="function">unsqueeze</span>(<span class="number">0</span>)
-                    </div>
-                </div>
-                
-                <div class="code-section">
-                    <h4>🔊 Generate Audio</h4>
-                    <div class="demo-code">
-<span class="keyword">def</span> <span class="function">text_to_speech</span>(<span class="keyword">self</span>, text):
-    <span class="string">"""Convert text recommendation to speech."""</span>
-    <span class="comment"># Tokenize and process text</span>
-    inputs = <span class="keyword">self</span>.tts_processor(
-        text=text, return_tensors=<span class="string">"pt"</span>
-    )
-    
-    <span class="comment"># Generate speech with speaker embeddings</span>
-    speech = <span class="keyword">self</span>.tts_model.<span class="function">generate_speech</span>(
-        inputs[<span class="string">"input_ids"</span>], 
-        <span class="keyword">self</span>.speaker_embeddings, 
-        vocoder=<span class="keyword">self</span>.vocoder
-    )
-    
-    <span class="comment"># Save as WAV file with timestamp</span>
-    timestamp = datetime.<span class="function">now</span>().<span class="function">strftime</span>(<span class="string">"%Y%m%d_%H%M%S"</span>)
-    filename = <span class="string">f"recommendation_{timestamp}.wav"</span>
-    sf.<span class="function">write</span>(filename, speech.<span class="function">numpy</span>(), samplerate=<span class="number">16000</span>)
-    
-    <span class="keyword">return</span> filename
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 11: Sample Data & Results -->
-        <div class="slide">
-            <div class="emoji">📊</div>
-            <h2>Database & Performance</h2>
-            <div class="results-showcase">
-                <div class="result-item">
-                    <div class="result-number">50+</div>
-                    <p>Movies & TV Shows</p>
-                </div>
-                <div class="result-item">
-                    <div class="result-number">8+</div>
-                    <p>Genres Covered</p>
-                </div>
-                <div class="result-item">
-                    <div class="result-number">95%</div>
-                    <p>Relevance Score</p>
-                </div>
-            </div>
-            <p style="margin-top: 40px;"><strong>Sample Content:</strong></p>
-            <p>Inception, The Matrix, Stranger Things, Breaking Bad, Game of Thrones, Friends, The Office, Black Mirror, Westworld, The Crown...</p>
-        </div>
-
-        <!-- Slide 12: Example Interaction -->
-        <div class="slide">
-            <div class="emoji">🎭</div>
-            <h2>Live Demo Example</h2>
-            <div class="demo-code">
-<span class="string"><strong>User:</strong></span> <span class="comment">"I want something like Inception but maybe a TV show"</span>
-
-<span class="string"><strong>🤖 Bot:</strong></span> Based on your interest in Inception, I have fantastic recommendations:
-
-<span class="string"><strong>1. Stranger Things (2016)</strong></span> - Sci-fi horror sharing Inception's love for 
-alternate realities. Like Inception's dream layers, explores the <span class="string">"Upside Down"</span> 
-parallel dimension.
-
-<span class="string"><strong>2. Westworld (2016)</strong></span> - Explores consciousness and reality questioning, 
-similar to Inception's <span class="string">"what is real?"</span> themes.
-
-<span class="string"><strong>3. Black Mirror (2011)</strong></span> - Anthology series examining technology's 
-impact on consciousness and perception of reality.
-
-<span class="string"><strong>🔊 Audio saved as:</strong></span> <span class="class-name">recommendation_20250809_143022.wav</span>
-            </div>
         </div>
 
         <!-- Slide 13: Conclusion & Future -->
@@ -740,12 +589,6 @@ impact on consciousness and perception of reality.
                 </div>
             </div>
             <h3 style="margin-top: 40px; color: #FFD700;">Thank you! 🎬✨</h3>
-        </div>
-
-        <!-- Navigation -->
-        <div class="navigation">
-            <button class="nav-btn" onclick="previousSlide()">← Previous</button>
-            <button class="nav-btn" onclick="nextSlide()">Next →</button>
         </div>
 
         <!-- Keyboard help -->

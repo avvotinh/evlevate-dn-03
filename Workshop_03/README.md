@@ -1,30 +1,31 @@
 # Entertainment Recommendation Bot - Workshop 03
 
-A simple CLI-based entertainment recommendation bot that suggests TV shows and movies based on user preferences using ChromaDB for vector storage, Azure OpenAI for embeddings and recommendations, and HuggingFace for text-to-speech.
+A simple CLI-based entertainment recommendation bot that suggests TV shows and movies based on user preferences using ChromaDB for vector storage, Azure OpenAI for embeddings and recommendations, and Facebook MMS TTS for text-to-speech.
 
 ## 🎯 Features
 
 - **Semantic Search**: Uses Azure OpenAI embeddings to understand user preferences and find similar content
 - **Vector Storage**: ChromaDB for persistent storage of movie/TV metadata and embeddings
-- **Intelligent Recommendations**: Azure OpenAI GPT-4o-mini generates personalized recommendations with explanations
-- **Text-to-Speech**: HuggingFace SpeechT5 converts recommendations to audio
+- **Intelligent Recommendations**: Azure OpenAI GPT-4o-mini generates personalized recommendations in natural conversation style
+- **Text-to-Speech**: Facebook MMS TTS converts recommendations to audio files saved in results folder
 - **Rich Database**: Pre-loaded with popular movies and TV shows including ratings and detailed descriptions
 - **Interactive CLI**: User-friendly command-line interface with examples and help
 
 ## 🏗️ Architecture
 
-The bot uses a Retrieval-Augmented Generation (RAG) architecture adapted for content-based recommendations:
+The bot uses a content-based recommendation architecture with semantic search:
 
 1. **Input Layer**: CLI for user queries (e.g., "Recommend action movies like Inception")
 2. **Retrieval Layer**: ChromaDB as vector store for movie/TV metadata with semantic search
-3. **Recommendation Layer**: Azure OpenAI Chat Completions for personalized suggestions with reasoning
-4. **Output Layer**: Text response + optional audio conversion via HuggingFace TTS
+3. **Recommendation Layer**: Azure OpenAI Chat Completions for natural, conversational suggestions
+4. **Output Layer**: Text response + optional audio conversion via Facebook MMS TTS saved to results folder
 
 ## 📋 Requirements
 
 - Python 3.8+
 - Azure OpenAI API access
 - Internet connection (for initial model downloads)
+- Web browser (for Streamlit interface)
 
 ## 🚀 Installation
 
@@ -51,13 +52,31 @@ The bot uses a Retrieval-Augmented Generation (RAG) architecture adapted for con
 
 ## 💡 Usage
 
-### Basic Usage
+### CLI Interface (Command Line)
 
-Run the bot:
+Run the CLI bot:
 
 ```bash
 python chatbot.py
 ```
+
+### Web Interface (Streamlit)
+
+Run the Streamlit web application:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+This will open a web browser with an interactive interface at `http://localhost:8501`
+
+**Web Interface Features:**
+
+- 🖥️ User-friendly graphical interface
+- 🔍 Real-time search and recommendations
+- 🎵 Automatic audio generation and playback
+- 📱 Mobile-responsive design
+- 🗑️ Easy clear results functionality
 
 ### Example Queries
 
@@ -111,9 +130,10 @@ Each entry includes detailed descriptions, genres, ratings, and year information
 
 ### Text-to-Speech
 
-- HuggingFace SpeechT5 for natural-sounding audio
-- Saves recommendations as WAV files with timestamps
+- Facebook MMS TTS (`facebook/mms-tts-eng`) for natural-sounding English audio
+- Saves recommendations as WAV files with timestamps in the `results/` folder
 - Handles long text truncation for optimal audio quality
+- Automatic results directory creation
 
 ### Data Storage
 
@@ -125,13 +145,17 @@ Each entry includes detailed descriptions, genres, ratings, and year information
 
 ```
 Workshop_03/
-├── chatbot.py               # Main application
-├── sample.json              # Entertainment data
+├── chatbot.py               # Main CLI application
+├── streamlit_app.py         # Streamlit web interface
+├── sample.json              # Entertainment data (50+ movies/TV shows)
 ├── requirements.txt         # Python dependencies
 ├── README.md               # This file
+├── presentation.html       # Project presentation slides
+├── .env                    # Azure OpenAI configuration (create this)
 ├── chroma_db/              # ChromaDB storage (created on first run)
 ├── chatbot.log             # Application logs
-└── recommendation_*.wav    # Generated audio files
+└── results/                # Generated audio files
+    └── recommendation_*.wav
 ```
 
 ## 🔧 Configuration
@@ -170,15 +194,14 @@ I can recommend movies and TV shows based on your preferences!
 
 You: I want something like Inception but maybe a TV show
 
-🤖 Bot: Based on your interest in Inception, I have some fantastic recommendations that share its mind-bending, layered storytelling!
+🤖 Bot: Based on your interest in sci-fi movies, I highly recommend checking out The Matrix, Stranger Things, and Interstellar. These should be perfect for what you're looking for!
 
-1. **Stranger Things** (2016) - This sci-fi horror series shares Inception's love for alternate realities and mysterious dimensions. Like Inception's dream layers, Stranger Things explores the "Upside Down" - a dark parallel dimension that mirrors our world. The show combines supernatural elements with emotional storytelling, perfect if you enjoyed Inception's blend of high-concept sci-fi and human drama.
+🔊 Text: Based on your interest in sci-fi movies, I highly recommend checking out The Matrix, Stranger Things, and Interstellar. These should be perfect for what you're looking for!
+Generating audio...
+✓ Audio generated successfully!
+Audio duration: 8.45 seconds
 
-2. **The Matrix** (1999) - While technically a movie, this is the closest match to Inception's themes about questioning reality. Both films explore the nature of what's real versus simulated, featuring protagonists who must navigate multiple layers of existence.
-
-3. **For a TV series with similar complexity**: Consider exploring sci-fi shows that play with time, reality, and consciousness - they capture that same "what is real?" feeling that makes Inception so compelling.
-
-🔊 Audio saved as: recommendation_20250809_143022.wav
+� Audio saved as: results/recommendation_20250809_143022.wav
 ```
 
 ## 🚀 Future Enhancements
@@ -203,31 +226,18 @@ This is a workshop project for learning purposes. Feel free to experiment with:
 
 This project is for educational purposes as part of AI Learning Workshop 03.
 
-## 🆘 Troubleshooting
-
-### Common Issues
-
-1. **Azure OpenAI API Key Error**:
-
-   - Ensure your Azure OpenAI credentials are set correctly in `.env` file
-   - Check that your Azure OpenAI resource is active and has available quota
-   - Verify the model deployments exist in your Azure OpenAI resource
-
-2. **TTS Models Not Loading**:
-
-   - Models download automatically on first use
-   - Ensure stable internet connection
-   - Check available disk space (models are ~1GB)
-
-3. **ChromaDB Issues**:
-
-   - Delete `./chroma_db` directory to reset database
-   - Ensure write permissions in the project directory
-
-4. **Memory Issues**:
-   - TTS models require significant RAM
-   - Consider running without TTS on limited hardware
-
 ### Getting Help
+
+**Common Issues:**
+
+1. **Streamlit not found**: Make sure you've installed all dependencies with `pip install -r requirements.txt`
+
+2. **Port already in use**: If port 8501 is busy, Streamlit will automatically use the next available port
+
+3. **Azure OpenAI errors**: Verify your `.env` file has correct API keys and endpoints
+
+4. **TTS not working**: Facebook MMS models will download automatically on first use
+
+5. **ChromaDB issues**: Delete the `chroma_db` folder to reset the database
 
 Check the logs in `chatbot.log` for detailed error information.
