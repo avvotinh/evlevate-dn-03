@@ -441,7 +441,7 @@
 <body>
     <div class="presentation-container">
         <div class="slide-counter">
-            <span id="current-slide">1</span> / <span id="total-slides">13</span>
+            <span id="current-slide">1</span> / <span id="total-slides">8</span>
         </div>
 
         <!-- Slide 1: Title -->
@@ -449,8 +449,9 @@
             <div class="emoji">🎬🤖</div>
             <h1>Entertainment Recommendation Bot</h1>
             <h3>Workshop 03 - AI-Powered Content Discovery</h3>
-            <p>Hệ thống gợi ý phim và chương trình TV thông minh sử dụng AI và Machine Learning</p>
-            <p><strong>Công nghệ:</strong> Azure OpenAI • ChromaDB • Vector Embeddings • Facebook MMS TTS</p>
+            <p>Hệ thống gợi ý phim và chương trình TV thông minh với Streamlit Web Interface</p>
+            <p><strong>🌐 Web App:</strong> Interactive UI với real-time recommendations</p>
+            <p><strong>🔧 Tech Stack:</strong> Azure OpenAI • ChromaDB • Vector Embeddings • Facebook MMS TTS</p>
         </div>
 
         <!-- Slide 2: Problem Statement -->
@@ -458,34 +459,35 @@
             <div class="emoji">🎯</div>
             <h2>Vấn đề cần giải quyết</h2>
             <ul>
-                <li><strong>Information Overload:</strong> Hàng nghìn phim/TV shows khó lựa chọn</li>
-                <li><strong>Cold Start Problem:</strong> Khó gợi ý cho user mới không có lịch sử xem</li>
-                <li><strong>Understanding Preferences:</strong> Hiểu ý nghĩa thực sự của user preferences</li>
-                <li><strong>Personalization:</strong> Gợi ý phù hợp với từng cá nhân</li>
-                <li><strong>Explainability:</strong> Giải thích tại sao recommend nội dung này</li>
+                <li><strong>Information Overload:</strong> 50+ movies/TV shows trong database, khó lựa chọn phù hợp</li>
+                <li><strong>Cold Start Problem:</strong> Người dùng mới không có lịch sử xem</li>
+                <li><strong>User Experience:</strong> Cần interface thân thiện, dễ sử dụng</li>
+                <li><strong>Real-time Interaction:</strong> Gợi ý ngay lập tức với audio playback</li>
+                <li><strong>Semantic Understanding:</strong> Hiểu ý nghĩa thực sự của user preferences</li>
+                <li><strong>Explainable AI:</strong> Giải thích rõ ràng tại sao recommend nội dung này</li>
             </ul>
         </div>
 
         <!-- Slide 3: Solution Overview -->
         <div class="slide">
             <div class="emoji">💡</div>
-            <h2>Giải pháp AI-powered Recommendation</h2>
+            <h2>Giải pháp Streamlit Web App</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <h4>🔍 Smart Search</h4>
-                    <p>Sử dụng AI để hiểu ý định của user và tìm nội dung tương tự</p>
+                    <h4>🌐 Interactive Web Interface</h4>
+                    <p>Streamlit app với UI thân thiện, responsive design</p>
                 </div>
                 <div class="feature-card">
-                    <h4>🧠 Data Storage</h4>
-                    <p>ChromaDB lưu trữ thông tin và mối quan hệ giữa các nội dung</p>
+                    <h4>🔍 Real-time Search</h4>
+                    <p>Semantic search với ChromaDB và vector embeddings</p>
                 </div>
                 <div class="feature-card">
-                    <h4>🎯 Intelligent Recommendations</h4>
-                    <p>GPT-4o-mini tạo ra gợi ý cá nhân hóa với lý do rõ ràng</p>
+                    <h4>🎯 Smart Recommendations</h4>
+                    <p>GPT-4o-mini tạo gợi ý cá nhân hóa với explanations</p>
                 </div>
                 <div class="feature-card">
-                    <h4>🔊 Voice Output</h4>
-                    <p>Chuyển đổi text thành giọng nói tự nhiên</p>
+                    <h4>🎵 Audio Playback</h4>
+                    <p>Integrated audio player với Facebook MMS TTS</p>
                 </div>
             </div>
         </div>
@@ -499,22 +501,25 @@
                     <h4>🤖 Azure OpenAI</h4>
                     <p><strong>Embeddings:</strong> text-embedding-3-small</p>
                     <p><strong>LLM:</strong> GPT-4o-mini</p>
-                    <p>Semantic understanding & generation</p>
+                    <p>Semantic understanding & recommendation generation</p>
                 </div>
                 <div class="tech-item">
                     <h4>🗄️ ChromaDB</h4>
-                    <p>Vector database for similarity search</p>
-                    <p>Persistent storage & fast retrieval</p>
+                    <p>Vector database cho similarity search</p>
+                    <p>Persistent storage trong ./chroma_db</p>
+                    <p>50+ movies & TV shows metadata</p>
                 </div>
                 <div class="tech-item">
-                    <h4>🎤 Facebook MMS</h4>
-                    <p>MMS TTS for Text-to-Speech</p>
+                    <h4>🎤 Facebook MMS TTS</h4>
+                    <p>Text-to-Speech engine</p>
                     <p>Natural English audio output</p>
+                    <p>Integrated trong web interface</p>
                 </div>
                 <div class="tech-item">
-                    <h4>🐍 Python</h4>
-                    <p>Core application framework</p>
-                    <p>CLI interface & orchestration</p>
+                    <h4>🌐 Streamlit</h4>
+                    <p>Modern web framework</p>
+                    <p>Interactive UI components</p>
+                    <p>Real-time user experience</p>
                 </div>
             </div>
         </div>
@@ -522,27 +527,27 @@
         <!-- Slide 5: Architecture -->
         <div class="slide">
             <div class="emoji">🏗️</div>
-            <h2>AI System Architecture Flow</h2>
+            <h2>Streamlit App Architecture Flow</h2>
             <div class="architecture-flow">
                 <div class="flow-step">
-                    <h4>1. Input Layer</h4>
-                    <p>CLI interface receives user query</p>
+                    <h4>1. Web Interface</h4>
+                    <p>Streamlit UI receives user query</p>
                     <p><em>"Sci-fi movies like Inception"</em></p>
                 </div>
                 <div class="flow-step">
-                    <h4>2. Smart Search</h4>
-                    <p>Semantic search with embeddings</p>
+                    <h4>2. Vector Search</h4>
+                    <p>Semantic search với embeddings</p>
                     <p>Top-3 matches from ChromaDB</p>
                 </div>
                 <div class="flow-step">
-                    <h4>3. AI Recommendation</h4>
-                    <p>GPT-4o-mini generates natural responses</p>
-                    <p>Conversational recommendations</p>
+                    <h4>3. AI Generation</h4>
+                    <p>GPT-4o-mini creates recommendations</p>
+                    <p>Natural language responses</p>
                 </div>
                 <div class="flow-step">
-                    <h4>4. Output</h4>
-                    <p>Text + Audio in results folder</p>
-                    <p>Facebook MMS TTS</p>
+                    <h4>4. Multi-modal Output</h4>
+                    <p>Text display + Audio player</p>
+                    <p>Real-time TTS generation</p>
                 </div>
             </div>
         </div>
@@ -550,19 +555,17 @@
         <!-- Slide 6: Key Features -->
         <div class="slide">
             <div class="emoji">⭐</div>
-            <h2>Key Features Implemented</h2>
+            <h2>Key Features của Web App</h2>
             <ul>
-                <li><strong>Content-Based Filtering:</strong> Phân tích nội dung để tìm sự tương đồng</li>
-                <li><strong>No History Required:</strong> Không cần lịch sử xem, chỉ cần miêu tả sở thích</li>
-                <li><strong>Explainable AI:</strong> Mỗi recommendation có lý do chi tiết</li>
-                <li><strong>Multi-Modal Output:</strong> Cả text và audio response</li>
-                <li><strong>Rich Database:</strong> Thông tin đầy đủ về thể loại, rating, năm</li>
-                <li><strong>Interactive Interface:</strong> CLI thân thiện với examples và help</li>
-                <li><strong>Persistent Data:</strong> Dữ liệu được lưu trữ qua các phiên làm việc</li>
+                <li><strong>Interactive Web Interface:</strong> Streamlit UI với real-time search và results</li>
+                <li><strong>Content-Based Filtering:</strong> Semantic search để tìm sự tương đồng</li>
+                <li><strong>No History Required:</strong> Chỉ cần miêu tả sở thích, không cần account</li>
+                <li><strong>Integrated Audio Player:</strong> Play/pause recommendations ngay trong browser</li>
+                <li><strong>Rich Database:</strong> 50+ movies & TV shows với ratings và descriptions</li>
             </ul>
         </div>
 
-        <!-- Slide 13: Conclusion & Future -->
+        <!-- Slide 8: Conclusion & Future -->
         <div class="slide">
             <div class="emoji">🚀</div>
             <h2>Kết luận & Hướng phát triển</h2>
@@ -570,25 +573,30 @@
                 <div>
                     <h3>✅ Đã đạt được</h3>
                     <ul style="text-align: left;">
-                        <li>AI architecture hoạt động hiệu quả</li>
+                        <li>Streamlit web app hoạt động tốt</li>
+                        <li>Real-time recommendations</li>
+                        <li>Integrated audio playback</li>
+                        <li>Mobile-responsive design</li>
+                        <li>User-friendly interface</li>
                         <li>Semantic search accuracy cao</li>
-                        <li>Explainable recommendations</li>
-                        <li>Multi-modal output (text + audio)</li>
-                        <li>User-friendly CLI interface</li>
                     </ul>
                 </div>
                 <div>
                     <h3>🔮 Future Enhancements</h3>
                     <ul style="text-align: left;">
-                        <li>Web interface với React/Vue</li>
+                        <li>User authentication & history</li>
                         <li>Real-time TMDB API integration</li>
-                        <li>User preference learning</li>
-                        <li>Collaborative filtering hybrid</li>
+                        <li>Advanced filtering options</li>
+                        <li>Recommendation explanations</li>
+                        <li>Social sharing features</li>
                         <li>Multi-language support</li>
                     </ul>
                 </div>
             </div>
-            <h3 style="margin-top: 40px; color: #FFD700;">Thank you! 🎬✨</h3>
+            <p style="margin-top: 40px; font-size: 1.8rem;">
+                <strong>🌐 Live Demo:</strong> <span class="highlight">localhost:8501</span>
+            </p>
+            <h3 style="margin-top: 20px; color: #FFD700;">Thank you! 🎬✨</h3>
         </div>
 
         <!-- Keyboard help -->
