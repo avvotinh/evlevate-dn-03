@@ -243,7 +243,28 @@ Hệ thống tích hợp đa dạng tools chuyên biệt:
 - Market comparison
 - Regulatory compliance checking
 
-## 📄 License
+## � Pinecone Vector Database Testing
+
+### Quick Test
+```bash
+# Test Pinecone integration
+python test_pinecone.py
+```
+
+**Available Test Operations:**
+- **Upsert**: Add text with embeddings to Pinecone
+- **Query**: Search similar content by text
+- **Update**: Modify existing vectors/metadata
+- **Compare**: Calculate similarity between texts
+- **Browse**: View index stats and fetch vectors
+
+### View Data on Pinecone Console
+1. Visit: https://app.pinecone.io/
+2. Login with your Pinecone account
+3. Find index: `edinet-index`
+4. Browse vectors and metadata
+
+## �📄 License
 
 Project này được phát triển cho mục đích học tập và nghiên cứu trong khuôn khổ Elevate AI Hackathon.
 
