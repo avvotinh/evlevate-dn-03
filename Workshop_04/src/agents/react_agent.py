@@ -7,7 +7,7 @@ from typing import List, Dict, Any, Optional
 from langchain.agents import AgentExecutor, create_react_agent
 from langchain.memory import ConversationBufferWindowMemory
 
-from src.services.llm_service import LLMService
+from src.services.llm_service import llm_service
 from src.tools.tool_manager import ToolManager
 from src.prompts.prompt_manager import prompt_manager, PromptType
 from src.utils.logger import get_logger
@@ -22,7 +22,6 @@ class ProductAdvisorReActAgent:
         """
         Initialize ReAct Agent
         """
-        self.llm_service = LLMService()
         self.tool_manager = ToolManager()
         
         # Initialize memory for conversation context
@@ -44,7 +43,7 @@ class ProductAdvisorReActAgent:
         try:
             # Get tools and LLM
             tools = self.tool_manager.get_all_tools()
-            llm = self.llm_service.get_llm()
+            llm = llm_service.get_llm()
             
             # Get ReAct prompt template
             prompt_template = prompt_manager.get_prompt(PromptType.REACT_AGENT)
@@ -68,9 +67,15 @@ class ProductAdvisorReActAgent:
                     error_str = ""
                     error_lower = ""
                 
-                # Extract content from parsing error message
+                # Check if error contains valid Vietnamese response patterns
+                vietnamese_patterns = [
+                    "tôi đã tìm thấy", "dưới đây là", "sản phẩm phù hợp", 
+                    "gợi ý", "khuyến nghị", "so sánh", "thông tin", "đặc điểm",
+                    "dell", "hp", "lenovo", "macbook", "iphone", "samsung", "asus"
+                ]
+                
+                # Extract content from parsing error message  
                 if "could not parse llm output:" in error_lower:
-                    # Extract the actual content after the error message
                     try:
                         # Find the actual response content
                         if "`" in error_str:
@@ -79,56 +84,36 @@ class ProductAdvisorReActAgent:
                             end_idx = error_str.rfind("`")
                             if start_idx > 0 and end_idx > start_idx:
                                 actual_content = error_str[start_idx:end_idx].strip()
-                                # Check if this is Vietnamese content that should be preserved
-                                if any(word in actual_content.lower() for word in [
-                                    "laptop", "smartphone", "sản phẩm", "giá", "vnd", 
-                                    "tôi đã tìm", "dưới đây", "gợi ý", "khuyến nghị"
-                                ]):
+                                # Check if this contains Vietnamese response content
+                                if any(word in actual_content.lower() for word in vietnamese_patterns):
                                     return f"Final Answer: {actual_content}"
+                        
+                        # Try to extract any Vietnamese content from the error
+                        for pattern in vietnamese_patterns:
+                            if pattern in error_lower:
+                                # Extract content around the pattern
+                                pattern_idx = error_lower.find(pattern)
+                                if pattern_idx >= 0:
+                                    # Extract a reasonable chunk around the pattern
+                                    start = max(0, pattern_idx - 50)
+                                    end = min(len(error_str), pattern_idx + 500)
+                                    content_chunk = error_str[start:end].strip()
+                                    
+                                    # Clean up the content
+                                    content_chunk = content_chunk.replace("Could not parse LLM output:", "")
+                                    content_chunk = content_chunk.replace("Invalid Format:", "")
+                                    content_chunk = content_chunk.replace("Missing 'Action:'", "")
+                                    
+                                    if len(content_chunk) > 20:
+                                        return f"Final Answer: {content_chunk}"
+                                
                     except Exception as e:
                         logger.error(f"Error extracting content from parsing error: {e}")
                 
-                # Check if error contains valid Vietnamese response patterns
-                vietnamese_patterns = [
-                    "tôi đã tìm thấy", "dưới đây là", "sản phẩm phù hợp", 
-                    "gợi ý", "khuyến nghị", "so sánh", "thông tin", "đặc điểm",
-                    "dell", "hp", "lenovo", "macbook", "iphone", "samsung", "asus"
-                ]
-                
-                # If error contains Vietnamese response content, extract and wrap it
-                for pattern in vietnamese_patterns:
-                    if pattern in error_lower:
-                        # Try to clean up the response
-                        cleaned_response = error_str
-                        
-                        # Remove common error prefixes
-                        prefixes_to_remove = [
-                            "Could not parse LLM output:", 
-                            "Invalid Format:",
-                            "Missing 'Action:'",
-                            "For troubleshooting, visit:"
-                        ]
-                        
-                        for prefix in prefixes_to_remove:
-                            if prefix in cleaned_response:
-                                cleaned_response = cleaned_response.split(prefix)[-1].strip()
-                        
-                        # Remove backticks if present
-                        if cleaned_response.startswith("`") and cleaned_response.endswith("`"):
-                            cleaned_response = cleaned_response[1:-1].strip()
-                        
-                        # Remove URL references
-                        if "https://python.langchain.com" in cleaned_response:
-                            cleaned_response = cleaned_response.split("https://python.langchain.com")[0].strip()
-                        
-                        if cleaned_response and len(cleaned_response) > 20:
-                            return f"Final Answer: {cleaned_response}"
-                        break
-                
-                # Default fallback with a proper ReAct format
-                return """Thought: Tôi cần tìm kiếm thông tin sản phẩm cho khách hàng.
+                # Default fallback - guide agent to use proper format
+                return """Thought: Tôi cần tìm kiếm thông tin sản phẩm để trả lời khách hàng, sau đó sử dụng answer_with_context để tạo câu trả lời hoàn chỉnh.
 Action: search_products
-Action Input: {"query": "sản phẩm phù hợp", "limit": 5}"""
+Action Input: {"query": "sản phẩm phù hợp", "max_results": 5}"""
             
             # Create agent executor with better error handling
             agent_executor = AgentExecutor(
@@ -221,23 +206,44 @@ Action Input: {"query": "sản phẩm phù hợp", "limit": 5}"""
             if not raw_output or raw_output.strip() == "":
                 return self._get_default_response(result)
             
-            # Check if this is a parsing error with useful content
-            if "Invalid Format" in raw_output or "Missing 'Action:'" in raw_output:
-                # Try to extract useful information from the error
-                lines = raw_output.split('\n')
-                useful_content = []
-                for line in lines:
-                    if not line.startswith("Invalid Format") and not line.startswith("Missing") and line.strip():
-                        if "tôi đã tìm thấy" in line.lower() or "dưới đây là" in line.lower():
-                            useful_content.append(line.strip())
+                # Check if this is a parsing error with useful content
+                if "Invalid Format" in raw_output or "Missing 'Action:'" in raw_output:
+                    # Try to extract useful information from the error
+                    lines = raw_output.split('\n')
+                    useful_content = []
+                    for line in lines:
+                        if not line.startswith("Invalid Format") and not line.startswith("Missing") and line.strip():
+                            if "tôi đã tìm thấy" in line.lower() or "dưới đây là" in line.lower():
+                                useful_content.append(line.strip())
+                    
+                    if useful_content:
+                        return ' '.join(useful_content)
+                    else:
+                        # Fallback to a helpful message
+                        return "Tôi hiểu yêu cầu của bạn về sản phẩm. Hãy để tôi tìm kiếm thông tin chi tiết..."
                 
-                if useful_content:
-                    return ' '.join(useful_content)
-                else:
-                    # Fallback to a helpful message
-                    return "Tôi hiểu yêu cầu của bạn về sản phẩm. Hãy để tôi tìm kiếm thông tin chi tiết..."
-            
-            # Check for database setup errors in intermediate steps
+                # Check if output contains answer_with_context result
+                if "answer_with_context" in str(intermediate_steps):
+                    # Extract the actual response from answer_with_context tool
+                    for step in intermediate_steps:
+                        if len(step) >= 2 and hasattr(step[0], 'tool') and step[0].tool == "answer_with_context":
+                            observation = str(step[1])
+                            try:
+                                # Parse JSON response from answer_with_context
+                                import json
+                                result_data = json.loads(observation)
+                                if result_data.get("success") and result_data.get("response"):
+                                    return result_data["response"]
+                            except (json.JSONDecodeError, KeyError):
+                                # If JSON parsing fails, try to extract content directly
+                                if '"response":' in observation:
+                                    start_idx = observation.find('"response":') + 11
+                                    # Find the end of the response value
+                                    response_part = observation[start_idx:]
+                                    if response_part.startswith('"'):
+                                        end_idx = response_part.find('"', 1)
+                                        if end_idx > 0:
+                                            return response_part[1:end_idx]            # Check for database setup errors in intermediate steps
             intermediate_steps = result.get("intermediate_steps", [])
             for step in intermediate_steps:
                 if len(step) >= 2:

@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field
 from langchain.tools import BaseTool
 from langchain_core.callbacks import CallbackManagerForToolRun
 
-from src.services.llm_service import LLMService
+from src.services.llm_service import llm_service
 from src.prompts.prompt_manager import prompt_manager, PromptType
 from src.utils.logger import get_logger
 
@@ -82,7 +82,6 @@ class RAGGenerationTool(BaseTool):
             user_prompt = prompt_manager.build_rag_user_prompt(user_query, context, conversation_history)
             
             # Generate response using LLM
-            llm_service = LLMService()
             llm = llm_service.get_llm()
             
             full_prompt = f"{system_prompt}\n\n{user_prompt}"

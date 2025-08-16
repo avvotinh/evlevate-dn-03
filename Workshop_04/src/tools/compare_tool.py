@@ -11,8 +11,8 @@ from langchain.tools import BaseTool
 from langchain_core.callbacks import CallbackManagerForToolRun
 
 from src.services.pinecone_service import pinecone_service
-from src.services.llm_service import LLMService
-from src.prompts.prompt_manager import prompt_manager, PromptType
+from src.services.llm_service import llm_service
+from src.prompts.prompt_manager import PromptType
 from src.utils.prompt_helper import prompt_helper
 from src.utils.logger import get_logger
 
@@ -88,6 +88,34 @@ class CompareTool(BaseTool):
     
     args_schema: Type[BaseModel] = CompareInput
     return_direct: bool = False
+
+    def run(self, tool_input: str, **kwargs) -> str:
+        """Override run method to handle JSON string input properly"""
+        try:
+            # If input is a JSON string, parse it
+            if isinstance(tool_input, str) and tool_input.strip().startswith('{'):
+                try:
+                    parsed_input = json.loads(tool_input)
+                    logger.info(f"🔧 Parsed JSON tool input: {parsed_input}")
+                    return self._run(**parsed_input, **kwargs)
+                except json.JSONDecodeError:
+                    logger.warning(f"⚠️ Failed to parse JSON input: {tool_input}")
+                    # Fall back to treating as product_ids
+                    return self._run(product_ids=[tool_input], **kwargs)
+            else:
+                # Regular string input, treat as single product or comma-separated
+                if ',' in tool_input:
+                    product_ids = [p.strip() for p in tool_input.split(',')]
+                else:
+                    product_ids = [tool_input.strip()]
+                return self._run(product_ids=product_ids, **kwargs)
+        except Exception as e:
+            logger.error(f"❌ Error in compare tool run: {e}")
+            return json.dumps({
+                "success": False,
+                "error": f"Lỗi so sánh sản phẩm: {str(e)}",
+                "comparison": {}
+            }, ensure_ascii=False)
     
     def _get_product_by_id_or_name(self, identifier: str) -> Optional[Dict[str, Any]]:
         """Get product details by ID or name"""
@@ -137,9 +165,6 @@ class CompareTool(BaseTool):
     def _generate_comparison_analysis(self, products: List[Dict[str, Any]], aspects: List[str]) -> str:
         """Generate AI-powered comparison analysis"""
         try:
-            # Create LLM service instance
-            llm_service = LLMService()
-            
             # Use prompt helper to format comparison data
             comparison_data = prompt_helper.format_comparison_data(products)
             

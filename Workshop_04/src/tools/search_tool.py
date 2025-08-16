@@ -51,6 +51,33 @@ class SearchTool(BaseTool):
     
     args_schema: Type[BaseModel] = SearchInput
     return_direct: bool = False
+
+    def run(self, tool_input: str, **kwargs) -> str:
+        """Override run method to handle JSON string input properly"""
+        try:
+            # If input is a JSON string, parse it
+            if isinstance(tool_input, str) and tool_input.strip().startswith('{'):
+                try:
+                    parsed_input = json.loads(tool_input)
+                    logger.info(f"🔧 Parsed JSON tool input: {parsed_input}")
+                    return self._run(**parsed_input, **kwargs)
+                except json.JSONDecodeError:
+                    logger.warning(f"⚠️ Failed to parse JSON input: {tool_input}")
+                    # Fall back to treating as query
+                    return self._run(query=tool_input, **kwargs)
+            else:
+                # Regular string input, treat as query
+                return self._run(query=tool_input, **kwargs)
+        except Exception as e:
+            logger.error(f"❌ Error in search tool run: {e}")
+            return json.dumps({
+                "success": False,
+                "error": f"Lỗi tìm kiếm: {str(e)}",
+                "products": []
+            }, ensure_ascii=False)
+    
+    args_schema: Type[BaseModel] = SearchInput
+    return_direct: bool = False
     
     def _run(
         self,
@@ -59,6 +86,7 @@ class SearchTool(BaseTool):
         max_results: Optional[int] = 5,
         include_reviews: Optional[bool] = False,
         run_manager: Optional[CallbackManagerForToolRun] = None,
+        **kwargs
     ) -> str:
         """Execute the search tool"""
         try:

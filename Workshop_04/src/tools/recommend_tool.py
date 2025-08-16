@@ -67,62 +67,30 @@ class RecommendTool(BaseTool):
     
     args_schema: Type[BaseModel] = RecommendInput
     return_direct: bool = False
-    
-    def _analyze_user_needs(self, user_needs: str) -> Dict[str, Any]:
-        """Analyze user needs using LLM to extract key requirements"""
-        try:
-           
-            # Use prompt helper for safe formatting
-            prompt = prompt_helper.safe_format_prompt(
-                PromptType.RECOMMEND_ANALYSIS,
-                user_needs=user_needs
-            )
-            
-            if not prompt:
-                logger.error("❌ Could not format recommendation analysis prompt")
-                return {}
 
-            response = llm_service.generate_text(
-                prompt=prompt,
-                context="recommendation",
-                temperature=0.1
-            )
-            
-            # Try to parse JSON from response  
-            # generate_text returns string directly
-            response_text = response if isinstance(response, str) else str(response)
-                
-            try:
-                # Extract JSON from response
-                start_idx = response_text.find('{')
-                end_idx = response_text.rfind('}') + 1
-                if start_idx >= 0 and end_idx > start_idx:
-                    json_str = response_text[start_idx:end_idx]
-                    analysis = json.loads(json_str)
-                    return analysis
-            except json.JSONDecodeError:
-                pass
-            
-            # Fallback analysis
-            return {
-                "category": None,
-                "budget_range": "không xác định",
-                "usage_purpose": "general",
-                "priority_features": [],
-                "user_profile": "khách hàng cần tư vấn",
-                "key_requirements": []
-            }
-            
+    def run(self, tool_input: str, **kwargs) -> str:
+        """Override run method to handle JSON string input properly"""
+        try:
+            # If input is a JSON string, parse it
+            if isinstance(tool_input, str) and tool_input.strip().startswith('{'):
+                try:
+                    parsed_input = json.loads(tool_input)
+                    logger.info(f"🔧 Parsed JSON tool input: {parsed_input}")
+                    return self._run(**parsed_input, **kwargs)
+                except json.JSONDecodeError:
+                    logger.warning(f"⚠️ Failed to parse JSON input: {tool_input}")
+                    # Fall back to treating as user_needs
+                    return self._run(user_needs=tool_input, **kwargs)
+            else:
+                # Regular string input, treat as user_needs
+                return self._run(user_needs=tool_input, **kwargs)
         except Exception as e:
-            logger.error(f"❌ Error analyzing user needs: {e}")
-            return {
-                "category": None,
-                "budget_range": "không xác định",
-                "usage_purpose": "general",
-                "priority_features": [],
-                "user_profile": "khách hàng cần tư vấn",
-                "key_requirements": []
-            }
+            logger.error(f"❌ Error in recommend tool run: {e}")
+            return json.dumps({
+                "success": False,
+                "error": f"Lỗi xử lý input: {str(e)}",
+                "recommendations": []
+            }, ensure_ascii=False)
     
     def _score_product_relevance(self, product: Dict[str, Any], user_analysis: Dict[str, Any], priority_features: List[str]) -> float:
         """Score how relevant a product is to user needs"""
@@ -156,16 +124,17 @@ class RecommendTool(BaseTool):
             
             # Usage purpose alignment (20 points max)
             usage_purpose = user_analysis.get("usage_purpose", "").lower()
-            purpose_keywords = {
-                "gaming": ["gaming", "game", "rtx", "nvidia", "high performance"],
-                "work": ["business", "professional", "productivity", "office"],
-                "study": ["student", "education", "lightweight", "portable"],
-                "photography": ["camera", "photo", "image", "video"],
-                "programming": ["developer", "coding", "ram", "ssd", "performance"]
-            }
-            
-            if usage_purpose in purpose_keywords:
-                keywords = purpose_keywords[usage_purpose]
+            if usage_purpose and usage_purpose != "general":
+                purpose_keywords = {
+                    "gaming": ["gaming", "game", "rtx", "nvidia", "high performance"],
+                    "work": ["business", "professional", "productivity", "office"],
+                    "study": ["student", "education", "lightweight", "portable"],
+                    "photography": ["camera", "photo", "image", "video"],
+                    "programming": ["developer", "coding", "ram", "ssd", "performance"],
+                    "design": ["graphics", "gpu", "adobe", "creative", "design"]
+                }
+                
+                keywords = purpose_keywords.get(usage_purpose, [])
                 purpose_score = 0
                 for keyword in keywords:
                     if any(keyword in pf for pf in product_features):
@@ -197,13 +166,13 @@ class RecommendTool(BaseTool):
     def _generate_recommendation_explanation(self, product: Dict[str, Any], user_analysis: Dict[str, Any], rank: int) -> str:
         """Generate explanation for why this product is recommended"""
         try:
-            # Use prompt helper to format product summary
-            product_summary = prompt_helper.format_product_summary(product)
+            # Use prompt helper to format product information for prompt
+            product_summary = prompt_helper.format_product_for_prompt(product, include_reviews=False)
             
             # Use prompt helper for safe formatting
             prompt = prompt_helper.safe_format_prompt(
                 PromptType.RECOMMEND_EXPLANATION,
-                product_summary=json.dumps(product_summary, ensure_ascii=False),
+                product_summary=product_summary,
                 user_analysis=user_analysis,
                 rank=rank
             )
@@ -235,11 +204,39 @@ class RecommendTool(BaseTool):
         usage_purpose: Optional[str] = None,
         num_recommendations: Optional[int] = 3,
         run_manager: Optional[CallbackManagerForToolRun] = None,
+        **kwargs
     ) -> str:
         """Execute the recommend tool"""
         try:
-            logger.info(f"🎯 Generating recommendations for: '{user_needs}'")
+            # Handle potential JSON string input
+            logger.info(f"🎯 Raw input received - user_needs: '{user_needs}', kwargs: {kwargs}")
             
+            # If user_needs is a JSON string, try to parse it
+            if isinstance(user_needs, str) and user_needs.startswith('{'):
+                try:
+                    parsed_input = json.loads(user_needs)
+                    user_needs = parsed_input.get("user_needs", user_needs)
+                    category = parsed_input.get("category", category)
+                    budget_min = parsed_input.get("budget_min", budget_min)
+                    budget_max = parsed_input.get("budget_max", budget_max)
+                    priority_features = parsed_input.get("priority_features", priority_features)
+                    usage_purpose = parsed_input.get("usage_purpose", usage_purpose)
+                    num_recommendations = parsed_input.get("num_recommendations", num_recommendations)
+                    logger.info(f"📋 Parsed JSON input successfully")
+                except json.JSONDecodeError:
+                    logger.info(f"📝 Input is not JSON, using as regular string")
+            
+            # Extract from kwargs if parameters are there
+            category = category or kwargs.get("category")
+            budget_min = budget_min or kwargs.get("budget_min") 
+            budget_max = budget_max or kwargs.get("budget_max")
+            priority_features = priority_features or kwargs.get("priority_features")
+            usage_purpose = usage_purpose or kwargs.get("usage_purpose")
+            num_recommendations = num_recommendations or kwargs.get("num_recommendations", 3)
+
+            logger.info(f"🎯 Generating recommendations for: '{user_needs}'")
+            logger.info(f"📊 Parameters received: category={category}, budget_min={budget_min}, budget_max={budget_max}, "
+            f"priority_features={priority_features}, usage_purpose={usage_purpose}, num_recommendations={num_recommendations}")
             # Validate inputs - if no user needs provided, return helpful message
             if not user_needs or not user_needs.strip():
                 return json.dumps({
@@ -251,21 +248,19 @@ class RecommendTool(BaseTool):
             
             num_recommendations = min(num_recommendations or 3, 5)
             
-            # Analyze user needs with LLM
-            user_analysis = self._analyze_user_needs(user_needs)
-            
-            # Override with explicit parameters
-            if category:
-                user_analysis["category"] = category
-            if usage_purpose:
-                user_analysis["usage_purpose"] = usage_purpose
-            if priority_features:
-                user_analysis["priority_features"] = priority_features
+            # Use direct parameters instead of LLM analysis
+            user_analysis = {
+                "category": category,
+                "usage_purpose": usage_purpose or "general",
+                "priority_features": priority_features or [],
+                "user_profile": "khách hàng cần tư vấn",
+                "key_requirements": [user_needs] if user_needs else []
+            }
             
             # Prepare search filters
             filters = {}
-            if user_analysis.get("category"):
-                filters["category"] = user_analysis["category"].lower()
+            if category:
+                filters["category"] = category.lower()
             
             # Budget filtering
             if budget_min is not None or budget_max is not None:
@@ -276,8 +271,20 @@ class RecommendTool(BaseTool):
                     price_filter["$lte"] = budget_max
                 filters["price"] = price_filter
             
+            logger.info(f"🔍 Search filters applied: {filters}")
+
+            # Build search query from available information
+            search_parts = []
+            if user_needs:
+                search_parts.append(user_needs)
+            if usage_purpose and usage_purpose != "general":
+                search_parts.append(usage_purpose)
+            if priority_features:
+                search_parts.extend(priority_features)
+            
+            search_query = " ".join(search_parts) if search_parts else "laptop smartphone"
+            
             # Get candidate products
-            search_query = f"{user_needs} {user_analysis.get('usage_purpose', '')} {' '.join(user_analysis.get('priority_features', []))}"
             candidates = pinecone_service.search_products(
                 query=search_query,
                 filters=filters,

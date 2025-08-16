@@ -262,7 +262,11 @@ class PineconeService:
                 metadata_filter.update(filters)
             
             logger.info(f"🔍 Searching for: '{query}' with filters: {metadata_filter}")
-            
+
+            logger.info("Metadata filter applied:")
+            for key, value in metadata_filter.items():
+                logger.info(f"  {key}: {value}")
+
             # Search in Pinecone
             results = self.index.query(
                 vector=query_embedding,

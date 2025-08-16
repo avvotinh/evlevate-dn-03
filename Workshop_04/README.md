@@ -23,7 +23,7 @@ AI-powered product advisor chatbot for e-commerce platforms using ReAct Agent pa
 - ✅ **No Results Handling**: Xử lý graceful khi không tìm thấy sản phẩm
 
 ### � Data Scope
-- **Sản phẩm**: Chỉ Laptop và Smartphone (10-15 sản phẩm mỗi loại)
+- **Sản phẩm**: Chỉ Laptop và Smartphone (30 sản phẩm mỗi loại)
 - **Ngôn ngữ**: UI tiếng Việt, code/comments tiếng Anh
 - **Database**: Chỉ Pinecone Vector DB
 - **Frontend**: Streamlit (đơn giản, dễ demo)
@@ -244,6 +244,34 @@ Expected: Graceful handling + alternative suggestions
 ```
 User: "Tìm điện thoại tốt"
 Expected: Yêu cầu clarification về budget, brand, specs
+```
+
+## 💬 Chat Conversation Simulator
+
+### Scenario 1: Student Looking for Budget Laptop
+```
+👤 User: Chào bạn! Tôi cần tìm laptop cho việc học tập
+👤 User: Ngân sách khoảng 15-20 triệu, chủ yếu để học lập trình và làm bài tập
+👤 User: So sánh Lenovo ThinkPad X1 Carbon Gen 10 và Dell XPS 15 9520 giúp mình
+
+### Scenario 2: Professional Needs High-End Smartphone
+```
+👤 User: Tôi đang tìm điện thoại flagship mới nhất
+👤 User: Tôi dùng Android, ngân sách không giới hạn, quan trọng camera và hiệu năng
+👤 User: Phân tích camera chi tiết giúp tôi
+
+### Scenario 3: No Results & Alternative Suggestions
+```
+👤 User: Tôi cần laptop gaming 5 triệu có card RTX 4090
+👤 User: Tìm laptop gaming thực tế 5 triệu giúp tôi
+```
+
+### Scenario 4: Multi-turn Conversation with Clarification
+```
+👤 User: Tìm điện thoại tốt
+👤 User: Chụp ảnh đẹp, ngân sách 10-15 triệu
+👤 User: Chủ yếu chụp portrait và selfie
+👤 User: Cảm ơn, tôi sẽ chọn iPhone 13
 ```
 
 ## � Usage Examples
