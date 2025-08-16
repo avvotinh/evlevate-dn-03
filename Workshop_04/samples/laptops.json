@@ -1,0 +1,278 @@
+{
+  "products": [
+    {
+      "id": "laptop_001",
+      "name": "Dell XPS 15 9520",
+      "brand": "Dell",
+      "category": "laptop",
+      "subcategory": "ultrabook",
+      "price": 45000000,
+      "currency": "VND",
+      "description": "Laptop cao cấp Dell XPS 15 với màn hình 4K tuyệt đẹp, hiệu năng mạnh mẽ cho công việc sáng tạo và lập trình. Thiết kế nhôm nguyên khối sang trọng, bàn phím thoải mái và touchpad rộng rãi.",
+      "specs": {
+        "cpu": "Intel Core i7-12700H (14 cores, up to 4.7GHz)",
+        "ram": "16GB DDR5 4800MHz",
+        "storage": "512GB PCIe NVMe SSD",
+        "gpu": "NVIDIA GeForce RTX 3050 Ti 4GB",
+        "display": "15.6 inch 4K+ (3456x2160) OLED, 400 nits, 100% DCI-P3",
+        "battery": "86Wh, up to 13 hours",
+        "weight": "1.96kg",
+        "os": "Windows 11 Pro",
+        "ports": "2x Thunderbolt 4, 1x USB-C 3.2, SD card reader, 3.5mm audio"
+      },
+      "features": [
+        "Màn hình OLED 4K",
+        "Thunderbolt 4",
+        "Windows Hello (vân tay + IR camera)",
+        "Killer Wi-Fi 6E",
+        "Bàn phím có đèn nền",
+        "Loa stereo được tinh chỉnh bởi Waves MaxxAudio"
+      ],
+      "pros": [
+        "Màn hình OLED xuất sắc với màu sắc chính xác",
+        "Hiệu năng mạnh mẽ cho đa tác vụ",
+        "Thiết kế cao cấp, sang trọng",
+        "Thời lượng pin tốt cho laptop 4K",
+        "Bàn phím và touchpad chất lượng cao"
+      ],
+      "cons": [
+        "Giá cao",
+        "Có thể nóng khi chạy tác vụ nặng",
+        "Webcam vẫn ở vị trí dưới màn hình",
+        "Nâng cấp RAM và SSD khó khăn"
+      ],
+      "use_cases": [
+        "Lập trình và phát triển phần mềm",
+        "Thiết kế đồ họa và chỉnh sửa video",
+        "Công việc văn phòng cao cấp",
+        "Content creation",
+        "Machine learning và data science"
+      ],
+      "rating": 4.6,
+      "review_count": 342,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "tags": ["premium", "4k-display", "content-creation", "programming", "ultrabook"]
+    },
+    {
+      "id": "laptop_002",
+      "name": "MacBook Air M2 13 inch",
+      "brand": "Apple",
+      "category": "laptop",
+      "subcategory": "ultrabook",
+      "price": 32000000,
+      "currency": "VND",
+      "description": "MacBook Air M2 mỏng nhẹ với chip Apple M2 mạnh mẽ, thời lượng pin cực kỳ ấn tượng lên đến 18 giờ. Thiết kế mới với màn hình Liquid Retina và MagSafe trở lại.",
+      "specs": {
+        "cpu": "Apple M2 (8-core CPU: 4 performance + 4 efficiency)",
+        "ram": "8GB unified memory",
+        "storage": "256GB SSD",
+        "gpu": "8-core GPU",
+        "display": "13.6 inch Liquid Retina (2560x1664), 500 nits, P3 color",
+        "battery": "52.6Wh, up to 18 hours",
+        "weight": "1.24kg",
+        "os": "macOS Ventura",
+        "ports": "2x Thunderbolt/USB 4, MagSafe 3, 3.5mm audio"
+      },
+      "features": [
+        "Chip Apple M2 tiết kiệm điện",
+        "Màn hình Liquid Retina",
+        "MagSafe charging",
+        "Touch ID",
+        "Fanless design (không quạt, hoàn toàn yên tĩnh)",
+        "1080p FaceTime HD camera",
+        "Spatial audio với 4 loa"
+      ],
+      "pros": [
+        "Thời lượng pin xuất sắc (18 giờ)",
+        "Hiệu năng mạnh với M2",
+        "Hoàn toàn yên tĩnh (không quạt)",
+        "Màn hình sáng và sắc nét",
+        "Mỏng nhẹ, dễ mang theo",
+        "Khởi động và xử lý cực nhanh"
+      ],
+      "cons": [
+        "RAM chỉ 8GB, không nâng cấp được",
+        "Giá cao so với cấu hình",
+        "Ít cổng kết nối",
+        "SSD dung lượng thấp ở bản base"
+      ],
+      "use_cases": [
+        "Lập trình web và mobile (iOS)",
+        "Công việc văn phòng",
+        "Học tập và nghiên cứu",
+        "Content creation nhẹ",
+        "Di chuyển nhiều"
+      ],
+      "rating": 4.8,
+      "review_count": 567,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "tags": ["ultraportable", "long-battery", "silent", "macos", "m2-chip"]
+    },
+    {
+      "id": "laptop_003",
+      "name": "ASUS ROG Strix G15",
+      "brand": "ASUS",
+      "category": "laptop",
+      "subcategory": "gaming",
+      "price": 35000000,
+      "currency": "VND",
+      "description": "Laptop gaming mạnh mẽ với AMD Ryzen 7 và RTX 3060, màn hình 300Hz cho trải nghiệm gaming mượt mà. Hệ thống tản nhiệt ROG Intelligent Cooling giữ máy mát mẻ ngay cả khi chơi game nặng.",
+      "specs": {
+        "cpu": "AMD Ryzen 7 6800H (8 cores, up to 4.7GHz)",
+        "ram": "16GB DDR5 4800MHz (2x8GB)",
+        "storage": "1TB PCIe 4.0 NVMe SSD",
+        "gpu": "NVIDIA GeForce RTX 3060 6GB GDDR6",
+        "display": "15.6 inch FHD (1920x1080) 300Hz, 3ms, 100% sRGB",
+        "battery": "90Wh, up to 8 hours",
+        "weight": "2.3kg",
+        "os": "Windows 11 Home",
+        "ports": "3x USB 3.2 Type-A, 1x USB-C (DP 1.4), HDMI 2.0b, RJ45, 3.5mm audio"
+      },
+      "features": [
+        "Màn hình 300Hz cho gaming",
+        "RGB keyboard 4-zone",
+        "ROG Intelligent Cooling",
+        "Dolby Atmos audio",
+        "Wi-Fi 6E",
+        "MUX Switch cho hiệu năng GPU tối đa",
+        "Aura Sync lighting"
+      ],
+      "pros": [
+        "Hiệu năng gaming mạnh mẽ",
+        "Màn hình 300Hz cực mượt",
+        "Tản nhiệt hiệu quả",
+        "Nâng cấp RAM và SSD dễ dàng",
+        "Giá tốt cho cấu hình"
+      ],
+      "cons": [
+        "Nặng và cồng kềnh",
+        "Pin yếu khi gaming",
+        "Ồn khi chạy tác vụ nặng",
+        "Thiết kế gaming có thể không phù hợp văn phòng"
+      ],
+      "use_cases": [
+        "Gaming AAA titles",
+        "Game development",
+        "3D rendering và modeling",
+        "Video editing nặng",
+        "Streaming game"
+      ],
+      "rating": 4.5,
+      "review_count": 423,
+      "in_stock": true,
+      "warranty": "24 tháng",
+      "tags": ["gaming", "high-refresh", "rtx3060", "amd-ryzen", "rgb"]
+    },
+    {
+      "id": "laptop_004",
+      "name": "Lenovo ThinkPad X1 Carbon Gen 10",
+      "brand": "Lenovo",
+      "category": "laptop",
+      "subcategory": "business",
+      "price": 42000000,
+      "currency": "VND",
+      "description": "Laptop doanh nhân cao cấp với độ bền chuẩn quân đội MIL-STD-810H, bàn phím ThinkPad huyền thoại và bảo mật cấp doanh nghiệp. Mỏng nhẹ chỉ 1.12kg nhưng cực kỳ bền bỉ.",
+      "specs": {
+        "cpu": "Intel Core i7-1260P (12 cores, up to 4.7GHz)",
+        "ram": "16GB LPDDR5 5200MHz",
+        "storage": "512GB PCIe Gen 4 SSD",
+        "gpu": "Intel Iris Xe Graphics",
+        "display": "14 inch WUXGA (1920x1200) IPS, 400 nits, 100% sRGB",
+        "battery": "57Wh, up to 15 hours",
+        "weight": "1.12kg",
+        "os": "Windows 11 Pro",
+        "ports": "2x Thunderbolt 4, 2x USB-A 3.2, HDMI 2.0, 3.5mm audio"
+      },
+      "features": [
+        "Bàn phím ThinkPad với TrackPoint",
+        "Đạt chuẩn quân đội MIL-STD-810H",
+        "IR camera với Windows Hello",
+        "Fingerprint reader",
+        "ThinkShutter camera privacy",
+        "Dolby Atmos speaker system",
+        "4G LTE option"
+      ],
+      "pros": [
+        "Cực kỳ nhẹ và di động",
+        "Bàn phím tốt nhất thị trường",
+        "Độ bền cao, chuẩn quân đội",
+        "Bảo mật doanh nghiệp",
+        "Pin lâu cho laptop Intel"
+      ],
+      "cons": [
+        "Giá cao",
+        "Thiết kế truyền thống, ít thay đổi",
+        "Màn hình chỉ FHD+",
+        "Hiệu năng đồ họa hạn chế"
+      ],
+      "use_cases": [
+        "Business professionals",
+        "Lập trình và phát triển",
+        "Công việc văn phòng",
+        "Di chuyển thường xuyên",
+        "Bảo mật cao"
+      ],
+      "rating": 4.7,
+      "review_count": 289,
+      "in_stock": true,
+      "warranty": "36 tháng",
+      "tags": ["business", "ultraportable", "durable", "thinkpad", "security"]
+    },
+    {
+      "id": "laptop_005",
+      "name": "HP Pavilion 15",
+      "brand": "HP",
+      "category": "laptop",
+      "subcategory": "mainstream",
+      "price": 18000000,
+      "currency": "VND",
+      "description": "Laptop phổ thông đa năng với cấu hình tốt trong tầm giá, phù hợp cho sinh viên và công việc văn phòng. Thiết kế hiện đại với viền màn hình mỏng.",
+      "specs": {
+        "cpu": "Intel Core i5-1235U (10 cores, up to 4.4GHz)",
+        "ram": "8GB DDR4 3200MHz",
+        "storage": "512GB PCIe NVMe SSD",
+        "gpu": "Intel Iris Xe Graphics",
+        "display": "15.6 inch FHD (1920x1080) IPS, 250 nits",
+        "battery": "41Wh, up to 8 hours",
+        "weight": "1.75kg",
+        "os": "Windows 11 Home",
+        "ports": "1x USB-C, 2x USB-A 3.2, HDMI 2.1, SD card reader, 3.5mm audio"
+      },
+      "features": [
+        "Màn hình IPS Full HD",
+        "Bàn phím có đèn nền",
+        "Fast Charge (50% trong 45 phút)",
+        "B&O audio",
+        "Wi-Fi 6",
+        "Webcam HD với privacy shutter"
+      ],
+      "pros": [
+        "Giá phải chăng",
+        "Cấu hình tốt cho tầm giá",
+        "Thiết kế đẹp, hiện đại",
+        "Đầy đủ cổng kết nối",
+        "Nâng cấp RAM và SSD dễ dàng"
+      ],
+      "cons": [
+        "Màn hình độ sáng thấp",
+        "Pin trung bình",
+        "Vỏ nhựa, không cao cấp",
+        "Loa yếu"
+      ],
+      "use_cases": [
+        "Sinh viên",
+        "Văn phòng cơ bản",
+        "Entertainment nhẹ",
+        "Học online",
+        "Lập trình cơ bản"
+      ],
+      "rating": 4.2,
+      "review_count": 512,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "tags": ["budget-friendly", "student", "office", "mainstream", "value"]
+    }
+  ]
+}

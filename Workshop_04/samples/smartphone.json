@@ -1,0 +1,596 @@
+{
+  "products": [
+    {
+      "id": "phone_001",
+      "name": "iPhone 15 Pro Max",
+      "brand": "Apple",
+      "category": "smartphone",
+      "subcategory": "flagship",
+      "price": 34990000,
+      "currency": "VND",
+      "description": "iPhone cao cấp nhất của Apple với chip A17 Pro 3nm đầu tiên, camera 48MP với zoom 5x, và khung titan nhẹ nhưng cực kỳ bền. Action Button mới cho phép tùy chỉnh các tác vụ nhanh.",
+      "specs": {
+        "cpu": "Apple A17 Pro (3nm)",
+        "ram": "8GB",
+        "storage": "256GB",
+        "display": "6.7 inch Super Retina XDR OLED, 2796x1290, 120Hz ProMotion",
+        "camera_main": "48MP wide (f/1.78) + 12MP ultra wide (f/2.2) + 12MP telephoto 5x (f/2.8)",
+        "camera_front": "12MP TrueDepth (f/1.9)",
+        "battery": "4422mAh, 29W wired, 15W MagSafe wireless",
+        "weight": "221g",
+        "os": "iOS 17",
+        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3, NFC",
+        "water_resistance": "IP68"
+      },
+      "features": [
+        "Dynamic Island",
+        "Always-On Display",
+        "Action Button có thể tùy chỉnh",
+        "Khung Titanium Grade 5",
+        "USB-C với USB 3.0",
+        "ProRAW và ProRes video",
+        "Spatial Video cho Vision Pro",
+        "Crash Detection",
+        "Satellite SOS"
+      ],
+      "pros": [
+        "Hiệu năng đỉnh cao với A17 Pro",
+        "Camera zoom 5x ấn tượng",
+        "Màn hình ProMotion 120Hz mượt mà",
+        "Khung titan nhẹ và bền",
+        "Thời lượng pin tốt",
+        "Hệ sinh thái Apple hoàn hảo"
+      ],
+      "cons": [
+        "Giá rất cao",
+        "Nặng và to",
+        "Sạc chậm so với Android flagship",
+        "Không có Touch ID"
+      ],
+      "use_cases": [
+        "Photography chuyên nghiệp",
+        "Video content creation",
+        "Gaming mobile cao cấp",
+        "Business professionals",
+        "Apple ecosystem users"
+      ],
+      "rating": 4.8,
+      "review_count": 892,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Natural Titanium", "Blue Titanium", "White Titanium", "Black Titanium"],
+      "tags": ["flagship", "pro-camera", "5g", "titanium", "a17-pro"]
+    },
+    {
+      "id": "phone_002",
+      "name": "Samsung Galaxy S24 Ultra",
+      "brand": "Samsung",
+      "category": "smartphone",
+      "subcategory": "flagship",
+      "price": 33990000,
+      "currency": "VND",
+      "description": "Flagship Android mạnh nhất với S Pen tích hợp, camera 200MP với AI processing, và màn hình 2K 120Hz sáng nhất. Galaxy AI mang đến các tính năng AI thông minh cho cuộc sống hàng ngày.",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3 for Galaxy",
+        "ram": "12GB LPDDR5X",
+        "storage": "256GB UFS 4.0",
+        "display": "6.8 inch Dynamic AMOLED 2X, 3120x1440, 120Hz, 2600 nits peak",
+        "camera_main": "200MP wide (f/1.7) + 12MP ultra wide (f/2.2) + 50MP telephoto 5x (f/3.4) + 10MP telephoto 3x (f/2.4)",
+        "camera_front": "12MP (f/2.2)",
+        "battery": "5000mAh, 45W wired, 15W wireless",
+        "weight": "232g",
+        "os": "Android 14 with One UI 6.1",
+        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.3, NFC",
+        "water_resistance": "IP68"
+      },
+      "features": [
+        "S Pen tích hợp với Air Actions",
+        "Galaxy AI (Circle to Search, Live Translate)",
+        "Corning Gorilla Armor (giảm 75% phản chiếu)",
+        "Camera Nightography",
+        "8K video recording",
+        "Samsung DeX",
+        "Ultrasonic fingerprint sensor",
+        "Reverse wireless charging"
+      ],
+      "pros": [
+        "Màn hình sáng và sắc nét nhất",
+        "Camera 200MP chi tiết cao",
+        "S Pen đa năng",
+        "Pin lớn 5000mAh",
+        "Galaxy AI features hữu ích",
+        "Hiệu năng Snapdragon 8 Gen 3 mạnh mẽ"
+      ],
+      "cons": [
+        "Giá cao",
+        "Thiết kế vuông vức, nặng",
+        "Nhiệt độ cao khi sử dụng nặng",
+        "Bloatware khá nhiều"
+      ],
+      "use_cases": [
+        "Power users",
+        "Note-taking với S Pen",
+        "Photography và videography",
+        "Multitasking nặng",
+        "Samsung DeX desktop mode"
+      ],
+      "rating": 4.7,
+      "review_count": 756,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Titanium Black", "Titanium Gray", "Titanium Violet", "Titanium Yellow"],
+      "tags": ["flagship", "s-pen", "200mp-camera", "galaxy-ai", "snapdragon-8-gen3"]
+    },
+    {
+      "id": "phone_003",
+      "name": "Xiaomi 14",
+      "brand": "Xiaomi",
+      "category": "smartphone",
+      "subcategory": "flagship",
+      "price": 22990000,
+      "currency": "VND",
+      "description": "Flagship compact với camera Leica thế hệ mới, Snapdragon 8 Gen 3, và thiết kế premium. Kích thước nhỏ gọn 6.36 inch nhưng không compromise về hiệu năng.",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "12GB LPDDR5X",
+        "storage": "256GB UFS 4.0",
+        "display": "6.36 inch LTPO OLED, 2670x1200, 120Hz, 3000 nits peak",
+        "camera_main": "50MP wide Leica (f/1.6) + 50MP ultra wide (f/2.2) + 50MP telephoto 3.2x (f/2.0)",
+        "camera_front": "32MP (f/2.0)",
+        "battery": "4610mAh, 90W wired, 50W wireless",
+        "weight": "193g",
+        "os": "Android 14 with HyperOS",
+        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.4, NFC",
+        "water_resistance": "IP68"
+      },
+      "features": [
+        "Leica Summilux lens",
+        "Leica Authentic Look và Vibrant Look",
+        "HyperOS mới thay thế MIUI",
+        "Xiaomi Surge battery management",
+        "Dolby Vision display",
+        "90W HyperCharge",
+        "In-display fingerprint sensor"
+      ],
+      "pros": [
+        "Kích thước nhỏ gọn, dễ cầm",
+        "Camera Leica chất lượng cao",
+        "Sạc siêu nhanh 90W",
+        "Màn hình sáng 3000 nits",
+        "Giá tốt cho flagship",
+        "HyperOS mượt mà hơn MIUI"
+      ],
+      "cons": [
+        "Pin nhỏ hơn đối thủ",
+        "Không có jack 3.5mm",
+        "Software ads (có thể tắt)",
+        "Hỗ trợ sau bán hàng còn hạn chế"
+      ],
+      "use_cases": [
+        "Người thích điện thoại nhỏ gọn",
+        "Photography enthusiasts",
+        "Daily driver mạnh mẽ",
+        "Gaming casual",
+        "Value flagship seekers"
+      ],
+      "rating": 4.5,
+      "review_count": 423,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Black", "White", "Jade Green"],
+      "tags": ["compact-flagship", "leica-camera", "90w-charging", "hyperos", "value"]
+    },
+    {
+      "id": "phone_004",
+      "name": "Google Pixel 8 Pro",
+      "brand": "Google",
+      "category": "smartphone",
+      "subcategory": "flagship",
+      "price": 27990000,
+      "currency": "VND",
+      "description": "Smartphone AI-first của Google với Tensor G3, camera computational photography tốt nhất và 7 năm cập nhật. Magic Eraser, Best Take và các tính năng AI độc quyền.",
+      "specs": {
+        "cpu": "Google Tensor G3",
+        "ram": "12GB LPDDR5X",
+        "storage": "128GB UFS 3.1",
+        "display": "6.7 inch LTPO OLED, 2992x1344, 120Hz, 2400 nits peak",
+        "camera_main": "50MP wide (f/1.68) + 48MP ultra wide (f/1.95) + 48MP telephoto 5x (f/2.8)",
+        "camera_front": "10.5MP (f/2.2)",
+        "battery": "5050mAh, 30W wired, 23W wireless",
+        "weight": "213g",
+        "os": "Android 14",
+        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.3, NFC, UWB",
+        "water_resistance": "IP68"
+      },
+      "features": [
+        "Magic Eraser và Magic Editor",
+        "Best Take (chọn khuôn mặt tốt nhất)",
+        "Audio Magic Eraser",
+        "Live Translate",
+        "Temperature sensor",
+        "7 năm cập nhật OS",
+        "Titan M2 security chip",
+        "Face Unblur"
+      ],
+      "pros": [
+        "Camera AI tốt nhất Android",
+        "7 năm support dài nhất",
+        "Tính năng AI độc quyền",
+        "Android thuần, không bloat",
+        "Màn hình sáng và mượt"
+      ],
+      "cons": [
+        "Tensor G3 không mạnh bằng Snapdragon",
+        "Sạc chậm 30W",
+        "Thiết kế camera bar gây tranh cãi",
+        "Giá cao cho cấu hình"
+      ],
+      "use_cases": [
+        "Photography với AI",
+        "Android purists",
+        "Long-term phone users",
+        "Google ecosystem",
+        "AI features lovers"
+      ],
+      "rating": 4.4,
+      "review_count": 345,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Obsidian", "Porcelain", "Bay"],
+      "tags": ["ai-first", "pixel-camera", "7-year-updates", "tensor-g3", "pure-android"]
+    },
+    {
+      "id": "phone_005",
+      "name": "OnePlus 12",
+      "brand": "OnePlus",
+      "category": "smartphone",
+      "subcategory": "flagship",
+      "price": 23990000,
+      "currency": "VND",
+      "description": "Flagship killer với Snapdragon 8 Gen 3, sạc nhanh 100W, và camera Hasselblad thế hệ 4. Màn hình 2K 120Hz với độ sáng 4500 nits kỷ lục.",
+      "specs": {
+        "cpu": "Snapdragon 8 Gen 3",
+        "ram": "16GB LPDDR5X",
+        "storage": "256GB UFS 4.0",
+        "display": "6.82 inch LTPO AMOLED, 3168x1440, 120Hz, 4500 nits peak",
+        "camera_main": "50MP wide Sony LYT-808 (f/1.6) + 48MP ultra wide (f/2.2) + 64MP telephoto 3x (f/2.6)",
+        "camera_front": "32MP (f/2.4)",
+        "battery": "5400mAh, 100W wired, 50W wireless",
+        "weight": "220g",
+        "os": "Android 14 with OxygenOS 14",
+        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.4, NFC",
+        "water_resistance": "IP65"
+      },
+      "features": [
+        "Hasselblad Camera for Mobile",
+        "100W SuperVOOC charging",
+        "Alert Slider 3 chế độ",
+        "Aqua Touch (dùng khi tay ướt)",
+        "Dolby Vision và Dolby Atmos",
+        "Bionic Vibration Motor",
+        "RAM-Vita compression"
+      ],
+      "pros": [
+        "Màn hình sáng nhất thị trường",
+        "Sạc 100W siêu nhanh",
+        "RAM 16GB khủng",
+        "Camera Hasselblad ấn tượng",
+        "OxygenOS mượt mà",
+        "Alert Slider tiện lợi"
+      ],
+      "cons": [
+        "Chỉ IP65, không IP68",
+        "Không có sạc không dây ở một số thị trường",
+        "Camera tele chỉ 3x",
+        "Hơi nặng và to"
+      ],
+      "use_cases": [
+        "Power users",
+        "Gaming enthusiasts",
+        "Multimedia consumption",
+        "Fast charging lovers",
+        "OnePlus fans"
+      ],
+      "rating": 4.6,
+      "review_count": 512,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Silky Black", "Emerald", "Iron Gray"],
+      "tags": ["flagship-killer", "100w-charging", "hasselblad", "16gb-ram", "bright-display"]
+    },
+    {
+      "id": "phone_006",
+      "name": "iPhone 15",
+      "brand": "Apple",
+      "category": "smartphone",
+      "subcategory": "premium",
+      "price": 22990000,
+      "currency": "VND",
+      "description": "iPhone tiêu chuẩn với Dynamic Island, camera 48MP mới, và cuối cùng đã có USB-C. Chip A16 Bionic từ Pro series năm ngoái vẫn cực kỳ mạnh mẽ.",
+      "specs": {
+        "cpu": "Apple A16 Bionic",
+        "ram": "6GB",
+        "storage": "128GB",
+        "display": "6.1 inch Super Retina XDR OLED, 2556x1179, 60Hz",
+        "camera_main": "48MP wide (f/1.6) + 12MP ultra wide (f/2.4)",
+        "camera_front": "12MP TrueDepth (f/1.9)",
+        "battery": "3349mAh, 20W wired, 15W MagSafe wireless",
+        "weight": "171g",
+        "os": "iOS 17",
+        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC",
+        "water_resistance": "IP68"
+      },
+      "features": [
+        "Dynamic Island",
+        "USB-C port",
+        "Camera 48MP với 2x zoom",
+        "Photographic Styles",
+        "Cinematic mode 4K",
+        "Action mode",
+        "Crash Detection",
+        "Ceramic Shield front"
+      ],
+      "pros": [
+        "Dynamic Island từ Pro series",
+        "Camera 48MP nâng cấp lớn",
+        "USB-C tiện lợi",
+        "Nhẹ và cân bằng tốt",
+        "Chip A16 vẫn rất mạnh",
+        "Hệ sinh thái Apple"
+      ],
+      "cons": [
+        "Màn hình vẫn 60Hz",
+        "Sạc chậm 20W",
+        "Không có Always-On Display",
+        "Telephoto lens chỉ ở Pro"
+      ],
+      "use_cases": [
+        "Everyday users",
+        "First-time iPhone buyers",
+        "Upgrade từ iPhone cũ",
+        "Social media",
+        "Apple ecosystem"
+      ],
+      "rating": 4.6,
+      "review_count": 678,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Black", "Blue", "Green", "Yellow", "Pink"],
+      "tags": ["mainstream", "dynamic-island", "48mp", "usb-c", "a16-bionic"]
+    },
+    {
+      "id": "phone_007",
+      "name": "Samsung Galaxy A54 5G",
+      "brand": "Samsung",
+      "category": "smartphone",
+      "subcategory": "midrange",
+      "price": 10990000,
+      "currency": "VND",
+      "description": "Mid-range tốt nhất của Samsung với thiết kế flagship, camera 50MP OIS, màn hình 120Hz và 4 năm cập nhật OS. IP67 hiếm có trong phân khúc.",
+      "specs": {
+        "cpu": "Exynos 1380",
+        "ram": "8GB",
+        "storage": "256GB + microSD",
+        "display": "6.4 inch Super AMOLED, 2340x1080, 120Hz, 1000 nits",
+        "camera_main": "50MP wide OIS (f/1.8) + 12MP ultra wide (f/2.2) + 5MP macro (f/2.4)",
+        "camera_front": "32MP (f/2.2)",
+        "battery": "5000mAh, 25W wired",
+        "weight": "202g",
+        "os": "Android 13 with One UI 5.1",
+        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC",
+        "water_resistance": "IP67"
+      },
+      "features": [
+        "Thiết kế Awesome Identity",
+        "Camera OIS chống rung",
+        "4 năm OS updates",
+        "5 năm security updates",
+        "Samsung Knox",
+        "Gorilla Glass 5",
+        "Stereo speakers"
+      ],
+      "pros": [
+        "Thiết kế đẹp như flagship",
+        "Màn hình AMOLED 120Hz",
+        "Camera OIS trong tầm giá",
+        "Pin 5000mAh lâu",
+        "IP67 chống nước",
+        "Support lâu dài"
+      ],
+      "cons": [
+        "Exynos 1380 không mạnh",
+        "Sạc 25W chậm",
+        "Không có sạc không dây",
+        "Bezels hơi dày"
+      ],
+      "use_cases": [
+        "Daily driver ổn định",
+        "Social media và photography",
+        "Long-term usage",
+        "Samsung fans với ngân sách vừa",
+        "Cần điện thoại chống nước"
+      ],
+      "rating": 4.3,
+      "review_count": 892,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Awesome Graphite", "Awesome Violet", "Awesome Lime", "Awesome White"],
+      "tags": ["midrange", "ip67", "120hz", "long-support", "value"]
+    },
+    {
+      "id": "phone_008",
+      "name": "Xiaomi Redmi Note 13 Pro+ 5G",
+      "brand": "Xiaomi",
+      "category": "smartphone",
+      "subcategory": "midrange",
+      "price": 11990000,
+      "currency": "VND",
+      "description": "Mid-range với camera 200MP đầu tiên, sạc nhanh 120W, và màn hình cong 1.5K. Thiết kế premium với khung viền phẳng và mặt lưng da thuần chay.",
+      "specs": {
+        "cpu": "MediaTek Dimensity 7200 Ultra",
+        "ram": "12GB LPDDR5",
+        "storage": "256GB UFS 3.1",
+        "display": "6.67 inch AMOLED, 2712x1220, 120Hz, 1800 nits peak",
+        "camera_main": "200MP wide OIS (f/1.65) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)",
+        "camera_front": "16MP (f/2.4)",
+        "battery": "5000mAh, 120W wired",
+        "weight": "204.5g",
+        "os": "Android 13 with MIUI 14",
+        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC, IR blaster",
+        "water_resistance": "IP54"
+      },
+      "features": [
+        "Camera 200MP Samsung HP3",
+        "120W HyperCharge (19 phút full)",
+        "Màn hình cong 1.5K",
+        "Dolby Vision và Dolby Atmos",
+        "IR blaster",
+        "In-display fingerprint",
+        "Gorilla Glass Victus"
+      ],
+      "pros": [
+        "Camera 200MP ấn tượng",
+        "Sạc 120W siêu nhanh",
+        "RAM 12GB mượt mà",
+        "Thiết kế premium",
+        "Màn hình sáng và sắc nét",
+        "Giá tốt cho cấu hình"
+      ],
+      "cons": [
+        "MediaTek chip không mạnh bằng Snapdragon",
+        "MIUI ads nhiều",
+        "Chỉ IP54",
+        "Camera phụ yếu"
+      ],
+      "use_cases": [
+        "Photography với budget",
+        "Fast charging needs",
+        "Media consumption",
+        "Gaming tầm trung",
+        "Xiaomi ecosystem"
+      ],
+      "rating": 4.4,
+      "review_count": 567,
+      "in_stock": true,
+      "warranty": "18 tháng",
+      "colors": ["Midnight Black", "Moonlight White", "Aurora Purple"],
+      "tags": ["200mp-camera", "120w-charging", "midrange", "value", "amoled"]
+    },
+    {
+      "id": "phone_009",
+      "name": "OPPO Reno11 5G",
+      "brand": "OPPO",
+      "category": "smartphone",
+      "subcategory": "midrange",
+      "price": 10990000,
+      "currency": "VND",
+      "description": "Portrait Expert với camera telephoto portrait 32MP hiếm có trong phân khúc. Thiết kế mỏng nhẹ 7.99mm, sạc nhanh 67W và màn hình cong 120Hz.",
+      "specs": {
+        "cpu": "MediaTek Dimensity 7050",
+        "ram": "8GB + 8GB RAM mở rộng",
+        "storage": "256GB",
+        "display": "6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits peak",
+        "camera_main": "50MP wide (f/1.8) + 32MP telephoto portrait 2x (f/2.0) + 8MP ultra wide (f/2.2)",
+        "camera_front": "32MP (f/2.4)",
+        "battery": "4800mAh, 67W wired",
+        "weight": "182g",
+        "os": "Android 14 with ColorOS 14",
+        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.2, NFC",
+        "water_resistance": "IP65"
+      },
+      "features": [
+        "Portrait camera chuyên dụng",
+        "Thiết kế siêu mỏng 7.99mm",
+        "67W SuperVOOC",
+        "RAM mở rộng +8GB",
+        "Ultra-Volume Mode",
+        "Smart Image Matting 2.0",
+        "LinkBoost signal enhancement"
+      ],
+      "pros": [
+        "Camera portrait xuất sắc",
+        "Thiết kế mỏng nhẹ đẹp",
+        "Sạc nhanh 67W",
+        "ColorOS 14 nhiều tính năng",
+        "IP65 chống nước"
+      ],
+      "cons": [
+        "Chip Dimensity 7050 yếu",
+        "Pin nhỏ 4800mAh",
+        "Không có OIS",
+        "Giá hơi cao cho cấu hình"
+      ],
+      "use_cases": [
+        "Portrait photography",
+        "Fashion và lifestyle",
+        "Social media content",
+        "Người thích điện thoại mỏng nhẹ",
+        "OPPO fans"
+      ],
+      "rating": 4.2,
+      "review_count": 345,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Wave Green", "Rock Grey"],
+      "tags": ["portrait-expert", "slim-design", "67w-charging", "midrange", "stylish"]
+    },
+    {
+      "id": "phone_010",
+      "name": "Realme 11 Pro+",
+      "brand": "Realme",
+      "category": "smartphone",
+      "subcategory": "midrange",
+      "price": 11990000,
+      "currency": "VND",
+      "description": "Mid-range với camera 200MP OIS và sạc nhanh 100W. Thiết kế da thuần chay cao cấp, màn hình cong 120Hz. Giá trị tốt nhất phân khúc.",
+      "specs": {
+        "cpu": "MediaTek Dimensity 7050",
+        "ram": "12GB",
+        "storage": "256GB",
+        "display": "6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits",
+        "camera_main": "200MP wide OIS (f/1.69) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)",
+        "camera_front": "32MP (f/2.5)",
+        "battery": "5000mAh, 100W wired",
+        "weight": "183g",
+        "os": "Android 13 with Realme UI 4.0",
+        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.2, NFC",
+        "water_resistance": "No official rating"
+      },
+      "features": [
+        "Camera 200MP Samsung HP3 với OIS",
+        "100W SuperVOOC charging",
+        "Thiết kế Lychee Vegan Leather",
+        "Màn hình cong 61 độ",
+        "Dolby Atmos dual speakers",
+        "In-display fingerprint",
+        "Hi-Res Audio certification"
+      ],
+      "pros": [
+        "Camera 200MP với OIS",
+        "Sạc 100W cực nhanh",
+        "RAM 12GB mượt mà",
+        "Thiết kế da độc đáo",
+        "Giá cạnh tranh"
+      ],
+      "cons": [
+        "Chip Dimensity không mạnh",
+        "Không chống nước",
+        "Software còn nhiều ads",
+        "Camera góc siêu rộng yếu"
+      ],
+      "use_cases": [
+        "Budget photography",
+        "Fast charging lovers",
+        "Daily multitasking",
+        "Value seekers",
+        "First 5G phone"
+      ],
+      "rating": 4.3,
+      "review_count": 423,
+      "in_stock": true,
+      "warranty": "12 tháng",
+      "colors": ["Sunrise Beige", "Oasis Green", "Astral Black"],
+      "tags": ["200mp-ois", "100w-charging", "value-king", "vegan-leather", "midrange"]
+    }
+  ]
+}
