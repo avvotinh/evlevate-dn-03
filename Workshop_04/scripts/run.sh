@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "🚀 Starting AI Agent EDINET..."
-
 # Activate virtual environment
 source venv/bin/activate
 

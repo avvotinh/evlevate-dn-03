@@ -8,6 +8,11 @@ echo.
 cd /d "%~dp0.."
 
 echo Checking Python environment...
+REM Activate virtual environment at root
+call env\Scripts\activate.bat
+
+echo.
+echo Checking Python environment...
 python --version
 if %errorlevel% neq 0 (
     echo ERROR: Python not found. Please install Python 3.10+

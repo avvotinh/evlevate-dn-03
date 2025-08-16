@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "🚀 Setting up AI Agent EDINET..."
-
 # Create virtual environment
 echo "📦 Creating virtual environment..."
 python -m venv venv

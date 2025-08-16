@@ -163,53 +163,53 @@ response = llm.generate(
 
 ## 🚀 Quick Start
 
-### 1️⃣ Prerequisites
-- Python 3.10 hoặc cao hơn
-- Azure OpenAI API access
-- Pinecone account và API key
+### 1️⃣ Chuẩn bị môi trường
+- Đảm bảo đã cài Python 3.10 trở lên
+- Đăng ký tài khoản Azure OpenAI và Pinecone, lấy API key
 
-### 2️⃣ Installation
-```bash
-# Clone repository
-git clone <repository-url>
-cd Final_Hackathon
+### 2️⃣ Cài đặt & khởi tạo môi trường
 
-# Install dependencies
-pip install -r requirements.txt
+```bat
+REM Chạy script setup để tạo môi trường ảo và cài package
+scripts\setup.bat
 ```
 
-### 3️⃣ Environment Setup
-Tạo file `.env` trong thư mục gốc:
-```env
-# Azure OpenAI Configuration
-AZURE_OPENAI_API_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_API_VERSION=2024-07-01-preview
-AZURE_OPENAI_LLM_API_KEY=your_llm_api_key
-AZURE_OPENAI_LLM_MODEL=GPT-4o-mini
-AZURE_OPENAI_EMBEDDING_API_KEY=your_embedding_api_key
-AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+- Script này sẽ tạo folder `env` ở root, cài các package cần thiết và tạo file `.env`.
+- Sau khi chạy xong, hãy cập nhật API key vào file `.env`.
 
-# Pinecone Configuration
-PINECONE_API_KEY=your_pinecone_api_key
-PINECONE_INDEX_NAME=ecommerce-products
+### 3️⃣ Insert dữ liệu mẫu vào Pinecone
+
+```bat
+REM Chạy script insert_data để nạp dữ liệu mẫu
+scripts\insert_data.bat
 ```
 
-### 4️⃣ Data Setup
-```bash
-# Insert sample data to Pinecone
-python scripts/insert_sample_data.py
+- Script này sẽ kiểm tra môi trường, package, file .env và nạp dữ liệu mẫu lên Pinecone.
+
+### 4️⃣ Khởi động ứng dụng
+
+```bat
+REM Chạy ứng dụng bằng script run
+scripts\run.bat
 ```
 
-### 5️⃣ Run Application
-```bash
-# Method 1: Using main.py
-streamlit run main.py
+- Ứng dụng sẽ tự động kích hoạt môi trường ảo và mở giao diện Streamlit tại `http://localhost:8501`
 
-# Method 3: Using batch script (Windows)
-scripts/run.bat
-```
+---
 
-Ứng dụng sẽ mở tại `http://localhost:8501`
+## 📝 Tóm tắt các script cần thiết
+| Script                | Chức năng                      |
+|-----------------------|-------------------------------|
+| setup.bat             | Tạo môi trường ảo, cài package |
+| insert_data.bat       | Nạp dữ liệu mẫu vào Pinecone   |
+| run.bat               | Khởi động ứng dụng Streamlit   |
+
+---
+
+# 💡 Lưu ý
+- Luôn chạy các script từ thư mục `Workshop_04` để đảm bảo đường dẫn đúng.
+- Nếu gặp lỗi về package hoặc môi trường, hãy chạy lại `setup.bat`.
+- Đảm bảo file `.env` đã được cập nhật đầy đủ API key.
 
 ## 🧪 Testing & Validation
 
