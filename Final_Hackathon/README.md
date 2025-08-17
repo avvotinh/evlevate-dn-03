@@ -243,26 +243,103 @@ Hệ thống tích hợp đa dạng tools chuyên biệt:
 - Market comparison
 - Regulatory compliance checking
 
-## � Pinecone Vector Database Testing
+## 🔍 Pinecone Vector Database Operations
 
-### Quick Test
-```bash
-# Test Pinecone integration
-python test_pinecone.py
+### 🎯 **Mục đích**
+Hệ thống Pinecone được thiết kế để:
+- **Semantic Search**: Tìm kiếm sản phẩm bằng ngôn ngữ tự nhiên
+- **Similarity Matching**: So sánh độ tương tự giữa các sản phẩm
+- **Intelligent Recommendations**: Gợi ý sản phẩm dựa trên vector embeddings
+- **Multilingual Support**: Hỗ trợ tìm kiếm tiếng Việt và tiếng Anh
+
+### 🚀 **Core Files (3 files chính)**
+```
+db/
+├── data_processor.py          # Xử lý seed data thành vector documents
+├── processed_documents.json   # 150 documents đã xử lý (50 laptops + 50 phones + 50 reviews)
+└── pinecone_methods.py        # Complete Pinecone operations toolkit
 ```
 
-**Available Test Operations:**
-- **Upsert**: Add text with embeddings to Pinecone
-- **Query**: Search similar content by text
-- **Update**: Modify existing vectors/metadata
-- **Compare**: Calculate similarity between texts
-- **Browse**: View index stats and fetch vectors
+### 📊 **Pinecone Methods - Complete Toolkit**
 
-### View Data on Pinecone Console
+#### **1. Seed Data (Khởi tạo dữ liệu)**
+```bash
+# Upload tất cả seed data lên Pinecone
+python db/pinecone_methods.py seedData
+```
+
+#### **2. Query (Tìm kiếm)**
+```bash
+# Tìm kiếm sản phẩm bằng text
+python db/pinecone_methods.py query "laptop gaming RTX 4070"
+python db/pinecone_methods.py query "điện thoại camera đẹp" 5
+
+# Kết quả trả về: tên sản phẩm, giá, category, similarity score
+```
+
+#### **3. Upsert (Thêm/Cập nhật)**
+```bash
+# Thêm sản phẩm mới
+python db/pinecone_methods.py upsert "iPhone 16 Pro Max với camera 48MP" "phone_051" '{"type":"product","category":"smartphone","price":40000000}'
+```
+
+#### **4. Update (Sửa đổi)**
+```bash
+# Cập nhật metadata hoặc text
+python db/pinecone_methods.py update "phone_001" "iPhone 15 Pro Max updated specs" '{"price":32000000}'
+```
+
+#### **5. Compare (So sánh)**
+```bash
+# So sánh độ tương tự giữa 2 text
+python db/pinecone_methods.py compare "laptop gaming" "máy tính chơi game"
+```
+
+#### **6. List (Thống kê)**
+```bash
+# Xem thông tin index và sample data
+python db/pinecone_methods.py list
+```
+
+### 🔍 **Query Examples (Ví dụ tìm kiếm)**
+```bash
+# Gaming laptops
+python db/pinecone_methods.py query "laptop gaming mạnh mẽ RTX 4070"
+
+# Budget smartphones
+python db/pinecone_methods.py query "điện thoại giá rẻ pin trâu"
+
+# Business laptops
+python db/pinecone_methods.py query "laptop doanh nghiệp ThinkPad"
+
+# Camera phones
+python db/pinecone_methods.py query "smartphone chụp ảnh đẹp 200MP"
+
+# Vietnamese natural language
+python db/pinecone_methods.py query "tôi cần máy tính để lập trình Python"
+```
+
+### 🗂️ **Data Structure**
+- **150 documents total**:
+  - 50 Laptops (Dell, HP, Lenovo, ASUS, etc.)
+  - 50 Smartphones (iPhone, Samsung, Xiaomi, etc.)
+  - 50 Reviews (user feedback với pros/cons)
+- **Vector dimension**: 1536
+- **Similarity metric**: Cosine
+- **Index name**: `edinet-index`
+
+### 🌐 **View Data on Pinecone Console**
 1. Visit: https://app.pinecone.io/
 2. Login with your Pinecone account
 3. Find index: `edinet-index`
-4. Browse vectors and metadata
+4. Browse ~150 vectors with metadata
+5. Use Query tab for similarity search
+
+### 🎮 **Interactive Testing**
+```bash
+# For interactive testing, use:
+python test_pinecone.py query
+```
 
 ## �📄 License
 
