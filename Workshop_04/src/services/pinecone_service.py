@@ -36,14 +36,26 @@ class PineconeService:
             self.pc = Pinecone(api_key=Config.PINECONE_API_KEY)
             logger.info("✅ Pinecone client initialized")
             
-            # Initialize Azure OpenAI for embeddings
+            # Initialize OpenAI client for embeddings (works with both Azure and custom endpoints)
             embedding_config = Config.get_embedding_config()
-            self.embedding_client = AzureOpenAI(
-                api_key=embedding_config["api_key"],
-                api_version=embedding_config["api_version"],
-                azure_endpoint=embedding_config["api_base"]
-            )
-            logger.info("✅ Azure OpenAI embedding client initialized")
+
+            # Check if using custom endpoint (not Azure)
+            if "aiportalapi" in Config.AZURE_OPENAI_API_ENDPOINT:
+                # Use regular OpenAI client for custom endpoint
+                from openai import OpenAI
+                self.embedding_client = OpenAI(
+                    base_url=Config.AZURE_OPENAI_API_ENDPOINT,
+                    api_key=Config.AZURE_OPENAI_EMBEDDING_API_KEY
+                )
+                logger.info("✅ Custom OpenAI embedding client initialized")
+            else:
+                # Use Azure OpenAI client
+                self.embedding_client = AzureOpenAI(
+                    api_key=embedding_config["api_key"],
+                    api_version=embedding_config["api_version"],
+                    azure_endpoint=embedding_config["api_base"]
+                )
+                logger.info("✅ Azure OpenAI embedding client initialized")
             
         except Exception as e:
             logger.error(f"❌ Failed to initialize clients: {e}")
