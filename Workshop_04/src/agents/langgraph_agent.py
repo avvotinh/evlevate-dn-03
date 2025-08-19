@@ -106,16 +106,20 @@ class ProductAdvisorLangGraphAgent:
         
         try:
             # Greeting detection
-            if any(word in user_input for word in ["xin chào", "hello", "chào", "hi"]):
+            if any(word in user_input for word in ["xin chào", "hello", "chào", "hi", "cảm ơn", "thank"]):
                 intent = "greeting"
             # Comparison intent
             elif any(word in user_input for word in ["so sánh", "compare", "khác nhau", "vs", "versus"]):
                 intent = "compare"
-            # Recommendation intent  
+            # Recommendation intent
             elif any(word in user_input for word in ["gợi ý", "recommend", "nên mua", "phù hợp", "tư vấn"]):
                 intent = "recommend"
-            # Search intent
-            elif any(word in user_input for word in ["tìm", "search", "laptop", "smartphone", "điện thoại"]):
+            # Search intent - Enhanced to catch product-specific queries
+            elif any(word in user_input for word in [
+                "tìm", "search", "laptop", "smartphone", "điện thoại", "macbook", "dell", "hp", "asus",
+                "iphone", "samsung", "xiaomi", "oppo", "vivo", "cấu hình", "thông số", "giá", "specs",
+                "inspiron", "thinkpad", "pavilion", "vivobook", "galaxy", "redmi", "như thế nào", "ra sao"
+            ]):
                 intent = "search"
             # Direct response for simple queries
             else:
