@@ -99,54 +99,110 @@ class ProductAdvisorLangGraphAgent:
         workflow.add_edge("generate_response", END)
         
         return workflow.compile()
-    
-    def _analyze_intent(self, state: AgentState) -> AgentState:
-        """Enhanced intent analysis with ReAct-style logic"""
-        user_input = state["user_input"].lower()
-        
+
+    def _classify_intent_with_llm(self, user_input: str) -> str:
+        """Use LLM to classify user intent intelligently"""
+        try:
+            intent_prompt = f"""Phân tích ý định của người dùng và trả về CHÍNH XÁC một trong các intent sau:
+
+INTENT OPTIONS:
+- greeting: Chào hỏi, cảm ơn, hỏi về AI
+- search: Tìm kiếm thông tin sản phẩm cụ thể, hỏi cấu hình, thông số, giá
+- compare: So sánh 2+ sản phẩm
+- recommend: Xin gợi ý, tư vấn sản phẩm phù hợp với nhu cầu
+- direct: Câu hỏi đơn giản khác
+
+USER INPUT: "{user_input}"
+
+EXAMPLES:
+- "Xin chào" → greeting
+- "Dell Inspiron 14 5420 cấu hình như thế nào" → search
+- "iPhone 15 vs Samsung S24" → compare
+- "Gợi ý laptop cho sinh viên" → recommend
+- "Cảm ơn bạn" → greeting
+
+Chỉ trả về TÊN INTENT (greeting/search/compare/recommend/direct):"""
+
+            response = self.llm.invoke([HumanMessage(content=intent_prompt)])
+            intent = response.content.strip().lower()
+
+            # Validate intent
+            valid_intents = ["greeting", "search", "compare", "recommend", "direct"]
+            if intent in valid_intents:
+                logger.info(f"🤖 LLM classified intent: {intent}")
+                return intent
+            else:
+                logger.warning(f"⚠️ LLM returned invalid intent: {intent}")
+                return None
+
+        except Exception as e:
+            logger.error(f"❌ LLM intent classification failed: {e}")
+            return None
+
+    def _classify_intent_with_rules(self, user_input: str) -> str:
+        """Fallback rule-based intent classification"""
         try:
             # Greeting detection
             if any(word in user_input for word in ["xin chào", "hello", "chào", "hi", "cảm ơn", "thank"]):
-                intent = "greeting"
+                return "greeting"
             # Comparison intent
             elif any(word in user_input for word in ["so sánh", "compare", "khác nhau", "vs", "versus"]):
-                intent = "compare"
+                return "compare"
             # Recommendation intent
             elif any(word in user_input for word in ["gợi ý", "recommend", "nên mua", "phù hợp", "tư vấn"]):
-                intent = "recommend"
+                return "recommend"
             # Search intent - Enhanced to catch product-specific queries
             elif any(word in user_input for word in [
                 "tìm", "search", "laptop", "smartphone", "điện thoại", "macbook", "dell", "hp", "asus",
                 "iphone", "samsung", "xiaomi", "oppo", "vivo", "cấu hình", "thông số", "giá", "specs",
                 "inspiron", "thinkpad", "pavilion", "vivobook", "galaxy", "redmi", "như thế nào", "ra sao"
             ]):
-                intent = "search"
+                return "search"
             # Direct response for simple queries
             else:
-                intent = "direct"
-            
+                return "direct"
+
+        except Exception as e:
+            logger.error(f"❌ Rule-based intent classification failed: {e}")
+            return "direct"
+
+    def _analyze_intent(self, state: AgentState) -> AgentState:
+        """LLM-powered intent analysis for better accuracy"""
+        user_input = state["user_input"]
+
+        try:
+            # Use LLM for intelligent intent classification
+            intent = self._classify_intent_with_llm(user_input)
+            classification_method = "LLM"
+
+            # Fallback to rule-based if LLM fails
+            if not intent:
+                intent = self._classify_intent_with_rules(user_input.lower())
+                classification_method = "Rules"
+
             state["intent"] = intent
             state["current_step"] = intent
-            
-            # Add reasoning step
+
+            # Add reasoning step with classification method info
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "analyze_intent",
-                "thought": f"Phân tích ý định người dùng: '{user_input[:50]}...' -> {intent}",
-                "result": intent
+                "thought": f"Phân tích ý định người dùng ({classification_method}): '{user_input[:50]}...' -> {intent}",
+                "result": intent,
+                "method": classification_method
             }
             if "reasoning_steps" not in state:
                 state["reasoning_steps"] = []
             state["reasoning_steps"].append(reasoning_step)
-            
-            logger.info(f"🎯 Intent analyzed: {intent}")
-            
+
+            logger.info(f"🎯 Intent analyzed ({classification_method}): {intent}")
+
         except Exception as e:
             logger.error(f"❌ Intent analysis error: {e}")
             state["intent"] = "error"
             state["current_step"] = "error"
             state["error_count"] = state.get("error_count", 0) + 1
-        
+
         return state
     
     def _route_intent(self, state: AgentState) -> str:
