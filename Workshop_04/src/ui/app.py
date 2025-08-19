@@ -14,14 +14,28 @@ from src.utils.logger import get_logger
 # Initialize logger
 logger = get_logger("ui")
 
+# Try to import LangGraph agent
+try:
+    from src.agents.langgraph_agent import get_langgraph_agent_manager
+    LANGGRAPH_AVAILABLE = True
+    logger.info("✅ LangGraph agent available")
+except ImportError as e:
+    logger.warning(f"⚠️ LangGraph agent not available: {e}")
+    LANGGRAPH_AVAILABLE = False
+    get_langgraph_agent_manager = None
+
 def initialize_session_state():
-    """Initialize Streamlit session state"""
-    
+    """Enhanced session state with agent selection support"""
+
     # Initialize session ID
     if "session_id" not in st.session_state:
         st.session_state.session_id = str(uuid.uuid4())
         logger.info(f"New session created: {st.session_state.session_id}")
-    
+
+    # Agent selection
+    if "agent_type" not in st.session_state:
+        st.session_state.agent_type = "ReAct Agent"  # Default
+
     # Chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -37,11 +51,26 @@ def initialize_session_state():
                       "Bạn đang tìm sản phẩm gì hôm nay?"
         }
         st.session_state.messages.append(welcome_message)
-    
-    # Agent manager
-    if "agent_manager" not in st.session_state:
-        st.session_state.agent_manager = get_agent_manager()
-        logger.info("Agent manager initialized")
+
+    # Agent managers
+    if "react_agent_manager" not in st.session_state:
+        st.session_state.react_agent_manager = get_agent_manager()
+        logger.info("ReAct agent manager initialized")
+
+    if "langgraph_agent_manager" not in st.session_state:
+        if LANGGRAPH_AVAILABLE and get_langgraph_agent_manager:
+            st.session_state.langgraph_agent_manager = get_langgraph_agent_manager()
+            logger.info("✅ LangGraph agent manager initialized")
+        else:
+            st.session_state.langgraph_agent_manager = None
+            logger.warning("⚠️ LangGraph agent manager not available")
+
+    # Performance metrics
+    if "performance_metrics" not in st.session_state:
+        st.session_state.performance_metrics = {
+            "react": {"avg_time": 0, "success_rate": 0, "total_queries": 0},
+            "langgraph": {"avg_time": 0, "success_rate": 0, "total_queries": 0}
+        }
 
 
 def setup_page_config():
@@ -52,7 +81,7 @@ def setup_page_config():
         layout="centered"
     )
     
-    # Add custom CSS for better markdown rendering
+    # Add custom CSS for better markdown rendering and agent selection
     st.markdown("""
     <style>
     /* Improve heading spacing */
@@ -66,7 +95,7 @@ def setup_page_config():
         margin-bottom: 0.5rem;
         color: #ff7f0e;
     }
-    
+
     /* Improve list styling */
     .stMarkdown ul {
         padding-left: 1.5rem;
@@ -74,7 +103,7 @@ def setup_page_config():
     .stMarkdown li {
         margin-bottom: 0.5rem;
     }
-    
+
     /* Bold text styling */
     .stMarkdown strong {
         color: #1f77b4;
@@ -84,34 +113,145 @@ def setup_page_config():
     """, unsafe_allow_html=True)
 
 
+def setup_sidebar():
+    """Enhanced sidebar with agent comparison and settings"""
+    st.sidebar.title("🤖 Agent Settings")
+
+    # Agent selection
+    agent_options = ["ReAct Agent"]
+    if LANGGRAPH_AVAILABLE and st.session_state.langgraph_agent_manager is not None:
+        agent_options.append("LangGraph Agent")
+
+    agent_type = st.sidebar.selectbox(
+        "Choose Agent Type",
+        agent_options,
+        index=agent_options.index(st.session_state.agent_type) if st.session_state.agent_type in agent_options else 0,
+        help="ReAct: Traditional reasoning loop, LangGraph: Enhanced graph-based workflow"
+    )
+
+    # Handle agent type change
+    if agent_type != st.session_state.agent_type:
+        st.session_state.agent_type = agent_type
+        st.sidebar.success(f"✅ Switched to {agent_type}")
+        logger.info(f"Agent switched to: {agent_type}")
+        st.rerun()
+
+    # Agent information
+    st.sidebar.markdown("---")
+    if agent_type == "ReAct Agent":
+        st.sidebar.info("""
+        🔄 **ReAct Agent**
+        - Traditional reasoning loop
+        - Proven stability
+        - LangChain standard
+        - Thought → Action → Observation
+        """)
+    else:
+        st.sidebar.info("""
+        🚀 **LangGraph Agent**
+        - Graph-based workflow
+        - Enhanced error handling
+        - Better debugging
+        - Conditional branching
+        """)
+
+    # Performance metrics
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("📊 Performance")
+
+    metrics = st.session_state.performance_metrics
+    current_agent = "react" if agent_type == "ReAct Agent" else "langgraph"
+
+    if metrics[current_agent]["total_queries"] > 0:
+        col1, col2 = st.sidebar.columns(2)
+        with col1:
+            st.metric("Avg Time", f"{metrics[current_agent]['avg_time']:.2f}s")
+        with col2:
+            st.metric("Success Rate", f"{metrics[current_agent]['success_rate']:.1%}")
+
+        st.sidebar.metric("Total Queries", metrics[current_agent]["total_queries"])
+    else:
+        st.sidebar.info("No performance data yet")
+
+    # Session management
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("🗂️ Session")
+
+    if st.sidebar.button("🗑️ Clear Chat History"):
+        st.session_state.messages = []
+        # Re-add welcome message
+        welcome_message = {
+            "role": "assistant",
+            "content": "Xin chào! 👋 Tôi là AI Product Advisor - trợ lý AI chuyên tư vấn sản phẩm điện tử.\n\n"
+                      "Tôi có thể giúp bạn:\n"
+                      "🔍 Tìm kiếm laptop và smartphone phù hợp\n"
+                      "⚖️ So sánh sản phẩm chi tiết\n"
+                      "💡 Đưa ra gợi ý dựa trên nhu cầu\n"
+                      "💰 Tư vấn theo ngân sách\n\n"
+                      "Bạn đang tìm sản phẩm gì hôm nay?"
+        }
+        st.session_state.messages.append(welcome_message)
+        st.sidebar.success("✅ Chat history cleared!")
+        st.rerun()
+
+
+def get_current_agent():
+    """Get current agent based on selection"""
+    if st.session_state.agent_type == "ReAct Agent":
+        return st.session_state.react_agent_manager.get_agent(st.session_state.session_id)
+    else:
+        if st.session_state.langgraph_agent_manager is not None:
+            return st.session_state.langgraph_agent_manager.get_agent(st.session_state.session_id)
+        else:
+            # Fallback to ReAct if LangGraph not available
+            return st.session_state.react_agent_manager.get_agent(st.session_state.session_id)
+
+
 def get_agent_response(prompt: str, session_id: str) -> dict:
     """
-    Get response from ReAct agent
-    
+    Enhanced agent response with performance tracking
+
     Args:
         prompt: User input
         session_id: Session identifier
-        
+
     Returns:
         Dict containing response and metadata
     """
+    import time
+
     try:
-        # Get agent for this session
-        agent_manager = st.session_state.agent_manager
-        agent = agent_manager.get_agent(session_id)
-        
+        start_time = time.time()
+
+        # Get current agent
+        agent = get_current_agent()
+
         # Get response from agent
         result = agent.chat(prompt, session_id)
-        
-        logger.info(f"Agent response generated for session {session_id}")
+
+        end_time = time.time()
+        response_time = end_time - start_time
+
+        # Update performance metrics
+        agent_key = "react" if st.session_state.agent_type == "ReAct Agent" else "langgraph"
+        metrics = st.session_state.performance_metrics[agent_key]
+
+        # Update running averages
+        total_queries = metrics["total_queries"]
+        metrics["avg_time"] = (metrics["avg_time"] * total_queries + response_time) / (total_queries + 1)
+        metrics["success_rate"] = (metrics["success_rate"] * total_queries + (1 if result.get("success", True) else 0)) / (total_queries + 1)
+        metrics["total_queries"] += 1
+
+        logger.info(f"{st.session_state.agent_type} response generated in {response_time:.2f}s for session {session_id}")
         return result
-        
+
     except Exception as e:
         logger.error(f"Error getting agent response: {e}")
         return {
             "response": "Xin lỗi, tôi gặp lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại sau.",
             "success": False,
-            "error": str(e)
+            "error": str(e),
+            "agent_type": st.session_state.agent_type.lower().replace(" ", "_")
         }
 
 
@@ -195,53 +335,8 @@ def response_generator(response_text: str):
             time.sleep(0.05)
 
 
-def setup_sidebar():
-    """Setup sidebar with session management and options"""
-    
-    with st.sidebar:
-        st.header("⚙️ Cài đặt")
-        
-        # Session info
-        st.subheader("📝 Phiên hiện tại")
-        st.caption(f"ID: {st.session_state.session_id[:8]}...")
-        st.caption(f"Tin nhắn: {len(st.session_state.messages)}")
-        
-        # Display conversation summary
-        try:
-            agent_manager = st.session_state.agent_manager
-            if st.session_state.session_id in agent_manager.get_active_sessions():
-                summary = agent_manager.get_session_summary(st.session_state.session_id)
-                st.caption(f"Tương tác: {summary.get('human_messages', 0)} câu hỏi")
-                st.caption(f"Memory: {summary.get('total_messages', 0)}/{summary.get('memory_window', 10)} tin nhắn")
-        except Exception:
-            pass
-        
-        # Clear conversation
-        if st.button("🗑️ Xóa cuộc trò chuyện", help="Xóa toàn bộ lịch sử chat"):
-            agent_manager = st.session_state.agent_manager
-            agent_manager.clear_session(st.session_state.session_id)
-            st.session_state.messages = []
-            # Re-add welcome message
-            welcome_message = {
-                "role": "assistant", 
-                "content": "Cuộc trò chuyện đã được làm mới! Tôi có thể giúp gì cho bạn?"
-            }
-            st.session_state.messages.append(welcome_message)
-            st.rerun()
-        
-        # Info section
-        st.subheader("ℹ️ Thông tin")
-        st.markdown("""
-        **Công cụ có sẵn:**
-        - 🔍 Tìm kiếm sản phẩm
-        - 🔧 Lọc theo tiêu chí  
-        - ⚖️ So sánh sản phẩm
-        - 💡 Gợi ý sản phẩm
-        
-        **Sản phẩm hỗ trợ:**
-        - 💻 Laptop (gaming, văn phòng, design)
-        - 📱 Smartphone (camera, gaming, pin)
-        """)
+
+
 
 
 def main():
@@ -283,14 +378,14 @@ def main():
             
             if result["success"]:
                 response_text = result["response"]
-                
+
                 # Clean response first
                 cleaned_response = clean_react_output(response_text)
-                
+
                 # Check if response contains markdown
                 markdown_indicators = ["**", "###", "##", "####", "*", "_", "|", "```", "`", "-", "1.", "2.", "•"]
                 has_markdown = any(indicator in cleaned_response for indicator in markdown_indicators)
-                
+
                 if has_markdown:
                     # For markdown content, display directly without streaming to preserve formatting
                     display_message_content(cleaned_response)
@@ -298,10 +393,20 @@ def main():
                 else:
                     # For plain text, use streaming
                     response = st.write_stream(response_generator(cleaned_response))
-                    
+
+                # Show agent info and tools used
+                tools_used = result.get("tools_used", [])
+
+                if tools_used:
+                    st.success(f"✅ Response generated using **{st.session_state.agent_type}**")
+                    st.info(f"🔧 Tools used: {', '.join(tools_used)}")
+                else:
+                    st.success(f"✅ Response generated using **{st.session_state.agent_type}**")
+
             else:
                 response = clean_react_output(result["response"])
                 display_message_content(response)
+                st.error(f"❌ Error with **{st.session_state.agent_type}**")
                 if result.get("error"):
                     st.error(f"Chi tiết lỗi: {result['error']}")
         
