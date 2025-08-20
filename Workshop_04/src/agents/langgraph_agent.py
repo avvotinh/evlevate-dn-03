@@ -243,6 +243,35 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         
         return state
     
+    def _extract_search_query(self, user_input: str) -> str:
+        """Extract search query from user input using LLM"""
+        try:
+            extraction_prompt = f"""
+Từ câu hỏi của khách hàng sau, hãy trích xuất từ khóa tìm kiếm chính:
+
+Câu hỏi: "{user_input}"
+
+Hãy trả về chỉ từ khóa tìm kiếm (không giải thích thêm), ví dụ:
+- "laptop cho lập trình"
+- "điện thoại gaming"
+- "máy tính văn phòng"
+
+Từ khóa tìm kiếm:"""
+
+            response = self.llm.invoke(extraction_prompt)
+            extracted_query = response.content.strip().strip('"').strip("'")
+
+            # Fallback to original input if extraction fails
+            if not extracted_query or len(extracted_query) < 3:
+                extracted_query = user_input
+
+            logger.info(f"🔍 Extracted search query: '{extracted_query}' from '{user_input[:50]}...'")
+            return extracted_query
+
+        except Exception as e:
+            logger.warning(f"⚠️ Query extraction failed: {e}, using original input")
+            return user_input
+
     def _search_products(self, state: AgentState) -> AgentState:
         """Enhanced product search with error handling"""
         try:
@@ -250,8 +279,8 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             if not search_tool:
                 raise Exception("Search tool not available")
 
-            # Use string input for compatibility with existing tools
-            search_query = state["user_input"]
+            # Extract specific search query from user input
+            search_query = self._extract_search_query(state["user_input"])
 
             result = search_tool.run(search_query)
             state["search_results"] = result
@@ -261,7 +290,7 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "search_products",
-                "thought": f"Tìm kiếm sản phẩm với query: {state['user_input'][:50]}...",
+                "thought": f"Tìm kiếm sản phẩm với query: '{search_query}' (extracted from: '{state['user_input'][:50]}...')",
                 "action_input": search_query,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
@@ -276,6 +305,37 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         
         return state
 
+    def _extract_compare_query(self, user_input: str) -> str:
+        """Extract comparison query from user input using LLM"""
+        try:
+            extraction_prompt = f"""
+Từ câu hỏi của khách hàng sau, hãy trích xuất thông tin để so sánh sản phẩm:
+
+Câu hỏi: "{user_input}"
+
+Nếu có tên sản phẩm cụ thể, hãy trả về tên sản phẩm. Nếu không, hãy trả về từ khóa so sánh chính:
+
+Ví dụ:
+- "iPhone 15, Samsung Galaxy S24"
+- "laptop Dell vs HP"
+- "so sánh điện thoại gaming"
+
+Thông tin so sánh:"""
+
+            response = self.llm.invoke(extraction_prompt)
+            extracted_query = response.content.strip().strip('"').strip("'")
+
+            # Fallback to original input if extraction fails
+            if not extracted_query or len(extracted_query) < 3:
+                extracted_query = user_input
+
+            logger.info(f"🔍 Extracted compare query: '{extracted_query}' from '{user_input[:50]}...'")
+            return extracted_query
+
+        except Exception as e:
+            logger.warning(f"⚠️ Compare query extraction failed: {e}, using original input")
+            return user_input
+
     def _compare_products(self, state: AgentState) -> AgentState:
         """Enhanced product comparison with error handling"""
         try:
@@ -283,8 +343,8 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             if not compare_tool:
                 raise Exception("Compare tool not available")
 
-            # Use string input for compatibility with existing tools
-            compare_query = state["user_input"]
+            # Extract specific comparison query from user input
+            compare_query = self._extract_compare_query(state["user_input"])
 
             result = compare_tool.run(compare_query)
             state["comparison_results"] = result
@@ -294,7 +354,7 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "compare_products",
-                "thought": f"So sánh sản phẩm với query: {state['user_input'][:50]}...",
+                "thought": f"So sánh sản phẩm với query: '{compare_query}' (extracted from: '{state['user_input'][:50]}...')",
                 "action_input": compare_query,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
@@ -309,6 +369,41 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
 
         return state
 
+    def _extract_recommend_query(self, user_input: str) -> str:
+        """Extract recommendation query from user input using LLM"""
+        try:
+            extraction_prompt = f"""
+Từ câu hỏi của khách hàng sau, hãy trích xuất nhu cầu và yêu cầu để gợi ý sản phẩm:
+
+Câu hỏi: "{user_input}"
+
+Hãy trả về mô tả nhu cầu ngắn gọn, bao gồm:
+- Loại sản phẩm cần
+- Mục đích sử dụng
+- Ngân sách (nếu có)
+- Yêu cầu đặc biệt (nếu có)
+
+Ví dụ:
+- "sinh viên IT cần laptop lập trình ngân sách 20 triệu"
+- "điện thoại chụp ảnh đẹp dưới 15 triệu"
+- "laptop gaming cao cấp"
+
+Nhu cầu:"""
+
+            response = self.llm.invoke(extraction_prompt)
+            extracted_query = response.content.strip().strip('"').strip("'")
+
+            # Fallback to original input if extraction fails
+            if not extracted_query or len(extracted_query) < 3:
+                extracted_query = user_input
+
+            logger.info(f"🔍 Extracted recommend query: '{extracted_query}' from '{user_input[:50]}...'")
+            return extracted_query
+
+        except Exception as e:
+            logger.warning(f"⚠️ Recommend query extraction failed: {e}, using original input")
+            return user_input
+
     def _recommend_products(self, state: AgentState) -> AgentState:
         """Enhanced product recommendation with error handling"""
         try:
@@ -316,8 +411,8 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             if not recommend_tool:
                 raise Exception("Recommend tool not available")
 
-            # Use string input for compatibility with existing tools
-            recommend_query = state["user_input"]
+            # Extract specific recommendation query from user input
+            recommend_query = self._extract_recommend_query(state["user_input"])
 
             result = recommend_tool.run(recommend_query)
             state["recommendation_results"] = result
@@ -327,7 +422,7 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "recommend_products",
-                "thought": f"Gợi ý sản phẩm với nhu cầu: {state['user_input'][:50]}...",
+                "thought": f"Gợi ý sản phẩm với nhu cầu: '{recommend_query}' (extracted from: '{state['user_input'][:50]}...')",
                 "action_input": recommend_query,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
