@@ -43,42 +43,80 @@ graph TD
     C -->|compare| F[Compare Products]
     C -->|recommend| G[Recommend Products]
     C -->|review| H[Get Reviews]
-    C -->|direct| I[Generate Response]
+    C -->|direct| I[RAG Processing]
     C -->|error| J[Handle Error]
     
-    E --> I
-    F --> I
-    G --> I
-    H --> I
+    E --> L[Retrieve Context]
+    F --> L
+    G --> L
+    H --> L
     
-    I --> K[Final Response]
+    L --> M[Vector Database<br/>Pinecone]
+    M --> N[Relevant Documents]
+    N --> I
+    
+    I --> O[LLM + Context]
+    O --> P[Augmented Response]
+    P --> K[Final Response]
+    
     D --> K
     J --> K
     
     style A fill:#e1f5fe
     style K fill:#c8e6c9
     style C fill:#fff3e0
+    style L fill:#ffeb3b
+    style M fill:#4caf50
+    style N fill:#ff9800
+    style I fill:#9c27b0
+    style O fill:#2196f3
+    style P fill:#e91e63
 ```
 
-### Kiến trúc thành phần
+### Kiến trúc thành phần chính
 
 ```
 ┌─────────────────────────────────────────┐
-│            LangGraph Agent              │
-├─────────────────────────────────────────┤
+│            Streamlit UI                 │
+│                                         │
+│  ┌─────────────────────────────────┐    │
+│  │    User Interface (app.py)      │    │
+│  │  • Chat Interface              │    │
+│  │  • Product Display             │    │
+│  │  • Session Management          │    │
+│  └─────────────────────────────────┘    │
+└─────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────┐
+│          LangGraph Agent                │
+│                                         │
+│  ┌─────────────────────────────────┐    │
+│  │         Agent Core              │    │
+│  │  • Intent Analysis             │    │
+│  │  • Memory Management           │    │
+│  │  • Tool Execution              │    │
+│  │  • Response Generation         │    │
+│  └─────────────────────────────────┘    │
+│                                         │
+│  ┌─────────────────────────────────┐    │
+│  │           Tools                 │    │
+│  │  • Search • Compare             │    │
+│  │  • Recommend • Review           │    │
+│  └─────────────────────────────────┘    │
+└─────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────┐
+│             Storage                     │
+│                                         │
 │  ┌─────────────┐  ┌─────────────────┐   │
-│  │ Agent State │  │  Memory Saver   │   │
-│  │             │  │  (LangGraph)    │   │
-│  └─────────────┘  └─────────────────┘   │
-├─────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────────┐   │
-│  │ Intent      │  │ Context         │   │
-│  │ Analysis    │  │ Detection       │   │
-│  └─────────────┘  └─────────────────┘   │
-├─────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────────┐   │
-│  │ Tool        │  │ Response        │   │
-│  │ Execution   │  │ Generation      │   │
+│  │  Pinecone   │  │   Product Data  │   │
+│  │ Vector DB   │  │   (JSON Files)  │   │
+│  │             │  │                 │   │
+│  │ • Embeddings│  │ • laptops.json  │   │
+│  │ • RAG Index │  │ • smartphone.json│   │
+│  │ • Similarity│  │ • reviews.json  │   │
 │  └─────────────┘  └─────────────────┘   │
 └─────────────────────────────────────────┘
 ```

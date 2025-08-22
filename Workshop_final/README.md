@@ -47,70 +47,64 @@ AI-powered product advisor chatbot for e-commerce platforms using ReAct Agent pa
 
 ## 🏗️ Kiến trúc hệ thống
 
-### Architecture Overview
-```
-User → Streamlit UI → LangGraph Agent → Tools → Vector DB (Pinecone)
-                         ↓               ↓
-                   State Management    Tool Results
-                    (MemorySaver)    (Search/Compare/Recommend)
-                         ↓               ↓
-                   Context Assembly ← LLM (Azure OpenAI)
-                         ↓
-                   Final Response
-```
-
-### 🔄 LangGraph Workflow Architecture
-
-```mermaid
-graph TD
-    A[User Input] --> B[Intent Classification Node]
-    B --> C{Route Decision}
-    C -->|Search| D[Search Tool Node]
-    C -->|Compare| E[Compare Tool Node] 
-    C -->|Recommend| F[Recommend Tool Node]
-    C -->|Review| G[Review Tool Node]
-    D --> H[Context Assembly Node]
-    E --> H
-    F --> H
-    G --> H
-    H --> I[Response Generation Node]
-    I --> J[Final Response]
-    
-    subgraph "State Management"
-        K[AgentState]
-        L[MemorySaver]
-        M[Session Context]
-    end
-    
-    B -.-> K
-    H -.-> K
-    I -.-> K
-```
-
-#### LangGraph Components:
-1. **🎯 Intent Classification Node**: Phân tích ý định người dùng
-2. **🔀 Router Node**: Định tuyến đến tool phù hợp
-3. **�️ Tool Execution Nodes**: 
-   - Search Tool Node (tìm kiếm sản phẩm)
-   - Compare Tool Node (so sánh sản phẩm)
-   - Recommend Tool Node (gợi ý sản phẩm)
-   - Review Tool Node (phân tích đánh giá)
-4. **📋 Context Assembly Node**: Tập hợp kết quả từ các tools
-5. **✨ Response Generation Node**: Tạo phản hồi cuối cùng
-6. **💾 State Management**: Persistent memory với MemorySaver
+### Architecture Overview 
 
 
-### 🔧 Tech Stack
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Agent Framework** | LangGraph 0.2+ | Advanced agent workflows với state management |
-| **Backend** | Python 3.10+ | Core application |
-| **AI Framework** | LangChain | Tool integration và agent foundation |
-| **LLM** | Azure OpenAI GPT-4 | Language understanding & generation |
-| **Vector DB** | Pinecone | Product embeddings & similarity search |
-| **Embeddings** | text-embedding-3-small | Semantic representation |
-| **Frontend** | Streamlit 1.37+ | Web interface với dual agent support |
-| **Memory** | LangGraph MemorySaver | Persistent conversation state |
+### LangGraph Workflow Architecture với RAG Integration
+
+
+#### Detailed LangGraph Components:
+
+**🎯 Core Workflow Nodes:**
+1. **Analyze Intent Node**: 
+   - Context-aware intent classification với LLM
+   - Fallback rules-based classification
+   - Reference detection từ conversation history
+
+2. **Intent Router**: Intelligent routing dựa trên:
+   - Intent classification results
+   - Available context từ previous products
+   - Error handling paths
+
+3. **Tool Execution Nodes**:
+   - **Search Products Node**: Vector search với parameter extraction
+   - **Compare Products Node**: Multi-product comparison với structured output  
+   - **Recommend Products Node**: Personalized recommendations
+   - **Get Reviews Node**: Review analysis và sentiment processing
+
+**🔍 RAG Integration Layer:**
+4. **Vector Search Tool**:
+   - Semantic search qua Pinecone embeddings
+   - Intelligent parameter extraction từ natural language
+   - Metadata filtering (price, brand, category)
+
+5. **Context Assembly**:
+   - Aggregate results từ multiple tools
+   - Conversation history integration
+   - Reference resolution (e.g., "so sánh chúng")
+
+6. **RAG Generation Tool**:
+   - Context-aware response generation
+   - Tool results integration
+   - Structured output formatting
+
+**💾 State Management với Memory:**
+7. **AgentState**: TypedDict với comprehensive state tracking
+8. **MemorySaver**: Native LangGraph memory persistence
+9. **Session Context**: Cross-conversation reference tracking
+
+
+### 🔧 Tech Stack & RAG Architecture
+| Component | Technology | Purpose | RAG Role |
+|-----------|------------|---------|----------|
+| **Agent Framework** | LangGraph 0.2+ | Advanced agent workflows với state management | Orchestration layer |
+| **Backend** | Python 3.10+ | Core application | Application runtime |
+| **AI Framework** | LangChain | Tool integration và agent foundation | Tool abstraction |
+| **LLM** | Azure OpenAI GPT-4 | Language understanding & generation | **Generation (G)** |
+| **Vector DB** | Pinecone | Product embeddings & similarity search | **Retrieval (R)** |
+| **Embeddings** | text-embedding-3-small | Semantic representation | **Augmentation (A)** |
+| **Frontend** | Streamlit 1.37+ | Web interface với dual agent support | User interaction |
+| **Memory** | LangGraph MemorySaver | Persistent conversation state | Context preservation |
 
 
 ## 🚀 Quick Start
