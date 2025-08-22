@@ -2,1311 +2,1935 @@
   "products": [
     {
       "id": "phone_001",
-      "name": "iPhone 15 Pro Max",
-      "brand": "Apple",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 34990000,
-      "currency": "VND",
-      "description": "iPhone cao cấp nhất của Apple với chip A17 Pro 3nm đầu tiên, camera 48MP với zoom 5x, và khung titan nhẹ nhưng cực kỳ bền. Action Button mới cho phép tùy chỉnh các tác vụ nhanh.",
-      "specs": {
-        "cpu": "Apple A17 Pro (3nm)",
-        "ram": "8GB",
-        "storage": "256GB",
-        "display": "6.7 inch Super Retina XDR OLED, 2796x1290, 120Hz ProMotion",
-        "camera_main": "48MP wide (f/1.78) + 12MP ultra wide (f/2.2) + 12MP telephoto 5x (f/2.8)",
-        "camera_front": "12MP TrueDepth (f/1.9)",
-        "battery": "4422mAh, 29W wired, 15W MagSafe wireless",
-        "weight": "221g",
-        "os": "iOS 17",
-        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3, NFC",
-        "water_resistance": "IP68"
-      },
-      "features": [
-        "Dynamic Island",
-        "Always-On Display",
-        "Action Button có thể tùy chỉnh",
-        "Khung Titanium Grade 5",
-        "USB-C với USB 3.0",
-        "ProRAW và ProRes video",
-        "Spatial Video cho Vision Pro",
-        "Crash Detection",
-        "Satellite SOS"
-      ],
-      "pros": [
-        "Hiệu năng đỉnh cao với A17 Pro",
-        "Camera zoom 5x ấn tượng",
-        "Màn hình ProMotion 120Hz mượt mà",
-        "Khung titan nhẹ và bền",
-        "Thời lượng pin tốt",
-        "Hệ sinh thái Apple hoàn hảo"
-      ],
-      "cons": [
-        "Giá rất cao",
-        "Nặng và to",
-        "Sạc chậm so với Android flagship",
-        "Không có Touch ID"
-      ],
-      "use_cases": [
-        "Photography chuyên nghiệp",
-        "Video content creation",
-        "Gaming mobile cao cấp",
-        "Business professionals",
-        "Apple ecosystem users"
-      ],
-      "rating": 4.8,
-      "review_count": 892,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": [
-        "Natural Titanium",
-        "Blue Titanium",
-        "White Titanium",
-        "Black Titanium"
-      ],
-      "tags": ["flagship", "pro-camera", "5g", "titanium", "a17-pro"]
+      "text": "iPhone 15 Pro Max - Apple\nGiá: 34,990,000 VND\nMô tả: iPhone cao cấp nhất của Apple với chip A17 Pro 3nm đầu tiên, camera 48MP với zoom 5x, và khung titan nhẹ nhưng cực kỳ bền. Action Button mới cho phép tùy chỉnh các tác vụ nhanh.\nThông số kỹ thuật:\n- cpu: Apple A17 Pro (3nm)\n- ram: 8GB\n- storage: 256GB\n- display: 6.7 inch Super Retina XDR OLED, 2796x1290, 120Hz ProMotion\n- camera_main: 48MP wide (f/1.78) + 12MP ultra wide (f/2.2) + 12MP telephoto 5x (f/2.8)\n- camera_front: 12MP TrueDepth (f/1.9)\n- battery: 4422mAh, 29W wired, 15W MagSafe wireless\n- weight: 221g\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6E, Bluetooth 5.3, NFC\n- water_resistance: IP68\nFeatures: Dynamic Island, Always-On Display, Action Button có thể tùy chỉnh, Khung Titanium Grade 5, USB-C với USB 3.0, ProRAW và ProRes video, Spatial Video cho Vision Pro, Crash Detection, Satellite SOS\nPros: Hiệu năng đỉnh cao với A17 Pro, Camera zoom 5x ấn tượng, Màn hình ProMotion 120Hz mượt mà, Khung titan nhẹ và bền, Thời lượng pin tốt, Hệ sinh thái Apple hoàn hảo\nCons: Giá rất cao, Nặng và to, Sạc chậm so với Android flagship, Không có Touch ID\nUse_Cases: Photography chuyên nghiệp, Video content creation, Gaming mobile cao cấp, Business professionals, Apple ecosystem users\nĐánh giá: 4.8/5 từ 892 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Apple",
+        "name": "iPhone 15 Pro Max",
+        "price": 34990000,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "phone_001",
+        "currency": "VND",
+        "features": [
+          "Dynamic Island",
+          "Always-On Display",
+          "Action Button có thể tùy chỉnh",
+          "Khung Titanium Grade 5",
+          "USB-C với USB 3.0",
+          "ProRAW và ProRes video",
+          "Spatial Video cho Vision Pro",
+          "Crash Detection",
+          "Satellite SOS"
+        ],
+        "pros": [
+          "Hiệu năng đỉnh cao với A17 Pro",
+          "Camera zoom 5x ấn tượng",
+          "Màn hình ProMotion 120Hz mượt mà",
+          "Khung titan nhẹ và bền",
+          "Thời lượng pin tốt",
+          "Hệ sinh thái Apple hoàn hảo"
+        ],
+        "cons": [
+          "Giá rất cao",
+          "Nặng và to",
+          "Sạc chậm so với Android flagship",
+          "Không có Touch ID"
+        ],
+        "use_cases": [
+          "Photography chuyên nghiệp",
+          "Video content creation",
+          "Gaming mobile cao cấp",
+          "Business professionals",
+          "Apple ecosystem users"
+        ],
+        "review_count": 892,
+        "warranty": "12 tháng",
+        "colors": [
+          "Natural Titanium",
+          "Blue Titanium",
+          "White Titanium",
+          "Black Titanium"
+        ],
+        "tags": ["flagship", "pro-camera", "5g", "titanium", "a17-pro"]
+      }
     },
     {
       "id": "phone_002",
-      "name": "Samsung Galaxy S24 Ultra",
-      "brand": "Samsung",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 33990000,
-      "currency": "VND",
-      "description": "Flagship Android mạnh nhất với S Pen tích hợp, camera 200MP với AI processing, và màn hình 2K 120Hz sáng nhất. Galaxy AI mang đến các tính năng AI thông minh cho cuộc sống hàng ngày.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 3 for Galaxy",
-        "ram": "12GB LPDDR5X",
-        "storage": "256GB UFS 4.0",
-        "display": "6.8 inch Dynamic AMOLED 2X, 3120x1440, 120Hz, 2600 nits peak",
-        "camera_main": "200MP wide (f/1.7) + 12MP ultra wide (f/2.2) + 50MP telephoto 5x (f/3.4) + 10MP telephoto 3x (f/2.4)",
-        "camera_front": "12MP (f/2.2)",
-        "battery": "5000mAh, 45W wired, 15W wireless",
-        "weight": "232g",
-        "os": "Android 14 with One UI 6.1",
-        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.3, NFC",
-        "water_resistance": "IP68"
-      },
-      "features": [
-        "S Pen tích hợp với Air Actions",
-        "Galaxy AI (Circle to Search, Live Translate)",
-        "Corning Gorilla Armor (giảm 75% phản chiếu)",
-        "Camera Nightography",
-        "8K video recording",
-        "Samsung DeX",
-        "Ultrasonic fingerprint sensor",
-        "Reverse wireless charging"
-      ],
-      "pros": [
-        "Màn hình sáng và sắc nét nhất",
-        "Camera 200MP chi tiết cao",
-        "S Pen đa năng",
-        "Pin lớn 5000mAh",
-        "Galaxy AI features hữu ích",
-        "Hiệu năng Snapdragon 8 Gen 3 mạnh mẽ"
-      ],
-      "cons": [
-        "Giá cao",
-        "Thiết kế vuông vức, nặng",
-        "Nhiệt độ cao khi sử dụng nặng",
-        "Bloatware khá nhiều"
-      ],
-      "use_cases": [
-        "Power users",
-        "Note-taking với S Pen",
-        "Photography và videography",
-        "Multitasking nặng",
-        "Samsung DeX desktop mode"
-      ],
-      "rating": 4.7,
-      "review_count": 756,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": [
-        "Titanium Black",
-        "Titanium Gray",
-        "Titanium Violet",
-        "Titanium Yellow"
-      ],
-      "tags": [
-        "flagship",
-        "s-pen",
-        "200mp-camera",
-        "galaxy-ai",
-        "snapdragon-8-gen3"
-      ]
+      "text": "Samsung Galaxy S24 Ultra - Samsung\nGiá: 33,990,000 VND\nMô tả: Flagship Android mạnh nhất với S Pen tích hợp, camera 200MP với AI processing, và màn hình 2K 120Hz sáng nhất. Galaxy AI mang đến các tính năng AI thông minh cho cuộc sống hàng ngày.\nThông số kỹ thuật:\n- cpu: Snapdragon 8 Gen 3 for Galaxy\n- ram: 12GB LPDDR5X\n- storage: 256GB UFS 4.0\n- display: 6.8 inch Dynamic AMOLED 2X, 3120x1440, 120Hz, 2600 nits peak\n- camera_main: 200MP wide (f/1.7) + 12MP ultra wide (f/2.2) + 50MP telephoto 5x (f/3.4) + 10MP telephoto 3x (f/2.4)\n- camera_front: 12MP (f/2.2)\n- battery: 5000mAh, 45W wired, 15W wireless\n- weight: 232g\n- os: Android 14 with One UI 6.1\n- connectivity: 5G, Wi-Fi 7, Bluetooth 5.3, NFC\n- water_resistance: IP68\nFeatures: S Pen tích hợp với Air Actions, Galaxy AI (Circle to Search, Live Translate), Corning Gorilla Armor (giảm 75% phản chiếu), Camera Nightography, 8K video recording, Samsung DeX, Ultrasonic fingerprint sensor, Reverse wireless charging\nPros: Màn hình sáng và sắc nét nhất, Camera 200MP chi tiết cao, S Pen đa năng, Pin lớn 5000mAh, Galaxy AI features hữu ích, Hiệu năng Snapdragon 8 Gen 3 mạnh mẽ\nCons: Giá cao, Thiết kế vuông vức, nặng, Nhiệt độ cao khi sử dụng nặng, Bloatware khá nhiều\nUse_Cases: Power users, Note-taking với S Pen, Photography và videography, Multitasking nặng, Samsung DeX desktop mode\nĐánh giá: 4.7/5 từ 756 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy S24 Ultra",
+        "price": 33990000,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "phone_002",
+        "currency": "VND",
+        "features": [
+          "S Pen tích hợp với Air Actions",
+          "Galaxy AI (Circle to Search, Live Translate)",
+          "Corning Gorilla Armor (giảm 75% phản chiếu)",
+          "Camera Nightography",
+          "8K video recording",
+          "Samsung DeX",
+          "Ultrasonic fingerprint sensor",
+          "Reverse wireless charging"
+        ],
+        "pros": [
+          "Màn hình sáng và sắc nét nhất",
+          "Camera 200MP chi tiết cao",
+          "S Pen đa năng",
+          "Pin lớn 5000mAh",
+          "Galaxy AI features hữu ích",
+          "Hiệu năng Snapdragon 8 Gen 3 mạnh mẽ"
+        ],
+        "cons": [
+          "Giá cao",
+          "Thiết kế vuông vức, nặng",
+          "Nhiệt độ cao khi sử dụng nặng",
+          "Bloatware khá nhiều"
+        ],
+        "use_cases": [
+          "Power users",
+          "Note-taking với S Pen",
+          "Photography và videography",
+          "Multitasking nặng",
+          "Samsung DeX desktop mode"
+        ],
+        "review_count": 756,
+        "warranty": "12 tháng",
+        "colors": [
+          "Titanium Black",
+          "Titanium Gray",
+          "Titanium Violet",
+          "Titanium Yellow"
+        ],
+        "tags": [
+          "flagship",
+          "s-pen",
+          "200mp-camera",
+          "galaxy-ai",
+          "snapdragon-8-gen3"
+        ]
+      }
     },
     {
       "id": "phone_003",
-      "name": "Xiaomi 14",
-      "brand": "Xiaomi",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 22990000,
-      "currency": "VND",
-      "description": "Flagship compact với camera Leica thế hệ mới, Snapdragon 8 Gen 3, và thiết kế premium. Kích thước nhỏ gọn 6.36 inch nhưng không compromise về hiệu năng.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 3",
-        "ram": "12GB LPDDR5X",
-        "storage": "256GB UFS 4.0",
-        "display": "6.36 inch LTPO OLED, 2670x1200, 120Hz, 3000 nits peak",
-        "camera_main": "50MP wide Leica (f/1.6) + 50MP ultra wide (f/2.2) + 50MP telephoto 3.2x (f/2.0)",
-        "camera_front": "32MP (f/2.0)",
-        "battery": "4610mAh, 90W wired, 50W wireless",
-        "weight": "193g",
-        "os": "Android 14 with HyperOS",
-        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.4, NFC",
-        "water_resistance": "IP68"
-      },
-      "features": [
-        "Leica Summilux lens",
-        "Leica Authentic Look và Vibrant Look",
-        "HyperOS mới thay thế MIUI",
-        "Xiaomi Surge battery management",
-        "Dolby Vision display",
-        "90W HyperCharge",
-        "In-display fingerprint sensor"
-      ],
-      "pros": [
-        "Kích thước nhỏ gọn, dễ cầm",
-        "Camera Leica chất lượng cao",
-        "Sạc siêu nhanh 90W",
-        "Màn hình sáng 3000 nits",
-        "Giá tốt cho flagship",
-        "HyperOS mượt mà hơn MIUI"
-      ],
-      "cons": [
-        "Pin nhỏ hơn đối thủ",
-        "Không có jack 3.5mm",
-        "Software ads (có thể tắt)",
-        "Hỗ trợ sau bán hàng còn hạn chế"
-      ],
-      "use_cases": [
-        "Người thích điện thoại nhỏ gọn",
-        "Photography enthusiasts",
-        "Daily driver mạnh mẽ",
-        "Gaming casual",
-        "Value flagship seekers"
-      ],
-      "rating": 4.5,
-      "review_count": 423,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "White", "Jade Green"],
-      "tags": [
-        "compact-flagship",
-        "leica-camera",
-        "90w-charging",
-        "hyperos",
-        "value"
-      ]
+      "text": "Xiaomi 14 - Xiaomi\nGiá: 22,990,000 VND\nMô tả: Flagship compact với camera Leica thế hệ mới, Snapdragon 8 Gen 3, và thiết kế premium. Kích thước nhỏ gọn 6.36 inch nhưng không compromise về hiệu năng.\nThông số kỹ thuật:\n- cpu: Snapdragon 8 Gen 3\n- ram: 12GB LPDDR5X\n- storage: 256GB UFS 4.0\n- display: 6.36 inch LTPO OLED, 2670x1200, 120Hz, 3000 nits peak\n- camera_main: 50MP wide Leica (f/1.6) + 50MP ultra wide (f/2.2) + 50MP telephoto 3.2x (f/2.0)\n- camera_front: 32MP (f/2.0)\n- battery: 4610mAh, 90W wired, 50W wireless\n- weight: 193g\n- os: Android 14 with HyperOS\n- connectivity: 5G, Wi-Fi 7, Bluetooth 5.4, NFC\n- water_resistance: IP68\nFeatures: Leica Summilux lens, Leica Authentic Look và Vibrant Look, HyperOS mới thay thế MIUI, Xiaomi Surge battery management, Dolby Vision display, 90W HyperCharge, In-display fingerprint sensor\nPros: Kích thước nhỏ gọn, dễ cầm, Camera Leica chất lượng cao, Sạc siêu nhanh 90W, Màn hình sáng 3000 nits, Giá tốt cho flagship, HyperOS mượt mà hơn MIUI\nCons: Pin nhỏ hơn đối thủ, Không có jack 3.5mm, Software ads (có thể tắt), Hỗ trợ sau bán hàng còn hạn chế\nUse_Cases: Người thích điện thoại nhỏ gọn, Photography enthusiasts, Daily driver mạnh mẽ, Gaming casual, Value flagship seekers\nĐánh giá: 4.5/5 từ 423 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Xiaomi",
+        "name": "Xiaomi 14",
+        "price": 22990000,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "phone_003",
+        "currency": "VND",
+        "features": [
+          "Leica Summilux lens",
+          "Leica Authentic Look và Vibrant Look",
+          "HyperOS mới thay thế MIUI",
+          "Xiaomi Surge battery management",
+          "Dolby Vision display",
+          "90W HyperCharge",
+          "In-display fingerprint sensor"
+        ],
+        "pros": [
+          "Kích thước nhỏ gọn, dễ cầm",
+          "Camera Leica chất lượng cao",
+          "Sạc siêu nhanh 90W",
+          "Màn hình sáng 3000 nits",
+          "Giá tốt cho flagship",
+          "HyperOS mượt mà hơn MIUI"
+        ],
+        "cons": [
+          "Pin nhỏ hơn đối thủ",
+          "Không có jack 3.5mm",
+          "Software ads (có thể tắt)",
+          "Hỗ trợ sau bán hàng còn hạn chế"
+        ],
+        "use_cases": [
+          "Người thích điện thoại nhỏ gọn",
+          "Photography enthusiasts",
+          "Daily driver mạnh mẽ",
+          "Gaming casual",
+          "Value flagship seekers"
+        ],
+        "review_count": 423,
+        "warranty": "12 tháng",
+        "colors": ["Black", "White", "Jade Green"],
+        "tags": [
+          "compact-flagship",
+          "leica-camera",
+          "90w-charging",
+          "hyperos",
+          "value"
+        ]
+      }
     },
     {
       "id": "phone_004",
-      "name": "Google Pixel 8 Pro",
-      "brand": "Google",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 27990000,
-      "currency": "VND",
-      "description": "Smartphone AI-first của Google với Tensor G3, camera computational photography tốt nhất và 7 năm cập nhật. Magic Eraser, Best Take và các tính năng AI độc quyền.",
-      "specs": {
-        "cpu": "Google Tensor G3",
-        "ram": "12GB LPDDR5X",
-        "storage": "128GB UFS 3.1",
-        "display": "6.7 inch LTPO OLED, 2992x1344, 120Hz, 2400 nits peak",
-        "camera_main": "50MP wide (f/1.68) + 48MP ultra wide (f/1.95) + 48MP telephoto 5x (f/2.8)",
-        "camera_front": "10.5MP (f/2.2)",
-        "battery": "5050mAh, 30W wired, 23W wireless",
-        "weight": "213g",
-        "os": "Android 14",
-        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.3, NFC, UWB",
-        "water_resistance": "IP68"
-      },
-      "features": [
-        "Magic Eraser và Magic Editor",
-        "Best Take (chọn khuôn mặt tốt nhất)",
-        "Audio Magic Eraser",
-        "Live Translate",
-        "Temperature sensor",
-        "7 năm cập nhật OS",
-        "Titan M2 security chip",
-        "Face Unblur"
-      ],
-      "pros": [
-        "Camera AI tốt nhất Android",
-        "7 năm support dài nhất",
-        "Tính năng AI độc quyền",
-        "Android thuần, không bloat",
-        "Màn hình sáng và mượt"
-      ],
-      "cons": [
-        "Tensor G3 không mạnh bằng Snapdragon",
-        "Sạc chậm 30W",
-        "Thiết kế camera bar gây tranh cãi",
-        "Giá cao cho cấu hình"
-      ],
-      "use_cases": [
-        "Photography với AI",
-        "Android purists",
-        "Long-term phone users",
-        "Google ecosystem",
-        "AI features lovers"
-      ],
-      "rating": 4.4,
-      "review_count": 345,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Obsidian", "Porcelain", "Bay"],
-      "tags": [
-        "ai-first",
-        "pixel-camera",
-        "7-year-updates",
-        "tensor-g3",
-        "pure-android"
-      ]
+      "text": "Google Pixel 8 Pro - Google\nGiá: 27,990,000 VND\nMô tả: Smartphone AI-first của Google với Tensor G3, camera computational photography tốt nhất và 7 năm cập nhật. Magic Eraser, Best Take và các tính năng AI độc quyền.\nThông số kỹ thuật:\n- cpu: Google Tensor G3\n- ram: 12GB LPDDR5X\n- storage: 128GB UFS 3.1\n- display: 6.7 inch LTPO OLED, 2992x1344, 120Hz, 2400 nits peak\n- camera_main: 50MP wide (f/1.68) + 48MP ultra wide (f/1.95) + 48MP telephoto 5x (f/2.8)\n- camera_front: 10.5MP (f/2.2)\n- battery: 5050mAh, 30W wired, 23W wireless\n- weight: 213g\n- os: Android 14\n- connectivity: 5G, Wi-Fi 7, Bluetooth 5.3, NFC, UWB\n- water_resistance: IP68\nFeatures: Magic Eraser và Magic Editor, Best Take (chọn khuôn mặt tốt nhất), Audio Magic Eraser, Live Translate, Temperature sensor, 7 năm cập nhật OS, Titan M2 security chip, Face Unblur\nPros: Camera AI tốt nhất Android, 7 năm support dài nhất, Tính năng AI độc quyền, Android thuần, không bloat, Màn hình sáng và mượt\nCons: Tensor G3 không mạnh bằng Snapdragon, Sạc chậm 30W, Thiết kế camera bar gây tranh cãi, Giá cao cho cấu hình\nUse_Cases: Photography với AI, Android purists, Long-term phone users, Google ecosystem, AI features lovers\nĐánh giá: 4.4/5 từ 345 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Google",
+        "name": "Google Pixel 8 Pro",
+        "price": 27990000,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_004",
+        "currency": "VND",
+        "features": [
+          "Magic Eraser và Magic Editor",
+          "Best Take (chọn khuôn mặt tốt nhất)",
+          "Audio Magic Eraser",
+          "Live Translate",
+          "Temperature sensor",
+          "7 năm cập nhật OS",
+          "Titan M2 security chip",
+          "Face Unblur"
+        ],
+        "pros": [
+          "Camera AI tốt nhất Android",
+          "7 năm support dài nhất",
+          "Tính năng AI độc quyền",
+          "Android thuần, không bloat",
+          "Màn hình sáng và mượt"
+        ],
+        "cons": [
+          "Tensor G3 không mạnh bằng Snapdragon",
+          "Sạc chậm 30W",
+          "Thiết kế camera bar gây tranh cãi",
+          "Giá cao cho cấu hình"
+        ],
+        "use_cases": [
+          "Photography với AI",
+          "Android purists",
+          "Long-term phone users",
+          "Google ecosystem",
+          "AI features lovers"
+        ],
+        "review_count": 345,
+        "warranty": "12 tháng",
+        "colors": ["Obsidian", "Porcelain", "Bay"],
+        "tags": [
+          "ai-first",
+          "pixel-camera",
+          "7-year-updates",
+          "tensor-g3",
+          "pure-android"
+        ]
+      }
     },
     {
       "id": "phone_005",
-      "name": "OnePlus 12",
-      "brand": "OnePlus",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 23990000,
-      "currency": "VND",
-      "description": "Flagship killer với Snapdragon 8 Gen 3, sạc nhanh 100W, và camera Hasselblad thế hệ 4. Màn hình 2K 120Hz với độ sáng 4500 nits kỷ lục.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 3",
-        "ram": "16GB LPDDR5X",
-        "storage": "256GB UFS 4.0",
-        "display": "6.82 inch LTPO AMOLED, 3168x1440, 120Hz, 4500 nits peak",
-        "camera_main": "50MP wide Sony LYT-808 (f/1.6) + 48MP ultra wide (f/2.2) + 64MP telephoto 3x (f/2.6)",
-        "camera_front": "32MP (f/2.4)",
-        "battery": "5400mAh, 100W wired, 50W wireless",
-        "weight": "220g",
-        "os": "Android 14 with OxygenOS 14",
-        "connectivity": "5G, Wi-Fi 7, Bluetooth 5.4, NFC",
-        "water_resistance": "IP65"
-      },
-      "features": [
-        "Hasselblad Camera for Mobile",
-        "100W SuperVOOC charging",
-        "Alert Slider 3 chế độ",
-        "Aqua Touch (dùng khi tay ướt)",
-        "Dolby Vision và Dolby Atmos",
-        "Bionic Vibration Motor",
-        "RAM-Vita compression"
-      ],
-      "pros": [
-        "Màn hình sáng nhất thị trường",
-        "Sạc 100W siêu nhanh",
-        "RAM 16GB khủng",
-        "Camera Hasselblad ấn tượng",
-        "OxygenOS mượt mà",
-        "Alert Slider tiện lợi"
-      ],
-      "cons": [
-        "Chỉ IP65, không IP68",
-        "Không có sạc không dây ở một số thị trường",
-        "Camera tele chỉ 3x",
-        "Hơi nặng và to"
-      ],
-      "use_cases": [
-        "Power users",
-        "Gaming enthusiasts",
-        "Multimedia consumption",
-        "Fast charging lovers",
-        "OnePlus fans"
-      ],
-      "rating": 4.6,
-      "review_count": 512,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Silky Black", "Emerald", "Iron Gray"],
-      "tags": [
-        "flagship-killer",
-        "100w-charging",
-        "hasselblad",
-        "16gb-ram",
-        "bright-display"
-      ]
+      "text": "OnePlus 12 - OnePlus\nGiá: 23,990,000 VND\nMô tả: Flagship killer với Snapdragon 8 Gen 3, sạc nhanh 100W, và camera Hasselblad thế hệ 4. Màn hình 2K 120Hz với độ sáng 4500 nits kỷ lục.\nThông số kỹ thuật:\n- cpu: Snapdragon 8 Gen 3\n- ram: 16GB LPDDR5X\n- storage: 256GB UFS 4.0\n- display: 6.82 inch LTPO AMOLED, 3168x1440, 120Hz, 4500 nits peak\n- camera_main: 50MP wide Sony LYT-808 (f/1.6) + 48MP ultra wide (f/2.2) + 64MP telephoto 3x (f/2.6)\n- camera_front: 32MP (f/2.4)\n- battery: 5400mAh, 100W wired, 50W wireless\n- weight: 220g\n- os: Android 14 with OxygenOS 14\n- connectivity: 5G, Wi-Fi 7, Bluetooth 5.4, NFC\n- water_resistance: IP65\nFeatures: Hasselblad Camera for Mobile, 100W SuperVOOC charging, Alert Slider 3 chế độ, Aqua Touch (dùng khi tay ướt), Dolby Vision và Dolby Atmos, Bionic Vibration Motor, RAM-Vita compression\nPros: Màn hình sáng nhất thị trường, Sạc 100W siêu nhanh, RAM 16GB khủng, Camera Hasselblad ấn tượng, OxygenOS mượt mà, Alert Slider tiện lợi\nCons: Chỉ IP65, không IP68, Không có sạc không dây ở một số thị trường, Camera tele chỉ 3x, Hơi nặng và to\nUse_Cases: Power users, Gaming enthusiasts, Multimedia consumption, Fast charging lovers, OnePlus fans\nĐánh giá: 4.6/5 từ 512 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "OnePlus",
+        "name": "OnePlus 12",
+        "price": 23990000,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "phone_005",
+        "currency": "VND",
+        "features": [
+          "Hasselblad Camera for Mobile",
+          "100W SuperVOOC charging",
+          "Alert Slider 3 chế độ",
+          "Aqua Touch (dùng khi tay ướt)",
+          "Dolby Vision và Dolby Atmos",
+          "Bionic Vibration Motor",
+          "RAM-Vita compression"
+        ],
+        "pros": [
+          "Màn hình sáng nhất thị trường",
+          "Sạc 100W siêu nhanh",
+          "RAM 16GB khủng",
+          "Camera Hasselblad ấn tượng",
+          "OxygenOS mượt mà",
+          "Alert Slider tiện lợi"
+        ],
+        "cons": [
+          "Chỉ IP65, không IP68",
+          "Không có sạc không dây ở một số thị trường",
+          "Camera tele chỉ 3x",
+          "Hơi nặng và to"
+        ],
+        "use_cases": [
+          "Power users",
+          "Gaming enthusiasts",
+          "Multimedia consumption",
+          "Fast charging lovers",
+          "OnePlus fans"
+        ],
+        "review_count": 512,
+        "warranty": "12 tháng",
+        "colors": ["Silky Black", "Emerald", "Iron Gray"],
+        "tags": [
+          "flagship-killer",
+          "100w-charging",
+          "hasselblad",
+          "16gb-ram",
+          "bright-display"
+        ]
+      }
     },
     {
       "id": "phone_006",
-      "name": "iPhone 15",
-      "brand": "Apple",
-      "category": "smartphone",
-      "subcategory": "premium",
-      "price": 22990000,
-      "currency": "VND",
-      "description": "iPhone tiêu chuẩn với Dynamic Island, camera 48MP mới, và cuối cùng đã có USB-C. Chip A16 Bionic từ Pro series năm ngoái vẫn cực kỳ mạnh mẽ.",
-      "specs": {
-        "cpu": "Apple A16 Bionic",
-        "ram": "6GB",
-        "storage": "128GB",
-        "display": "6.1 inch Super Retina XDR OLED, 2556x1179, 60Hz",
-        "camera_main": "48MP wide (f/1.6) + 12MP ultra wide (f/2.4)",
-        "camera_front": "12MP TrueDepth (f/1.9)",
-        "battery": "3349mAh, 20W wired, 15W MagSafe wireless",
-        "weight": "171g",
-        "os": "iOS 17",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC",
-        "water_resistance": "IP68"
-      },
-      "features": [
-        "Dynamic Island",
-        "USB-C port",
-        "Camera 48MP với 2x zoom",
-        "Photographic Styles",
-        "Cinematic mode 4K",
-        "Action mode",
-        "Crash Detection",
-        "Ceramic Shield front"
-      ],
-      "pros": [
-        "Dynamic Island từ Pro series",
-        "Camera 48MP nâng cấp lớn",
-        "USB-C tiện lợi",
-        "Nhẹ và cân bằng tốt",
-        "Chip A16 vẫn rất mạnh",
-        "Hệ sinh thái Apple"
-      ],
-      "cons": [
-        "Màn hình vẫn 60Hz",
-        "Sạc chậm 20W",
-        "Không có Always-On Display",
-        "Telephoto lens chỉ ở Pro"
-      ],
-      "use_cases": [
-        "Everyday users",
-        "First-time iPhone buyers",
-        "Upgrade từ iPhone cũ",
-        "Social media",
-        "Apple ecosystem"
-      ],
-      "rating": 4.6,
-      "review_count": 678,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue", "Green", "Yellow", "Pink"],
-      "tags": ["mainstream", "dynamic-island", "48mp", "usb-c", "a16-bionic"]
+      "text": "iPhone 15 - Apple\nGiá: 22,990,000 VND\nMô tả: iPhone tiêu chuẩn với Dynamic Island, camera 48MP mới, và cuối cùng đã có USB-C. Chip A16 Bionic từ Pro series năm ngoái vẫn cực kỳ mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Apple A16 Bionic\n- ram: 6GB\n- storage: 128GB\n- display: 6.1 inch Super Retina XDR OLED, 2556x1179, 60Hz\n- camera_main: 48MP wide (f/1.6) + 12MP ultra wide (f/2.4)\n- camera_front: 12MP TrueDepth (f/1.9)\n- battery: 3349mAh, 20W wired, 15W MagSafe wireless\n- weight: 171g\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3, NFC\n- water_resistance: IP68\nFeatures: Dynamic Island, USB-C port, Camera 48MP với 2x zoom, Photographic Styles, Cinematic mode 4K, Action mode, Crash Detection, Ceramic Shield front\nPros: Dynamic Island từ Pro series, Camera 48MP nâng cấp lớn, USB-C tiện lợi, Nhẹ và cân bằng tốt, Chip A16 vẫn rất mạnh, Hệ sinh thái Apple\nCons: Màn hình vẫn 60Hz, Sạc chậm 20W, Không có Always-On Display, Telephoto lens chỉ ở Pro\nUse_Cases: Everyday users, First-time iPhone buyers, Upgrade từ iPhone cũ, Social media, Apple ecosystem\nĐánh giá: 4.6/5 từ 678 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "premium",
+        "brand": "Apple",
+        "name": "iPhone 15",
+        "price": 22990000,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "phone_006",
+        "currency": "VND",
+        "features": [
+          "Dynamic Island",
+          "USB-C port",
+          "Camera 48MP với 2x zoom",
+          "Photographic Styles",
+          "Cinematic mode 4K",
+          "Action mode",
+          "Crash Detection",
+          "Ceramic Shield front"
+        ],
+        "pros": [
+          "Dynamic Island từ Pro series",
+          "Camera 48MP nâng cấp lớn",
+          "USB-C tiện lợi",
+          "Nhẹ và cân bằng tốt",
+          "Chip A16 vẫn rất mạnh",
+          "Hệ sinh thái Apple"
+        ],
+        "cons": [
+          "Màn hình vẫn 60Hz",
+          "Sạc chậm 20W",
+          "Không có Always-On Display",
+          "Telephoto lens chỉ ở Pro"
+        ],
+        "use_cases": [
+          "Everyday users",
+          "First-time iPhone buyers",
+          "Upgrade từ iPhone cũ",
+          "Social media",
+          "Apple ecosystem"
+        ],
+        "review_count": 678,
+        "warranty": "12 tháng",
+        "colors": ["Black", "Blue", "Green", "Yellow", "Pink"],
+        "tags": ["mainstream", "dynamic-island", "48mp", "usb-c", "a16-bionic"]
+      }
     },
     {
       "id": "phone_007",
-      "name": "Samsung Galaxy A54 5G",
-      "brand": "Samsung",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 10990000,
-      "currency": "VND",
-      "description": "Mid-range tốt nhất của Samsung với thiết kế flagship, camera 50MP OIS, màn hình 120Hz và 4 năm cập nhật OS. IP67 hiếm có trong phân khúc.",
-      "specs": {
-        "cpu": "Exynos 1380",
-        "ram": "8GB",
-        "storage": "256GB + microSD",
-        "display": "6.4 inch Super AMOLED, 2340x1080, 120Hz, 1000 nits",
-        "camera_main": "50MP wide OIS (f/1.8) + 12MP ultra wide (f/2.2) + 5MP macro (f/2.4)",
-        "camera_front": "32MP (f/2.2)",
-        "battery": "5000mAh, 25W wired",
-        "weight": "202g",
-        "os": "Android 13 with One UI 5.1",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC",
-        "water_resistance": "IP67"
-      },
-      "features": [
-        "Thiết kế Awesome Identity",
-        "Camera OIS chống rung",
-        "4 năm OS updates",
-        "5 năm security updates",
-        "Samsung Knox",
-        "Gorilla Glass 5",
-        "Stereo speakers"
-      ],
-      "pros": [
-        "Thiết kế đẹp như flagship",
-        "Màn hình AMOLED 120Hz",
-        "Camera OIS trong tầm giá",
-        "Pin 5000mAh lâu",
-        "IP67 chống nước",
-        "Support lâu dài"
-      ],
-      "cons": [
-        "Exynos 1380 không mạnh",
-        "Sạc 25W chậm",
-        "Không có sạc không dây",
-        "Bezels hơi dày"
-      ],
-      "use_cases": [
-        "Daily driver ổn định",
-        "Social media và photography",
-        "Long-term usage",
-        "Samsung fans với ngân sách vừa",
-        "Cần điện thoại chống nước"
-      ],
-      "rating": 4.3,
-      "review_count": 892,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": [
-        "Awesome Graphite",
-        "Awesome Violet",
-        "Awesome Lime",
-        "Awesome White"
-      ],
-      "tags": ["midrange", "ip67", "120hz", "long-support", "value"]
+      "text": "Samsung Galaxy A54 5G - Samsung\nGiá: 10,990,000 VND\nMô tả: Mid-range tốt nhất của Samsung với thiết kế flagship, camera 50MP OIS, màn hình 120Hz và 4 năm cập nhật OS. IP67 hiếm có trong phân khúc.\nThông số kỹ thuật:\n- cpu: Exynos 1380\n- ram: 8GB\n- storage: 256GB + microSD\n- display: 6.4 inch Super AMOLED, 2340x1080, 120Hz, 1000 nits\n- camera_main: 50MP wide OIS (f/1.8) + 12MP ultra wide (f/2.2) + 5MP macro (f/2.4)\n- camera_front: 32MP (f/2.2)\n- battery: 5000mAh, 25W wired\n- weight: 202g\n- os: Android 13 with One UI 5.1\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3, NFC\n- water_resistance: IP67\nFeatures: Thiết kế Awesome Identity, Camera OIS chống rung, 4 năm OS updates, 5 năm security updates, Samsung Knox, Gorilla Glass 5, Stereo speakers\nPros: Thiết kế đẹp như flagship, Màn hình AMOLED 120Hz, Camera OIS trong tầm giá, Pin 5000mAh lâu, IP67 chống nước, Support lâu dài\nCons: Exynos 1380 không mạnh, Sạc 25W chậm, Không có sạc không dây, Bezels hơi dày\nUse_Cases: Daily driver ổn định, Social media và photography, Long-term usage, Samsung fans với ngân sách vừa, Cần điện thoại chống nước\nĐánh giá: 4.3/5 từ 892 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy A54 5G",
+        "price": 10990000,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "phone_007",
+        "currency": "VND",
+        "features": [
+          "Thiết kế Awesome Identity",
+          "Camera OIS chống rung",
+          "4 năm OS updates",
+          "5 năm security updates",
+          "Samsung Knox",
+          "Gorilla Glass 5",
+          "Stereo speakers"
+        ],
+        "pros": [
+          "Thiết kế đẹp như flagship",
+          "Màn hình AMOLED 120Hz",
+          "Camera OIS trong tầm giá",
+          "Pin 5000mAh lâu",
+          "IP67 chống nước",
+          "Support lâu dài"
+        ],
+        "cons": [
+          "Exynos 1380 không mạnh",
+          "Sạc 25W chậm",
+          "Không có sạc không dây",
+          "Bezels hơi dày"
+        ],
+        "use_cases": [
+          "Daily driver ổn định",
+          "Social media và photography",
+          "Long-term usage",
+          "Samsung fans với ngân sách vừa",
+          "Cần điện thoại chống nước"
+        ],
+        "review_count": 892,
+        "warranty": "12 tháng",
+        "colors": [
+          "Awesome Graphite",
+          "Awesome Violet",
+          "Awesome Lime",
+          "Awesome White"
+        ],
+        "tags": ["midrange", "ip67", "120hz", "long-support", "value"]
+      }
     },
     {
       "id": "phone_008",
-      "name": "Xiaomi Redmi Note 13 Pro+ 5G",
-      "brand": "Xiaomi",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 11990000,
-      "currency": "VND",
-      "description": "Mid-range với camera 200MP đầu tiên, sạc nhanh 120W, và màn hình cong 1.5K. Thiết kế premium với khung viền phẳng và mặt lưng da thuần chay.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 7200 Ultra",
-        "ram": "12GB LPDDR5",
-        "storage": "256GB UFS 3.1",
-        "display": "6.67 inch AMOLED, 2712x1220, 120Hz, 1800 nits peak",
-        "camera_main": "200MP wide OIS (f/1.65) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)",
-        "camera_front": "16MP (f/2.4)",
-        "battery": "5000mAh, 120W wired",
-        "weight": "204.5g",
-        "os": "Android 13 with MIUI 14",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, NFC, IR blaster",
-        "water_resistance": "IP54"
-      },
-      "features": [
-        "Camera 200MP Samsung HP3",
-        "120W HyperCharge (19 phút full)",
-        "Màn hình cong 1.5K",
-        "Dolby Vision và Dolby Atmos",
-        "IR blaster",
-        "In-display fingerprint",
-        "Gorilla Glass Victus"
-      ],
-      "pros": [
-        "Camera 200MP ấn tượng",
-        "Sạc 120W siêu nhanh",
-        "RAM 12GB mượt mà",
-        "Thiết kế premium",
-        "Màn hình sáng và sắc nét",
-        "Giá tốt cho cấu hình"
-      ],
-      "cons": [
-        "MediaTek chip không mạnh bằng Snapdragon",
-        "MIUI ads nhiều",
-        "Chỉ IP54",
-        "Camera phụ yếu"
-      ],
-      "use_cases": [
-        "Photography với budget",
-        "Fast charging needs",
-        "Media consumption",
-        "Gaming tầm trung",
-        "Xiaomi ecosystem"
-      ],
-      "rating": 4.4,
-      "review_count": 567,
-      "in_stock": true,
-      "warranty": "18 tháng",
-      "colors": ["Midnight Black", "Moonlight White", "Aurora Purple"],
-      "tags": ["200mp-camera", "120w-charging", "midrange", "value", "amoled"]
+      "text": "Xiaomi Redmi Note 13 Pro+ 5G - Xiaomi\nGiá: 11,990,000 VND\nMô tả: Mid-range với camera 200MP đầu tiên, sạc nhanh 120W, và màn hình cong 1.5K. Thiết kế premium với khung viền phẳng và mặt lưng da thuần chay.\nThông số kỹ thuật:\n- cpu: MediaTek Dimensity 7200 Ultra\n- ram: 12GB LPDDR5\n- storage: 256GB UFS 3.1\n- display: 6.67 inch AMOLED, 2712x1220, 120Hz, 1800 nits peak\n- camera_main: 200MP wide OIS (f/1.65) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)\n- camera_front: 16MP (f/2.4)\n- battery: 5000mAh, 120W wired\n- weight: 204.5g\n- os: Android 13 with MIUI 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3, NFC, IR blaster\n- water_resistance: IP54\nFeatures: Camera 200MP Samsung HP3, 120W HyperCharge (19 phút full), Màn hình cong 1.5K, Dolby Vision và Dolby Atmos, IR blaster, In-display fingerprint, Gorilla Glass Victus\nPros: Camera 200MP ấn tượng, Sạc 120W siêu nhanh, RAM 12GB mượt mà, Thiết kế premium, Màn hình sáng và sắc nét, Giá tốt cho cấu hình\nCons: MediaTek chip không mạnh bằng Snapdragon, MIUI ads nhiều, Chỉ IP54, Camera phụ yếu\nUse_Cases: Photography với budget, Fast charging needs, Media consumption, Gaming tầm trung, Xiaomi ecosystem\nĐánh giá: 4.4/5 từ 567 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Xiaomi",
+        "name": "Xiaomi Redmi Note 13 Pro+ 5G",
+        "price": 11990000,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_008",
+        "currency": "VND",
+        "features": [
+          "Camera 200MP Samsung HP3",
+          "120W HyperCharge (19 phút full)",
+          "Màn hình cong 1.5K",
+          "Dolby Vision và Dolby Atmos",
+          "IR blaster",
+          "In-display fingerprint",
+          "Gorilla Glass Victus"
+        ],
+        "pros": [
+          "Camera 200MP ấn tượng",
+          "Sạc 120W siêu nhanh",
+          "RAM 12GB mượt mà",
+          "Thiết kế premium",
+          "Màn hình sáng và sắc nét",
+          "Giá tốt cho cấu hình"
+        ],
+        "cons": [
+          "MediaTek chip không mạnh bằng Snapdragon",
+          "MIUI ads nhiều",
+          "Chỉ IP54",
+          "Camera phụ yếu"
+        ],
+        "use_cases": [
+          "Photography với budget",
+          "Fast charging needs",
+          "Media consumption",
+          "Gaming tầm trung",
+          "Xiaomi ecosystem"
+        ],
+        "review_count": 567,
+        "warranty": "18 tháng",
+        "colors": ["Midnight Black", "Moonlight White", "Aurora Purple"],
+        "tags": ["200mp-camera", "120w-charging", "midrange", "value", "amoled"]
+      }
     },
     {
       "id": "phone_009",
-      "name": "OPPO Reno11 5G",
-      "brand": "OPPO",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 10990000,
-      "currency": "VND",
-      "description": "Portrait Expert với camera telephoto portrait 32MP hiếm có trong phân khúc. Thiết kế mỏng nhẹ 7.99mm, sạc nhanh 67W và màn hình cong 120Hz.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 7050",
-        "ram": "8GB + 8GB RAM mở rộng",
-        "storage": "256GB",
-        "display": "6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits peak",
-        "camera_main": "50MP wide (f/1.8) + 32MP telephoto portrait 2x (f/2.0) + 8MP ultra wide (f/2.2)",
-        "camera_front": "32MP (f/2.4)",
-        "battery": "4800mAh, 67W wired",
-        "weight": "182g",
-        "os": "Android 14 with ColorOS 14",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.2, NFC",
-        "water_resistance": "IP65"
-      },
-      "features": [
-        "Portrait camera chuyên dụng",
-        "Thiết kế siêu mỏng 7.99mm",
-        "67W SuperVOOC",
-        "RAM mở rộng +8GB",
-        "Ultra-Volume Mode",
-        "Smart Image Matting 2.0",
-        "LinkBoost signal enhancement"
-      ],
-      "pros": [
-        "Camera portrait xuất sắc",
-        "Thiết kế mỏng nhẹ đẹp",
-        "Sạc nhanh 67W",
-        "ColorOS 14 nhiều tính năng",
-        "IP65 chống nước"
-      ],
-      "cons": [
-        "Chip Dimensity 7050 yếu",
-        "Pin nhỏ 4800mAh",
-        "Không có OIS",
-        "Giá hơi cao cho cấu hình"
-      ],
-      "use_cases": [
-        "Portrait photography",
-        "Fashion và lifestyle",
-        "Social media content",
-        "Người thích điện thoại mỏng nhẹ",
-        "OPPO fans"
-      ],
-      "rating": 4.2,
-      "review_count": 345,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Wave Green", "Rock Grey"],
-      "tags": [
-        "portrait-expert",
-        "slim-design",
-        "67w-charging",
-        "midrange",
-        "stylish"
-      ]
+      "text": "OPPO Reno11 5G - OPPO\nGiá: 10,990,000 VND\nMô tả: Portrait Expert với camera telephoto portrait 32MP hiếm có trong phân khúc. Thiết kế mỏng nhẹ 7.99mm, sạc nhanh 67W và màn hình cong 120Hz.\nThông số kỹ thuật:\n- cpu: MediaTek Dimensity 7050\n- ram: 8GB + 8GB RAM mở rộng\n- storage: 256GB\n- display: 6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits peak\n- camera_main: 50MP wide (f/1.8) + 32MP telephoto portrait 2x (f/2.0) + 8MP ultra wide (f/2.2)\n- camera_front: 32MP (f/2.4)\n- battery: 4800mAh, 67W wired\n- weight: 182g\n- os: Android 14 with ColorOS 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.2, NFC\n- water_resistance: IP65\nFeatures: Portrait camera chuyên dụng, Thiết kế siêu mỏng 7.99mm, 67W SuperVOOC, RAM mở rộng +8GB, Ultra-Volume Mode, Smart Image Matting 2.0, LinkBoost signal enhancement\nPros: Camera portrait xuất sắc, Thiết kế mỏng nhẹ đẹp, Sạc nhanh 67W, ColorOS 14 nhiều tính năng, IP65 chống nước\nCons: Chip Dimensity 7050 yếu, Pin nhỏ 4800mAh, Không có OIS, Giá hơi cao cho cấu hình\nUse_Cases: Portrait photography, Fashion và lifestyle, Social media content, Người thích điện thoại mỏng nhẹ, OPPO fans\nĐánh giá: 4.2/5 từ 345 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "OPPO",
+        "name": "OPPO Reno11 5G",
+        "price": 10990000,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_009",
+        "currency": "VND",
+        "features": [
+          "Portrait camera chuyên dụng",
+          "Thiết kế siêu mỏng 7.99mm",
+          "67W SuperVOOC",
+          "RAM mở rộng +8GB",
+          "Ultra-Volume Mode",
+          "Smart Image Matting 2.0",
+          "LinkBoost signal enhancement"
+        ],
+        "pros": [
+          "Camera portrait xuất sắc",
+          "Thiết kế mỏng nhẹ đẹp",
+          "Sạc nhanh 67W",
+          "ColorOS 14 nhiều tính năng",
+          "IP65 chống nước"
+        ],
+        "cons": [
+          "Chip Dimensity 7050 yếu",
+          "Pin nhỏ 4800mAh",
+          "Không có OIS",
+          "Giá hơi cao cho cấu hình"
+        ],
+        "use_cases": [
+          "Portrait photography",
+          "Fashion và lifestyle",
+          "Social media content",
+          "Người thích điện thoại mỏng nhẹ",
+          "OPPO fans"
+        ],
+        "review_count": 345,
+        "warranty": "12 tháng",
+        "colors": ["Wave Green", "Rock Grey"],
+        "tags": [
+          "portrait-expert",
+          "slim-design",
+          "67w-charging",
+          "midrange",
+          "stylish"
+        ]
+      }
     },
     {
       "id": "phone_010",
-      "name": "Realme 11 Pro+",
-      "brand": "Realme",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 11990000,
-      "currency": "VND",
-      "description": "Mid-range với camera 200MP OIS và sạc nhanh 100W. Thiết kế da thuần chay cao cấp, màn hình cong 120Hz. Giá trị tốt nhất phân khúc.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 7050",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits",
-        "camera_main": "200MP wide OIS (f/1.69) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)",
-        "camera_front": "32MP (f/2.5)",
-        "battery": "5000mAh, 100W wired",
-        "weight": "183g",
-        "os": "Android 13 with Realme UI 4.0",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.2, NFC",
-        "water_resistance": "No official rating"
-      },
-      "features": [
-        "Camera 200MP Samsung HP3 với OIS",
-        "100W SuperVOOC charging",
-        "Thiết kế Lychee Vegan Leather",
-        "Màn hình cong 61 độ",
-        "Dolby Atmos dual speakers",
-        "In-display fingerprint",
-        "Hi-Res Audio certification"
-      ],
-      "pros": [
-        "Camera 200MP với OIS",
-        "Sạc 100W cực nhanh",
-        "RAM 12GB mượt mà",
-        "Thiết kế da độc đáo",
-        "Giá cạnh tranh"
-      ],
-      "cons": [
-        "Chip Dimensity không mạnh",
-        "Không chống nước",
-        "Software còn nhiều ads",
-        "Camera góc siêu rộng yếu"
-      ],
-      "use_cases": [
-        "Budget photography",
-        "Fast charging lovers",
-        "Daily multitasking",
-        "Value seekers",
-        "First 5G phone"
-      ],
-      "rating": 4.3,
-      "review_count": 423,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Sunrise Beige", "Oasis Green", "Astral Black"],
-      "tags": [
-        "200mp-ois",
-        "100w-charging",
-        "value-king",
-        "vegan-leather",
-        "midrange"
-      ]
+      "text": "Realme 11 Pro+ - Realme\nGiá: 11,990,000 VND\nMô tả: Mid-range với camera 200MP OIS và sạc nhanh 100W. Thiết kế da thuần chay cao cấp, màn hình cong 120Hz. Giá trị tốt nhất phân khúc.\nThông số kỹ thuật:\n- cpu: MediaTek Dimensity 7050\n- ram: 12GB\n- storage: 256GB\n- display: 6.7 inch AMOLED, 2412x1080, 120Hz, 950 nits\n- camera_main: 200MP wide OIS (f/1.69) + 8MP ultra wide (f/2.2) + 2MP macro (f/2.4)\n- camera_front: 32MP (f/2.5)\n- battery: 5000mAh, 100W wired\n- weight: 183g\n- os: Android 13 with Realme UI 4.0\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.2, NFC\n- water_resistance: No official rating\nFeatures: Camera 200MP Samsung HP3 với OIS, 100W SuperVOOC charging, Thiết kế Lychee Vegan Leather, Màn hình cong 61 độ, Dolby Atmos dual speakers, In-display fingerprint, Hi-Res Audio certification\nPros: Camera 200MP với OIS, Sạc 100W cực nhanh, RAM 12GB mượt mà, Thiết kế da độc đáo, Giá cạnh tranh\nCons: Chip Dimensity không mạnh, Không chống nước, Software còn nhiều ads, Camera góc siêu rộng yếu\nUse_Cases: Budget photography, Fast charging lovers, Daily multitasking, Value seekers, First 5G phone\nĐánh giá: 4.3/5 từ 423 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Realme",
+        "name": "Realme 11 Pro+",
+        "price": 11990000,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "phone_010",
+        "currency": "VND",
+        "features": [
+          "Camera 200MP Samsung HP3 với OIS",
+          "100W SuperVOOC charging",
+          "Thiết kế Lychee Vegan Leather",
+          "Màn hình cong 61 độ",
+          "Dolby Atmos dual speakers",
+          "In-display fingerprint",
+          "Hi-Res Audio certification"
+        ],
+        "pros": [
+          "Camera 200MP với OIS",
+          "Sạc 100W cực nhanh",
+          "RAM 12GB mượt mà",
+          "Thiết kế da độc đáo",
+          "Giá cạnh tranh"
+        ],
+        "cons": [
+          "Chip Dimensity không mạnh",
+          "Không chống nước",
+          "Software còn nhiều ads",
+          "Camera góc siêu rộng yếu"
+        ],
+        "use_cases": [
+          "Budget photography",
+          "Fast charging lovers",
+          "Daily multitasking",
+          "Value seekers",
+          "First 5G phone"
+        ],
+        "review_count": 423,
+        "warranty": "12 tháng",
+        "colors": ["Sunrise Beige", "Oasis Green", "Astral Black"],
+        "tags": [
+          "200mp-ois",
+          "100w-charging",
+          "value-king",
+          "vegan-leather",
+          "midrange"
+        ]
+      }
     },
     {
       "id": "phone_011",
-      "name": "Vivo V30 Pro",
-      "brand": "Vivo",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 13990000,
-      "currency": "VND",
-      "description": "Camera chân dung ZEISS, màn hình AMOLED 120Hz, sạc nhanh 80W, thiết kế mỏng nhẹ.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 8200",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.78 inch AMOLED, 120Hz",
-        "camera_main": "50MP ZEISS + 50MP portrait + 12MP wide",
-        "camera_front": "50MP",
-        "battery": "5000mAh, 80W",
-        "weight": "188g",
-        "os": "Android 14",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3",
-        "water_resistance": "IP54"
-      },
-      "features": [
-        "Camera ZEISS",
-        "Sạc nhanh 80W",
-        "Màn hình 120Hz",
-        "Thiết kế mỏng nhẹ"
-      ],
-      "pros": ["Camera chân dung đẹp", "Sạc nhanh", "Màn hình mượt"],
-      "cons": ["Chip tầm trung", "Không chống nước cao"],
-      "use_cases": ["Chụp ảnh chân dung", "Giải trí", "Social media"],
-      "rating": 4.2,
-      "review_count": 210,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue", "Green"],
-      "tags": ["midrange", "zeiss-camera", "fast-charging"]
+      "text": "Xiaomi Mi 13 - Xiaomi\nGiá: 28,834,462 VND\nMô tả: Smartphone flagship Xiaomi với camera 48MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Snapdragon 8 Gen 3\n- ram: 8GB\n- storage: 128GB\n- display: 6.0 inch AMOLED 90Hz\n- camera_main: 108MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 4314mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Night mode, Stereo speakers, Water resistant, Face unlock, Always-on display\nPros: Loa hay, Sạc nhanh, Màn hình đẹp, Giá hợp lý, Pin trâu\nCons: Camera kém ánh sáng, Nặng, Pin yếu, Nóng máy\nUse_Cases: Photography, Chụp ảnh, Gaming mobile\nĐánh giá: 3.8/5 từ 20 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Xiaomi",
+        "name": "Xiaomi Mi 13",
+        "price": 28834462,
+        "rating": 3.8,
+        "in_stock": false,
+        "id": "phone_011",
+        "currency": "VND",
+        "features": [
+          "Night mode",
+          "Stereo speakers",
+          "Water resistant",
+          "Face unlock",
+          "Always-on display"
+        ],
+        "pros": [
+          "Loa hay",
+          "Sạc nhanh",
+          "Màn hình đẹp",
+          "Giá hợp lý",
+          "Pin trâu"
+        ],
+        "cons": ["Camera kém ánh sáng", "Nặng", "Pin yếu", "Nóng máy"],
+        "use_cases": ["Photography", "Chụp ảnh", "Gaming mobile"],
+        "review_count": 20,
+        "warranty": "12 tháng",
+        "tags": ["flagship", "xiaomi", "hot"]
+      }
     },
     {
       "id": "phone_012",
-      "name": "Sony Xperia 1 V",
-      "brand": "Sony",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 29990000,
-      "currency": "VND",
-      "description": "Flagship quay phim chuyên nghiệp, màn hình 4K OLED, camera ZEISS, Snapdragon 8 Gen 2.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 2",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.5 inch 4K OLED, 120Hz",
-        "camera_main": "48MP + 12MP + 12MP ZEISS",
-        "camera_front": "12MP",
-        "battery": "5000mAh, 30W",
-        "weight": "187g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
-        "water_resistance": "IP68"
-      },
-      "features": ["Quay phim 4K HDR", "Camera ZEISS", "Màn hình 4K OLED"],
-      "pros": ["Camera chuyên nghiệp", "Màn hình đẹp", "Thiết kế độc đáo"],
-      "cons": ["Giá cao", "Sạc chậm"],
-      "use_cases": ["Quay phim", "Chụp ảnh", "Giải trí cao cấp"],
-      "rating": 4.3,
-      "review_count": 98,
-      "in_stock": true,
-      "warranty": "24 tháng",
-      "colors": ["Black", "Silver"],
-      "tags": ["flagship", "4k-oled", "zeiss-camera"]
+      "text": "Samsung Galaxy 10 - Samsung\nGiá: 22,943,311 VND\nMô tả: Smartphone flagship Samsung với camera 108MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Exynos 2400\n- ram: 12GB\n- storage: 128GB\n- display: 6.1 inch Super AMOLED 60Hz\n- camera_main: 48MP main + 5MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3815mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Water resistant, Wireless charging, NFC, Fingerprint, Night mode\nPros: Camera chất lượng, Loa hay, Sạc nhanh\nCons: Loa đơn, Không sạc không dây, Nóng máy\nUse_Cases: Streaming, Video call, Photography\nĐánh giá: 4.7/5 từ 656 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy 10",
+        "price": 22943311,
+        "rating": 4.7,
+        "in_stock": false,
+        "id": "phone_012",
+        "currency": "VND",
+        "features": [
+          "Water resistant",
+          "Wireless charging",
+          "NFC",
+          "Fingerprint",
+          "Night mode"
+        ],
+        "pros": ["Camera chất lượng", "Loa hay", "Sạc nhanh"],
+        "cons": ["Loa đơn", "Không sạc không dây", "Nóng máy"],
+        "use_cases": ["Streaming", "Video call", "Photography"],
+        "review_count": 656,
+        "warranty": "24 tháng",
+        "tags": ["flagship", "samsung", "new-arrival"]
+      }
     },
     {
       "id": "phone_013",
-      "name": "Tecno Camon 20 Pro",
-      "brand": "Tecno",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 4990000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ với camera 64MP, pin 5000mAh, màn hình AMOLED.",
-      "specs": {
-        "cpu": "MediaTek Helio G99",
-        "ram": "8GB",
-        "storage": "256GB",
-        "display": "6.67 inch AMOLED",
-        "camera_main": "64MP",
-        "camera_front": "32MP",
-        "battery": "5000mAh, 33W",
-        "weight": "185g",
-        "os": "Android 13",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Camera 64MP", "Pin lớn", "Màn hình AMOLED"],
-      "pros": ["Giá rẻ", "Camera tốt", "Pin lâu"],
-      "cons": ["Không có 5G", "Không chống nước"],
-      "use_cases": ["Học sinh", "Người dùng phổ thông", "Chụp ảnh"],
-      "rating": 4.0,
-      "review_count": 120,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["budget", "camera", "long-battery"]
+      "text": "Samsung iPhone 10 - Samsung\nGiá: 5,944,131 VND\nMô tả: Smartphone budget Samsung với camera 13MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 6GB\n- storage: 64GB\n- display: 6.2 inch AMOLED 90Hz\n- camera_main: 48MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 3390mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Face unlock, Stereo speakers, Water resistant, Always-on display, Fast charging, Wireless charging\nPros: Giá hợp lý, Camera chất lượng, Thiết kế premium, Màn hình đẹp\nCons: Pin yếu, Không sạc không dây, Nặng, Giá cao\nUse_Cases: Công việc, Streaming, Chụp ảnh, Gaming mobile, Giải trí\nĐánh giá: 4.4/5 từ 712 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung iPhone 10",
+        "price": 5944131,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_013",
+        "currency": "VND",
+        "features": [
+          "Face unlock",
+          "Stereo speakers",
+          "Water resistant",
+          "Always-on display",
+          "Fast charging",
+          "Wireless charging"
+        ],
+        "pros": [
+          "Giá hợp lý",
+          "Camera chất lượng",
+          "Thiết kế premium",
+          "Màn hình đẹp"
+        ],
+        "cons": ["Pin yếu", "Không sạc không dây", "Nặng", "Giá cao"],
+        "use_cases": [
+          "Công việc",
+          "Streaming",
+          "Chụp ảnh",
+          "Gaming mobile",
+          "Giải trí"
+        ],
+        "review_count": 712,
+        "warranty": "24 tháng",
+        "tags": ["budget", "samsung", "trending"]
+      }
     },
     {
       "id": "phone_014",
-      "name": "Nokia G22",
-      "brand": "Nokia",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 3990000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ, pin tháo rời, dễ sửa chữa, màn hình lớn.",
-      "specs": {
-        "cpu": "Unisoc T606",
-        "ram": "4GB",
-        "storage": "64GB",
-        "display": "6.5 inch HD+",
-        "camera_main": "50MP + 2MP + 2MP",
-        "camera_front": "8MP",
-        "battery": "5050mAh, 20W",
-        "weight": "196g",
-        "os": "Android 12",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Pin tháo rời", "Dễ sửa chữa", "Camera 50MP"],
-      "pros": ["Giá rẻ", "Pin lâu", "Dễ sửa"],
-      "cons": ["Hiệu năng thấp", "Không có 5G"],
-      "use_cases": ["Người lớn tuổi", "Học sinh", "Dự phòng"],
-      "rating": 3.9,
-      "review_count": 80,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Blue", "Gray"],
-      "tags": ["budget", "easy-repair", "long-battery"]
+      "text": "Samsung Pixel 13 - Samsung\nGiá: 19,153,894 VND\nMô tả: Smartphone midrange Samsung với camera 64MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Snapdragon 7 Gen 3\n- ram: 8GB\n- storage: 256GB\n- display: 6.3 inch Super AMOLED 120Hz\n- camera_main: 108MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 4560mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Water resistant, Night mode, Face unlock, Wireless charging\nPros: Loa hay, Sạc nhanh, Giá hợp lý\nCons: Không có jack 3.5mm, Loa đơn, Pin yếu\nUse_Cases: Video call, Streaming, Photography, Công việc, Giải trí\nĐánh giá: 4.4/5 từ 70 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Samsung",
+        "name": "Samsung Pixel 13",
+        "price": 19153894,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_014",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Water resistant",
+          "Night mode",
+          "Face unlock",
+          "Wireless charging"
+        ],
+        "pros": ["Loa hay", "Sạc nhanh", "Giá hợp lý"],
+        "cons": ["Không có jack 3.5mm", "Loa đơn", "Pin yếu"],
+        "use_cases": [
+          "Video call",
+          "Streaming",
+          "Photography",
+          "Công việc",
+          "Giải trí"
+        ],
+        "review_count": 70,
+        "warranty": "12 tháng",
+        "tags": ["midrange", "samsung", "hot"]
+      }
     },
     {
       "id": "phone_015",
-      "name": "Motorola Edge 40 Pro",
-      "brand": "Motorola",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 19990000,
-      "currency": "VND",
-      "description": "Flagship với Snapdragon 8 Gen 2, màn hình 165Hz, camera 50MP, sạc nhanh 125W.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 2",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.67 inch OLED 165Hz",
-        "camera_main": "50MP + 50MP + 12MP",
-        "camera_front": "60MP",
-        "battery": "4600mAh, 125W",
-        "weight": "199g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
-        "water_resistance": "IP68"
-      },
-      "features": ["Màn hình 165Hz", "Sạc 125W", "Camera 50MP"],
-      "pros": ["Màn hình mượt", "Sạc siêu nhanh", "Camera tốt"],
-      "cons": ["Pin nhỏ", "Thiết kế đơn giản"],
-      "use_cases": ["Gaming", "Chụp ảnh", "Giải trí"],
-      "rating": 4.4,
-      "review_count": 60,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["flagship", "fast-charging", "high-refresh"]
+      "text": "OnePlus OnePlus 13 - OnePlus\nGiá: 5,076,480 VND\nMô tả: Smartphone budget OnePlus với camera 13MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 6GB\n- storage: 128GB\n- display: 6.6 inch AMOLED 90Hz\n- camera_main: 50MP main + 12MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4264mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Face unlock, Fast charging, Fingerprint, Wireless charging, Stereo speakers, Dual SIM, Water resistant\nPros: Pin trâu, Loa hay, Hiệu năng mượt, Sạc nhanh\nCons: Nặng, Không sạc không dây, Loa đơn\nUse_Cases: Mạng xã hội, Video call, Streaming, Photography, Gaming mobile\nĐánh giá: 3.9/5 từ 22 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "OnePlus",
+        "name": "OnePlus OnePlus 13",
+        "price": 5076480,
+        "rating": 3.9,
+        "in_stock": false,
+        "id": "phone_015",
+        "currency": "VND",
+        "features": [
+          "Face unlock",
+          "Fast charging",
+          "Fingerprint",
+          "Wireless charging",
+          "Stereo speakers",
+          "Dual SIM",
+          "Water resistant"
+        ],
+        "pros": ["Pin trâu", "Loa hay", "Hiệu năng mượt", "Sạc nhanh"],
+        "cons": ["Nặng", "Không sạc không dây", "Loa đơn"],
+        "use_cases": [
+          "Mạng xã hội",
+          "Video call",
+          "Streaming",
+          "Photography",
+          "Gaming mobile"
+        ],
+        "review_count": 22,
+        "warranty": "18 tháng",
+        "tags": ["budget", "oneplus", "trending"]
+      }
     },
     {
       "id": "phone_016",
-      "name": "Vsmart Joy 4",
-      "brand": "Vsmart",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 2990000,
-      "currency": "VND",
-      "description": "Điện thoại Việt Nam giá rẻ, pin lớn, camera 16MP, màn hình 6.5 inch.",
-      "specs": {
-        "cpu": "Snapdragon 665",
-        "ram": "4GB",
-        "storage": "64GB",
-        "display": "6.5 inch FHD+",
-        "camera_main": "16MP + 8MP + 2MP + 2MP",
-        "camera_front": "13MP",
-        "battery": "5000mAh, 18W",
-        "weight": "180g",
-        "os": "Android 10",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 16MP", "Giá rẻ"],
-      "pros": ["Giá tốt", "Pin lâu", "Thiết kế đẹp"],
-      "cons": ["Hiệu năng thấp", "Không có 5G"],
-      "use_cases": ["Học sinh", "Người lớn tuổi", "Dự phòng"],
-      "rating": 4.0,
-      "review_count": 100,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Blue", "Green"],
-      "tags": ["budget", "vietnam", "long-battery"]
+      "text": "Samsung Mi 15 - Samsung\nGiá: 5,590,460 VND\nMô tả: Smartphone budget Samsung với camera 50MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 4GB\n- storage: 256GB\n- display: 6.4 inch Super AMOLED 90Hz\n- camera_main: 8MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 3314mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, NFC, Face unlock, Stereo speakers, Always-on display\nPros: Hiệu năng mượt, Giá hợp lý, Camera chất lượng, Thiết kế premium, Sạc nhanh\nCons: Không có jack 3.5mm, Không sạc không dây, Pin yếu, Camera kém ánh sáng\nUse_Cases: Mạng xã hội, Video call, Photography, Gaming mobile, Công việc\nĐánh giá: 4.6/5 từ 431 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung Mi 15",
+        "price": 5590460,
+        "rating": 4.6,
+        "in_stock": false,
+        "id": "phone_016",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "NFC",
+          "Face unlock",
+          "Stereo speakers",
+          "Always-on display"
+        ],
+        "pros": [
+          "Hiệu năng mượt",
+          "Giá hợp lý",
+          "Camera chất lượng",
+          "Thiết kế premium",
+          "Sạc nhanh"
+        ],
+        "cons": [
+          "Không có jack 3.5mm",
+          "Không sạc không dây",
+          "Pin yếu",
+          "Camera kém ánh sáng"
+        ],
+        "use_cases": [
+          "Mạng xã hội",
+          "Video call",
+          "Photography",
+          "Gaming mobile",
+          "Công việc"
+        ],
+        "review_count": 431,
+        "warranty": "24 tháng",
+        "tags": ["budget", "samsung", "new-arrival"]
+      }
     },
     {
       "id": "phone_017",
-      "name": "Oppo Find N3 Flip",
-      "brand": "OPPO",
-      "category": "smartphone",
-      "subcategory": "foldable",
-      "price": 24990000,
-      "currency": "VND",
-      "description": "Điện thoại gập với màn hình AMOLED 120Hz, camera Hasselblad, chip Dimensity 9200.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 9200",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.8 inch AMOLED 120Hz",
-        "camera_main": "50MP + 32MP + 48MP Hasselblad",
-        "camera_front": "32MP",
-        "battery": "4300mAh, 44W",
-        "weight": "198g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3",
-        "water_resistance": "IPX4"
-      },
-      "features": ["Điện thoại gập", "Camera Hasselblad", "Màn hình 120Hz"],
-      "pros": ["Thiết kế độc đáo", "Camera tốt", "Màn hình đẹp"],
-      "cons": ["Giá cao", "Pin nhỏ"],
-      "use_cases": ["Thời trang", "Chụp ảnh", "Giải trí"],
-      "rating": 4.5,
-      "review_count": 50,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Gold"],
-      "tags": ["foldable", "hasselblad", "fashion"]
+      "text": "Apple Mi 13 - Apple\nGiá: 12,626,436 VND\nMô tả: Smartphone midrange Apple với camera 64MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 7 Gen 3\n- ram: 12GB\n- storage: 64GB\n- display: 5.7 inch IPS 120Hz\n- camera_main: 50MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3091mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Always-on display, Dual SIM, Wireless charging, NFC, Water resistant\nPros: Pin trâu, Giá hợp lý, Màn hình đẹp, Thiết kế premium\nCons: Pin yếu, Giá cao, Nóng máy\nUse_Cases: Chụp ảnh, Streaming, Gaming mobile\nĐánh giá: 4.6/5 từ 415 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Apple",
+        "name": "Apple Mi 13",
+        "price": 12626436,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "phone_017",
+        "currency": "VND",
+        "features": [
+          "Always-on display",
+          "Dual SIM",
+          "Wireless charging",
+          "NFC",
+          "Water resistant"
+        ],
+        "pros": ["Pin trâu", "Giá hợp lý", "Màn hình đẹp", "Thiết kế premium"],
+        "cons": ["Pin yếu", "Giá cao", "Nóng máy"],
+        "use_cases": ["Chụp ảnh", "Streaming", "Gaming mobile"],
+        "review_count": 415,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "apple", "new-arrival"]
+      }
     },
     {
       "id": "phone_018",
-      "name": "Samsung Galaxy Z Fold5",
-      "brand": "Samsung",
-      "category": "smartphone",
-      "subcategory": "foldable",
-      "price": 44990000,
-      "currency": "VND",
-      "description": "Điện thoại gập flagship, màn hình lớn 7.6 inch, Snapdragon 8 Gen 2, camera 50MP.",
-      "specs": {
-        "cpu": "Snapdragon 8 Gen 2",
-        "ram": "12GB",
-        "storage": "512GB",
-        "display": "7.6 inch AMOLED 120Hz",
-        "camera_main": "50MP + 12MP + 10MP",
-        "camera_front": "10MP",
-        "battery": "4400mAh, 25W",
-        "weight": "253g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
-        "water_resistance": "IPX8"
-      },
-      "features": ["Điện thoại gập", "Màn hình lớn", "Camera 50MP"],
-      "pros": ["Màn hình lớn", "Hiệu năng mạnh", "Thiết kế độc đáo"],
-      "cons": ["Giá rất cao", "Pin nhỏ"],
-      "use_cases": ["Doanh nhân", "Giải trí cao cấp", "Chụp ảnh"],
-      "rating": 4.7,
-      "review_count": 40,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Silver"],
-      "tags": ["foldable", "flagship", "big-screen"]
+      "text": "Huawei Find 10 - Huawei\nGiá: 3,943,934 VND\nMô tả: Smartphone budget Huawei với camera 8MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Dimensity 6020\n- ram: 4GB\n- storage: 128GB\n- display: 6.1 inch AMOLED 60Hz\n- camera_main: 8MP main + 12MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4484mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Water resistant, Face unlock, Dual SIM, Always-on display, Wireless charging, NFC\nPros: Hiệu năng mượt, Camera chất lượng, Màn hình đẹp\nCons: Camera kém ánh sáng, Nặng, Nóng máy, Không có jack 3.5mm\nUse_Cases: Mạng xã hội, Công việc, Streaming\nĐánh giá: 4.5/5 từ 220 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Huawei",
+        "name": "Huawei Find 10",
+        "price": 3943934,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "phone_018",
+        "currency": "VND",
+        "features": [
+          "Water resistant",
+          "Face unlock",
+          "Dual SIM",
+          "Always-on display",
+          "Wireless charging",
+          "NFC"
+        ],
+        "pros": ["Hiệu năng mượt", "Camera chất lượng", "Màn hình đẹp"],
+        "cons": [
+          "Camera kém ánh sáng",
+          "Nặng",
+          "Nóng máy",
+          "Không có jack 3.5mm"
+        ],
+        "use_cases": ["Mạng xã hội", "Công việc", "Streaming"],
+        "review_count": 220,
+        "warranty": "12 tháng",
+        "tags": ["budget", "huawei", "new-arrival"]
+      }
     },
     {
       "id": "phone_019",
-      "name": "Xiaomi Poco F5 Pro",
-      "brand": "Xiaomi",
-      "category": "smartphone",
-      "subcategory": "flagship",
-      "price": 13990000,
-      "currency": "VND",
-      "description": "Flagship giá tốt, Snapdragon 8+ Gen 1, màn hình AMOLED 120Hz, camera 64MP.",
-      "specs": {
-        "cpu": "Snapdragon 8+ Gen 1",
-        "ram": "12GB",
-        "storage": "256GB",
-        "display": "6.67 inch AMOLED 120Hz",
-        "camera_main": "64MP + 8MP + 2MP",
-        "camera_front": "16MP",
-        "battery": "5160mAh, 67W",
-        "weight": "204g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3",
-        "water_resistance": "IP53"
-      },
-      "features": ["Snapdragon 8+ Gen 1", "Màn hình 120Hz", "Camera 64MP"],
-      "pros": ["Hiệu năng mạnh", "Giá tốt", "Pin lớn"],
-      "cons": ["Thiết kế đơn giản", "Không chống nước cao"],
-      "use_cases": ["Gaming", "Chụp ảnh", "Giải trí"],
-      "rating": 4.5,
-      "review_count": 60,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "White"],
-      "tags": ["flagship", "gaming", "value"]
+      "text": "OnePlus Pixel 10 - OnePlus\nGiá: 38,958,947 VND\nMô tả: Smartphone flagship OnePlus với camera 108MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Dimensity 9300\n- ram: 16GB\n- storage: 512GB\n- display: 5.9 inch Super AMOLED 60Hz\n- camera_main: 50MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 4198mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, Night mode, Fingerprint, NFC, Always-on display\nPros: Loa hay, Camera chất lượng, Màn hình đẹp, Thiết kế premium, Sạc nhanh\nCons: Camera kém ánh sáng, Pin yếu, Loa đơn\nUse_Cases: Giải trí, Video call, Streaming, Photography\nĐánh giá: 4.7/5 từ 348 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "OnePlus",
+        "name": "OnePlus Pixel 10",
+        "price": 38958947,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "phone_019",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "Night mode",
+          "Fingerprint",
+          "NFC",
+          "Always-on display"
+        ],
+        "pros": [
+          "Loa hay",
+          "Camera chất lượng",
+          "Màn hình đẹp",
+          "Thiết kế premium",
+          "Sạc nhanh"
+        ],
+        "cons": ["Camera kém ánh sáng", "Pin yếu", "Loa đơn"],
+        "use_cases": ["Giải trí", "Video call", "Streaming", "Photography"],
+        "review_count": 348,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "oneplus", "trending"]
+      }
     },
     {
       "id": "phone_020",
-      "name": "Vivo Y36",
-      "brand": "Vivo",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 4990000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ, pin lớn 5000mAh, camera 50MP, màn hình 90Hz.",
-      "specs": {
-        "cpu": "Snapdragon 680",
-        "ram": "8GB",
-        "storage": "128GB",
-        "display": "6.64 inch IPS LCD 90Hz",
-        "camera_main": "50MP + 2MP",
-        "camera_front": "16MP",
-        "battery": "5000mAh, 44W",
-        "weight": "202g",
-        "os": "Android 13",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 50MP", "Màn hình 90Hz"],
-      "pros": ["Giá rẻ", "Pin lâu", "Camera tốt"],
-      "cons": ["Không có 5G", "Không chống nước"],
-      "use_cases": ["Học sinh", "Người lớn tuổi", "Dự phòng"],
-      "rating": 4.1,
-      "review_count": 40,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Gold"],
-      "tags": ["budget", "long-battery", "value"]
+      "text": "Xiaomi OnePlus 15 - Xiaomi\nGiá: 19,882,971 VND\nMô tả: Smartphone midrange Xiaomi với camera 50MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: A16 Bionic\n- ram: 8GB\n- storage: 128GB\n- display: 6.2 inch AMOLED 60Hz\n- camera_main: 50MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 4903mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Stereo speakers, Wireless charging, Fingerprint, NFC, Dual SIM, Fast charging, Water resistant\nPros: Camera chất lượng, Màn hình đẹp, Giá hợp lý\nCons: Không sạc không dây, Giá cao, Loa đơn, Camera kém ánh sáng\nUse_Cases: Photography, Giải trí, Gaming mobile\nĐánh giá: 4.7/5 từ 235 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Xiaomi",
+        "name": "Xiaomi OnePlus 15",
+        "price": 19882971,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "phone_020",
+        "currency": "VND",
+        "features": [
+          "Stereo speakers",
+          "Wireless charging",
+          "Fingerprint",
+          "NFC",
+          "Dual SIM",
+          "Fast charging",
+          "Water resistant"
+        ],
+        "pros": ["Camera chất lượng", "Màn hình đẹp", "Giá hợp lý"],
+        "cons": [
+          "Không sạc không dây",
+          "Giá cao",
+          "Loa đơn",
+          "Camera kém ánh sáng"
+        ],
+        "use_cases": ["Photography", "Giải trí", "Gaming mobile"],
+        "review_count": 235,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "xiaomi", "trending"]
+      }
     },
     {
       "id": "phone_021",
-      "name": "Realme C55",
-      "brand": "Realme",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 3990000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ, pin lớn 5000mAh, camera 64MP, màn hình 90Hz.",
-      "specs": {
-        "cpu": "MediaTek Helio G88",
-        "ram": "6GB",
-        "storage": "128GB",
-        "display": "6.72 inch IPS LCD 90Hz",
-        "camera_main": "64MP + 2MP",
-        "camera_front": "8MP",
-        "battery": "5000mAh, 33W",
-        "weight": "189g",
-        "os": "Android 13",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 64MP", "Màn hình 90Hz"],
-      "pros": ["Giá rẻ", "Pin lâu", "Camera tốt"],
-      "cons": ["Không có 5G", "Không chống nước"],
-      "use_cases": ["Học sinh", "Người lớn tuổi", "Dự phòng"],
-      "rating": 4.0,
-      "review_count": 30,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["budget", "long-battery", "value"]
+      "text": "Google OnePlus 12 - Google\nGiá: 3,592,323 VND\nMô tả: Smartphone budget Google với camera 50MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Unisoc Tiger T606\n- ram: 4GB\n- storage: 256GB\n- display: 5.6 inch AMOLED 60Hz\n- camera_main: 48MP main + 12MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4538mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fingerprint, NFC, Night mode, Face unlock, Always-on display, Dual SIM, Stereo speakers\nPros: Camera chất lượng, Thiết kế premium, Pin trâu, Hiệu năng mượt\nCons: Không sạc không dây, Không có jack 3.5mm, Nóng máy, Pin yếu\nUse_Cases: Photography, Mạng xã hội, Chụp ảnh, Video call\nĐánh giá: 4.6/5 từ 336 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Google",
+        "name": "Google OnePlus 12",
+        "price": 3592323,
+        "rating": 4.6,
+        "in_stock": false,
+        "id": "phone_021",
+        "currency": "VND",
+        "features": [
+          "Fingerprint",
+          "NFC",
+          "Night mode",
+          "Face unlock",
+          "Always-on display",
+          "Dual SIM",
+          "Stereo speakers"
+        ],
+        "pros": [
+          "Camera chất lượng",
+          "Thiết kế premium",
+          "Pin trâu",
+          "Hiệu năng mượt"
+        ],
+        "cons": [
+          "Không sạc không dây",
+          "Không có jack 3.5mm",
+          "Nóng máy",
+          "Pin yếu"
+        ],
+        "use_cases": ["Photography", "Mạng xã hội", "Chụp ảnh", "Video call"],
+        "review_count": 336,
+        "warranty": "18 tháng",
+        "tags": ["budget", "google", "bestseller"]
+      }
     },
     {
       "id": "phone_022",
-      "name": "Samsung Galaxy M54 5G",
-      "brand": "Samsung",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 8990000,
-      "currency": "VND",
-      "description": "Smartphone tầm trung, pin lớn 6000mAh, camera 108MP, màn hình Super AMOLED 120Hz.",
-      "specs": {
-        "cpu": "Exynos 1380",
-        "ram": "8GB",
-        "storage": "256GB",
-        "display": "6.7 inch Super AMOLED 120Hz",
-        "camera_main": "108MP + 8MP + 2MP",
-        "camera_front": "32MP",
-        "battery": "6000mAh, 25W",
-        "weight": "199g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 108MP", "Màn hình 120Hz"],
-      "pros": ["Pin cực lâu", "Camera tốt", "Màn hình đẹp"],
-      "cons": ["Không chống nước", "Thiết kế đơn giản"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.3,
-      "review_count": 50,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["midrange", "long-battery", "camera"]
+      "text": "OnePlus Galaxy 15 - OnePlus\nGiá: 9,161,272 VND\nMô tả: Smartphone midrange OnePlus với camera 108MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Dimensity 8050\n- ram: 12GB\n- storage: 512GB\n- display: 6.6 inch Super AMOLED 90Hz\n- camera_main: 108MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4919mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Always-on display, Wireless charging, NFC, Water resistant, Fast charging, Night mode\nPros: Thiết kế premium, Camera chất lượng, Màn hình đẹp\nCons: Camera kém ánh sáng, Pin yếu\nUse_Cases: Công việc, Giải trí, Mạng xã hội, Chụp ảnh\nĐánh giá: 4.0/5 từ 306 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "OnePlus",
+        "name": "OnePlus Galaxy 15",
+        "price": 9161272,
+        "rating": 4.0,
+        "in_stock": false,
+        "id": "phone_022",
+        "currency": "VND",
+        "features": [
+          "Always-on display",
+          "Wireless charging",
+          "NFC",
+          "Water resistant",
+          "Fast charging",
+          "Night mode"
+        ],
+        "pros": ["Thiết kế premium", "Camera chất lượng", "Màn hình đẹp"],
+        "cons": ["Camera kém ánh sáng", "Pin yếu"],
+        "use_cases": ["Công việc", "Giải trí", "Mạng xã hội", "Chụp ảnh"],
+        "review_count": 306,
+        "warranty": "18 tháng",
+        "tags": ["midrange", "oneplus", "bestseller"]
+      }
     },
     {
       "id": "phone_023",
-      "name": "Oppo Reno10 5G",
-      "brand": "OPPO",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 10990000,
-      "currency": "VND",
-      "description": "Smartphone tầm trung, camera chân dung 64MP, màn hình AMOLED 120Hz, pin 5000mAh.",
-      "specs": {
-        "cpu": "MediaTek Dimensity 7050",
-        "ram": "8GB",
-        "storage": "256GB",
-        "display": "6.7 inch AMOLED 120Hz",
-        "camera_main": "64MP + 32MP + 8MP",
-        "camera_front": "32MP",
-        "battery": "5000mAh, 67W",
-        "weight": "185g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3",
-        "water_resistance": "IP54"
-      },
-      "features": ["Camera chân dung", "Màn hình 120Hz", "Pin lớn"],
-      "pros": ["Camera tốt", "Pin lâu", "Màn hình đẹp"],
-      "cons": ["Không chống nước cao", "Thiết kế đơn giản"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.2,
-      "review_count": 40,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Gold"],
-      "tags": ["midrange", "camera", "value"]
+      "text": "OnePlus Mi 12 - OnePlus\nGiá: 22,800,123 VND\nMô tả: Smartphone flagship OnePlus với camera 50MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Snapdragon 8 Gen 3\n- ram: 8GB\n- storage: 256GB\n- display: 6.6 inch Super AMOLED 90Hz\n- camera_main: 200MP main + 5MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3171mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Wireless charging, NFC, Face unlock, Always-on display, Night mode\nPros: Sạc nhanh, Giá hợp lý, Loa hay, Pin trâu\nCons: Nóng máy, Pin yếu, Loa đơn, Không có jack 3.5mm\nUse_Cases: Streaming, Công việc, Video call\nĐánh giá: 4.8/5 từ 634 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "OnePlus",
+        "name": "OnePlus Mi 12",
+        "price": 22800123,
+        "rating": 4.8,
+        "in_stock": false,
+        "id": "phone_023",
+        "currency": "VND",
+        "features": [
+          "Wireless charging",
+          "NFC",
+          "Face unlock",
+          "Always-on display",
+          "Night mode"
+        ],
+        "pros": ["Sạc nhanh", "Giá hợp lý", "Loa hay", "Pin trâu"],
+        "cons": ["Nóng máy", "Pin yếu", "Loa đơn", "Không có jack 3.5mm"],
+        "use_cases": ["Streaming", "Công việc", "Video call"],
+        "review_count": 634,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "oneplus", "new-arrival"]
+      }
     },
     {
       "id": "phone_024",
-      "name": "Sony Xperia 10 V",
-      "brand": "Sony",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 11990000,
-      "currency": "VND",
-      "description": "Smartphone tầm trung, màn hình OLED, camera 48MP, pin 5000mAh.",
-      "specs": {
-        "cpu": "Snapdragon 695",
-        "ram": "6GB",
-        "storage": "128GB",
-        "display": "6.1 inch OLED",
-        "camera_main": "48MP + 8MP + 8MP",
-        "camera_front": "8MP",
-        "battery": "5000mAh, 30W",
-        "weight": "159g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 5, Bluetooth 5.1",
-        "water_resistance": "IP68"
-      },
-      "features": ["Màn hình OLED", "Pin lâu", "Camera 48MP"],
-      "pros": ["Màn hình đẹp", "Pin lâu", "Thiết kế nhỏ gọn"],
-      "cons": ["Hiệu năng vừa phải", "Sạc chậm"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.1,
-      "review_count": 30,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "White"],
-      "tags": ["midrange", "oled", "compact"]
+      "text": "Huawei Galaxy 15 - Huawei\nGiá: 30,877,942 VND\nMô tả: Smartphone flagship Huawei với camera 108MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Exynos 2400\n- ram: 8GB\n- storage: 256GB\n- display: 6.2 inch IPS 120Hz\n- camera_main: 48MP main + 8MP ultra wide\n- camera_front: 32MP selfie\n- battery: 4910mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Face unlock, Water resistant, Stereo speakers, Night mode, Wireless charging, NFC\nPros: Pin trâu, Camera chất lượng, Thiết kế premium\nCons: Camera kém ánh sáng, Giá cao\nUse_Cases: Giải trí, Mạng xã hội, Công việc, Photography, Chụp ảnh\nĐánh giá: 4.0/5 từ 358 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Huawei",
+        "name": "Huawei Galaxy 15",
+        "price": 30877942,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "phone_024",
+        "currency": "VND",
+        "features": [
+          "Face unlock",
+          "Water resistant",
+          "Stereo speakers",
+          "Night mode",
+          "Wireless charging",
+          "NFC"
+        ],
+        "pros": ["Pin trâu", "Camera chất lượng", "Thiết kế premium"],
+        "cons": ["Camera kém ánh sáng", "Giá cao"],
+        "use_cases": [
+          "Giải trí",
+          "Mạng xã hội",
+          "Công việc",
+          "Photography",
+          "Chụp ảnh"
+        ],
+        "review_count": 358,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "huawei", "new-arrival"]
+      }
     },
     {
       "id": "phone_025",
-      "name": "Google Pixel 7a",
-      "brand": "Google",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 9990000,
-      "currency": "VND",
-      "description": "Smartphone tầm trung, chip Tensor G2, camera 64MP, màn hình OLED.",
-      "specs": {
-        "cpu": "Google Tensor G2",
-        "ram": "8GB",
-        "storage": "128GB",
-        "display": "6.1 inch OLED",
-        "camera_main": "64MP + 13MP",
-        "camera_front": "13MP",
-        "battery": "4385mAh, 18W",
-        "weight": "193g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
-        "water_resistance": "IP67"
-      },
-      "features": ["Chip Tensor G2", "Camera 64MP", "Màn hình OLED"],
-      "pros": ["Camera tốt", "Màn hình đẹp", "Thiết kế nhỏ gọn"],
-      "cons": ["Pin vừa phải", "Sạc chậm"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.3,
-      "review_count": 20,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["midrange", "oled", "pixel"]
+      "text": "Huawei iPhone 12 - Huawei\nGiá: 7,034,991 VND\nMô tả: Smartphone budget Huawei với camera 8MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Unisoc Tiger T606\n- ram: 3GB\n- storage: 64GB\n- display: 6.8 inch Super AMOLED 120Hz\n- camera_main: 8MP main + 8MP ultra wide\n- camera_front: 32MP selfie\n- battery: 3099mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Wireless charging, Fingerprint, NFC, Dual SIM, Stereo speakers, Fast charging, Night mode\nPros: Màn hình đẹp, Giá hợp lý, Sạc nhanh, Hiệu năng mượt, Pin trâu\nCons: Giá cao, Không có jack 3.5mm, Loa đơn\nUse_Cases: Photography, Giải trí, Chụp ảnh\nĐánh giá: 4.2/5 từ 718 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Huawei",
+        "name": "Huawei iPhone 12",
+        "price": 7034991,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_025",
+        "currency": "VND",
+        "features": [
+          "Wireless charging",
+          "Fingerprint",
+          "NFC",
+          "Dual SIM",
+          "Stereo speakers",
+          "Fast charging",
+          "Night mode"
+        ],
+        "pros": [
+          "Màn hình đẹp",
+          "Giá hợp lý",
+          "Sạc nhanh",
+          "Hiệu năng mượt",
+          "Pin trâu"
+        ],
+        "cons": ["Giá cao", "Không có jack 3.5mm", "Loa đơn"],
+        "use_cases": ["Photography", "Giải trí", "Chụp ảnh"],
+        "review_count": 718,
+        "warranty": "12 tháng",
+        "tags": ["budget", "huawei", "bestseller"]
+      }
     },
     {
       "id": "phone_026",
-      "name": "Motorola Moto G84",
-      "brand": "Motorola",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 6990000,
-      "currency": "VND",
-      "description": "Smartphone tầm trung, màn hình pOLED 120Hz, camera 50MP, pin 5000mAh.",
-      "specs": {
-        "cpu": "Snapdragon 695",
-        "ram": "8GB",
-        "storage": "256GB",
-        "display": "6.55 inch pOLED 120Hz",
-        "camera_main": "50MP + 8MP",
-        "camera_front": "16MP",
-        "battery": "5000mAh, 33W",
-        "weight": "166g",
-        "os": "Android 13",
-        "connectivity": "5G, Wi-Fi 5, Bluetooth 5.1",
-        "water_resistance": "IP54"
-      },
-      "features": ["Màn hình pOLED 120Hz", "Camera 50MP", "Pin lâu"],
-      "pros": ["Màn hình đẹp", "Pin lâu", "Giá tốt"],
-      "cons": ["Hiệu năng vừa phải", "Không chống nước cao"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.2,
-      "review_count": 20,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["midrange", "oled", "value"]
+      "text": "Samsung Find 11 - Samsung\nGiá: 5,469,892 VND\nMô tả: Smartphone budget Samsung với camera 48MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Snapdragon 4 Gen 2\n- ram: 6GB\n- storage: 256GB\n- display: 6.6 inch Super AMOLED 60Hz\n- camera_main: 48MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 4906mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Wireless charging, Stereo speakers, Fingerprint\nPros: Giá hợp lý, Thiết kế premium, Camera chất lượng, Hiệu năng mượt, Pin trâu\nCons: Không có jack 3.5mm, Không sạc không dây, Giá cao, Loa đơn\nUse_Cases: Photography, Công việc, Mạng xã hội, Giải trí, Video call\nĐánh giá: 4.8/5 từ 613 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung Find 11",
+        "price": 5469892,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "phone_026",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Wireless charging",
+          "Stereo speakers",
+          "Fingerprint"
+        ],
+        "pros": [
+          "Giá hợp lý",
+          "Thiết kế premium",
+          "Camera chất lượng",
+          "Hiệu năng mượt",
+          "Pin trâu"
+        ],
+        "cons": [
+          "Không có jack 3.5mm",
+          "Không sạc không dây",
+          "Giá cao",
+          "Loa đơn"
+        ],
+        "use_cases": [
+          "Photography",
+          "Công việc",
+          "Mạng xã hội",
+          "Giải trí",
+          "Video call"
+        ],
+        "review_count": 613,
+        "warranty": "24 tháng",
+        "tags": ["budget", "samsung", "bestseller"]
+      }
     },
     {
       "id": "phone_027",
-      "name": "Vsmart Aris Pro",
-      "brand": "Vsmart",
-      "category": "smartphone",
-      "subcategory": "midrange",
-      "price": 5990000,
-      "currency": "VND",
-      "description": "Smartphone Việt Nam, camera 64MP, màn hình AMOLED, pin 4000mAh.",
-      "specs": {
-        "cpu": "Snapdragon 730",
-        "ram": "8GB",
-        "storage": "128GB",
-        "display": "6.39 inch AMOLED",
-        "camera_main": "64MP + 8MP + 2MP + 2MP",
-        "camera_front": "20MP",
-        "battery": "4000mAh, 18W",
-        "weight": "180g",
-        "os": "Android 10",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Camera 64MP", "Màn hình AMOLED", "Giá tốt"],
-      "pros": ["Camera tốt", "Màn hình đẹp", "Giá tốt"],
-      "cons": ["Pin nhỏ", "Không có 5G"],
-      "use_cases": ["Chụp ảnh", "Giải trí", "Dự phòng"],
-      "rating": 4.0,
-      "review_count": 10,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Blue"],
-      "tags": ["midrange", "vietnam", "value"]
+      "text": "Google Galaxy 13 - Google\nGiá: 20,888,844 VND\nMô tả: Smartphone flagship Google với camera 48MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: A17 Pro\n- ram: 12GB\n- storage: 256GB\n- display: 5.6 inch AMOLED 90Hz\n- camera_main: 200MP main + 12MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4223mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, Stereo speakers, Water resistant, Face unlock, NFC\nPros: Hiệu năng mượt, Loa hay, Sạc nhanh, Thiết kế premium, Camera chất lượng\nCons: Nặng, Pin yếu\nUse_Cases: Chụp ảnh, Giải trí, Video call\nĐánh giá: 4.8/5 từ 573 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Google",
+        "name": "Google Galaxy 13",
+        "price": 20888844,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "phone_027",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "Stereo speakers",
+          "Water resistant",
+          "Face unlock",
+          "NFC"
+        ],
+        "pros": [
+          "Hiệu năng mượt",
+          "Loa hay",
+          "Sạc nhanh",
+          "Thiết kế premium",
+          "Camera chất lượng"
+        ],
+        "cons": ["Nặng", "Pin yếu"],
+        "use_cases": ["Chụp ảnh", "Giải trí", "Video call"],
+        "review_count": 573,
+        "warranty": "12 tháng",
+        "tags": ["flagship", "google", "bestseller"]
+      }
     },
     {
       "id": "phone_028",
-      "name": "Oppo A58",
-      "brand": "OPPO",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 3990000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ, pin lớn 5000mAh, camera 50MP, màn hình lớn.",
-      "specs": {
-        "cpu": "MediaTek Helio G85",
-        "ram": "6GB",
-        "storage": "128GB",
-        "display": "6.56 inch IPS LCD",
-        "camera_main": "50MP + 2MP",
-        "camera_front": "8MP",
-        "battery": "5000mAh, 33W",
-        "weight": "188g",
-        "os": "Android 13",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.3",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 50MP", "Màn hình lớn"],
-      "pros": ["Giá rẻ", "Pin lâu", "Camera tốt"],
-      "cons": ["Không có 5G", "Không chống nước"],
-      "use_cases": ["Học sinh", "Người lớn tuổi", "Dự phòng"],
-      "rating": 4.0,
-      "review_count": 10,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Green"],
-      "tags": ["budget", "long-battery", "value"]
+      "text": "OPPO Pixel 13 - OPPO\nGiá: 19,584,586 VND\nMô tả: Smartphone midrange OPPO với camera 50MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Snapdragon 7 Gen 3\n- ram: 8GB\n- storage: 128GB\n- display: 5.6 inch Super AMOLED 90Hz\n- camera_main: 48MP main + 5MP ultra wide\n- camera_front: 16MP selfie\n- battery: 4296mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Fast charging, Night mode, Stereo speakers, Face unlock\nPros: Loa hay, Camera chất lượng, Hiệu năng mượt\nCons: Loa đơn, Không sạc không dây, Không có jack 3.5mm\nUse_Cases: Chụp ảnh, Công việc, Photography\nĐánh giá: 4.8/5 từ 536 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "OPPO",
+        "name": "OPPO Pixel 13",
+        "price": 19584586,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "phone_028",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Fast charging",
+          "Night mode",
+          "Stereo speakers",
+          "Face unlock"
+        ],
+        "pros": ["Loa hay", "Camera chất lượng", "Hiệu năng mượt"],
+        "cons": ["Loa đơn", "Không sạc không dây", "Không có jack 3.5mm"],
+        "use_cases": ["Chụp ảnh", "Công việc", "Photography"],
+        "review_count": 536,
+        "warranty": "18 tháng",
+        "tags": ["midrange", "oppo", "trending"]
+      }
     },
     {
       "id": "phone_029",
-      "name": "Samsung Galaxy A05s",
-      "brand": "Samsung",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 3490000,
-      "currency": "VND",
-      "description": "Điện thoại giá rẻ, pin lớn 5000mAh, camera 50MP, màn hình lớn.",
-      "specs": {
-        "cpu": "Snapdragon 680",
-        "ram": "4GB",
-        "storage": "128GB",
-        "display": "6.7 inch IPS LCD",
-        "camera_main": "50MP + 2MP + 2MP",
-        "camera_front": "13MP",
-        "battery": "5000mAh, 25W",
-        "weight": "195g",
-        "os": "Android 13",
-        "connectivity": "4G, Wi-Fi 5, Bluetooth 5.0",
-        "water_resistance": "No"
-      },
-      "features": ["Pin lớn", "Camera 50MP", "Màn hình lớn"],
-      "pros": ["Giá rẻ", "Pin lâu", "Camera tốt"],
-      "cons": ["Không có 5G", "Không chống nước"],
-      "use_cases": ["Học sinh", "Người lớn tuổi", "Dự phòng"],
-      "rating": 4.0,
-      "review_count": 10,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "Silver"],
-      "tags": ["budget", "long-battery", "value"]
+      "text": "OnePlus iPhone 15 - OnePlus\nGiá: 9,687,170 VND\nMô tả: Smartphone midrange OnePlus với camera 108MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 7 Gen 3\n- ram: 12GB\n- storage: 64GB\n- display: 5.5 inch Super AMOLED 120Hz\n- camera_main: 50MP main + 8MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3523mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: NFC, Water resistant, Dual SIM, Stereo speakers, Face unlock\nPros: Thiết kế premium, Hiệu năng mượt, Camera chất lượng\nCons: Nặng, Nóng máy, Loa đơn\nUse_Cases: Gaming mobile, Công việc, Mạng xã hội, Streaming\nĐánh giá: 4.2/5 từ 688 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "OnePlus",
+        "name": "OnePlus iPhone 15",
+        "price": 9687170,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_029",
+        "currency": "VND",
+        "features": [
+          "NFC",
+          "Water resistant",
+          "Dual SIM",
+          "Stereo speakers",
+          "Face unlock"
+        ],
+        "pros": ["Thiết kế premium", "Hiệu năng mượt", "Camera chất lượng"],
+        "cons": ["Nặng", "Nóng máy", "Loa đơn"],
+        "use_cases": ["Gaming mobile", "Công việc", "Mạng xã hội", "Streaming"],
+        "review_count": 688,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "oneplus", "hot"]
+      }
     },
     {
       "id": "phone_030",
-      "name": "iPhone SE 2022",
-      "brand": "Apple",
-      "category": "smartphone",
-      "subcategory": "budget",
-      "price": 9990000,
-      "currency": "VND",
-      "description": "iPhone giá rẻ, chip A15 Bionic, camera 12MP, thiết kế nhỏ gọn.",
-      "specs": {
-        "cpu": "Apple A15 Bionic",
-        "ram": "4GB",
-        "storage": "64GB",
-        "display": "4.7 inch Retina HD",
-        "camera_main": "12MP",
-        "camera_front": "7MP",
-        "battery": "2018mAh, 20W",
-        "weight": "144g",
-        "os": "iOS 15",
-        "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0",
-        "water_resistance": "IP67"
-      },
-      "features": ["Chip A15 Bionic", "Thiết kế nhỏ gọn", "Camera 12MP"],
-      "pros": ["Thiết kế nhỏ gọn", "Hiệu năng mạnh", "Giá tốt"],
-      "cons": ["Pin nhỏ", "Màn hình nhỏ"],
-      "use_cases": ["Người lớn tuổi", "Dự phòng", "iOS giá rẻ"],
-      "rating": 4.2,
-      "review_count": 10,
-      "in_stock": true,
-      "warranty": "12 tháng",
-      "colors": ["Black", "White", "Red"],
-      "tags": ["budget", "ios", "compact"]
+      "text": "OPPO Find 14 - OPPO\nGiá: 4,266,215 VND\nMô tả: Smartphone budget OPPO với camera 8MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Snapdragon 4 Gen 2\n- ram: 4GB\n- storage: 512GB\n- display: 6.3 inch IPS 60Hz\n- camera_main: 13MP main + 8MP ultra wide\n- camera_front: 32MP selfie\n- battery: 3667mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, Always-on display, Fingerprint, Night mode, Water resistant\nPros: Giá hợp lý, Thiết kế premium, Màn hình đẹp\nCons: Nặng, Không có jack 3.5mm, Camera kém ánh sáng\nUse_Cases: Giải trí, Mạng xã hội, Chụp ảnh, Streaming\nĐánh giá: 4.6/5 từ 43 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "OPPO",
+        "name": "OPPO Find 14",
+        "price": 4266215,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "phone_030",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "Always-on display",
+          "Fingerprint",
+          "Night mode",
+          "Water resistant"
+        ],
+        "pros": ["Giá hợp lý", "Thiết kế premium", "Màn hình đẹp"],
+        "cons": ["Nặng", "Không có jack 3.5mm", "Camera kém ánh sáng"],
+        "use_cases": ["Giải trí", "Mạng xã hội", "Chụp ảnh", "Streaming"],
+        "review_count": 43,
+        "warranty": "24 tháng",
+        "tags": ["budget", "oppo", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_031",
+      "text": "Vivo Pixel 11 - Vivo\nGiá: 19,943,110 VND\nMô tả: Smartphone midrange Vivo với camera 48MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Dimensity 8050\n- ram: 6GB\n- storage: 256GB\n- display: 5.6 inch AMOLED 60Hz\n- camera_main: 64MP main + 12MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3921mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Night mode, Stereo speakers, NFC\nPros: Hiệu năng mượt, Camera chất lượng, Màn hình đẹp\nCons: Không có jack 3.5mm, Giá cao, Pin yếu, Camera kém ánh sáng\nUse_Cases: Giải trí, Chụp ảnh, Mạng xã hội\nĐánh giá: 4.1/5 từ 480 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Vivo",
+        "name": "Vivo Pixel 11",
+        "price": 19943110,
+        "rating": 4.1,
+        "in_stock": false,
+        "id": "phone_031",
+        "currency": "VND",
+        "features": ["Dual SIM", "Night mode", "Stereo speakers", "NFC"],
+        "pros": ["Hiệu năng mượt", "Camera chất lượng", "Màn hình đẹp"],
+        "cons": [
+          "Không có jack 3.5mm",
+          "Giá cao",
+          "Pin yếu",
+          "Camera kém ánh sáng"
+        ],
+        "use_cases": ["Giải trí", "Chụp ảnh", "Mạng xã hội"],
+        "review_count": 480,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "vivo", "trending"]
+      }
+    },
+    {
+      "id": "phone_032",
+      "text": "Apple OnePlus 13 - Apple\nGiá: 2,931,840 VND\nMô tả: Smartphone budget Apple với camera 8MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 4 Gen 2\n- ram: 3GB\n- storage: 256GB\n- display: 5.8 inch IPS 60Hz\n- camera_main: 8MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3383mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Fingerprint, Stereo speakers, Water resistant, NFC, Night mode, Fast charging\nPros: Thiết kế premium, Camera chất lượng, Pin trâu, Loa hay, Giá hợp lý\nCons: Không sạc không dây, Không có jack 3.5mm\nUse_Cases: Video call, Gaming mobile, Photography\nĐánh giá: 4.7/5 từ 232 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Apple",
+        "name": "Apple OnePlus 13",
+        "price": 2931840,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "phone_032",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Fingerprint",
+          "Stereo speakers",
+          "Water resistant",
+          "NFC",
+          "Night mode",
+          "Fast charging"
+        ],
+        "pros": [
+          "Thiết kế premium",
+          "Camera chất lượng",
+          "Pin trâu",
+          "Loa hay",
+          "Giá hợp lý"
+        ],
+        "cons": ["Không sạc không dây", "Không có jack 3.5mm"],
+        "use_cases": ["Video call", "Gaming mobile", "Photography"],
+        "review_count": 232,
+        "warranty": "12 tháng",
+        "tags": ["budget", "apple", "bestseller"]
+      }
+    },
+    {
+      "id": "phone_033",
+      "text": "Samsung Galaxy 10 - Samsung\nGiá: 19,527,527 VND\nMô tả: Smartphone midrange Samsung với camera 50MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Exynos 1380\n- ram: 12GB\n- storage: 512GB\n- display: 6.2 inch Super AMOLED 90Hz\n- camera_main: 108MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4455mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Wireless charging, Always-on display, Face unlock, Dual SIM, NFC, Water resistant, Stereo speakers\nPros: Sạc nhanh, Giá hợp lý, Camera chất lượng\nCons: Nóng máy, Giá cao, Không sạc không dây, Camera kém ánh sáng\nUse_Cases: Video call, Gaming mobile, Công việc\nĐánh giá: 4.4/5 từ 331 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy 10",
+        "price": 19527527,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_033",
+        "currency": "VND",
+        "features": [
+          "Wireless charging",
+          "Always-on display",
+          "Face unlock",
+          "Dual SIM",
+          "NFC",
+          "Water resistant",
+          "Stereo speakers"
+        ],
+        "pros": ["Sạc nhanh", "Giá hợp lý", "Camera chất lượng"],
+        "cons": [
+          "Nóng máy",
+          "Giá cao",
+          "Không sạc không dây",
+          "Camera kém ánh sáng"
+        ],
+        "use_cases": ["Video call", "Gaming mobile", "Công việc"],
+        "review_count": 331,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "samsung", "trending"]
+      }
+    },
+    {
+      "id": "phone_034",
+      "text": "Xiaomi Mi 10 - Xiaomi\nGiá: 23,991,739 VND\nMô tả: Smartphone flagship Xiaomi với camera 50MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Exynos 2400\n- ram: 8GB\n- storage: 256GB\n- display: 6.4 inch Super AMOLED 60Hz\n- camera_main: 200MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4118mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fingerprint, Dual SIM, Fast charging, Night mode, Always-on display\nPros: Thiết kế premium, Loa hay, Màn hình đẹp\nCons: Loa đơn, Nặng, Nóng máy, Không có jack 3.5mm\nUse_Cases: Gaming mobile, Mạng xã hội, Giải trí\nĐánh giá: 4.4/5 từ 490 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Xiaomi",
+        "name": "Xiaomi Mi 10",
+        "price": 23991739,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_034",
+        "currency": "VND",
+        "features": [
+          "Fingerprint",
+          "Dual SIM",
+          "Fast charging",
+          "Night mode",
+          "Always-on display"
+        ],
+        "pros": ["Thiết kế premium", "Loa hay", "Màn hình đẹp"],
+        "cons": ["Loa đơn", "Nặng", "Nóng máy", "Không có jack 3.5mm"],
+        "use_cases": ["Gaming mobile", "Mạng xã hội", "Giải trí"],
+        "review_count": 490,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "xiaomi", "trending"]
+      }
+    },
+    {
+      "id": "phone_035",
+      "text": "OnePlus OnePlus 11 - OnePlus\nGiá: 7,115,894 VND\nMô tả: Smartphone budget OnePlus với camera 48MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Dimensity 6020\n- ram: 4GB\n- storage: 256GB\n- display: 6.4 inch IPS 90Hz\n- camera_main: 48MP main + 12MP ultra wide\n- camera_front: 8MP selfie\n- battery: 4586mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Face unlock, Dual SIM, Fingerprint, Stereo speakers, Always-on display\nPros: Hiệu năng mượt, Loa hay, Sạc nhanh, Camera chất lượng\nCons: Camera kém ánh sáng, Không sạc không dây, Pin yếu, Giá cao\nUse_Cases: Photography, Video call, Mạng xã hội, Giải trí\nĐánh giá: 4.6/5 từ 490 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "OnePlus",
+        "name": "OnePlus OnePlus 11",
+        "price": 7115894,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "phone_035",
+        "currency": "VND",
+        "features": [
+          "Face unlock",
+          "Dual SIM",
+          "Fingerprint",
+          "Stereo speakers",
+          "Always-on display"
+        ],
+        "pros": ["Hiệu năng mượt", "Loa hay", "Sạc nhanh", "Camera chất lượng"],
+        "cons": [
+          "Camera kém ánh sáng",
+          "Không sạc không dây",
+          "Pin yếu",
+          "Giá cao"
+        ],
+        "use_cases": ["Photography", "Video call", "Mạng xã hội", "Giải trí"],
+        "review_count": 490,
+        "warranty": "18 tháng",
+        "tags": ["budget", "oneplus", "bestseller"]
+      }
+    },
+    {
+      "id": "phone_036",
+      "text": "Huawei OnePlus 15 - Huawei\nGiá: 28,734,563 VND\nMô tả: Smartphone flagship Huawei với camera 48MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Dimensity 9300\n- ram: 8GB\n- storage: 64GB\n- display: 5.6 inch IPS 90Hz\n- camera_main: 200MP main + 5MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3566mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Water resistant, Wireless charging, Night mode, NFC\nPros: Loa hay, Màn hình đẹp, Thiết kế premium\nCons: Loa đơn, Không có jack 3.5mm, Nóng máy, Giá cao\nUse_Cases: Video call, Streaming, Chụp ảnh, Gaming mobile\nĐánh giá: 4.3/5 từ 248 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Huawei",
+        "name": "Huawei OnePlus 15",
+        "price": 28734563,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "phone_036",
+        "currency": "VND",
+        "features": [
+          "Water resistant",
+          "Wireless charging",
+          "Night mode",
+          "NFC"
+        ],
+        "pros": ["Loa hay", "Màn hình đẹp", "Thiết kế premium"],
+        "cons": ["Loa đơn", "Không có jack 3.5mm", "Nóng máy", "Giá cao"],
+        "use_cases": ["Video call", "Streaming", "Chụp ảnh", "Gaming mobile"],
+        "review_count": 248,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "huawei", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_037",
+      "text": "Xiaomi OnePlus 14 - Xiaomi\nGiá: 14,412,559 VND\nMô tả: Smartphone midrange Xiaomi với camera 48MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 7 Gen 3\n- ram: 12GB\n- storage: 512GB\n- display: 6.2 inch Super AMOLED 60Hz\n- camera_main: 50MP main + 5MP ultra wide\n- camera_front: 12MP selfie\n- battery: 3288mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, Water resistant, Always-on display, Wireless charging, Stereo speakers, Night mode\nPros: Thiết kế premium, Camera chất lượng, Pin trâu, Loa hay\nCons: Nóng máy, Loa đơn, Nặng, Không sạc không dây\nUse_Cases: Video call, Chụp ảnh, Mạng xã hội, Gaming mobile\nĐánh giá: 4.9/5 từ 712 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Xiaomi",
+        "name": "Xiaomi OnePlus 14",
+        "price": 14412559,
+        "rating": 4.9,
+        "in_stock": true,
+        "id": "phone_037",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "Water resistant",
+          "Always-on display",
+          "Wireless charging",
+          "Stereo speakers",
+          "Night mode"
+        ],
+        "pros": [
+          "Thiết kế premium",
+          "Camera chất lượng",
+          "Pin trâu",
+          "Loa hay"
+        ],
+        "cons": ["Nóng máy", "Loa đơn", "Nặng", "Không sạc không dây"],
+        "use_cases": ["Video call", "Chụp ảnh", "Mạng xã hội", "Gaming mobile"],
+        "review_count": 712,
+        "warranty": "18 tháng",
+        "tags": ["midrange", "xiaomi", "trending"]
+      }
+    },
+    {
+      "id": "phone_038",
+      "text": "OPPO Galaxy 15 - OPPO\nGiá: 12,571,360 VND\nMô tả: Smartphone midrange OPPO với camera 108MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Dimensity 8050\n- ram: 6GB\n- storage: 128GB\n- display: 5.9 inch Super AMOLED 60Hz\n- camera_main: 64MP main + 8MP ultra wide\n- camera_front: 8MP selfie\n- battery: 4207mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fast charging, Fingerprint, Night mode, Face unlock, NFC, Water resistant, Stereo speakers\nPros: Màn hình đẹp, Sạc nhanh, Hiệu năng mượt, Giá hợp lý\nCons: Camera kém ánh sáng, Không có jack 3.5mm\nUse_Cases: Giải trí, Streaming, Mạng xã hội, Gaming mobile, Photography\nĐánh giá: 3.8/5 từ 777 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "OPPO",
+        "name": "OPPO Galaxy 15",
+        "price": 12571360,
+        "rating": 3.8,
+        "in_stock": true,
+        "id": "phone_038",
+        "currency": "VND",
+        "features": [
+          "Fast charging",
+          "Fingerprint",
+          "Night mode",
+          "Face unlock",
+          "NFC",
+          "Water resistant",
+          "Stereo speakers"
+        ],
+        "pros": ["Màn hình đẹp", "Sạc nhanh", "Hiệu năng mượt", "Giá hợp lý"],
+        "cons": ["Camera kém ánh sáng", "Không có jack 3.5mm"],
+        "use_cases": [
+          "Giải trí",
+          "Streaming",
+          "Mạng xã hội",
+          "Gaming mobile",
+          "Photography"
+        ],
+        "review_count": 777,
+        "warranty": "24 tháng",
+        "tags": ["midrange", "oppo", "bestseller"]
+      }
+    },
+    {
+      "id": "phone_039",
+      "text": "OPPO iPhone 12 - OPPO\nGiá: 30,282,978 VND\nMô tả: Smartphone flagship OPPO với camera 200MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Dimensity 9300\n- ram: 8GB\n- storage: 256GB\n- display: 6.0 inch AMOLED 120Hz\n- camera_main: 50MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3545mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Water resistant, Fingerprint, NFC, Always-on display, Fast charging\nPros: Màn hình đẹp, Sạc nhanh, Hiệu năng mượt\nCons: Không có jack 3.5mm, Nặng\nUse_Cases: Video call, Chụp ảnh, Streaming\nĐánh giá: 4.2/5 từ 50 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "OPPO",
+        "name": "OPPO iPhone 12",
+        "price": 30282978,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_039",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Water resistant",
+          "Fingerprint",
+          "NFC",
+          "Always-on display",
+          "Fast charging"
+        ],
+        "pros": ["Màn hình đẹp", "Sạc nhanh", "Hiệu năng mượt"],
+        "cons": ["Không có jack 3.5mm", "Nặng"],
+        "use_cases": ["Video call", "Chụp ảnh", "Streaming"],
+        "review_count": 50,
+        "warranty": "12 tháng",
+        "tags": ["flagship", "oppo", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_040",
+      "text": "Samsung Galaxy 14 - Samsung\nGiá: 2,905,994 VND\nMô tả: Smartphone budget Samsung với camera 48MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 3GB\n- storage: 64GB\n- display: 6.0 inch IPS 120Hz\n- camera_main: 8MP main + 8MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4206mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Night mode, Wireless charging, Face unlock, NFC\nPros: Hiệu năng mượt, Loa hay, Màn hình đẹp, Pin trâu\nCons: Camera kém ánh sáng, Không có jack 3.5mm, Nặng, Nóng máy\nUse_Cases: Gaming mobile, Công việc, Chụp ảnh\nĐánh giá: 4.5/5 từ 343 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung Galaxy 14",
+        "price": 2905994,
+        "rating": 4.5,
+        "in_stock": false,
+        "id": "phone_040",
+        "currency": "VND",
+        "features": ["Night mode", "Wireless charging", "Face unlock", "NFC"],
+        "pros": ["Hiệu năng mượt", "Loa hay", "Màn hình đẹp", "Pin trâu"],
+        "cons": [
+          "Camera kém ánh sáng",
+          "Không có jack 3.5mm",
+          "Nặng",
+          "Nóng máy"
+        ],
+        "use_cases": ["Gaming mobile", "Công việc", "Chụp ảnh"],
+        "review_count": 343,
+        "warranty": "12 tháng",
+        "tags": ["budget", "samsung", "trending"]
+      }
+    },
+    {
+      "id": "phone_041",
+      "text": "Huawei Galaxy 13 - Huawei\nGiá: 19,191,438 VND\nMô tả: Smartphone midrange Huawei với camera 108MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Dimensity 8050\n- ram: 12GB\n- storage: 256GB\n- display: 6.8 inch Super AMOLED 120Hz\n- camera_main: 108MP main + 12MP ultra wide\n- camera_front: 12MP selfie\n- battery: 3282mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: NFC, Water resistant, Face unlock, Fast charging, Always-on display, Night mode\nPros: Thiết kế premium, Màn hình đẹp, Hiệu năng mượt\nCons: Loa đơn, Nặng\nUse_Cases: Công việc, Photography, Gaming mobile, Chụp ảnh\nĐánh giá: 4.2/5 từ 791 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Huawei",
+        "name": "Huawei Galaxy 13",
+        "price": 19191438,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_041",
+        "currency": "VND",
+        "features": [
+          "NFC",
+          "Water resistant",
+          "Face unlock",
+          "Fast charging",
+          "Always-on display",
+          "Night mode"
+        ],
+        "pros": ["Thiết kế premium", "Màn hình đẹp", "Hiệu năng mượt"],
+        "cons": ["Loa đơn", "Nặng"],
+        "use_cases": ["Công việc", "Photography", "Gaming mobile", "Chụp ảnh"],
+        "review_count": 791,
+        "warranty": "18 tháng",
+        "tags": ["midrange", "huawei", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_042",
+      "text": "Xiaomi Galaxy 10 - Xiaomi\nGiá: 5,300,002 VND\nMô tả: Smartphone budget Xiaomi với camera 8MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 3GB\n- storage: 64GB\n- display: 6.6 inch IPS 60Hz\n- camera_main: 48MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3023mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Dual SIM, Water resistant, Fingerprint, Fast charging, Always-on display, Wireless charging, Face unlock\nPros: Màn hình đẹp, Loa hay, Camera chất lượng\nCons: Không có jack 3.5mm, Nặng, Không sạc không dây\nUse_Cases: Công việc, Chụp ảnh, Mạng xã hội, Video call, Photography\nĐánh giá: 4.5/5 từ 715 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Xiaomi",
+        "name": "Xiaomi Galaxy 10",
+        "price": 5300002,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "phone_042",
+        "currency": "VND",
+        "features": [
+          "Dual SIM",
+          "Water resistant",
+          "Fingerprint",
+          "Fast charging",
+          "Always-on display",
+          "Wireless charging",
+          "Face unlock"
+        ],
+        "pros": ["Màn hình đẹp", "Loa hay", "Camera chất lượng"],
+        "cons": ["Không có jack 3.5mm", "Nặng", "Không sạc không dây"],
+        "use_cases": [
+          "Công việc",
+          "Chụp ảnh",
+          "Mạng xã hội",
+          "Video call",
+          "Photography"
+        ],
+        "review_count": 715,
+        "warranty": "24 tháng",
+        "tags": ["budget", "xiaomi", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_043",
+      "text": "Vivo Find 11 - Vivo\nGiá: 13,234,152 VND\nMô tả: Smartphone midrange Vivo với camera 64MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: A16 Bionic\n- ram: 6GB\n- storage: 128GB\n- display: 6.8 inch IPS 60Hz\n- camera_main: 108MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 4902mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Night mode, Stereo speakers, Face unlock, Water resistant, Fast charging, Always-on display\nPros: Camera chất lượng, Sạc nhanh, Thiết kế premium, Hiệu năng mượt, Giá hợp lý\nCons: Nặng, Loa đơn, Giá cao, Pin yếu\nUse_Cases: Mạng xã hội, Công việc, Video call\nĐánh giá: 4.1/5 từ 703 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Vivo",
+        "name": "Vivo Find 11",
+        "price": 13234152,
+        "rating": 4.1,
+        "in_stock": true,
+        "id": "phone_043",
+        "currency": "VND",
+        "features": [
+          "Night mode",
+          "Stereo speakers",
+          "Face unlock",
+          "Water resistant",
+          "Fast charging",
+          "Always-on display"
+        ],
+        "pros": [
+          "Camera chất lượng",
+          "Sạc nhanh",
+          "Thiết kế premium",
+          "Hiệu năng mượt",
+          "Giá hợp lý"
+        ],
+        "cons": ["Nặng", "Loa đơn", "Giá cao", "Pin yếu"],
+        "use_cases": ["Mạng xã hội", "Công việc", "Video call"],
+        "review_count": 703,
+        "warranty": "18 tháng",
+        "tags": ["midrange", "vivo", "trending"]
+      }
+    },
+    {
+      "id": "phone_044",
+      "text": "Google iPhone 14 - Google\nGiá: 32,954,465 VND\nMô tả: Smartphone flagship Google với camera 50MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Dimensity 9300\n- ram: 16GB\n- storage: 512GB\n- display: 6.5 inch AMOLED 120Hz\n- camera_main: 50MP main + 12MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3815mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Water resistant, NFC, Fingerprint, Face unlock\nPros: Màn hình đẹp, Thiết kế premium, Giá hợp lý\nCons: Pin yếu, Nặng\nUse_Cases: Chụp ảnh, Mạng xã hội, Giải trí, Video call, Photography\nĐánh giá: 4.7/5 từ 440 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Google",
+        "name": "Google iPhone 14",
+        "price": 32954465,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "phone_044",
+        "currency": "VND",
+        "features": ["Water resistant", "NFC", "Fingerprint", "Face unlock"],
+        "pros": ["Màn hình đẹp", "Thiết kế premium", "Giá hợp lý"],
+        "cons": ["Pin yếu", "Nặng"],
+        "use_cases": [
+          "Chụp ảnh",
+          "Mạng xã hội",
+          "Giải trí",
+          "Video call",
+          "Photography"
+        ],
+        "review_count": 440,
+        "warranty": "24 tháng",
+        "tags": ["flagship", "google", "hot"]
+      }
+    },
+    {
+      "id": "phone_045",
+      "text": "Samsung Find 12 - Samsung\nGiá: 6,765,281 VND\nMô tả: Smartphone budget Samsung với camera 50MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Helio G99\n- ram: 4GB\n- storage: 128GB\n- display: 6.7 inch IPS 90Hz\n- camera_main: 13MP main + 8MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3188mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Always-on display, Face unlock, Fast charging, Fingerprint, NFC\nPros: Camera chất lượng, Giá hợp lý, Hiệu năng mượt\nCons: Camera kém ánh sáng, Giá cao, Nặng, Nóng máy\nUse_Cases: Streaming, Công việc, Video call\nĐánh giá: 4.4/5 từ 619 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung Find 12",
+        "price": 6765281,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_045",
+        "currency": "VND",
+        "features": [
+          "Always-on display",
+          "Face unlock",
+          "Fast charging",
+          "Fingerprint",
+          "NFC"
+        ],
+        "pros": ["Camera chất lượng", "Giá hợp lý", "Hiệu năng mượt"],
+        "cons": ["Camera kém ánh sáng", "Giá cao", "Nặng", "Nóng máy"],
+        "use_cases": ["Streaming", "Công việc", "Video call"],
+        "review_count": 619,
+        "warranty": "18 tháng",
+        "tags": ["budget", "samsung", "bestseller"]
+      }
+    },
+    {
+      "id": "phone_046",
+      "text": "Google Pixel 14 - Google\nGiá: 23,411,704 VND\nMô tả: Smartphone flagship Google với camera 48MP và hiệu năng mạnh mẽ.\nThông số kỹ thuật:\n- cpu: A17 Pro\n- ram: 8GB\n- storage: 64GB\n- display: 5.6 inch IPS 90Hz\n- camera_main: 108MP main + 12MP ultra wide\n- camera_front: 32MP selfie\n- battery: 3572mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Always-on display, Face unlock, Night mode, Wireless charging\nPros: Thiết kế premium, Loa hay, Pin trâu, Camera chất lượng\nCons: Không có jack 3.5mm, Nóng máy, Không sạc không dây, Camera kém ánh sáng\nUse_Cases: Gaming mobile, Video call, Công việc, Photography, Mạng xã hội\nĐánh giá: 4.2/5 từ 349 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "flagship",
+        "brand": "Google",
+        "name": "Google Pixel 14",
+        "price": 23411704,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "phone_046",
+        "currency": "VND",
+        "features": [
+          "Always-on display",
+          "Face unlock",
+          "Night mode",
+          "Wireless charging"
+        ],
+        "pros": [
+          "Thiết kế premium",
+          "Loa hay",
+          "Pin trâu",
+          "Camera chất lượng"
+        ],
+        "cons": [
+          "Không có jack 3.5mm",
+          "Nóng máy",
+          "Không sạc không dây",
+          "Camera kém ánh sáng"
+        ],
+        "use_cases": [
+          "Gaming mobile",
+          "Video call",
+          "Công việc",
+          "Photography",
+          "Mạng xã hội"
+        ],
+        "review_count": 349,
+        "warranty": "18 tháng",
+        "tags": ["flagship", "google", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_047",
+      "text": "Xiaomi Galaxy 12 - Xiaomi\nGiá: 14,579,992 VND\nMô tả: Smartphone midrange Xiaomi với camera 50MP và hiệu năng ổn định.\nThông số kỹ thuật:\n- cpu: Dimensity 8050\n- ram: 6GB\n- storage: 64GB\n- display: 6.6 inch AMOLED 90Hz\n- camera_main: 50MP main + 8MP ultra wide\n- camera_front: 12MP selfie\n- battery: 4501mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Always-on display, Wireless charging, Face unlock, Water resistant, Fast charging, Night mode, Stereo speakers\nPros: Màn hình đẹp, Loa hay, Thiết kế premium\nCons: Pin yếu, Nóng máy, Không sạc không dây, Loa đơn\nUse_Cases: Streaming, Video call, Công việc, Mạng xã hội\nĐánh giá: 4.4/5 từ 21 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "midrange",
+        "brand": "Xiaomi",
+        "name": "Xiaomi Galaxy 12",
+        "price": 14579992,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "phone_047",
+        "currency": "VND",
+        "features": [
+          "Always-on display",
+          "Wireless charging",
+          "Face unlock",
+          "Water resistant",
+          "Fast charging",
+          "Night mode",
+          "Stereo speakers"
+        ],
+        "pros": ["Màn hình đẹp", "Loa hay", "Thiết kế premium"],
+        "cons": ["Pin yếu", "Nóng máy", "Không sạc không dây", "Loa đơn"],
+        "use_cases": ["Streaming", "Video call", "Công việc", "Mạng xã hội"],
+        "review_count": 21,
+        "warranty": "12 tháng",
+        "tags": ["midrange", "xiaomi", "bestseller"]
+      }
+    },
+    {
+      "id": "phone_048",
+      "text": "Samsung iPhone 15 - Samsung\nGiá: 3,256,157 VND\nMô tả: Smartphone budget Samsung với camera 50MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 4 Gen 2\n- ram: 3GB\n- storage: 512GB\n- display: 6.5 inch AMOLED 120Hz\n- camera_main: 13MP main + 5MP ultra wide\n- camera_front: 8MP selfie\n- battery: 3820mAh\n- os: iOS 17\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Fingerprint, Fast charging, Wireless charging, Dual SIM, Stereo speakers\nPros: Sạc nhanh, Pin trâu, Camera chất lượng, Giá hợp lý, Loa hay\nCons: Giá cao, Pin yếu\nUse_Cases: Mạng xã hội, Streaming, Gaming mobile, Công việc, Chụp ảnh\nĐánh giá: 4.4/5 từ 708 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung iPhone 15",
+        "price": 3256157,
+        "rating": 4.4,
+        "in_stock": false,
+        "id": "phone_048",
+        "currency": "VND",
+        "features": [
+          "Fingerprint",
+          "Fast charging",
+          "Wireless charging",
+          "Dual SIM",
+          "Stereo speakers"
+        ],
+        "pros": [
+          "Sạc nhanh",
+          "Pin trâu",
+          "Camera chất lượng",
+          "Giá hợp lý",
+          "Loa hay"
+        ],
+        "cons": ["Giá cao", "Pin yếu"],
+        "use_cases": [
+          "Mạng xã hội",
+          "Streaming",
+          "Gaming mobile",
+          "Công việc",
+          "Chụp ảnh"
+        ],
+        "review_count": 708,
+        "warranty": "18 tháng",
+        "tags": ["budget", "samsung", "hot"]
+      }
+    },
+    {
+      "id": "phone_049",
+      "text": "Samsung OnePlus 14 - Samsung\nGiá: 6,001,219 VND\nMô tả: Smartphone budget Samsung với camera 50MP và hiệu năng tốt.\nThông số kỹ thuật:\n- cpu: Dimensity 6020\n- ram: 3GB\n- storage: 64GB\n- display: 6.2 inch AMOLED 90Hz\n- camera_main: 8MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 4311mAh\n- os: Android 14\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Water resistant, Wireless charging, Dual SIM, Stereo speakers, Always-on display\nPros: Camera chất lượng, Hiệu năng mượt, Màn hình đẹp, Loa hay\nCons: Nóng máy, Loa đơn, Không sạc không dây\nUse_Cases: Giải trí, Chụp ảnh, Video call, Photography, Streaming\nĐánh giá: 4.9/5 từ 294 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung OnePlus 14",
+        "price": 6001219,
+        "rating": 4.9,
+        "in_stock": true,
+        "id": "phone_049",
+        "currency": "VND",
+        "features": [
+          "Water resistant",
+          "Wireless charging",
+          "Dual SIM",
+          "Stereo speakers",
+          "Always-on display"
+        ],
+        "pros": [
+          "Camera chất lượng",
+          "Hiệu năng mượt",
+          "Màn hình đẹp",
+          "Loa hay"
+        ],
+        "cons": ["Nóng máy", "Loa đơn", "Không sạc không dây"],
+        "use_cases": [
+          "Giải trí",
+          "Chụp ảnh",
+          "Video call",
+          "Photography",
+          "Streaming"
+        ],
+        "review_count": 294,
+        "warranty": "24 tháng",
+        "tags": ["budget", "samsung", "new-arrival"]
+      }
+    },
+    {
+      "id": "phone_050",
+      "text": "Huawei Galaxy 12 - Huawei\nGiá: 4,245,176 VND\nMô tả: Smartphone budget Huawei với camera 8MP và hiệu năng cao.\nThông số kỹ thuật:\n- cpu: Snapdragon 4 Gen 2\n- ram: 6GB\n- storage: 256GB\n- display: 6.6 inch AMOLED 120Hz\n- camera_main: 48MP main + 12MP ultra wide\n- camera_front: 16MP selfie\n- battery: 3732mAh\n- os: Android 13\n- connectivity: 5G, Wi-Fi 6, Bluetooth 5.3\nFeatures: Face unlock, Stereo speakers, Water resistant, Fast charging, Night mode, Dual SIM, Always-on display\nPros: Camera chất lượng, Pin trâu, Sạc nhanh, Thiết kế premium\nCons: Không sạc không dây, Pin yếu\nUse_Cases: Giải trí, Công việc, Streaming, Mạng xã hội, Photography\nĐánh giá: 4.3/5 từ 657 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "smartphone",
+        "subcategory": "budget",
+        "brand": "Huawei",
+        "name": "Huawei Galaxy 12",
+        "price": 4245176,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "phone_050",
+        "currency": "VND",
+        "features": [
+          "Face unlock",
+          "Stereo speakers",
+          "Water resistant",
+          "Fast charging",
+          "Night mode",
+          "Dual SIM",
+          "Always-on display"
+        ],
+        "pros": [
+          "Camera chất lượng",
+          "Pin trâu",
+          "Sạc nhanh",
+          "Thiết kế premium"
+        ],
+        "cons": ["Không sạc không dây", "Pin yếu"],
+        "use_cases": [
+          "Giải trí",
+          "Công việc",
+          "Streaming",
+          "Mạng xã hội",
+          "Photography"
+        ],
+        "review_count": 657,
+        "warranty": "18 tháng",
+        "tags": ["budget", "huawei", "new-arrival"]
+      }
     }
   ]
 }

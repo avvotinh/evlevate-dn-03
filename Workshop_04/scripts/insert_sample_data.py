@@ -11,6 +11,7 @@ import sys
 import os
 import json
 from pathlib import Path
+from datetime import datetime
 
 # Add project root to Python path
 project_root = Path(__file__).parent.parent
@@ -39,15 +40,235 @@ def load_json_file(file_path: str) -> dict:
         return {}
 
 
+def prepare_enhanced_product_vector(product: dict) -> tuple:
+    """Prepare product data for vector storage with enhanced embedding text"""
+    try:
+        # Extract metadata for better organization
+        metadata = product.get('metadata', {})
+        
+        # Create comprehensive searchable text from product data
+        searchable_parts = []
+        
+        # Basic info
+        if 'name' in metadata:
+            searchable_parts.append(f"Product: {metadata['name']}")
+        if 'brand' in metadata:
+            searchable_parts.append(f"Brand: {metadata['brand']}")
+        if 'category' in metadata:
+            searchable_parts.append(f"Category: {metadata['category']}")
+        if 'subcategory' in metadata:
+            searchable_parts.append(f"Type: {metadata['subcategory']}")
+        
+        # Price information with categorization
+        if 'price' in metadata:
+            price = metadata['price']
+            searchable_parts.append(f"Price: {price:,.0f} VND")
+            
+            # Add price range categorization for better search
+            if price < 10000000:  # < 10M
+                searchable_parts.append("Budget affordable cheap economical low-cost")
+            elif price < 30000000:  # 10-30M
+                searchable_parts.append("Mid-range value moderate reasonable")
+            else:  # > 30M
+                searchable_parts.append("Premium high-end expensive luxury flagship")
+        
+        # Rating information with descriptive terms
+        if 'rating' in metadata:
+            rating = metadata['rating']
+            searchable_parts.append(f"Rating: {rating}/5 stars")
+            if rating >= 4.5:
+                searchable_parts.append("Excellent outstanding top-rated highly-rated superior")
+            elif rating >= 4.0:
+                searchable_parts.append("Good well-rated quality reliable")
+            elif rating >= 3.5:
+                searchable_parts.append("Average decent acceptable")
+        
+        # Features with enhanced descriptions
+        if 'features' in metadata:
+            features = metadata['features']
+            if features:
+                searchable_parts.append(f"Key features: {' '.join(features)}")
+        
+        # Pros and Cons for sentiment analysis
+        if 'pros' in metadata:
+            pros = metadata['pros']
+            if pros:
+                searchable_parts.append(f"Strengths advantages: {' '.join(pros)}")
+        
+        if 'cons' in metadata:
+            cons = metadata['cons']
+            if cons:
+                searchable_parts.append(f"Weaknesses disadvantages: {' '.join(cons)}")
+        
+        # Use cases for better matching
+        if 'use_cases' in metadata:
+            use_cases = metadata['use_cases']
+            if use_cases:
+                searchable_parts.append(f"Suitable for: {' '.join(use_cases)}")
+        
+        # Tags for enhanced categorization
+        if 'tags' in metadata:
+            tags = metadata['tags']
+            if tags:
+                searchable_parts.append(f"Keywords: {' '.join(tags)}")
+        
+        # Extract and use the complete 'text' field
+        text_content = product.get('text', '')
+        if text_content:
+            # Use the complete text content without splitting
+            searchable_parts.append(f"Full product information: {text_content}")
+        
+        # Add category-specific keywords
+        category = metadata.get('category', '').lower()
+        if category == 'laptop':
+            searchable_parts.append("Computer notebook portable PC laptop máy tính xách tay")
+        elif category == 'smartphone':
+            searchable_parts.append("Phone mobile cellphone điện thoại di động smartphone")
+        
+        # Combine all parts into searchable text
+        searchable_text = ' '.join(filter(None, searchable_parts))
+        
+        # Create embedding using pinecone service
+        embedding = pinecone_service.create_embedding(searchable_text)
+        
+        # Prepare comprehensive metadata for storage
+        vector_metadata = {
+            'id': product.get('id', metadata.get('id')),
+            'name': metadata.get('name', ''),
+            'brand': metadata.get('brand', '').lower(),  # Normalize brand to lowercase
+            'category': metadata.get('category', '').lower(),  # Normalize category to lowercase
+            'subcategory': metadata.get('subcategory', ''),
+            'price': float(metadata.get('price', 0)),
+            'currency': metadata.get('currency', 'VND'),
+            'type': 'product',
+            'rating': float(metadata.get('rating', 0)),
+            'in_stock': metadata.get('in_stock', True),
+            'features': json.dumps(metadata.get('features', []), ensure_ascii=False),
+            'pros': json.dumps(metadata.get('pros', []), ensure_ascii=False),
+            'cons': json.dumps(metadata.get('cons', []), ensure_ascii=False),
+            'use_cases': json.dumps(metadata.get('use_cases', []), ensure_ascii=False),
+            'tags': json.dumps(metadata.get('tags', []), ensure_ascii=False),
+            'review_count': int(metadata.get('review_count', 0)),
+            'warranty': metadata.get('warranty', ''),
+            'created_at': datetime.now().isoformat()
+        }
+        
+        return product.get('id', metadata.get('id')), embedding, vector_metadata
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to prepare enhanced product vector: {e}")
+        return None, None, None
+
+
+def prepare_enhanced_review_vector(review: dict) -> tuple:
+    """Prepare review data for vector storage with enhanced embedding text"""
+    try:
+        # Extract metadata
+        metadata = review.get('metadata', {})
+        
+        # Create comprehensive searchable text from review
+        searchable_parts = []
+        
+        # Review title and content
+        if 'title' in metadata:
+            searchable_parts.append(f"Review title: {metadata['title']}")
+        
+        if 'content' in metadata:
+            searchable_parts.append(f"Review content: {metadata['content']}")
+        
+        # Rating with descriptive terms
+        if 'rating' in metadata:
+            rating = metadata['rating']
+            searchable_parts.append(f"User rating: {rating}/5 stars")
+            if rating >= 5:
+                searchable_parts.append("Perfect excellent outstanding amazing")
+            elif rating >= 4:
+                searchable_parts.append("Good positive satisfied happy")
+            elif rating >= 3:
+                searchable_parts.append("Average okay acceptable neutral")
+            elif rating >= 2:
+                searchable_parts.append("Poor disappointed unsatisfied")
+            else:
+                searchable_parts.append("Terrible awful bad horrible")
+        
+        # Pros and cons from review
+        if 'pros' in metadata:
+            pros = metadata['pros']
+            if pros:
+                searchable_parts.append(f"Positive aspects: {' '.join(pros)}")
+        
+        if 'cons' in metadata:
+            cons = metadata['cons']
+            if cons:
+                searchable_parts.append(f"Negative aspects: {' '.join(cons)}")
+        
+        # User information
+        if 'user_name' in metadata:
+            searchable_parts.append(f"Reviewer: {metadata['user_name']}")
+        
+        # Purchase verification
+        if metadata.get('verified_purchase', False):
+            searchable_parts.append("Verified purchase confirmed buyer authentic review")
+        
+        # Helpful count indicates review quality
+        helpful_count = metadata.get('helpful_count', 0)
+        if helpful_count > 50:
+            searchable_parts.append("Popular helpful review many likes")
+        elif helpful_count > 20:
+            searchable_parts.append("Useful helpful review")
+        
+        # Extract and use the complete 'text' field for review
+        text_content = review.get('text', '')
+        if text_content:
+            # Use the complete text content without splitting
+            searchable_parts.append(f"Complete review: {text_content}")
+        
+        # Add sentiment keywords based on rating
+        rating = metadata.get('rating', 0)
+        if rating >= 4:
+            searchable_parts.append("Positive review recommendation satisfied customer")
+        elif rating <= 2:
+            searchable_parts.append("Negative review complaint unsatisfied customer")
+        
+        # Combine all parts
+        searchable_text = ' '.join(filter(None, searchable_parts))
+        
+        # Create embedding
+        embedding = pinecone_service.create_embedding(searchable_text)
+        
+        # Prepare metadata for storage
+        vector_metadata = {
+            'id': review.get('id', metadata.get('id')),
+            'product_id': metadata.get('product_id', ''),
+            'type': 'review',
+            'rating': float(metadata.get('rating', 0)),
+            'title': metadata.get('title', ''),
+            'content': metadata.get('content', '')[:500],  # Limit content length
+            'pros': json.dumps(metadata.get('pros', []), ensure_ascii=False),
+            'cons': json.dumps(metadata.get('cons', []), ensure_ascii=False),
+            'helpful_count': int(metadata.get('helpful_count', 0)),
+            'verified_purchase': metadata.get('verified_purchase', False),
+            'user_name': metadata.get('user_name', ''),
+            'date': metadata.get('date', ''),
+            'created_at': datetime.now().isoformat()
+        }
+        
+        return f"review_{review.get('id', metadata.get('id'))}", embedding, vector_metadata
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to prepare enhanced review vector: {e}")
+        return None, None, None
+
+
 def insert_products(products_data: list) -> bool:
-    """Insert product data into Pinecone"""
+    """Insert product data into Pinecone using enhanced embedding"""
     try:
         logger.info(f"🔄 Processing {len(products_data)} products...")
         
-        # Prepare vectors
+        # Prepare vectors using enhanced method
         vectors = []
         for product in products_data:
-            vector_id, embedding, metadata = pinecone_service.prepare_product_vector(product)
+            vector_id, embedding, metadata = prepare_enhanced_product_vector(product)
             if vector_id and embedding and metadata:
                 vectors.append((vector_id, embedding, metadata))
             else:
@@ -69,14 +290,14 @@ def insert_products(products_data: list) -> bool:
 
 
 def insert_reviews(reviews_data: list) -> bool:
-    """Insert review data into Pinecone"""
+    """Insert review data into Pinecone using enhanced embedding"""
     try:
         logger.info(f"🔄 Processing {len(reviews_data)} reviews...")
         
-        # Prepare vectors
+        # Prepare vectors using enhanced method
         vectors = []
         for review in reviews_data:
-            vector_id, embedding, metadata = pinecone_service.prepare_review_vector(review)
+            vector_id, embedding, metadata = prepare_enhanced_review_vector(review)
             if vector_id and embedding and metadata:
                 vectors.append((vector_id, embedding, metadata))
             else:
@@ -133,6 +354,47 @@ def calculate_product_ratings(products: list, reviews: list) -> list:
     except Exception as e:
         logger.error(f"❌ Failed to calculate ratings: {e}")
         return products
+
+
+def test_embedding_quality(products: list, reviews: list) -> None:
+    """Test and display embedding quality for sample data"""
+    try:
+        logger.info("🧪 Testing embedding quality...")
+        
+        # Test a sample product
+        if products:
+            sample_product = products[0]
+            vector_id, embedding, metadata = prepare_enhanced_product_vector(sample_product)
+            
+            logger.info(f"📦 Sample Product Embedding:")
+            logger.info(f"   Product: {metadata.get('name', 'Unknown')}")
+            logger.info(f"   Vector ID: {vector_id}")
+            logger.info(f"   Embedding dimension: {len(embedding) if embedding else 0}")
+            logger.info(f"   Metadata keys: {list(metadata.keys()) if metadata else []}")
+            
+            # Show first few embedding values
+            if embedding:
+                logger.info(f"   Embedding sample: [{embedding[0]:.4f}, {embedding[1]:.4f}, ..., {embedding[-1]:.4f}]")
+        
+        # Test a sample review
+        if reviews:
+            sample_review = reviews[0]
+            vector_id, embedding, metadata = prepare_enhanced_review_vector(sample_review)
+            
+            logger.info(f"💬 Sample Review Embedding:")
+            logger.info(f"   Review: {metadata.get('title', 'Unknown')}")
+            logger.info(f"   Vector ID: {vector_id}")
+            logger.info(f"   Embedding dimension: {len(embedding) if embedding else 0}")
+            logger.info(f"   Metadata keys: {list(metadata.keys()) if metadata else []}")
+            
+            # Show first few embedding values
+            if embedding:
+                logger.info(f"   Embedding sample: [{embedding[0]:.4f}, {embedding[1]:.4f}, ..., {embedding[-1]:.4f}]")
+        
+        logger.info("✅ Embedding quality test completed")
+        
+    except Exception as e:
+        logger.error(f"❌ Failed to test embedding quality: {e}")
 
 
 def main():

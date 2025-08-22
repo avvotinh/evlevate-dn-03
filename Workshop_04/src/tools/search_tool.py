@@ -18,21 +18,25 @@ logger = get_logger("search_tool")
 
 class SearchInput(BaseModel):
     """Input schema for SearchTool"""
-    query: Optional[str] = Field(
-        default="",
+    query: str = Field(
         description="Natural language search query in Vietnamese (e.g., 'laptop cho lập trình', 'điện thoại gaming')"
     )
-    category: Optional[str] = Field(
-        default=None,
-        description="Product category to search in: 'laptop' or 'smartphone'"
-    )
-    max_results: Optional[int] = Field(
-        default=3,
-        description="Maximum number of results to return (1-10)"
-    )
-    include_reviews: Optional[bool] = Field(
-        default=False,
-        description="Whether to include product reviews in results"
+    metadata: Optional[Dict[str, Any]] = Field(
+        default_factory=dict,
+        description="""Search filters and criteria. Can include:
+        - category: 'laptop' or 'smartphone'  
+        - subcategory: 'gaming', 'business', 'ultrabook', 'budget', 'flagship', 'mid-range'
+        - brand: 'apple', 'samsung', 'dell', 'hp', 'asus', 'lenovo', 'acer', 'msi', 'xiaomi', 'oppo', 'vivo'
+        - price_min: minimum price in VND
+        - price_max: maximum price in VND
+        - max_results: number of results (1-10, default 3)
+        - include_reviews: true/false (default false)
+        - rating_min: minimum rating (1-5)
+        - in_stock: true/false to filter available products
+        - os: 'windows', 'macos', 'ubuntu', 'ios', 'android' for OS preference
+        - features: list of required features from actual data
+        - use_cases: filter by intended usage from actual data
+        """
     )
 
 
@@ -40,14 +44,20 @@ class SearchTool(BaseTool):
     """Tool for searching products using natural language queries"""
     
     name: str = "search_products"
-    description: str = """Tìm kiếm sản phẩm bằng ngôn ngữ tự nhiên.
+    description: str = """🔍 TÌM KIẾM sản phẩm theo tiêu chí cụ thể.
     
-    Sử dụng tool này khi:
-    - Khách hàng hỏi về sản phẩm cụ thể (vd: "tìm laptop gaming")
-    - Cần tìm sản phẩm theo mô tả (vd: "laptop cho lập trình")
-    - Tìm sản phẩm theo tính năng (vd: "điện thoại camera tốt")
+    MỤC ĐÍCH: Tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định
     
-    Tool sẽ trả về danh sách sản phẩm phù hợp nhất với độ tương đồng cao."""
+    SỬ DỤNG KHI:
+    - Khách hàng TÌM sản phẩm cụ thể: "tìm laptop Dell", "iPhone 15 Pro Max"
+    - Lọc theo thương hiệu: "laptop HP", "smartphone Samsung"  
+    - Lọc theo giá: "laptop dưới 25 triệu", "điện thoại từ 10-20 triệu"
+    - Lọc theo tính năng: "laptop có SSD", "smartphone camera 48MP"
+    - Tìm theo mục đích sử dụng: "laptop gaming", "smartphone chụp ảnh"
+    
+    KHÔNG dùng cho: Gợi ý hoặc tư vấn sản phẩm phù hợp
+    
+    OUTPUT: Danh sách sản phẩm khớp với filters, không có ranking"""
     
     args_schema: Type[BaseModel] = SearchInput
     return_direct: bool = False
@@ -81,16 +91,15 @@ class SearchTool(BaseTool):
     
     def _run(
         self,
-        query: Optional[str] = "",
-        category: Optional[str] = None,
-        max_results: Optional[int] = 5,
-        include_reviews: Optional[bool] = False,
+        query: str,
+        metadata: Optional[Dict[str, Any]] = None,
         run_manager: Optional[CallbackManagerForToolRun] = None,
         **kwargs
     ) -> str:
         """Execute the search tool"""
         try:
             logger.info(f"🔍 Searching products with query: '{query}'")
+            logger.info(f"🎯 Search metadata: {metadata}")
             
             # Validate inputs - if no query, provide helpful message
             if not query or not query.strip():
@@ -101,6 +110,19 @@ class SearchTool(BaseTool):
                     "next_action": "Hãy hỏi khách hàng muốn tìm sản phẩm gì"
                 }, ensure_ascii=False)
             
+            # Extract metadata parameters
+            if metadata is None:
+                metadata = {}
+            
+            category = metadata.get("category")
+            brand = metadata.get("brand")
+            price_min = metadata.get("price_min")
+            price_max = metadata.get("price_max")
+            max_results = metadata.get("max_results", 3)
+            include_reviews = metadata.get("include_reviews", False)
+            rating_min = metadata.get("rating_min")
+            features = metadata.get("features", [])
+            
             # Limit max_results
             max_results = min(max_results or 3, 10)
 
@@ -108,6 +130,22 @@ class SearchTool(BaseTool):
             filters = {}
             if category and category.lower() in ["laptop", "smartphone"]:
                 filters["category"] = category.lower()
+            
+            if brand and brand.strip():
+                filters["brand"] = brand.lower().strip()
+            
+            # Add price filters
+            if price_min is not None or price_max is not None:
+                price_filter = {}
+                if price_min is not None:
+                    price_filter["$gte"] = price_min
+                if price_max is not None:
+                    price_filter["$lte"] = price_max
+                filters["price"] = price_filter
+            
+            # Add rating filter
+            if rating_min is not None:
+                filters["rating"] = {"$gte": rating_min}
             
             # Search products
             try:
@@ -175,8 +213,14 @@ class SearchTool(BaseTool):
                 "message": f"Tìm thấy {len(processed_products)} sản phẩm phù hợp",
                 "query": query,
                 "category": category,
+                "brand": brand,
+                "price_range": {
+                    "min": price_min,
+                    "max": price_max
+                } if price_min is not None or price_max is not None else None,
                 "products": processed_products,
-                "total_found": len(processed_products)
+                "total_found": len(processed_products),
+                "filters_applied": filters
             }
             
             logger.info(f"✅ Search completed: {len(processed_products)} products found")
@@ -192,14 +236,12 @@ class SearchTool(BaseTool):
     
     async def _arun(
         self,
-        query: Optional[str] = "",
-        category: Optional[str] = None,
-        max_results: Optional[int] = 5,
-        include_reviews: Optional[bool] = False,
+        query: str,
+        metadata: Optional[Dict[str, Any]] = None,
         run_manager: Optional[CallbackManagerForToolRun] = None,
     ) -> str:
         """Async version of the tool"""
-        return self._run(query, category, max_results, include_reviews, run_manager)
+        return self._run(query, metadata, run_manager)
 
 
 # Create tool instance

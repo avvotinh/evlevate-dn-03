@@ -9,7 +9,8 @@ from langchain.tools import BaseTool
 from .search_tool import search_tool
 from .compare_tool import compare_tool
 from .recommend_tool import recommend_tool
-from .rag_generation_tool import rag_generation_tool
+from .review_tool import review_tool
+from .generation_tool import generation_tool
 
 from src.utils.logger import get_logger
 
@@ -25,7 +26,8 @@ class ToolManager:
             "search": search_tool,
             "compare": compare_tool,
             "recommend": recommend_tool,
-            "answer_with_context": rag_generation_tool
+            "review": review_tool,
+            "answer_with_context": generation_tool
         }
         
         logger.info(f"✅ ToolManager initialized with {len(self._tools)} tools")
@@ -63,5 +65,6 @@ __all__ = [
     "search_tool", 
     "compare_tool", 
     "recommend_tool",
-    "rag_generation_tool"
+    "review_tool",
+    "generation_tool"
 ]

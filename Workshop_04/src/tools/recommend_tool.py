@@ -11,9 +11,6 @@ from langchain.tools import BaseTool
 from langchain_core.callbacks import CallbackManagerForToolRun
 
 from src.services.pinecone_service import pinecone_service
-from src.services.llm_service import llm_service
-from src.prompts.prompt_manager import PromptType
-from src.utils.prompt_helper import prompt_helper
 from src.utils.logger import get_logger
 
 logger = get_logger("recommend_tool")
@@ -21,33 +18,25 @@ logger = get_logger("recommend_tool")
 
 class RecommendInput(BaseModel):
     """Input schema for RecommendTool"""
-    user_needs: Optional[str] = Field(
-        default="",
+    user_needs: str = Field(
         description="User needs and preferences in Vietnamese (e.g., 'sinh viên IT, cần laptop lập trình, ngân sách 20 triệu')"
     )
-    category: Optional[str] = Field(
-        default=None,
-        description="Product category: 'laptop' or 'smartphone'"
-    )
-    budget_min: Optional[float] = Field(
-        default=None,
-        description="Minimum budget in VND"
-    )
-    budget_max: Optional[float] = Field(
-        default=None,
-        description="Maximum budget in VND"
-    )
-    priority_features: Optional[List[str]] = Field(
-        default=None,
-        description="Priority features (e.g., ['performance', 'battery_life', 'camera', 'portability'])"
-    )
-    usage_purpose: Optional[str] = Field(
-        default=None,
-        description="Primary usage purpose (e.g., 'gaming', 'work', 'study', 'photography')"
-    )
-    num_recommendations: Optional[int] = Field(
-        default=3,
-        description="Number of recommendations to return (1-5)"
+    metadata: Optional[Dict[str, Any]] = Field(
+        default_factory=dict,
+        description="""User preferences and constraints for personalized recommendations. Can include:
+        - category: 'laptop' or 'smartphone'
+        - subcategory_preference: 'gaming', 'business', 'ultrabook', 'budget', 'flagship', 'mid-range'
+        - brand_preference: preferred brand or list ['apple', 'samsung', 'dell', 'hp', 'asus', 'lenovo']
+        - budget_min: minimum budget in VND
+        - budget_max: maximum budget in VND
+        - priority_features: most important features ['performance', 'battery_life', 'camera_quality', 'portability', 'display_quality', 'build_quality', 'storage', 'connectivity']
+        - usage_scenarios: primary use cases ['gaming', 'work', 'study', 'content_creation', 'photography', 'programming', 'design', 'entertainment']
+        - user_profile: user type ['student', 'professional', 'gamer', 'creator', 'business_user', 'casual_user']
+        - num_recommendations: number of recommendations (1-5, default 3)
+        - rating_threshold: minimum acceptable rating (1-5, default 3.5)
+        - must_have_features: absolutely required features ['ssd', 'touchscreen', '4k_display', 'fast_charging', 'wireless_charging', 'fingerprint', 'face_unlock']
+        - deal_breakers: features to avoid ['heavy_weight', 'poor_battery', 'low_storage', 'no_warranty']
+        """
     )
 
 
@@ -55,15 +44,21 @@ class RecommendTool(BaseTool):
     """Tool for generating personalized product recommendations"""
     
     name: str = "recommend_products"
-    description: str = """Đưa ra gợi ý sản phẩm phù hợp dựa trên nhu cầu và sở thích của khách hàng.
+    name: str = "recommend_products"
+    description: str = """💡 TƯ VẤN và GỢI Ý sản phẩm phù hợp với nhu cầu cá nhân.
     
-    Sử dụng tool này khi:
-    - Khách hàng mô tả nhu cầu sử dụng (vd: "cần laptop cho lập trình")
-    - Có thông tin về ngân sách và mục đích sử dụng
-    - Cần gợi ý sản phẩm phù hợp với profile cụ thể
-    - Khách hàng không biết chọn sản phẩm nào
+    MỤC ĐÍCH: Đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng
     
-    Tool sẽ phân tích nhu cầu và đưa ra gợi ý sản phẩm phù hợp nhất với lý do chi tiết."""
+    SỬ DỤNG KHI:
+    - Khách hàng CẦN TƯ VẤN: "gợi ý laptop cho sinh viên", "nên mua smartphone nào"
+    - Mô tả nhu cầu sử dụng: "cần laptop lập trình", "smartphone chụp ảnh đẹp"
+    - Có ngân sách và yêu cầu: "laptop gaming dưới 30 triệu", "iPhone hay Samsung tốt hơn"
+    - Không biết chọn gì: "tư vấn laptop phù hợp", "điện thoại nào đáng mua"
+    - So sánh lựa chọn: "Dell hay HP tốt hơn cho văn phòng"
+    
+    KHÔNG dùng cho: Tìm kiếm sản phẩm cụ thể đã biết tên
+    
+    OUTPUT: Top gợi ý có ranking + lý do chi tiết tại sao phù hợp"""
     
     args_schema: Type[BaseModel] = RecommendInput
     return_direct: bool = False
@@ -92,11 +87,29 @@ class RecommendTool(BaseTool):
                 "recommendations": []
             }, ensure_ascii=False)
     
-    def _score_product_relevance(self, product: Dict[str, Any], user_analysis: Dict[str, Any], priority_features: List[str]) -> float:
+    def _score_product_relevance(self, product: Dict[str, Any], user_analysis: Dict[str, Any], priority_features: List[str], must_have_features: List[str] = None) -> float:
         """Score how relevant a product is to user needs"""
         try:
             score = 0.0
             max_score = 100.0
+            
+            # Check must-have features first (disqualify if missing)
+            if must_have_features:
+                product_features = [f.lower() for f in product.get("features", [])]
+                product_specs = {k.lower(): str(v).lower() for k, v in product.get("specs", {}).items()}
+                product_description = product.get("description", "").lower()
+                
+                for must_feature in must_have_features:
+                    feature_lower = must_feature.lower()
+                    has_feature = (
+                        any(feature_lower in pf for pf in product_features) or
+                        any(feature_lower in spec_key or feature_lower in spec_val 
+                           for spec_key, spec_val in product_specs.items()) or
+                        feature_lower in product_description
+                    )
+                    if not has_feature:
+                        logger.info(f"🚫 Product {product.get('name')} missing must-have feature: {must_feature}")
+                        return 0.0  # Disqualify product
             
             # Base score from rating (20 points max)
             rating = product.get("rating", 0)
@@ -122,40 +135,60 @@ class RecommendTool(BaseTool):
             else:
                 score += 20  # Default score if no priority features
             
-            # Usage purpose alignment (20 points max)
-            usage_purpose = user_analysis.get("usage_purpose", "").lower()
-            if usage_purpose and usage_purpose != "general":
-                purpose_keywords = {
-                    "gaming": ["gaming", "game", "rtx", "nvidia", "high performance"],
-                    "work": ["business", "professional", "productivity", "office"],
-                    "study": ["student", "education", "lightweight", "portable"],
-                    "photography": ["camera", "photo", "image", "video"],
-                    "programming": ["developer", "coding", "ram", "ssd", "performance"],
-                    "design": ["graphics", "gpu", "adobe", "creative", "design"]
+            # Usage scenarios alignment (20 points max)
+            usage_scenarios = user_analysis.get("usage_scenarios", [])
+            if usage_scenarios and usage_scenarios != ["general"]:
+                scenario_keywords = {
+                    "gaming": ["gaming", "game", "rtx", "nvidia", "high performance", "fps"],
+                    "work": ["business", "professional", "productivity", "office", "enterprise"],
+                    "study": ["student", "education", "lightweight", "portable", "battery"],
+                    "photography": ["camera", "photo", "image", "megapixel", "lens"],
+                    "programming": ["developer", "coding", "ram", "ssd", "performance", "compiler"],
+                    "design": ["graphics", "gpu", "adobe", "creative", "design", "display"],
+                    "content_creation": ["video", "editing", "rendering", "creator", "4k"],
+                    "entertainment": ["media", "streaming", "display", "speakers", "entertainment"]
                 }
                 
-                keywords = purpose_keywords.get(usage_purpose, [])
-                purpose_score = 0
-                for keyword in keywords:
-                    if any(keyword in pf for pf in product_features):
-                        purpose_score += 4
-                    elif any(keyword in spec_key or keyword in spec_val 
-                           for spec_key, spec_val in product_specs.items()):
-                        purpose_score += 3
-                    elif keyword in product.get("description", "").lower():
-                        purpose_score += 2
+                scenario_score = 0
+                for scenario in usage_scenarios:
+                    keywords = scenario_keywords.get(scenario.lower(), [])
+                    for keyword in keywords:
+                        if any(keyword in pf for pf in product_features):
+                            scenario_score += 4
+                        elif any(keyword in spec_key or keyword in spec_val 
+                               for spec_key, spec_val in product_specs.items()):
+                            scenario_score += 3
+                        elif keyword in product.get("description", "").lower():
+                            scenario_score += 2
                 
-                score += min(purpose_score, 20)
+                score += min(scenario_score, 20)
             else:
                 score += 10  # Default score
             
-            # Brand reputation (20 points max)
-            premium_brands = ["apple", "samsung", "dell", "hp", "lenovo", "asus", "sony"]
-            brand = product.get("brand", "").lower()
-            if brand in premium_brands:
-                score += 15
+            # Brand preference bonus (20 points max)
+            brand_preference = user_analysis.get("brand_preference")
+            product_brand = product.get("brand", "").lower()
+            
+            if brand_preference:
+                if isinstance(brand_preference, list):
+                    if any(brand.lower() in product_brand for brand in brand_preference):
+                        score += 20  # Perfect match
+                    else:
+                        score += 5   # No match penalty
+                elif isinstance(brand_preference, str):
+                    if brand_preference.lower() in product_brand:
+                        score += 20  # Perfect match
+                    else:
+                        score += 5   # No match penalty
+                else:
+                    score += 10  # No preference
             else:
-                score += 10
+                # No brand preference - judge by brand reputation
+                premium_brands = ["apple", "samsung", "dell", "hp", "lenovo", "asus", "sony", "msi"]
+                if product_brand in premium_brands:
+                    score += 15
+                else:
+                    score += 10
             
             return min(score, max_score)
             
@@ -163,80 +196,18 @@ class RecommendTool(BaseTool):
             logger.error(f"❌ Error scoring product relevance: {e}")
             return 50.0  # Default score
     
-    def _generate_recommendation_explanation(self, product: Dict[str, Any], user_analysis: Dict[str, Any], rank: int) -> str:
-        """Generate explanation for why this product is recommended"""
-        try:
-            # Use prompt helper to format product information for prompt
-            product_summary = prompt_helper.format_product_for_prompt(product, include_reviews=False)
-            
-            # Use prompt helper for safe formatting
-            prompt = prompt_helper.safe_format_prompt(
-                PromptType.RECOMMEND_EXPLANATION,
-                product_summary=product_summary,
-                user_analysis=user_analysis,
-                rank=rank
-            )
-            
-            if not prompt:
-                logger.error("❌ Could not format recommendation explanation prompt")
-                return f"Sản phẩm {product.get('name')} phù hợp với nhu cầu của bạn."
-            
-            response = llm_service.generate_text(
-                prompt=prompt,
-                context="recommendation",
-                temperature=0.3
-            )
-            
-            # generate_text returns string directly
-            return response if response else f"Sản phẩm {product.get('name')} phù hợp với nhu cầu của bạn."
-            
-        except Exception as e:
-            logger.error(f"❌ Error generating explanation: {e}")
-            return f"Sản phẩm {product.get('name')} được gợi ý dựa trên tiêu chí của bạn."
-    
     def _run(
         self,
-        user_needs: Optional[str] = "",
-        category: Optional[str] = None,
-        budget_min: Optional[float] = None,
-        budget_max: Optional[float] = None,
-        priority_features: Optional[List[str]] = None,
-        usage_purpose: Optional[str] = None,
-        num_recommendations: Optional[int] = 3,
+        user_needs: str,
+        metadata: Optional[Dict[str, Any]] = None,
         run_manager: Optional[CallbackManagerForToolRun] = None,
         **kwargs
     ) -> str:
         """Execute the recommend tool"""
         try:
-            # Handle potential JSON string input
-            logger.info(f"🎯 Raw input received - user_needs: '{user_needs}', kwargs: {kwargs}")
-            
-            # If user_needs is a JSON string, try to parse it
-            if isinstance(user_needs, str) and user_needs.startswith('{'):
-                try:
-                    parsed_input = json.loads(user_needs)
-                    user_needs = parsed_input.get("user_needs", user_needs)
-                    category = parsed_input.get("category", category)
-                    budget_min = parsed_input.get("budget_min", budget_min)
-                    budget_max = parsed_input.get("budget_max", budget_max)
-                    priority_features = parsed_input.get("priority_features", priority_features)
-                    usage_purpose = parsed_input.get("usage_purpose", usage_purpose)
-                    num_recommendations = parsed_input.get("num_recommendations", num_recommendations)
-                    logger.info(f"📋 Parsed JSON input successfully")
-                except json.JSONDecodeError:
-                    logger.info(f"📝 Input is not JSON, using as regular string")
-            
-            # Extract from kwargs if parameters are there
-            category = category or kwargs.get("category")
-            budget_min = budget_min or kwargs.get("budget_min") 
-            budget_max = budget_max or kwargs.get("budget_max")
-            priority_features = priority_features or kwargs.get("priority_features")
-            usage_purpose = usage_purpose or kwargs.get("usage_purpose")
-            num_recommendations = num_recommendations or kwargs.get("num_recommendations", 3)
-
             logger.info(f"🎯 Generating recommendations for: '{user_needs}'")
-            logger.info(f"📊 Parameters received: category={category}, budget_min={budget_min}, budget_max={budget_max}, "
-            f"priority_features={priority_features}, usage_purpose={usage_purpose}, num_recommendations={num_recommendations}")
+            logger.info(f"📊 Recommendation metadata: {metadata}")
+            
             # Validate inputs - if no user needs provided, return helpful message
             if not user_needs or not user_needs.strip():
                 return json.dumps({
@@ -246,14 +217,34 @@ class RecommendTool(BaseTool):
                     "next_action": "Hãy hỏi khách hàng về nhu cầu cụ thể trước khi gợi ý sản phẩm"
                 }, ensure_ascii=False)
             
+            # Extract metadata parameters with new naming
+            if metadata is None:
+                metadata = {}
+            
+            category = metadata.get("category")
+            subcategory_preference = metadata.get("subcategory_preference")
+            brand_preference = metadata.get("brand_preference")
+            budget_min = metadata.get("budget_min")
+            budget_max = metadata.get("budget_max")
+            priority_features = metadata.get("priority_features", [])
+            usage_scenarios = metadata.get("usage_scenarios", [])
+            user_profile = metadata.get("user_profile")
+            num_recommendations = metadata.get("num_recommendations", 3)
+            rating_threshold = metadata.get("rating_threshold", 3.5)
+            must_have_features = metadata.get("must_have_features", [])
+            deal_breakers = metadata.get("deal_breakers", [])
+            
+            # Validate and limit num_recommendations
             num_recommendations = min(num_recommendations or 3, 5)
             
-            # Use direct parameters instead of LLM analysis
+            # Use direct parameters for analysis
             user_analysis = {
                 "category": category,
-                "usage_purpose": usage_purpose or "general",
+                "brand_preference": brand_preference,
+                "subcategory_preference": subcategory_preference,
+                "usage_scenarios": usage_scenarios or ["general"],
+                "user_profile": user_profile or "general_user",
                 "priority_features": priority_features or [],
-                "user_profile": "khách hàng cần tư vấn",
                 "key_requirements": [user_needs] if user_needs else []
             }
             
@@ -261,6 +252,17 @@ class RecommendTool(BaseTool):
             filters = {}
             if category:
                 filters["category"] = category.lower()
+            
+            # Handle brand preference (can be string or list)
+            if brand_preference:
+                if isinstance(brand_preference, list):
+                    filters["brand"] = {"$in": [b.lower().strip() for b in brand_preference]}
+                elif isinstance(brand_preference, str) and brand_preference.strip():
+                    filters["brand"] = brand_preference.lower().strip()
+            
+            # Add subcategory preference
+            if subcategory_preference:
+                filters["subcategory"] = subcategory_preference.lower()
             
             # Budget filtering
             if budget_min is not None or budget_max is not None:
@@ -271,14 +273,18 @@ class RecommendTool(BaseTool):
                     price_filter["$lte"] = budget_max
                 filters["price"] = price_filter
             
+            # Rating filtering
+            if rating_threshold is not None:
+                filters["rating"] = {"$gte": rating_threshold}
+            
             logger.info(f"🔍 Search filters applied: {filters}")
 
             # Build search query from available information
             search_parts = []
             if user_needs:
                 search_parts.append(user_needs)
-            if usage_purpose and usage_purpose != "general":
-                search_parts.append(usage_purpose)
+            if usage_scenarios and usage_scenarios != ["general"]:
+                search_parts.extend(usage_scenarios)
             if priority_features:
                 search_parts.extend(priority_features)
             
@@ -318,9 +324,12 @@ class RecommendTool(BaseTool):
                 score = self._score_product_relevance(
                     product, 
                     user_analysis, 
-                    user_analysis.get("priority_features", [])
+                    user_analysis.get("priority_features", []),
+                    must_have_features
                 )
-                scored_products.append((product, score))
+                # Only include products with score > 0 (passed must-have features check)
+                if score > 0:
+                    scored_products.append((product, score))
             
             # Sort by score (highest first)
             scored_products.sort(key=lambda x: x[1], reverse=True)
@@ -328,9 +337,7 @@ class RecommendTool(BaseTool):
             # Generate recommendations
             recommendations = []
             for i, (product, score) in enumerate(scored_products[:num_recommendations]):
-                explanation = self._generate_recommendation_explanation(
-                    product, user_analysis, i + 1
-                )
+                explanation = f"Sản phẩm #{i + 1}: {product.get('name')} - Raw data for RAG processing"
                 
                 recommendation = {
                     "rank": i + 1,
@@ -390,17 +397,12 @@ class RecommendTool(BaseTool):
     
     async def _arun(
         self,
-        user_needs: Optional[str] = "",
-        category: Optional[str] = None,
-        budget_min: Optional[float] = None,
-        budget_max: Optional[float] = None,
-        priority_features: Optional[List[str]] = None,
-        usage_purpose: Optional[str] = None,
-        num_recommendations: Optional[int] = 3,
+        user_needs: str,
+        metadata: Optional[Dict[str, Any]] = None,
         run_manager: Optional[CallbackManagerForToolRun] = None,
     ) -> str:
         """Async version of the tool"""
-        return self._run(user_needs, category, budget_min, budget_max, priority_features, usage_purpose, num_recommendations, run_manager)
+        return self._run(user_needs, metadata, run_manager)
 
 
 # Create tool instance

@@ -130,90 +130,6 @@ class PineconeService:
             logger.error(f"❌ Failed to create embedding: {e}")
             return [0.0] * self.embedding_dimension
     
-    def prepare_product_vector(self, product: Dict[str, Any]) -> Tuple[str, List[float], Dict[str, Any]]:
-        """Prepare product data for vector storage"""
-        try:
-            # Create searchable text from product data
-            searchable_parts = [
-                product.get('name', ''),
-                product.get('brand', ''),
-                product.get('description', ''),
-                ' '.join(product.get('features', [])),
-            ]
-            
-            # Add specs information
-            specs = product.get('specs', {})
-            for key, value in specs.items():
-                if isinstance(value, str):
-                    searchable_parts.append(f"{key}: {value}")
-            
-            searchable_text = ' '.join(filter(None, searchable_parts))
-            
-            # Create embedding
-            embedding = self.create_embedding(searchable_text)
-            
-            # Prepare metadata
-            metadata = {
-                'id': product['id'],
-                'name': product['name'],
-                'brand': product['brand'],
-                'category': product['category'],
-                'subcategory': product.get('subcategory', ''),
-                'price': float(product['price']),
-                'currency': product.get('currency', 'VND'),
-                'type': 'product',
-                'description': product.get('description', '')[:500],  # Limit description length
-                'features': json.dumps(product.get('features', []), ensure_ascii=False),
-                'specs': json.dumps(specs, ensure_ascii=False),
-                'rating': product.get('rating', 0.0),
-                'created_at': datetime.now().isoformat()
-            }
-            
-            return product['id'], embedding, metadata
-            
-        except Exception as e:
-            logger.error(f"❌ Failed to prepare product vector: {e}")
-            return None, None, None
-    
-    def prepare_review_vector(self, review: Dict[str, Any]) -> Tuple[str, List[float], Dict[str, Any]]:
-        """Prepare review data for vector storage"""
-        try:
-            # Create searchable text from review
-            searchable_parts = [
-                review.get('title', ''),
-                review.get('content', ''),
-                ' '.join(review.get('pros', [])),
-                ' '.join(review.get('cons', []))
-            ]
-            
-            searchable_text = ' '.join(filter(None, searchable_parts))
-            
-            # Create embedding
-            embedding = self.create_embedding(searchable_text)
-            
-            # Prepare metadata
-            metadata = {
-                'id': review['id'],
-                'product_id': review['product_id'],
-                'type': 'review',
-                'rating': float(review['rating']),
-                'title': review.get('title', ''),
-                'content': review.get('content', '')[:500],  # Limit content length
-                'pros': json.dumps(review.get('pros', []), ensure_ascii=False),
-                'cons': json.dumps(review.get('cons', []), ensure_ascii=False),
-                'helpful_count': review.get('helpful_count', 0),
-                'verified_purchase': review.get('verified_purchase', False),
-                'user_name': review.get('user_name', ''),
-                'date': review.get('date', ''),
-                'created_at': datetime.now().isoformat()
-            }
-            
-            return f"review_{review['id']}", embedding, metadata
-            
-        except Exception as e:
-            logger.error(f"❌ Failed to prepare review vector: {e}")
-            return None, None, None
-    
     def upsert_vectors(self, vectors: List[Tuple[str, List[float], Dict[str, Any]]], batch_size: int = 100):
         """Upsert vectors to Pinecone in batches"""
         try:
@@ -292,40 +208,34 @@ class PineconeService:
             for i, match in enumerate(results.matches[:3]):  # Log first 3 matches
                 logger.info(f"  Match {i+1}: score={match.score:.3f}, id={match.id}")
             
-            logger.info(f"🎯 Using similarity threshold: {Config.SIMILARITY_THRESHOLD}")
+            # Sort matches by similarity score in descending order and take top_k
+            sorted_matches = sorted(results.matches, key=lambda x: x.score, reverse=True)[:top_k]
+            logger.info(f"🎯 Taking top {len(sorted_matches)} matches sorted by similarity score")
             
             products = []
-            filtered_count = 0
-            for match in results.matches:
+            for match in sorted_matches:
                 logger.debug(f"Processing match: id={match.id}, score={match.score}")
-                if match.score >= Config.SIMILARITY_THRESHOLD:
-                    product_data = match.metadata.copy()
-                    product_data['similarity_score'] = float(match.score)
-                    
-                    # Parse JSON fields back to objects
-                    if 'features' in product_data:
-                        try:
-                            product_data['features'] = json.loads(product_data['features'])
-                        except:
-                            product_data['features'] = []
-                    
-                    if 'specs' in product_data:
-                        try:
-                            product_data['specs'] = json.loads(product_data['specs'])
-                        except:
-                            product_data['specs'] = {}
-                    
-                    # Include reviews if requested
-                    if include_reviews:
-                        product_data['reviews'] = self.get_product_reviews(product_data['id'])
-                    
-                    products.append(product_data)
-                else:
-                    filtered_count += 1
-                    logger.debug(f"Filtered out {match.id} (score {match.score:.3f} < {Config.SIMILARITY_THRESHOLD})")
-            
-            if filtered_count > 0:
-                logger.info(f"⚠️ Filtered out {filtered_count} matches due to low similarity scores")
+                product_data = match.metadata.copy()
+                product_data['similarity_score'] = float(match.score)
+                
+                # Parse JSON fields back to objects
+                if 'features' in product_data:
+                    try:
+                        product_data['features'] = json.loads(product_data['features'])
+                    except:
+                        product_data['features'] = []
+                
+                if 'specs' in product_data:
+                    try:
+                        product_data['specs'] = json.loads(product_data['specs'])
+                    except:
+                        product_data['specs'] = {}
+                
+                # Include reviews if requested
+                if include_reviews:
+                    product_data['reviews'] = self.get_product_reviews(product_data['id'])
+                
+                products.append(product_data)
             
             logger.info(f"✅ Found {len(products)} products")
             return products
@@ -375,76 +285,6 @@ class PineconeService:
             
         except Exception as e:
             logger.error(f"❌ Failed to get reviews: {e}")
-            return []
-    
-    def filter_products(
-        self, 
-        category: Optional[str] = None,
-        min_price: Optional[float] = None,
-        max_price: Optional[float] = None,
-        brand: Optional[str] = None,
-        min_rating: Optional[float] = None,
-        top_k: int = 20
-    ) -> List[Dict[str, Any]]:
-        """Filter products by criteria"""
-        try:
-            if not self.index:
-                self.index = self.pc.Index(Config.PINECONE_INDEX_NAME)
-            
-            # Build filter
-            filter_dict = {"type": "product"}
-            
-            if category:
-                filter_dict["category"] = category
-            
-            if brand:
-                filter_dict["brand"] = brand
-            
-            if min_price is not None or max_price is not None:
-                price_filter = {}
-                if min_price is not None:
-                    price_filter["$gte"] = min_price
-                if max_price is not None:
-                    price_filter["$lte"] = max_price
-                filter_dict["price"] = price_filter
-            
-            if min_rating is not None:
-                filter_dict["rating"] = {"$gte": min_rating}
-            
-            logger.info(f"🔍 Filtering products with: {filter_dict}")
-            
-            # Query with dummy vector (we're just filtering)
-            results = self.index.query(
-                vector=[0.0] * self.embedding_dimension,
-                filter=filter_dict,
-                top_k=top_k,
-                include_metadata=True
-            )
-            
-            products = []
-            for match in results.matches:
-                product_data = match.metadata.copy()
-                
-                # Parse JSON fields
-                if 'features' in product_data:
-                    try:
-                        product_data['features'] = json.loads(product_data['features'])
-                    except:
-                        product_data['features'] = []
-                
-                if 'specs' in product_data:
-                    try:
-                        product_data['specs'] = json.loads(product_data['specs'])
-                    except:
-                        product_data['specs'] = {}
-                
-                products.append(product_data)
-            
-            logger.info(f"✅ Found {len(products)} products matching criteria")
-            return products
-            
-        except Exception as e:
-            logger.error(f"❌ Filter failed: {e}")
             return []
     
     def delete_all_vectors(self) -> bool:

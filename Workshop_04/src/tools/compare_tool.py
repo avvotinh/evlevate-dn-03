@@ -11,9 +11,6 @@ from langchain.tools import BaseTool
 from langchain_core.callbacks import CallbackManagerForToolRun
 
 from src.services.pinecone_service import pinecone_service
-from src.services.llm_service import llm_service
-from src.prompts.prompt_manager import PromptType
-from src.utils.prompt_helper import prompt_helper
 from src.utils.logger import get_logger
 
 logger = get_logger("compare_tool")
@@ -161,36 +158,6 @@ class CompareTool(BaseTool):
         except Exception as e:
             logger.error(f"❌ Error getting product {identifier}: {e}")
             return None
-    
-    def _generate_comparison_analysis(self, products: List[Dict[str, Any]], aspects: List[str]) -> str:
-        """Generate AI-powered comparison analysis"""
-        try:
-            # Use prompt helper to format comparison data
-            comparison_data = prompt_helper.format_comparison_data(products)
-            
-            # Use prompt helper for safe formatting
-            prompt = prompt_helper.safe_format_prompt(
-                PromptType.COMPARE_ANALYSIS,
-                num_products=len(products),
-                comparison_data=comparison_data,
-                aspects=', '.join(aspects) if aspects else 'tổng quan'
-            )
-            
-            if not prompt:
-                logger.error("❌ Could not format comparison analysis prompt")
-                return "Không thể tạo phân tích so sánh"
-            
-            analysis = llm_service.generate_text(
-                prompt=prompt,
-                context="comparison",
-                temperature=0.3
-            )
-            
-            return analysis.get("response", "Không thể tạo phân tích so sánh")
-            
-        except Exception as e:
-            logger.error(f"❌ Error generating comparison analysis: {e}")
-            return "Không thể tạo phân tích so sánh do lỗi hệ thống"
     
     def _extract_key_specs(self, product: Dict[str, Any]) -> Dict[str, Any]:
         """Extract key specs for comparison table"""
@@ -406,9 +373,6 @@ class CompareTool(BaseTool):
                         "recent_feedback": reviews[0].get("content", "")[:100] + "..." if reviews else "Chưa có đánh giá"
                     }
             
-            # Generate AI analysis
-            ai_analysis = self._generate_comparison_analysis(products, comparison_aspects)
-            
             # Prepare result
             result = {
                 "success": True,
@@ -416,8 +380,8 @@ class CompareTool(BaseTool):
                 "products_compared": [p.get("name") for p in products],
                 "comparison_aspects": comparison_aspects,
                 "comparison_table": comparison_table,
-                "ai_analysis": ai_analysis,
-                "total_products": len(products)
+                "total_products": len(products),
+                "raw_products_data": products
             }
             
             if not_found:

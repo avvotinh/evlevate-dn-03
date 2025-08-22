@@ -1,18 +1,20 @@
 """
 Enhanced LangGraph Agent for E-commerce AI Product Advisor
-Improved implementation with ReAct Agent compatibility and advanced features
+Improved implementation with native LangGraph memory and state management
 """
 
 from typing import Dict, List, Any, Optional, TypedDict, Annotated
 from langgraph.graph import StateGraph, END
 from langgraph.graph.message import add_messages
-from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
-from langchain.memory import ConversationBufferWindowMemory
+from langgraph.checkpoint.memory import MemorySaver
+from langchain_core.messages import BaseMessage, HumanMessage
 import json
 import re
+import uuid
 
 from src.services.llm_service import llm_service
 from src.tools.tool_manager import ToolManager
+from src.prompts.prompt_manager import prompt_manager, PromptType
 from src.utils.logger import get_logger
 
 logger = get_logger("langgraph_agent")
@@ -29,6 +31,7 @@ class AgentState(TypedDict):
     search_results: Optional[Dict[str, Any]]
     comparison_results: Optional[Dict[str, Any]]
     recommendation_results: Optional[Dict[str, Any]]
+    review_results: Optional[Dict[str, Any]]
     context_data: Optional[str]
     final_response: Optional[str]
     iteration_count: int
@@ -37,27 +40,18 @@ class AgentState(TypedDict):
 
 
 class ProductAdvisorLangGraphAgent:
-    """Enhanced LangGraph-based Product Advisor Agent"""
+    """Enhanced LangGraph-based Product Advisor Agent with native memory management"""
     
     def __init__(self):
-        """Initialize LangGraph agent with ReAct compatibility"""
+        """Initialize LangGraph agent with native memory saver"""
         self.tool_manager = ToolManager()
         self.llm = llm_service.get_llm()
         
-        # Memory management similar to ReAct agent
-        self.memories: Dict[str, ConversationBufferWindowMemory] = {}
+        # Native LangGraph memory management
+        self.memory_saver = MemorySaver()
         
         self.graph = self._create_graph()
-        logger.info("✅ Enhanced LangGraph Agent initialized")
-    
-    def _get_memory(self, session_id: str) -> ConversationBufferWindowMemory:
-        """Get or create memory for session"""
-        if session_id not in self.memories:
-            self.memories[session_id] = ConversationBufferWindowMemory(
-                k=10, memory_key="chat_history", return_messages=True,
-                output_key="output", input_key="input"
-            )
-        return self.memories[session_id]
+        logger.info("✅ Enhanced LangGraph Agent initialized with native memory")
     
     def _create_graph(self) -> StateGraph:
         """Create enhanced LangGraph workflow"""
@@ -70,6 +64,7 @@ class ProductAdvisorLangGraphAgent:
         workflow.add_node("search_products", self._search_products)
         workflow.add_node("compare_products", self._compare_products)
         workflow.add_node("recommend_products", self._recommend_products)
+        workflow.add_node("get_reviews", self._get_reviews)
         workflow.add_node("generate_response", self._generate_response)
         workflow.add_node("handle_error", self._handle_error)
         
@@ -85,51 +80,43 @@ class ProductAdvisorLangGraphAgent:
                 "search": "search_products",
                 "compare": "compare_products", 
                 "recommend": "recommend_products",
+                "review": "get_reviews",
                 "direct": "generate_response",
                 "error": "handle_error"
             }
         )
         
         # All nodes can lead to response generation or error handling
-        workflow.add_edge("handle_greeting", "generate_response")
+        workflow.add_edge("handle_greeting", END)  # Greeting ends directly
         workflow.add_edge("search_products", "generate_response")
         workflow.add_edge("compare_products", "generate_response")
         workflow.add_edge("recommend_products", "generate_response")
-        workflow.add_edge("handle_error", "generate_response")
+        workflow.add_edge("get_reviews", "generate_response")
+        workflow.add_edge("handle_error", END)
         workflow.add_edge("generate_response", END)
         
-        return workflow.compile()
+        # Compile with memory saver for persistent state management
+        return workflow.compile(checkpointer=self.memory_saver)
 
     def _classify_intent_with_llm(self, user_input: str) -> str:
         """Use LLM to classify user intent intelligently"""
         try:
-            intent_prompt = f"""Phân tích ý định của người dùng và trả về CHÍNH XÁC một trong các intent sau:
-
-INTENT OPTIONS:
-- greeting: Chào hỏi, cảm ơn, hỏi về AI
-- search: Tìm kiếm thông tin sản phẩm cụ thể, hỏi cấu hình, thông số, giá
-- compare: So sánh 2+ sản phẩm
-- recommend: Xin gợi ý, tư vấn sản phẩm phù hợp với nhu cầu
-- direct: Câu hỏi đơn giản khác
-
-USER INPUT: "{user_input}"
-
-EXAMPLES:
-- "Xin chào" → greeting
-- "Dell Inspiron 14 5420 cấu hình như thế nào" → search
-- "iPhone 15 vs Samsung S24" → compare
-- "Gợi ý laptop cho sinh viên" → recommend
-- "Cảm ơn bạn" → greeting
-
-Chỉ trả về TÊN INTENT (greeting/search/compare/recommend/direct):"""
-
+            # Get prompt template from prompt manager
+            prompt_template = prompt_manager.get_prompt(PromptType.INTENT_CLASSIFICATION)
+            if not prompt_template:
+                logger.error("❌ Intent classification prompt not found")
+                return None
+            
+            # Format prompt with user input
+            intent_prompt = prompt_template.format(user_input=user_input)
+            
             response = self.llm.invoke([HumanMessage(content=intent_prompt)])
             intent = response.content.strip().lower()
 
             # Validate intent
-            valid_intents = ["greeting", "search", "compare", "recommend", "direct"]
+            valid_intents = ["greeting", "search", "compare", "recommend", "review", "direct"]
             if intent in valid_intents:
-                logger.info(f"🤖 LLM classified intent: {intent}")
+                logger.info(f"🎯 LLM classified intent: {intent}")
                 return intent
             else:
                 logger.warning(f"⚠️ LLM returned invalid intent: {intent}")
@@ -215,8 +202,8 @@ Chỉ trả về TÊN INTENT (greeting/search/compare/recommend/direct):"""
             greeting_response = """Xin chào! 👋 Tôi là AI Product Advisor - trợ lý AI chuyên tư vấn sản phẩm điện tử.
 
 Tôi có thể giúp bạn:
-🔍 Tìm kiếm laptop và smartphone phù hợp
-⚖️ So sánh sản phẩm chi tiết  
+🔍 Tìm kiếm các sản phẩm điện tử thông minh
+⚖️ So sánh sản phẩm chi tiết
 💡 Đưa ra gợi ý dựa trên nhu cầu
 💰 Tư vấn theo ngân sách
 
@@ -243,17 +230,107 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         
         return state
     
+    def _extract_search_params(self, user_input: str) -> Dict[str, Any]:
+        """Extract search parameters from user input using LLM"""
+        try:
+            # Get prompt template from prompt manager
+            prompt_template = prompt_manager.get_prompt(PromptType.SEARCH_EXTRACTION)
+            if not prompt_template:
+                logger.error("❌ Search extraction prompt not found")
+                return self._fallback_search_params(user_input)
+            
+            # Format prompt with user input
+            extract_prompt = prompt_template.format(user_input=user_input)
+            
+            response = self.llm.invoke([HumanMessage(content=extract_prompt)])
+            params = json.loads(response.content.strip())
+            logger.info(f"🎯 Extracted search params: {params}")
+            return params
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to extract search params: {e}")
+            return self._fallback_search_params(user_input)
+    
+    def _fallback_search_params(self, user_input: str) -> Dict[str, Any]:
+        """Fallback method to extract basic search parameters using regex"""
+        try:
+            # Fallback: try to extract basic info with regex
+            fallback_metadata = {
+                "category": None,
+                "brand": None,
+                "price_min": None,
+                "price_max": None,
+                "max_results": 3,
+                "include_reviews": False
+            }
+            
+            # Simple category detection
+            if any(word in user_input.lower() for word in ["laptop", "macbook"]):
+                fallback_metadata["category"] = "laptop"
+            elif any(word in user_input.lower() for word in ["điện thoại", "smartphone", "iphone"]):
+                fallback_metadata["category"] = "smartphone"
+            
+            # Simple brand detection
+            brands = ["apple", "samsung", "dell", "hp", "asus", "xiaomi", "oppo", "vivo", "lenovo", "acer", "sony", "huawei"]
+            for brand in brands:
+                if brand in user_input.lower():
+                    fallback_metadata["brand"] = brand
+                    break
+            
+            # Simple price detection (basic regex)
+            price_patterns = [
+                r'dưới (\d+) triệu',
+                r'trên (\d+) triệu', 
+                r'từ (\d+)-(\d+) triệu',
+                r'khoảng (\d+) triệu'
+            ]
+            for pattern in price_patterns:
+                match = re.search(pattern, user_input.lower())
+                if match:
+                    if 'dưới' in pattern:
+                        fallback_metadata["price_max"] = float(match.group(1)) * 1000000
+                    elif 'trên' in pattern:
+                        fallback_metadata["price_min"] = float(match.group(1)) * 1000000
+                    elif 'từ' in pattern:
+                        fallback_metadata["price_min"] = float(match.group(1)) * 1000000
+                        fallback_metadata["price_max"] = float(match.group(2)) * 1000000
+                    elif 'khoảng' in pattern:
+                        price = float(match.group(1)) * 1000000
+                        fallback_metadata["price_min"] = price * 0.8
+                        fallback_metadata["price_max"] = price * 1.2
+                    break
+                    
+            return {
+                "query": user_input,
+                "metadata": fallback_metadata
+            }
+        except Exception as e:
+            logger.error(f"❌ Fallback search params extraction failed: {e}")
+            return {
+                "query": user_input,
+                "metadata": {
+                    "category": None,
+                    "brand": None,
+                    "price_min": None,
+                    "price_max": None,
+                    "max_results": 3,
+                    "include_reviews": False
+                }
+            }
+
     def _search_products(self, state: AgentState) -> AgentState:
-        """Enhanced product search with error handling"""
+        """Enhanced product search with intelligent parameter extraction"""
         try:
             search_tool = self.tool_manager.get_tool("search")
             if not search_tool:
                 raise Exception("Search tool not available")
 
-            # Use string input for compatibility with existing tools
-            search_query = state["user_input"]
+            # Extract structured parameters from user input
+            search_params = self._extract_search_params(state["user_input"])
+            
+            # Create JSON input for the tool
+            search_input = json.dumps(search_params, ensure_ascii=False)
 
-            result = search_tool.run(search_query)
+            result = search_tool.run(search_input)
             state["search_results"] = result
             state["tools_used"].append("search_products")
             
@@ -261,13 +338,13 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "search_products",
-                "thought": f"Tìm kiếm sản phẩm với query: {state['user_input'][:50]}...",
-                "action_input": search_query,
+                "thought": f"Tìm kiếm sản phẩm với params: {search_params}",
+                "action_input": search_input,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
             state["reasoning_steps"].append(reasoning_step)
             
-            logger.info("✅ Search completed")
+            logger.info("✅ Search completed with structured input")
             
         except Exception as e:
             logger.error(f"❌ Search failed: {e}")
@@ -276,17 +353,61 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         
         return state
 
+    def _extract_compare_params(self, user_input: str) -> Dict[str, Any]:
+        """Extract comparison parameters from user input using LLM"""
+        try:
+            # Get prompt template from prompt manager
+            prompt_template = prompt_manager.get_prompt(PromptType.COMPARE_EXTRACTION)
+            if not prompt_template:
+                logger.error("❌ Compare extraction prompt not found")
+                return self._fallback_compare_params(user_input)
+            
+            # Format prompt with user input
+            extract_prompt = prompt_template.format(user_input=user_input)
+            
+            response = self.llm.invoke([HumanMessage(content=extract_prompt)])
+            params = json.loads(response.content.strip())
+            logger.info(f"🎯 Extracted compare params: {params}")
+            return params
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to extract compare params: {e}")
+            return self._fallback_compare_params(user_input)
+            # Fallback: try to extract product names from user input
+            import re
+            # Look for vs, so sánh, khác patterns
+            vs_patterns = [r'(.+?)\s+vs\s+(.+)', r'so sánh\s+(.+?)\s+và\s+(.+)', r'(.+?)\s+khác\s+gì\s+(.+)']
+            product_names = []
+            
+            for pattern in vs_patterns:
+                match = re.search(pattern, user_input, re.IGNORECASE)
+                if match:
+                    product_names = [match.group(1).strip(), match.group(2).strip()]
+                    break
+            
+            return {
+                "product_names": product_names if product_names else [user_input],
+                "comparison_aspects": ["giá", "hiệu năng", "thiết kế"],
+                "include_reviews": True
+            }
+
     def _compare_products(self, state: AgentState) -> AgentState:
-        """Enhanced product comparison with error handling"""
+        """Enhanced product comparison with intelligent parameter extraction"""
         try:
             compare_tool = self.tool_manager.get_tool("compare")
             if not compare_tool:
                 raise Exception("Compare tool not available")
 
-            # Use string input for compatibility with existing tools
-            compare_query = state["user_input"]
+            # Extract structured parameters from user input
+            compare_params = self._extract_compare_params(state["user_input"])
+            
+            # Create JSON input for the tool
+            compare_input = json.dumps({
+                "product_ids": compare_params["product_names"],  # Tool will search by name
+                "comparison_aspects": compare_params["comparison_aspects"],
+                "include_reviews": compare_params["include_reviews"]
+            }, ensure_ascii=False)
 
-            result = compare_tool.run(compare_query)
+            result = compare_tool.run(compare_input)
             state["comparison_results"] = result
             state["tools_used"].append("compare_products")
 
@@ -294,13 +415,13 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "compare_products",
-                "thought": f"So sánh sản phẩm với query: {state['user_input'][:50]}...",
-                "action_input": compare_query,
+                "thought": f"So sánh sản phẩm với params: {compare_params}",
+                "action_input": compare_input,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
             state["reasoning_steps"].append(reasoning_step)
 
-            logger.info("✅ Comparison completed")
+            logger.info("✅ Comparison completed with structured input")
 
         except Exception as e:
             logger.error(f"❌ Comparison failed: {e}")
@@ -309,17 +430,116 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
 
         return state
 
+    def _extract_recommend_params(self, user_input: str) -> Dict[str, Any]:
+        """Extract recommendation parameters from user input using LLM"""
+        try:
+            # Get prompt template from prompt manager
+            prompt_template = prompt_manager.get_prompt(PromptType.RECOMMEND_EXTRACTION)
+            if not prompt_template:
+                logger.error("❌ Recommend extraction prompt not found")
+                return self._fallback_recommend_params(user_input)
+            
+            # Format prompt with user input
+            extract_prompt = prompt_template.format(user_input=user_input)
+            
+            response = self.llm.invoke([HumanMessage(content=extract_prompt)])
+            params = json.loads(response.content.strip())
+            logger.info(f"🎯 Extracted recommend params: {params}")
+            return params
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to extract recommend params: {e}")
+            return self._fallback_recommend_params(user_input)
+            params = json.loads(response.content.strip())
+            logger.info(f"🎯 Extracted recommend params: {params}")
+            return params
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to extract recommend params: {e}")
+            return {
+                "user_needs": user_input,
+                "metadata": {
+                    "category": None,
+                    "brand": None,
+                    "budget_min": None,
+                    "budget_max": None,
+                    "priority_features": [],
+                    "usage_purpose": None,
+                    "num_recommendations": 3,
+                    "rating_min": None,
+                    "must_have_features": []
+                }
+            }
+
+    def _extract_review_params(self, user_input: str) -> Dict[str, Any]:
+        """Extract review parameters from user input"""
+        try:
+            # Simple extraction for review - just need product name
+            import re
+            
+            # Initialize params
+            params = {
+                "product_name": "",
+                "limit": 5,
+                "sort_by": "newest"
+            }
+            
+            # Extract product name from various patterns
+            # Pattern 1: "review về [product]", "reviews [product]"
+            patterns = [
+                r"reviews?\s+(?:về\s+)?(.+?)(?:\s*$|\s+là|\s+như|\s+có)",
+                r"đánh giá\s+(?:về\s+)?(.+?)(?:\s*$|\s+là|\s+như|\s+có)",
+                r"nhận xét\s+(?:về\s+)?(.+?)(?:\s*$|\s+là|\s+như|\s+có)",
+                r"ý kiến\s+(?:về\s+)?(.+?)(?:\s*$|\s+là|\s+như|\s+có)",
+                r"(?:cho\s+tôi\s+)?xem\s+reviews?\s+(?:về\s+)?(.+?)(?:\s*$|\s+là|\s+như|\s+có)",
+                r"(.+?)\s+(?:reviews?|đánh giá|nhận xét|ý kiến)",
+                # Fallback: take everything after common phrases
+                r"(?:reviews?\s+|đánh giá\s+|nhận xét\s+|ý kiến\s+|xem\s+)(.+)"
+            ]
+            
+            product_name = ""
+            for pattern in patterns:
+                match = re.search(pattern, user_input.lower().strip())
+                if match:
+                    product_name = match.group(1).strip()
+                    break
+            
+            # Clean product name
+            if product_name:
+                # Remove common words
+                stop_words = ["về", "của", "cho", "là", "như", "có", "thế", "nào", "gì"]
+                words = product_name.split()
+                cleaned_words = [word for word in words if word not in stop_words]
+                product_name = " ".join(cleaned_words)
+                
+                params["product_name"] = product_name
+            else:
+                # Fallback: use the whole input cleaned
+                params["product_name"] = user_input.strip()
+            
+            logger.info(f"🎯 Extracted review params: {params}")
+            return params
+            
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to extract review params: {e}")
+            return {
+                "product_name": user_input.strip(),
+                "limit": 5,
+                "sort_by": "newest"
+            }
+
     def _recommend_products(self, state: AgentState) -> AgentState:
-        """Enhanced product recommendation with error handling"""
+        """Enhanced product recommendation with intelligent parameter extraction"""
         try:
             recommend_tool = self.tool_manager.get_tool("recommend")
             if not recommend_tool:
                 raise Exception("Recommend tool not available")
 
-            # Use string input for compatibility with existing tools
-            recommend_query = state["user_input"]
+            # Extract structured parameters from user input
+            recommend_params = self._extract_recommend_params(state["user_input"])
+            
+            # Create JSON input for the tool
+            recommend_input = json.dumps(recommend_params, ensure_ascii=False)
 
-            result = recommend_tool.run(recommend_query)
+            result = recommend_tool.run(recommend_input)
             state["recommendation_results"] = result
             state["tools_used"].append("recommend_products")
 
@@ -327,17 +547,51 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "recommend_products",
-                "thought": f"Gợi ý sản phẩm với nhu cầu: {state['user_input'][:50]}...",
-                "action_input": recommend_query,
+                "thought": f"Gợi ý sản phẩm với params: {recommend_params}",
+                "action_input": recommend_input,
                 "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
             }
             state["reasoning_steps"].append(reasoning_step)
 
-            logger.info("✅ Recommendation completed")
+            logger.info("✅ Recommendation completed with structured input")
 
         except Exception as e:
             logger.error(f"❌ Recommendation failed: {e}")
             state["recommendation_results"] = {"error": str(e), "success": False}
+            state["error_count"] = state.get("error_count", 0) + 1
+
+        return state
+
+    def _get_reviews(self, state: AgentState) -> AgentState:
+        """Get product reviews with intelligent parameter extraction"""
+        try:
+            review_tool = self.tool_manager.get_tool("review")
+            if not review_tool:
+                raise Exception("Review tool not available")
+
+            # Extract product name from user input
+            review_params = self._extract_review_params(state["user_input"])
+            
+            # Use the review tool directly
+            result = review_tool._run(**review_params)
+            state["review_results"] = result
+            state["tools_used"].append("get_product_reviews")
+            
+            # Add reasoning step
+            reasoning_step = {
+                "step": len(state.get("reasoning_steps", [])) + 1,
+                "action": "get_product_reviews",
+                "thought": f"Lấy reviews cho sản phẩm: {review_params.get('product_name', 'unknown')}",
+                "action_input": str(review_params),
+                "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
+            }
+            state["reasoning_steps"].append(reasoning_step)
+
+            logger.info("✅ Reviews retrieved successfully")
+
+        except Exception as e:
+            logger.error(f"❌ Get reviews failed: {e}")
+            state["review_results"] = {"error": str(e), "success": False}
             state["error_count"] = state.get("error_count", 0) + 1
 
         return state
@@ -376,57 +630,82 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
                 elif isinstance(recommend_result, str):
                     context_parts.append(f"Recommendations: {recommend_result}")
 
-            # Use RAG generation tool if we have context
-            if context_parts:
-                context = "\n".join(context_parts)
-                state["context_data"] = context
+            # Check review results
+            if state.get("review_results"):
+                review_result = state["review_results"]
+                if isinstance(review_result, dict) and not review_result.get("error"):
+                    context_parts.append(f"Reviews: {review_result}")
+                elif isinstance(review_result, str):
+                    context_parts.append(f"Reviews: {review_result}")
 
-                rag_tool = self.tool_manager.get_tool("answer_with_context")
-                if rag_tool:
-                    rag_input = {
-                        "user_query": state["user_input"],
-                        "context": context,
-                        "response_type": "general"
-                    }
+            # Use RAG generation tool if we have any results
+            generation_tool = self.tool_manager.get_tool("answer_with_context")
+            if generation_tool:
 
-                    result = rag_tool.run(rag_input)
+                # Extract raw results safely
+                search_data = ""
+                compare_data = ""
+                recommend_data = ""
+                review_data = ""
+                
+                if state.get("search_results"):
+                    search_data = str(state["search_results"]) if state["search_results"] else ""
+                if state.get("comparison_results"):
+                    compare_data = str(state["comparison_results"]) if state["comparison_results"] else ""
+                if state.get("recommendation_results"):
+                    recommend_data = str(state["recommendation_results"]) if state["recommendation_results"] else ""
+                if state.get("review_results"):
+                    review_data = str(state["review_results"]) if state["review_results"] else ""
 
-                    # Parse RAG tool result safely
-                    if isinstance(result, dict):
-                        if result.get("success"):
-                            state["final_response"] = result.get("response", "Không thể tạo phản hồi")
-                        else:
-                            state["final_response"] = result.get("response", str(result))
-                    elif isinstance(result, str):
-                        # Try to parse JSON response
-                        try:
-                            result_data = json.loads(result)
-                            if isinstance(result_data, dict):
-                                state["final_response"] = result_data.get("response", result)
-                            else:
-                                state["final_response"] = result
-                        except json.JSONDecodeError:
-                            state["final_response"] = result
+                # Create simplified input for RAG tool
+                rag_input_data = {
+                    "user_query": state["user_input"],
+                    "intent": state.get("intent", "general"),
+                    "context": "\n".join(context_parts) if context_parts else "",
+                    "conversation_history": "",  # Could add memory here later
+                    "tools_used": state.get("tools_used", []),
+                    "search_results": search_data,
+                    "comparison_results": compare_data,
+                    "recommendation_results": recommend_data,
+                    "review_results": review_data
+                }
+                
+                # Call generation tool with dictionary input (not JSON string)
+                result = generation_tool.run(rag_input_data)
+
+                # Parse RAG tool result safely
+                if isinstance(result, dict):
+                    if result.get("success"):
+                        state["final_response"] = result.get("response", "Không thể tạo phản hồi")
                     else:
-                        state["final_response"] = str(result)
-
-                    # Add reasoning step
-                    reasoning_step = {
-                        "step": len(state.get("reasoning_steps", [])) + 1,
-                        "action": "answer_with_context",
-                        "thought": "Sử dụng RAG để tạo câu trả lời từ context đã thu thập",
-                        "action_input": str(rag_input),
-                        "observation": state["final_response"][:100] + "..." if len(state["final_response"]) > 100 else state["final_response"]
-                    }
-                    state["reasoning_steps"].append(reasoning_step)
-
-                    state["tools_used"].append("answer_with_context")
+                        state["final_response"] = result.get("response", str(result))
+                elif isinstance(result, str):
+                    # Try to parse JSON response
+                    try:
+                        result_data = json.loads(result)
+                        if isinstance(result_data, dict):
+                            state["final_response"] = result_data.get("response", result)
+                        else:
+                            state["final_response"] = result
+                    except json.JSONDecodeError:
+                        state["final_response"] = result
                 else:
-                    raise Exception("RAG tool not available")
+                    state["final_response"] = str(result)
+
+                # Add reasoning step
+                reasoning_step = {
+                    "step": len(state.get("reasoning_steps", [])) + 1,
+                    "action": "answer_with_context",
+                    "thought": f"Sử dụng Natural RAG với intent '{state.get('intent')}' từ {len(state.get('tools_used', []))} tools đã thực hiện",
+                    "action_input": json.dumps(rag_input_data, ensure_ascii=False),
+                    "observation": state["final_response"][:100] + "..." if len(state["final_response"]) > 100 else state["final_response"]
+                }
+                state["reasoning_steps"].append(reasoning_step)
+
+                state["tools_used"].append("answer_with_context")
+                state["context_data"] = "\n".join(context_parts) if context_parts else ""
             else:
-                # Direct LLM response for simple queries
-                response = self.llm.invoke([HumanMessage(content=state["user_input"])])
-                state["final_response"] = response.content
+                raise Exception("RAG tool not available")
 
             logger.info("✅ Response generated")
 
@@ -452,15 +731,12 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
             return f"Xin lỗi, có lỗi xảy ra: {error}. Bạn có thể thử lại không?"
 
     def chat(self, user_input: str, session_id: Optional[str] = None) -> Dict[str, Any]:
-        """Enhanced chat method with ReAct compatibility"""
+        """Enhanced chat method with native LangGraph memory management"""
         try:
             if not session_id:
-                session_id = "default"
+                session_id = str(uuid.uuid4())
 
             logger.info(f"🗣️ Processing user input: {user_input[:100]}...")
-
-            # Get memory for session
-            memory = self._get_memory(session_id)
 
             # Initialize enhanced state
             initial_state = {
@@ -473,6 +749,7 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
                 "search_results": None,
                 "comparison_results": None,
                 "recommendation_results": None,
+                "review_results": None,
                 "context_data": None,
                 "final_response": None,
                 "iteration_count": 0,
@@ -480,14 +757,11 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
                 "reasoning_steps": []
             }
 
-            # Run the graph
-            final_state = self.graph.invoke(initial_state)
+            # Create thread config for this session
+            thread_config = {"configurable": {"thread_id": session_id}}
 
-            # Update memory
-            memory.save_context(
-                {"input": user_input},
-                {"output": final_state.get("final_response", "")}
-            )
+            # Run the graph with memory support
+            final_state = self.graph.invoke(initial_state, config=thread_config)
 
             # Extract intermediate steps for compatibility
             intermediate_steps = []
@@ -524,14 +798,157 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
                 "agent_type": "langgraph"
             }
 
-    def clear_memory(self, session_id: str = "default") -> bool:
-        """Clear conversation memory for session"""
+    def _fallback_compare_params(self, user_input: str) -> Dict[str, Any]:
+        """Fallback method to extract basic comparison parameters using regex"""
         try:
-            if session_id in self.memories:
-                self.memories[session_id].clear()
-                logger.info(f"✅ Memory cleared for session: {session_id}")
-                return True
-            return False
+            # Fallback: try to extract product names from user input
+            # Look for vs, so sánh, khác patterns
+            vs_patterns = [r'(.+?)\s+vs\s+(.+)', r'so sánh\s+(.+?)\s+và\s+(.+)', r'(.+?)\s+khác\s+gì\s+(.+)']
+            product_names = []
+            
+            for pattern in vs_patterns:
+                match = re.search(pattern, user_input, re.IGNORECASE)
+                if match:
+                    product_names = [match.group(1).strip(), match.group(2).strip()]
+                    break
+            
+            # If no pattern found, try to extract from common product names
+            if not product_names:
+                # Extract known product patterns
+                product_patterns = [
+                    r'(iPhone \d+[^,\s]*)',
+                    r'(Samsung[^,\s]+)',
+                    r'(Dell[^,\s]+)', 
+                    r'(HP[^,\s]+)',
+                    r'(MacBook[^,\s]*)',
+                    r'(Asus[^,\s]+)',
+                    r'(Lenovo[^,\s]+)'
+                ]
+                
+                for pattern in product_patterns:
+                    matches = re.findall(pattern, user_input, re.IGNORECASE)
+                    product_names.extend(matches)
+                
+                # Remove duplicates
+                product_names = list(set(product_names))
+            
+            return {
+                "product_names": product_names if len(product_names) >= 2 else [user_input],
+                "comparison_aspects": ["giá", "hiệu năng", "thiết kế", "camera"],
+                "include_reviews": True
+            }
+            
+        except Exception as e:
+            logger.error(f"❌ Fallback compare params extraction failed: {e}")
+            return {
+                "product_names": [user_input],
+                "comparison_aspects": ["giá", "hiệu năng", "thiết kế", "camera"],
+                "include_reviews": True
+            }
+
+    def _fallback_recommend_params(self, user_input: str) -> Dict[str, Any]:
+        """Fallback method to extract basic recommendation parameters using regex"""
+        try:
+            # Basic metadata extraction
+            fallback_metadata = {
+                "category": None,
+                "brand": None,
+                "budget_min": None,
+                "budget_max": None,
+                "priority_features": [],
+                "usage_purpose": None,
+                "num_recommendations": 3,
+                "rating_min": None,
+                "must_have_features": []
+            }
+            
+            # Category detection
+            if any(word in user_input.lower() for word in ["laptop", "macbook"]):
+                fallback_metadata["category"] = "laptop"
+            elif any(word in user_input.lower() for word in ["điện thoại", "smartphone", "iphone"]):
+                fallback_metadata["category"] = "smartphone"
+            
+            # Brand detection
+            brands = ["apple", "samsung", "dell", "hp", "asus", "xiaomi", "oppo", "vivo", "lenovo", "acer"]
+            for brand in brands:
+                if brand in user_input.lower():
+                    fallback_metadata["brand"] = brand
+                    break
+            
+            # Usage purpose detection
+            if any(word in user_input.lower() for word in ["gaming", "game", "chơi game"]):
+                fallback_metadata["usage_purpose"] = "gaming"
+                fallback_metadata["priority_features"] = ["performance", "gaming"]
+            elif any(word in user_input.lower() for word in ["sinh viên", "học tập", "học"]):
+                fallback_metadata["usage_purpose"] = "study"
+                fallback_metadata["priority_features"] = ["portability", "battery_life"]
+            elif any(word in user_input.lower() for word in ["lập trình", "programming", "code", "dev"]):
+                fallback_metadata["usage_purpose"] = "work"
+                fallback_metadata["priority_features"] = ["performance", "display_quality"]
+            elif any(word in user_input.lower() for word in ["chụp ảnh", "camera", "photography"]):
+                fallback_metadata["usage_purpose"] = "photography"
+                fallback_metadata["priority_features"] = ["camera"]
+            
+            # Budget detection
+            price_patterns = [
+                r'dưới (\d+) triệu',
+                r'trên (\d+) triệu', 
+                r'từ (\d+)-(\d+) triệu',
+                r'khoảng (\d+) triệu'
+            ]
+            for pattern in price_patterns:
+                match = re.search(pattern, user_input.lower())
+                if match:
+                    if 'dưới' in pattern:
+                        fallback_metadata["budget_max"] = float(match.group(1)) * 1000000
+                    elif 'trên' in pattern:
+                        fallback_metadata["budget_min"] = float(match.group(1)) * 1000000
+                    elif 'từ' in pattern:
+                        fallback_metadata["budget_min"] = float(match.group(1)) * 1000000
+                        fallback_metadata["budget_max"] = float(match.group(2)) * 1000000
+                    elif 'khoảng' in pattern:
+                        price = float(match.group(1)) * 1000000
+                        fallback_metadata["budget_min"] = price * 0.8
+                        fallback_metadata["budget_max"] = price * 1.2
+                    break
+            
+            # Must have features detection
+            if any(word in user_input.lower() for word in ["ssd", "ổ cứng ssd"]):
+                fallback_metadata["must_have_features"].append("ssd")
+            if any(word in user_input.lower() for word in ["touchscreen", "cảm ứng"]):
+                fallback_metadata["must_have_features"].append("touchscreen")
+            
+            return {
+                "user_needs": user_input,
+                "metadata": fallback_metadata
+            }
+            
+        except Exception as e:
+            logger.error(f"❌ Fallback recommend params extraction failed: {e}")
+            return {
+                "user_needs": user_input,
+                "metadata": {
+                    "category": None,
+                    "brand": None,
+                    "budget_min": None,
+                    "budget_max": None,
+                    "priority_features": [],
+                    "usage_purpose": None,
+                    "num_recommendations": 3,
+                    "rating_min": None,
+                    "must_have_features": []
+                }
+            }
+
+    def clear_memory(self, session_id: str = "default") -> bool:
+        """Clear conversation memory for session using LangGraph native memory"""
+        try:
+            # In LangGraph with MemorySaver, we can't directly clear individual sessions
+            # But we can create a new memory saver instance to effectively clear all sessions
+            self.memory_saver = MemorySaver()
+            self.graph = self._create_graph()  # Recreate graph with new memory
+            logger.info(f"✅ Memory cleared (all sessions reset)")
+            return True
         except Exception as e:
             logger.error(f"❌ Error clearing memory: {e}")
             return False
@@ -564,8 +981,11 @@ class LangGraphAgentManager:
             return False
 
     def get_active_sessions(self) -> List[str]:
-        """Get list of active session IDs"""
-        return list(self.agent.memories.keys())
+        """Get list of active session IDs - Note: With MemorySaver, session tracking is handled internally"""
+        # With native LangGraph memory, sessions are managed internally
+        # We can't easily list active sessions, so return empty list
+        logger.info("ℹ️ Session tracking handled by LangGraph MemorySaver")
+        return []
 
 
 # Global instances

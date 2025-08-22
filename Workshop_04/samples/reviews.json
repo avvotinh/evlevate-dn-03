@@ -2,133 +2,953 @@
   "reviews": [
     {
       "id": "review_001",
-      "product_id": "laptop_001",
-      "user_name": "Nguyễn Văn A",
-      "rating": 5,
-      "title": "Laptop tuyệt vời cho lập trình và design",
-      "content": "Mình dùng Dell XPS 15 được 3 tháng cho công việc full-stack development và thỉnh thoảng edit video. Màn hình 4K OLED quá đẹp, code nhìn rất sướng mắt. Hiệu năng xử lý đa nhiệm mượt mà, build Docker, chạy multiple VMs không lag. Pin dùng được cả ngày làm việc nếu không bật 4K.",
-      "pros": ["Màn hình xuất sắc", "Build quality cao cấp", "Hiệu năng mạnh"],
-      "cons": ["Hơi nóng khi render video", "Giá cao"],
-      "helpful_count": 45,
-      "verified_purchase": true,
-      "date": "2024-01-15"
+      "text": "Review: Laptop tuyệt vời cho lập trình và design\nĐánh giá: 5/5\nNội dung: Mình dùng Dell XPS 15 được 3 tháng cho công việc full-stack development và thỉnh thoảng edit video. Màn hình 4K OLED quá đẹp, code nhìn rất sướng mắt. Hiệu năng xử lý đa nhiệm mượt mà, build Docker, chạy multiple VMs không lag. Pin dùng được cả ngày làm việc nếu không bật 4K.\nƯu điểm: Màn hình xuất sắc, Build quality cao cấp, Hiệu năng mạnh\nNhược điểm: Hơi nóng khi render video, Giá cao",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_001",
+        "rating": 5,
+        "helpful_count": 45,
+        "verified_purchase": true,
+        "id": "review_001",
+        "user_name": "Nguyễn Văn A",
+        "title": "Laptop tuyệt vời cho lập trình và design",
+        "content": "Mình dùng Dell XPS 15 được 3 tháng cho công việc full-stack development và thỉnh thoảng edit video. Màn hình 4K OLED quá đẹp, code nhìn rất sướng mắt. Hiệu năng xử lý đa nhiệm mượt mà, build Docker, chạy multiple VMs không lag. Pin dùng được cả ngày làm việc nếu không bật 4K.",
+        "pros": [
+          "Màn hình xuất sắc",
+          "Build quality cao cấp",
+          "Hiệu năng mạnh"
+        ],
+        "cons": ["Hơi nóng khi render video", "Giá cao"],
+        "date": "2024-01-15"
+      }
     },
     {
       "id": "review_002",
-      "product_id": "laptop_002",
-      "user_name": "Trần Thị B",
-      "rating": 5,
-      "title": "Pin trâu, gọn nhẹ, hoàn hảo cho di chuyển",
-      "content": "Chuyển từ Windows sang Mac để code iOS app. Ban đầu hơi khó quen nhưng giờ thì không thể rời. Pin dùng code cả ngày 10-12 tiếng vẫn còn 20-30%. Máy không có quạt nên yên tĩnh tuyệt đối, code ở quán cafe không lo ồn. M2 chip xử lý compile Xcode rất nhanh. Chỉ tiếc RAM 8GB hơi ít khi mở nhiều app.",
-      "pros": ["Pin cực trâu", "Yên tĩnh hoàn toàn", "Mỏng nhẹ", "Màn hình đẹp"],
-      "cons": ["RAM không nâng cấp được", "Ít cổng kết nối"],
-      "helpful_count": 67,
-      "verified_purchase": true,
-      "date": "2024-02-20"
+      "text": "Review: Pin trâu, gọn nhẹ, hoàn hảo cho di chuyển\nĐánh giá: 5/5\nNội dung: Chuyển từ Windows sang Mac để code iOS app. Ban đầu hơi khó quen nhưng giờ thì không thể rời. Pin dùng code cả ngày 10-12 tiếng vẫn còn 20-30%. Máy không có quạt nên yên tĩnh tuyệt đối, code ở quán cafe không lo ồn. M2 chip xử lý compile Xcode rất nhanh. Chỉ tiếc RAM 8GB hơi ít khi mở nhiều app.\nƯu điểm: Pin cực trâu, Yên tĩnh hoàn toàn, Mỏng nhẹ, Màn hình đẹp\nNhược điểm: RAM không nâng cấp được, Ít cổng kết nối",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_002",
+        "rating": 5,
+        "helpful_count": 67,
+        "verified_purchase": true,
+        "id": "review_002",
+        "user_name": "Trần Thị B",
+        "title": "Pin trâu, gọn nhẹ, hoàn hảo cho di chuyển",
+        "content": "Chuyển từ Windows sang Mac để code iOS app. Ban đầu hơi khó quen nhưng giờ thì không thể rời. Pin dùng code cả ngày 10-12 tiếng vẫn còn 20-30%. Máy không có quạt nên yên tĩnh tuyệt đối, code ở quán cafe không lo ồn. M2 chip xử lý compile Xcode rất nhanh. Chỉ tiếc RAM 8GB hơi ít khi mở nhiều app.",
+        "pros": [
+          "Pin cực trâu",
+          "Yên tĩnh hoàn toàn",
+          "Mỏng nhẹ",
+          "Màn hình đẹp"
+        ],
+        "cons": ["RAM không nâng cấp được", "Ít cổng kết nối"],
+        "date": "2024-02-20"
+      }
     },
     {
       "id": "review_003",
-      "product_id": "laptop_003",
-      "user_name": "Lê Văn C",
-      "rating": 4,
-      "title": "Gaming laptop mạnh mẽ, tản nhiệt tốt",
-      "content": "Mua ROG Strix G15 chủ yếu để gaming và thỉnh thoảng render 3D. Chơi Cyberpunk 2077 ở Ultra settings được 60-70 fps, nhiệt độ kiểm soát tốt nhờ liquid metal. Màn hình 300Hz mượt kinh khủng cho FPS games. Loa Dolby Atmos ấn tượng. Trừ điểm cho pin yếu (3-4 tiếng office work) và máy hơi nặng.",
-      "pros": ["Hiệu năng gaming mạnh", "Màn hình 300Hz", "Tản nhiệt hiệu quả", "Nâng cấp dễ"],
-      "cons": ["Pin yếu", "Nặng", "Ồn khi gaming"],
-      "helpful_count": 34,
-      "verified_purchase": true,
-      "date": "2024-01-28"
+      "text": "Review: Gaming laptop mạnh mẽ, tản nhiệt tốt\nĐánh giá: 4/5\nNội dung: Mua ROG Strix G15 chủ yếu để gaming và thỉnh thoảng render 3D. Chơi Cyberpunk 2077 ở Ultra settings được 60-70 fps, nhiệt độ kiểm soát tốt nhờ liquid metal. Màn hình 300Hz mượt kinh khủng cho FPS games. Loa Dolby Atmos ấn tượng. Trừ điểm cho pin yếu (3-4 tiếng office work) và máy hơi nặng.\nƯu điểm: Hiệu năng gaming mạnh, Màn hình 300Hz, Tản nhiệt hiệu quả, Nâng cấp dễ\nNhược điểm: Pin yếu, Nặng, Ồn khi gaming",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_003",
+        "rating": 4,
+        "helpful_count": 34,
+        "verified_purchase": true,
+        "id": "review_003",
+        "user_name": "Lê Văn C",
+        "title": "Gaming laptop mạnh mẽ, tản nhiệt tốt",
+        "content": "Mua ROG Strix G15 chủ yếu để gaming và thỉnh thoảng render 3D. Chơi Cyberpunk 2077 ở Ultra settings được 60-70 fps, nhiệt độ kiểm soát tốt nhờ liquid metal. Màn hình 300Hz mượt kinh khủng cho FPS games. Loa Dolby Atmos ấn tượng. Trừ điểm cho pin yếu (3-4 tiếng office work) và máy hơi nặng.",
+        "pros": [
+          "Hiệu năng gaming mạnh",
+          "Màn hình 300Hz",
+          "Tản nhiệt hiệu quả",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Pin yếu", "Nặng", "Ồn khi gaming"],
+        "date": "2024-01-28"
+      }
     },
     {
       "id": "review_004",
-      "product_id": "phone_001",
-      "user_name": "Phạm Thị D",
-      "rating": 5,
-      "title": "Camera zoom 5x ấn tượng, pin dùng cả ngày",
-      "content": "Nâng cấp từ iPhone 13 Pro lên 15 Pro Max. Camera zoom 5x thực sự ấn tượng, chụp xa vẫn net căng. ProRAW cho phép edit ảnh chuyên nghiệp. Action Button custom được rất tiện, mình set để bật camera nhanh. Pin dùng thoải mái cả ngày. Khung Titanium nhẹ hơn thép nhưng vẫn chắc chắn. Dynamic Island đã quen thì rất tiện.",
-      "pros": ["Camera zoom 5x xuất sắc", "Pin trâu", "Khung titan nhẹ", "Hiệu năng đỉnh"],
-      "cons": ["Giá cao", "To và nặng", "Sạc chậm"],
-      "helpful_count": 89,
-      "verified_purchase": true,
-      "date": "2024-03-01"
+      "text": "Review: Camera zoom 5x ấn tượng, pin dùng cả ngày\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 13 Pro lên 15 Pro Max. Camera zoom 5x thực sự ấn tượng, chụp xa vẫn net căng. ProRAW cho phép edit ảnh chuyên nghiệp. Action Button custom được rất tiện, mình set để bật camera nhanh. Pin dùng thoải mái cả ngày. Khung Titanium nhẹ hơn thép nhưng vẫn chắc chắn. Dynamic Island đã quen thì rất tiện.\nƯu điểm: Camera zoom 5x xuất sắc, Pin trâu, Khung titan nhẹ, Hiệu năng đỉnh\nNhược điểm: Giá cao, To và nặng, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_001",
+        "rating": 5,
+        "helpful_count": 89,
+        "verified_purchase": true,
+        "id": "review_004",
+        "user_name": "Phạm Thị D",
+        "title": "Camera zoom 5x ấn tượng, pin dùng cả ngày",
+        "content": "Nâng cấp từ iPhone 13 Pro lên 15 Pro Max. Camera zoom 5x thực sự ấn tượng, chụp xa vẫn net căng. ProRAW cho phép edit ảnh chuyên nghiệp. Action Button custom được rất tiện, mình set để bật camera nhanh. Pin dùng thoải mái cả ngày. Khung Titanium nhẹ hơn thép nhưng vẫn chắc chắn. Dynamic Island đã quen thì rất tiện.",
+        "pros": [
+          "Camera zoom 5x xuất sắc",
+          "Pin trâu",
+          "Khung titan nhẹ",
+          "Hiệu năng đỉnh"
+        ],
+        "cons": ["Giá cao", "To và nặng", "Sạc chậm"],
+        "date": "2024-03-01"
+      }
     },
     {
       "id": "review_005",
-      "product_id": "phone_002",
-      "user_name": "Nguyễn Văn E",
-      "rating": 4,
-      "title": "Android flagship mạnh nhất, S Pen hữu ích",
-      "content": "S24 Ultra là chiếc Android hoàn hảo nhất mình từng dùng. Màn hình 2K siêu sáng, ngoài trời nắng vẫn nhìn rõ. Camera 200MP chụp chi tiết kinh khủng, zoom 10x vẫn dùng được. S Pen tiện cho note-taking và ký tài liệu. Galaxy AI features như Circle to Search, Live Translate rất hữu ích. Mỗi tội máy hơi nóng khi quay 8K và pin không ấn tượng lắm.",
-      "pros": ["Màn hình sáng nhất", "Camera 200MP", "S Pen", "Galaxy AI"],
-      "cons": ["Nóng khi dùng nặng", "Pin tụt nhanh", "Nặng"],
-      "helpful_count": 76,
-      "verified_purchase": true,
-      "date": "2024-02-15"
+      "text": "Review: Android flagship mạnh nhất, S Pen hữu ích\nĐánh giá: 4/5\nNội dung: S24 Ultra là chiếc Android hoàn hảo nhất mình từng dùng. Màn hình 2K siêu sáng, ngoài trời nắng vẫn nhìn rõ. Camera 200MP chụp chi tiết kinh khủng, zoom 10x vẫn dùng được. S Pen tiện cho note-taking và ký tài liệu. Galaxy AI features như Circle to Search, Live Translate rất hữu ích. Mỗi tội máy hơi nóng khi quay 8K và pin không ấn tượng lắm.\nƯu điểm: Màn hình sáng nhất, Camera 200MP, S Pen, Galaxy AI\nNhược điểm: Nóng khi dùng nặng, Pin tụt nhanh, Nặng",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_002",
+        "rating": 4,
+        "helpful_count": 76,
+        "verified_purchase": true,
+        "id": "review_005",
+        "user_name": "Nguyễn Văn E",
+        "title": "Android flagship mạnh nhất, S Pen hữu ích",
+        "content": "S24 Ultra là chiếc Android hoàn hảo nhất mình từng dùng. Màn hình 2K siêu sáng, ngoài trời nắng vẫn nhìn rõ. Camera 200MP chụp chi tiết kinh khủng, zoom 10x vẫn dùng được. S Pen tiện cho note-taking và ký tài liệu. Galaxy AI features như Circle to Search, Live Translate rất hữu ích. Mỗi tội máy hơi nóng khi quay 8K và pin không ấn tượng lắm.",
+        "pros": ["Màn hình sáng nhất", "Camera 200MP", "S Pen", "Galaxy AI"],
+        "cons": ["Nóng khi dùng nặng", "Pin tụt nhanh", "Nặng"],
+        "date": "2024-02-15"
+      }
     },
     {
       "id": "review_006",
-      "product_id": "phone_003",
-      "user_name": "Trần Văn F",
-      "rating": 5,
-      "title": "Flagship giá tốt, camera Leica không thể chê",
-      "content": "Xiaomi 14 là chiếc flagship compact hiếm hoi còn sót lại. Camera Leica chụp tone màu rất nghệ, đặc biệt portrait mode. Snapdragon 8 Gen 3 mạnh mẽ, chơi Genshin max setting mượt. Sạc 90W từ 0-100% chỉ 35 phút. HyperOS mượt hơn MIUI nhiều. Size 6.36 inch cầm rất vừa tay. Chỉ tiếc pin hơi nhỏ so với flagship khác.",
-      "pros": ["Size nhỏ gọn", "Camera Leica xuất sắc", "Sạc siêu nhanh", "Giá tốt"],
-      "cons": ["Pin nhỏ", "Không có jack 3.5mm"],
-      "helpful_count": 54,
-      "verified_purchase": true,
-      "date": "2024-03-10"
+      "text": "Review: Flagship giá tốt, camera Leica không thể chê\nĐánh giá: 5/5\nNội dung: Xiaomi 14 là chiếc flagship compact hiếm hoi còn sót lại. Camera Leica chụp tone màu rất nghệ, đặc biệt portrait mode. Snapdragon 8 Gen 3 mạnh mẽ, chơi Genshin max setting mượt. Sạc 90W từ 0-100% chỉ 35 phút. HyperOS mượt hơn MIUI nhiều. Size 6.36 inch cầm rất vừa tay. Chỉ tiếc pin hơi nhỏ so với flagship khác.\nƯu điểm: Size nhỏ gọn, Camera Leica xuất sắc, Sạc siêu nhanh, Giá tốt\nNhược điểm: Pin nhỏ, Không có jack 3.5mm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_003",
+        "rating": 5,
+        "helpful_count": 54,
+        "verified_purchase": true,
+        "id": "review_006",
+        "user_name": "Trần Văn F",
+        "title": "Flagship giá tốt, camera Leica không thể chê",
+        "content": "Xiaomi 14 là chiếc flagship compact hiếm hoi còn sót lại. Camera Leica chụp tone màu rất nghệ, đặc biệt portrait mode. Snapdragon 8 Gen 3 mạnh mẽ, chơi Genshin max setting mượt. Sạc 90W từ 0-100% chỉ 35 phút. HyperOS mượt hơn MIUI nhiều. Size 6.36 inch cầm rất vừa tay. Chỉ tiếc pin hơi nhỏ so với flagship khác.",
+        "pros": [
+          "Size nhỏ gọn",
+          "Camera Leica xuất sắc",
+          "Sạc siêu nhanh",
+          "Giá tốt"
+        ],
+        "cons": ["Pin nhỏ", "Không có jack 3.5mm"],
+        "date": "2024-03-10"
+      }
     },
     {
       "id": "review_007",
-      "product_id": "laptop_004",
-      "user_name": "Hoàng Thị G",
-      "rating": 5,
-      "title": "Laptop doanh nhân hoàn hảo, bàn phím đỉnh",
-      "content": "ThinkPad X1 Carbon là laptop doanh nhân tốt nhất mình từng dùng. Bàn phím gõ cực phê, travel key sâu, feedback rõ ràng. Máy siêu nhẹ 1.12kg nhưng vẫn đạt chuẩn quân đội, va đập thoải mái. Pin dùng cả ngày họp và làm việc. Màn hình anti-glare nhìn không mỏi mắt. TrackPoint đã quen thì nghiện. Mỗi tội giá hơi chát.",
-      "pros": ["Bàn phím tốt nhất", "Siêu nhẹ và bền", "Pin lâu", "Bảo mật tốt"],
-      "cons": ["Giá cao", "Thiết kế cũ", "GPU yếu"],
-      "helpful_count": 43,
-      "verified_purchase": true,
-      "date": "2024-02-25"
+      "text": "Review: Laptop doanh nhân hoàn hảo, bàn phím đỉnh\nĐánh giá: 5/5\nNội dung: ThinkPad X1 Carbon là laptop doanh nhân tốt nhất mình từng dùng. Bàn phím gõ cực phê, travel key sâu, feedback rõ ràng. Máy siêu nhẹ 1.12kg nhưng vẫn đạt chuẩn quân đội, va đập thoải mái. Pin dùng cả ngày họp và làm việc. Màn hình anti-glare nhìn không mỏi mắt. TrackPoint đã quen thì nghiện. Mỗi tội giá hơi chát.\nƯu điểm: Bàn phím tốt nhất, Siêu nhẹ và bền, Pin lâu, Bảo mật tốt\nNhược điểm: Giá cao, Thiết kế cũ, GPU yếu",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_004",
+        "rating": 5,
+        "helpful_count": 43,
+        "verified_purchase": true,
+        "id": "review_007",
+        "user_name": "Hoàng Thị G",
+        "title": "Laptop doanh nhân hoàn hảo, bàn phím đỉnh",
+        "content": "ThinkPad X1 Carbon là laptop doanh nhân tốt nhất mình từng dùng. Bàn phím gõ cực phê, travel key sâu, feedback rõ ràng. Máy siêu nhẹ 1.12kg nhưng vẫn đạt chuẩn quân đội, va đập thoải mái. Pin dùng cả ngày họp và làm việc. Màn hình anti-glare nhìn không mỏi mắt. TrackPoint đã quen thì nghiện. Mỗi tội giá hơi chát.",
+        "pros": [
+          "Bàn phím tốt nhất",
+          "Siêu nhẹ và bền",
+          "Pin lâu",
+          "Bảo mật tốt"
+        ],
+        "cons": ["Giá cao", "Thiết kế cũ", "GPU yếu"],
+        "date": "2024-02-25"
+      }
     },
     {
       "id": "review_008",
-      "product_id": "phone_007",
-      "user_name": "Lý Văn H",
-      "rating": 4,
-      "title": "Mid-range tốt nhất của Samsung",
-      "content": "A54 5G là chiếc mid-range đáng mua nhất của Samsung. Thiết kế giống flagship, màn hình AMOLED 120Hz mượt. Camera 50MP OIS chụp đêm tốt trong tầm giá. Pin 5000mAh dùng thoải mái cả ngày. IP67 là điểm cộng lớn, không lo mưa hay rơi nước. 4 năm update OS là cam kết tốt. Chỉ tiếc chip Exynos không mạnh và sạc 25W hơi chậm.",
-      "pros": ["Thiết kế đẹp", "Màn hình tốt", "IP67", "Support lâu dài"],
-      "cons": ["Chip yếu", "Sạc chậm", "Camera macro vô dụng"],
-      "helpful_count": 98,
-      "verified_purchase": true,
-      "date": "2024-03-05"
+      "text": "Review: Mid-range tốt nhất của Samsung\nĐánh giá: 4/5\nNội dung: A54 5G là chiếc mid-range đáng mua nhất của Samsung. Thiết kế giống flagship, màn hình AMOLED 120Hz mượt. Camera 50MP OIS chụp đêm tốt trong tầm giá. Pin 5000mAh dùng thoải mái cả ngày. IP67 là điểm cộng lớn, không lo mưa hay rơi nước. 4 năm update OS là cam kết tốt. Chỉ tiếc chip Exynos không mạnh và sạc 25W hơi chậm.\nƯu điểm: Thiết kế đẹp, Màn hình tốt, IP67, Support lâu dài\nNhược điểm: Chip yếu, Sạc chậm, Camera macro vô dụng",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_007",
+        "rating": 4,
+        "helpful_count": 98,
+        "verified_purchase": true,
+        "id": "review_008",
+        "user_name": "Lý Văn H",
+        "title": "Mid-range tốt nhất của Samsung",
+        "content": "A54 5G là chiếc mid-range đáng mua nhất của Samsung. Thiết kế giống flagship, màn hình AMOLED 120Hz mượt. Camera 50MP OIS chụp đêm tốt trong tầm giá. Pin 5000mAh dùng thoải mái cả ngày. IP67 là điểm cộng lớn, không lo mưa hay rơi nước. 4 năm update OS là cam kết tốt. Chỉ tiếc chip Exynos không mạnh và sạc 25W hơi chậm.",
+        "pros": ["Thiết kế đẹp", "Màn hình tốt", "IP67", "Support lâu dài"],
+        "cons": ["Chip yếu", "Sạc chậm", "Camera macro vô dụng"],
+        "date": "2024-03-05"
+      }
     },
     {
       "id": "review_009",
-      "product_id": "phone_008",
-      "user_name": "Võ Thị I",
-      "rating": 4,
-      "title": "Camera 200MP ấn tượng, sạc 120W quá nhanh",
-      "content": "Redmi Note 13 Pro+ làm mình bất ngờ về camera 200MP, chụp ban ngày chi tiết kinh khủng, crop zoom vẫn rõ. Sạc 120W từ 0-100% chỉ 19 phút là điên rồ. RAM 12GB mượt mà đa nhiệm. Màn hình cong 1.5K sắc nét. MIUI 14 vẫn còn ads nhưng tắt được. Chip MediaTek chơi game nặng hơi nóng. Tổng thể rất đáng tiền trong tầm giá.",
-      "pros": ["Camera 200MP", "Sạc 120W siêu nhanh", "RAM 12GB", "Màn hình đẹp"],
-      "cons": ["MIUI ads", "Chip MediaTek nóng", "Chỉ IP54"],
-      "helpful_count": 67,
-      "verified_purchase": true,
-      "date": "2024-03-12"
+      "text": "Review: Camera 200MP ấn tượng, sạc 120W quá nhanh\nĐánh giá: 4/5\nNội dung: Redmi Note 13 Pro+ làm mình bất ngờ về camera 200MP, chụp ban ngày chi tiết kinh khủng, crop zoom vẫn rõ. Sạc 120W từ 0-100% chỉ 19 phút là điên rồ. RAM 12GB mượt mà đa nhiệm. Màn hình cong 1.5K sắc nét. MIUI 14 vẫn còn ads nhưng tắt được. Chip MediaTek chơi game nặng hơi nóng. Tổng thể rất đáng tiền trong tầm giá.\nƯu điểm: Camera 200MP, Sạc 120W siêu nhanh, RAM 12GB, Màn hình đẹp\nNhược điểm: MIUI ads, Chip MediaTek nóng, Chỉ IP54",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_008",
+        "rating": 4,
+        "helpful_count": 67,
+        "verified_purchase": true,
+        "id": "review_009",
+        "user_name": "Võ Thị I",
+        "title": "Camera 200MP ấn tượng, sạc 120W quá nhanh",
+        "content": "Redmi Note 13 Pro+ làm mình bất ngờ về camera 200MP, chụp ban ngày chi tiết kinh khủng, crop zoom vẫn rõ. Sạc 120W từ 0-100% chỉ 19 phút là điên rồ. RAM 12GB mượt mà đa nhiệm. Màn hình cong 1.5K sắc nét. MIUI 14 vẫn còn ads nhưng tắt được. Chip MediaTek chơi game nặng hơi nóng. Tổng thể rất đáng tiền trong tầm giá.",
+        "pros": [
+          "Camera 200MP",
+          "Sạc 120W siêu nhanh",
+          "RAM 12GB",
+          "Màn hình đẹp"
+        ],
+        "cons": ["MIUI ads", "Chip MediaTek nóng", "Chỉ IP54"],
+        "date": "2024-03-12"
+      }
     },
     {
       "id": "review_010",
-      "product_id": "laptop_005",
-      "user_name": "Đặng Văn K",
-      "rating": 4,
-      "title": "Laptop sinh viên giá tốt, đủ dùng",
-      "content": "HP Pavilion 15 là lựa chọn ổn cho sinh viên. Core i5 gen 12 đủ sức cho code, office, và giải trí nhẹ. SSD 512GB thoải mái lưu trữ. Màn hình IPS Full HD ok, chỉ hơi tối. Thiết kế đẹp trong tầm giá. Nâng cấp RAM và SSD dễ dàng. Pin dùng được 6-7 tiếng làm việc nhẹ. Loa B&O nghe nhạc tạm ổn. Giá dưới 20 triệu là hợp lý.",
-      "pros": ["Giá tốt", "Cấu hình ổn", "Thiết kế đẹp", "Nâng cấp dễ"],
-      "cons": ["Màn hình tối", "Pin trung bình", "Vỏ nhựa"],
-      "helpful_count": 123,
-      "verified_purchase": true,
-      "date": "2024-02-18"
+      "text": "Review: Laptop sinh viên giá tốt, đủ dùng\nĐánh giá: 4/5\nNội dung: HP Pavilion 15 là lựa chọn ổn cho sinh viên. Core i5 gen 12 đủ sức cho code, office, và giải trí nhẹ. SSD 512GB thoải mái lưu trữ. Màn hình IPS Full HD ok, chỉ hơi tối. Thiết kế đẹp trong tầm giá. Nâng cấp RAM và SSD dễ dàng. Pin dùng được 6-7 tiếng làm việc nhẹ. Loa B&O nghe nhạc tạm ổn. Giá dưới 20 triệu là hợp lý.\nƯu điểm: Giá tốt, Cấu hình ổn, Thiết kế đẹp, Nâng cấp dễ\nNhược điểm: Màn hình tối, Pin trung bình, Vỏ nhựa",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_005",
+        "rating": 4,
+        "helpful_count": 123,
+        "verified_purchase": true,
+        "id": "review_010",
+        "user_name": "Đặng Văn K",
+        "title": "Laptop sinh viên giá tốt, đủ dùng",
+        "content": "HP Pavilion 15 là lựa chọn ổn cho sinh viên. Core i5 gen 12 đủ sức cho code, office, và giải trí nhẹ. SSD 512GB thoải mái lưu trữ. Màn hình IPS Full HD ok, chỉ hơi tối. Thiết kế đẹp trong tầm giá. Nâng cấp RAM và SSD dễ dàng. Pin dùng được 6-7 tiếng làm việc nhẹ. Loa B&O nghe nhạc tạm ổn. Giá dưới 20 triệu là hợp lý.",
+        "pros": ["Giá tốt", "Cấu hình ổn", "Thiết kế đẹp", "Nâng cấp dễ"],
+        "cons": ["Màn hình tối", "Pin trung bình", "Vỏ nhựa"],
+        "date": "2024-02-18"
+      }
+    },
+    {
+      "id": "review_011",
+      "text": "Review: Điện thoại tốt - Camera ấn tượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 11 lên iPhone 15 Pro Max. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Sạc nhanh, tiện lợi Sẽ tiếp tục dùng brand này\nƯu điểm: Camera ấn tượng, Pin tốt, Hiệu năng ổn định\nNhược điểm: Giá hơi đắt, To và nặng, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_001",
+        "rating": 5,
+        "helpful_count": 73,
+        "verified_purchase": true,
+        "id": "review_011",
+        "user_name": "Chu Thị S",
+        "title": "Điện thoại tốt - Camera ấn tượng",
+        "content": "Nâng cấp từ Xiaomi 11 lên iPhone 15 Pro Max. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Sạc nhanh, tiện lợi Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera ấn tượng", "Pin tốt", "Hiệu năng ổn định"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Cáp sạc ngắn"],
+        "date": "2025-05-24"
+      }
+    },
+    {
+      "id": "review_012",
+      "text": "Review: Điện thoại xuất sắc - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Portrait mode và night mode ấn tượng Đa nhiệm mượt, chuyển app nhanh Sạc nhanh, tiện lợi Tổng thể rất hài lòng\nƯu điểm: Camera xuất sắc, Pin ổn, Hiệu năng ổn định\nNhược điểm: Giá hơi đắt, Hơi dày, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_001",
+        "rating": 5,
+        "helpful_count": 29,
+        "verified_purchase": true,
+        "id": "review_012",
+        "user_name": "Đặng Văn G",
+        "title": "Điện thoại xuất sắc - Camera xuất sắc",
+        "content": "Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Portrait mode và night mode ấn tượng Đa nhiệm mượt, chuyển app nhanh Sạc nhanh, tiện lợi Tổng thể rất hài lòng",
+        "pros": ["Camera xuất sắc", "Pin ổn", "Hiệu năng ổn định"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Không có sạc không dây"],
+        "date": "2025-04-12"
+      }
+    },
+    {
+      "id": "review_013",
+      "text": "Review: Điện thoại xuất sắc - Camera tốt\nĐánh giá: 4/5\nNội dung: Nâng cấp từ Samsung 14 lên Samsung Galaxy S24 Ultra. Video quay mượt, chống rung tốt Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Nâng cấp đáng giá\nƯu điểm: Camera tốt, Pin ổn, Hiệu năng mạnh\nNhược điểm: Giá cao, To và nặng, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_002",
+        "rating": 4,
+        "helpful_count": 90,
+        "verified_purchase": true,
+        "id": "review_013",
+        "user_name": "Dương Văn I",
+        "title": "Điện thoại xuất sắc - Camera tốt",
+        "content": "Nâng cấp từ Samsung 14 lên Samsung Galaxy S24 Ultra. Video quay mượt, chống rung tốt Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Nâng cấp đáng giá",
+        "pros": ["Camera tốt", "Pin ổn", "Hiệu năng mạnh"],
+        "cons": ["Giá cao", "To và nặng", "Cáp sạc ngắn"],
+        "date": "2025-06-18"
+      }
+    },
+    {
+      "id": "review_014",
+      "text": "Review: Điện thoại ấn tượng - Camera chất lượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Zoom xa vẫn net, chụp đêm ổn Hiệu năng mượt mà, không lag Sạc nhanh, tiện lợi Sẽ tiếp tục dùng brand này\nƯu điểm: Camera chất lượng, Pin tốt, Hiệu năng mượt\nNhược điểm: Giá hơi đắt, To và nặng, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_001",
+        "rating": 5,
+        "helpful_count": 21,
+        "verified_purchase": true,
+        "id": "review_014",
+        "user_name": "Mai Thị Q",
+        "title": "Điện thoại ấn tượng - Camera chất lượng",
+        "content": "Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Zoom xa vẫn net, chụp đêm ổn Hiệu năng mượt mà, không lag Sạc nhanh, tiện lợi Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera chất lượng", "Pin tốt", "Hiệu năng mượt"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Không có sạc không dây"],
+        "date": "2025-05-01"
+      }
+    },
+    {
+      "id": "review_015",
+      "text": "Review: Điện thoại ấn tượng - Camera tốt\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 14 lên Samsung Galaxy S24 Ultra. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này\nƯu điểm: Camera tốt, Pin dài, Hiệu năng mạnh\nNhược điểm: Giá hơi đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_002",
+        "rating": 5,
+        "helpful_count": 0,
+        "verified_purchase": false,
+        "id": "review_015",
+        "user_name": "Lý Thị K",
+        "title": "Điện thoại ấn tượng - Camera tốt",
+        "content": "Nâng cấp từ Xiaomi 14 lên Samsung Galaxy S24 Ultra. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera tốt", "Pin dài", "Hiệu năng mạnh"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-04-20"
+      }
+    },
+    {
+      "id": "review_016",
+      "text": "Review: Laptop tuyệt vời cho lập trình\nĐánh giá: 4/5\nNội dung: Mình dùng laptop này được 3 tháng cho lập trình. Chạy các phần mềm nặng không lag Độ sáng tốt, làm việc ngoài trời OK Pin hơi yếu khi gaming Bàn phím gõ thoải mái\nƯu điểm: Hiệu năng tốt, Màn hình tuyệt vời, Pin ổn\nNhược điểm: Hơi dày, nóng máy, Giá đắt",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_004",
+        "rating": 4,
+        "helpful_count": 44,
+        "verified_purchase": true,
+        "id": "review_016",
+        "user_name": "Võ Thị O",
+        "title": "Laptop tuyệt vời cho lập trình",
+        "content": "Mình dùng laptop này được 3 tháng cho lập trình. Chạy các phần mềm nặng không lag Độ sáng tốt, làm việc ngoài trời OK Pin hơi yếu khi gaming Bàn phím gõ thoải mái",
+        "pros": ["Hiệu năng tốt", "Màn hình tuyệt vời", "Pin ổn"],
+        "cons": ["Hơi dày", "nóng máy", "Giá đắt"],
+        "date": "2025-07-14"
+      }
+    },
+    {
+      "id": "review_017",
+      "text": "Review: Laptop tuyệt vời cho gaming\nĐánh giá: 3/5\nNội dung: Mình dùng laptop này được 8 tháng cho gaming. Hiệu năng xử lý đa nhiệm mượt mà Góc nhìn rộng, không bị lóa Thời lượng pin khá ổn Touchpad responsive\nƯu điểm: Hiệu năng tốt, Màn hình sắc nét, Pin tốt\nNhược điểm: Hơi to, ấm khi render, Giá không rẻ",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_004",
+        "rating": 3,
+        "helpful_count": 22,
+        "verified_purchase": false,
+        "id": "review_017",
+        "user_name": "Võ Thị O",
+        "title": "Laptop tuyệt vời cho gaming",
+        "content": "Mình dùng laptop này được 8 tháng cho gaming. Hiệu năng xử lý đa nhiệm mượt mà Góc nhìn rộng, không bị lóa Thời lượng pin khá ổn Touchpad responsive",
+        "pros": ["Hiệu năng tốt", "Màn hình sắc nét", "Pin tốt"],
+        "cons": ["Hơi to", "ấm khi render", "Giá không rẻ"],
+        "date": "2025-05-13"
+      }
+    },
+    {
+      "id": "review_018",
+      "text": "Review: Điện thoại tốt - Camera đẹp\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Video quay mượt, chống rung tốt Nhiệt độ kiểm soát tốt Wireless charging tiện Nâng cấp đáng giá\nƯu điểm: Camera đẹp, Pin dài, Hiệu năng ổn định\nNhược điểm: Giá cao, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_008",
+        "rating": 5,
+        "helpful_count": 36,
+        "verified_purchase": true,
+        "id": "review_018",
+        "user_name": "Đặng Văn G",
+        "title": "Điện thoại tốt - Camera đẹp",
+        "content": "Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Video quay mượt, chống rung tốt Nhiệt độ kiểm soát tốt Wireless charging tiện Nâng cấp đáng giá",
+        "pros": ["Camera đẹp", "Pin dài", "Hiệu năng ổn định"],
+        "cons": ["Giá cao", "Hơi dày", "Sạc chậm"],
+        "date": "2025-07-18"
+      }
+    },
+    {
+      "id": "review_019",
+      "text": "Review: Điện thoại hài lòng - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 12 lên Samsung Galaxy S24 Ultra. Portrait mode và night mode ấn tượng Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera xuất sắc, Pin tốt, Hiệu năng ổn định\nNhược điểm: Giá hơi đắt, To và nặng, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_002",
+        "rating": 5,
+        "helpful_count": 48,
+        "verified_purchase": false,
+        "id": "review_019",
+        "user_name": "Ngô Văn L",
+        "title": "Điện thoại hài lòng - Camera xuất sắc",
+        "content": "Nâng cấp từ Samsung 12 lên Samsung Galaxy S24 Ultra. Portrait mode và night mode ấn tượng Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera xuất sắc", "Pin tốt", "Hiệu năng ổn định"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Không có sạc không dây"],
+        "date": "2025-07-10"
+      }
+    },
+    {
+      "id": "review_020",
+      "text": "Review: Điện thoại tuyệt vời - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 14 lên Samsung Galaxy A54 5G. Portrait mode và night mode ấn tượng Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Nâng cấp đáng giá\nƯu điểm: Camera xuất sắc, Pin dài, Hiệu năng mạnh\nNhược điểm: Giá đắt, Hơi dày, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_007",
+        "rating": 5,
+        "helpful_count": 90,
+        "verified_purchase": true,
+        "id": "review_020",
+        "user_name": "Bùi Thị H",
+        "title": "Điện thoại tuyệt vời - Camera xuất sắc",
+        "content": "Nâng cấp từ Samsung 14 lên Samsung Galaxy A54 5G. Portrait mode và night mode ấn tượng Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Nâng cấp đáng giá",
+        "pros": ["Camera xuất sắc", "Pin dài", "Hiệu năng mạnh"],
+        "cons": ["Giá đắt", "Hơi dày", "Cáp sạc ngắn"],
+        "date": "2025-04-14"
+      }
+    },
+    {
+      "id": "review_021",
+      "text": "Review: Laptop tuyệt vời cho văn phòng\nĐánh giá: 4/5\nNội dung: Mình dùng laptop này được 12 tháng cho văn phòng. Hiệu năng xử lý đa nhiệm mượt mà Màn hình hiển thị rất đẹp Pin hơi yếu khi gaming Touchpad responsive\nƯu điểm: Hiệu năng mạnh mẽ, Màn hình đẹp, Pin tốt\nNhược điểm: Hơi to, nóng khi gaming, Giá đắt",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_006",
+        "rating": 4,
+        "helpful_count": 99,
+        "verified_purchase": true,
+        "id": "review_021",
+        "user_name": "Ngô Văn L",
+        "title": "Laptop tuyệt vời cho văn phòng",
+        "content": "Mình dùng laptop này được 12 tháng cho văn phòng. Hiệu năng xử lý đa nhiệm mượt mà Màn hình hiển thị rất đẹp Pin hơi yếu khi gaming Touchpad responsive",
+        "pros": ["Hiệu năng mạnh mẽ", "Màn hình đẹp", "Pin tốt"],
+        "cons": ["Hơi to", "nóng khi gaming", "Giá đắt"],
+        "date": "2025-07-25"
+      }
+    },
+    {
+      "id": "review_022",
+      "text": "Review: Điện thoại ấn tượng - Camera ấn tượng\nĐánh giá: 3/5\nNội dung: Nâng cấp từ Samsung 12 lên Realme 11 Pro+. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera ấn tượng, Pin dài, Hiệu năng ổn định\nNhược điểm: Giá đắt, Hơi dày, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_010",
+        "rating": 3,
+        "helpful_count": 97,
+        "verified_purchase": false,
+        "id": "review_022",
+        "user_name": "Ngô Văn L",
+        "title": "Điện thoại ấn tượng - Camera ấn tượng",
+        "content": "Nâng cấp từ Samsung 12 lên Realme 11 Pro+. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera ấn tượng", "Pin dài", "Hiệu năng ổn định"],
+        "cons": ["Giá đắt", "Hơi dày", "Không có sạc không dây"],
+        "date": "2025-06-17"
+      }
+    },
+    {
+      "id": "review_023",
+      "text": "Review: Điện thoại tuyệt vời - Camera ấn tượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 12 lên Xiaomi 14. Zoom xa vẫn net, chụp đêm ổn Chơi game nặng vẫn ổn định Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này\nƯu điểm: Camera ấn tượng, Pin trâu, Hiệu năng mạnh\nNhược điểm: Giá hơi đắt, To và nặng, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_003",
+        "rating": 5,
+        "helpful_count": 67,
+        "verified_purchase": false,
+        "id": "review_023",
+        "user_name": "Đỗ Thị M",
+        "title": "Điện thoại tuyệt vời - Camera ấn tượng",
+        "content": "Nâng cấp từ Xiaomi 12 lên Xiaomi 14. Zoom xa vẫn net, chụp đêm ổn Chơi game nặng vẫn ổn định Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera ấn tượng", "Pin trâu", "Hiệu năng mạnh"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Không có sạc không dây"],
+        "date": "2025-06-02"
+      }
+    },
+    {
+      "id": "review_024",
+      "text": "Review: Điện thoại ấn tượng - Camera chất lượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 13 lên Xiaomi 14. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera chất lượng, Pin ổn, Hiệu năng ổn định\nNhược điểm: Giá đắt, Khó cầm một tay, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_003",
+        "rating": 5,
+        "helpful_count": 63,
+        "verified_purchase": true,
+        "id": "review_024",
+        "user_name": "Chu Thị S",
+        "title": "Điện thoại ấn tượng - Camera chất lượng",
+        "content": "Nâng cấp từ Xiaomi 13 lên Xiaomi 14. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera chất lượng", "Pin ổn", "Hiệu năng ổn định"],
+        "cons": ["Giá đắt", "Khó cầm một tay", "Không có sạc không dây"],
+        "date": "2025-03-29"
+      }
+    },
+    {
+      "id": "review_025",
+      "text": "Review: Điện thoại tốt - Camera đẹp\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 14 lên Samsung Galaxy A54 5G. Video quay mượt, chống rung tốt Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Sẽ tiếp tục dùng brand này\nƯu điểm: Camera đẹp, Pin tốt, Hiệu năng mượt\nNhược điểm: Giá hơi đắt, To và nặng, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_007",
+        "rating": 5,
+        "helpful_count": 97,
+        "verified_purchase": true,
+        "id": "review_025",
+        "user_name": "Nguyễn Văn A",
+        "title": "Điện thoại tốt - Camera đẹp",
+        "content": "Nâng cấp từ Samsung 14 lên Samsung Galaxy A54 5G. Video quay mượt, chống rung tốt Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera đẹp", "Pin tốt", "Hiệu năng mượt"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Sạc chậm"],
+        "date": "2025-08-16"
+      }
+    },
+    {
+      "id": "review_026",
+      "text": "Review: Lenovo hài lòng - Màn hình đẹp\nĐánh giá: 5/5\nNội dung: Chuyển từ HP sang Lenovo. Cải thiện rõ rệt so với máy cũ Học tập và nghiên cứu Đáng tiền bỏ ra Đáng để đầu tư\nƯu điểm: Màn hình đẹp, Thiết kế sang trọng, Cổng kết nối đầy đủ\nNhược điểm: RAM không nâng cấp được, Không có card reader, Dễ bám vân tay",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_004",
+        "rating": 5,
+        "helpful_count": 19,
+        "verified_purchase": false,
+        "id": "review_026",
+        "user_name": "Phan Văn P",
+        "title": "Lenovo hài lòng - Màn hình đẹp",
+        "content": "Chuyển từ HP sang Lenovo. Cải thiện rõ rệt so với máy cũ Học tập và nghiên cứu Đáng tiền bỏ ra Đáng để đầu tư",
+        "pros": ["Màn hình đẹp", "Thiết kế sang trọng", "Cổng kết nối đầy đủ"],
+        "cons": [
+          "RAM không nâng cấp được",
+          "Không có card reader",
+          "Dễ bám vân tay"
+        ],
+        "date": "2025-07-12"
+      }
+    },
+    {
+      "id": "review_027",
+      "text": "Review: Điện thoại ấn tượng - Camera ấn tượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Pin dùng thoải mái cả ngày Tổng thể rất hài lòng\nƯu điểm: Camera ấn tượng, Pin trâu, Hiệu năng mạnh\nNhược điểm: Giá đắt, Hơi dày, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_001",
+        "rating": 5,
+        "helpful_count": 60,
+        "verified_purchase": true,
+        "id": "review_027",
+        "user_name": "Hoàng Văn E",
+        "title": "Điện thoại ấn tượng - Camera ấn tượng",
+        "content": "Nâng cấp từ iPhone 14 lên iPhone 15 Pro Max. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Pin dùng thoải mái cả ngày Tổng thể rất hài lòng",
+        "pros": ["Camera ấn tượng", "Pin trâu", "Hiệu năng mạnh"],
+        "cons": ["Giá đắt", "Hơi dày", "Không có sạc không dây"],
+        "date": "2025-07-08"
+      }
+    },
+    {
+      "id": "review_028",
+      "text": "Review: Điện thoại tuyệt vời - Camera đẹp\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 13 lên Realme 11 Pro+. Video quay mượt, chống rung tốt Hiệu năng mượt mà, không lag Pin hơi yếu khi dùng nhiều Đáng tiền, recommend\nƯu điểm: Camera đẹp, Pin dài, Hiệu năng mạnh\nNhược điểm: Giá đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_010",
+        "rating": 5,
+        "helpful_count": 99,
+        "verified_purchase": true,
+        "id": "review_028",
+        "user_name": "Đỗ Thị M",
+        "title": "Điện thoại tuyệt vời - Camera đẹp",
+        "content": "Nâng cấp từ Samsung 13 lên Realme 11 Pro+. Video quay mượt, chống rung tốt Hiệu năng mượt mà, không lag Pin hơi yếu khi dùng nhiều Đáng tiền, recommend",
+        "pros": ["Camera đẹp", "Pin dài", "Hiệu năng mạnh"],
+        "cons": ["Giá đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-08-15"
+      }
+    },
+    {
+      "id": "review_029",
+      "text": "Review: Laptop tuyệt vời cho văn phòng\nĐánh giá: 5/5\nNội dung: Mình dùng laptop này được 1 tháng cho văn phòng. Chạy các phần mềm nặng không lag Màn hình hiển thị rất đẹp Pin dùng được cả ngày làm việc Build quality chắc chắn\nƯu điểm: Hiệu năng tốt, Màn hình sắc nét, Pin ổn\nNhược điểm: Hơi to, ấm khi render, Giá đắt",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_003",
+        "rating": 5,
+        "helpful_count": 53,
+        "verified_purchase": false,
+        "id": "review_029",
+        "user_name": "Đinh Thị U",
+        "title": "Laptop tuyệt vời cho văn phòng",
+        "content": "Mình dùng laptop này được 1 tháng cho văn phòng. Chạy các phần mềm nặng không lag Màn hình hiển thị rất đẹp Pin dùng được cả ngày làm việc Build quality chắc chắn",
+        "pros": ["Hiệu năng tốt", "Màn hình sắc nét", "Pin ổn"],
+        "cons": ["Hơi to", "ấm khi render", "Giá đắt"],
+        "date": "2025-08-10"
+      }
+    },
+    {
+      "id": "review_030",
+      "text": "Review: Điện thoại tốt - Camera tốt\nĐánh giá: 4/5\nNội dung: Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Video quay mượt, chống rung tốt Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Tổng thể rất hài lòng\nƯu điểm: Camera tốt, Pin dài, Hiệu năng ổn định\nNhược điểm: Giá hơi đắt, Hơi dày, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_008",
+        "rating": 4,
+        "helpful_count": 72,
+        "verified_purchase": false,
+        "id": "review_030",
+        "user_name": "Lý Thị K",
+        "title": "Điện thoại tốt - Camera tốt",
+        "content": "Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Video quay mượt, chống rung tốt Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Tổng thể rất hài lòng",
+        "pros": ["Camera tốt", "Pin dài", "Hiệu năng ổn định"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Cáp sạc ngắn"],
+        "date": "2025-04-27"
+      }
+    },
+    {
+      "id": "review_031",
+      "text": "Review: Laptop tuyệt vời cho thiết kế\nĐánh giá: 5/5\nNội dung: Mình dùng laptop này được 11 tháng cho thiết kế. Build code và compile rất nhanh Màn hình hiển thị rất đẹp Pin hơi yếu khi gaming Touchpad responsive\nƯu điểm: Hiệu năng mạnh mẽ, Màn hình tuyệt vời, Pin dài\nNhược điểm: Hơi to, ấm khi render, Giá cao",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_002",
+        "rating": 5,
+        "helpful_count": 70,
+        "verified_purchase": true,
+        "id": "review_031",
+        "user_name": "Hồ Văn N",
+        "title": "Laptop tuyệt vời cho thiết kế",
+        "content": "Mình dùng laptop này được 11 tháng cho thiết kế. Build code và compile rất nhanh Màn hình hiển thị rất đẹp Pin hơi yếu khi gaming Touchpad responsive",
+        "pros": ["Hiệu năng mạnh mẽ", "Màn hình tuyệt vời", "Pin dài"],
+        "cons": ["Hơi to", "ấm khi render", "Giá cao"],
+        "date": "2025-04-21"
+      }
+    },
+    {
+      "id": "review_032",
+      "text": "Review: Dell hài lòng - Thiết kế đẹp\nĐánh giá: 5/5\nNội dung: Chuyển từ Dell sang Dell. Cải thiện rõ rệt so với máy cũ Học tập và nghiên cứu Đáng tiền bỏ ra Recommend cho ai cần máy tương tự\nƯu điểm: Thiết kế đẹp, Thiết kế cao cấp, Cổng kết nối đầy đủ\nNhược điểm: SSD hơi nhỏ, Không có cổng Ethernet, Webcam vị trí hơi thấp",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_001",
+        "rating": 5,
+        "helpful_count": 47,
+        "verified_purchase": true,
+        "id": "review_032",
+        "user_name": "Chu Thị S",
+        "title": "Dell hài lòng - Thiết kế đẹp",
+        "content": "Chuyển từ Dell sang Dell. Cải thiện rõ rệt so với máy cũ Học tập và nghiên cứu Đáng tiền bỏ ra Recommend cho ai cần máy tương tự",
+        "pros": ["Thiết kế đẹp", "Thiết kế cao cấp", "Cổng kết nối đầy đủ"],
+        "cons": [
+          "SSD hơi nhỏ",
+          "Không có cổng Ethernet",
+          "Webcam vị trí hơi thấp"
+        ],
+        "date": "2025-08-01"
+      }
+    },
+    {
+      "id": "review_033",
+      "text": "Review: Điện thoại tốt - Camera ấn tượng\nĐánh giá: 3/5\nNội dung: Nâng cấp từ Xiaomi 12 lên Samsung Galaxy A54 5G. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera ấn tượng, Pin tốt, Hiệu năng cao\nNhược điểm: Giá hơi đắt, Hơi dày, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_007",
+        "rating": 3,
+        "helpful_count": 14,
+        "verified_purchase": true,
+        "id": "review_033",
+        "user_name": "Tô Văn R",
+        "title": "Điện thoại tốt - Camera ấn tượng",
+        "content": "Nâng cấp từ Xiaomi 12 lên Samsung Galaxy A54 5G. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera ấn tượng", "Pin tốt", "Hiệu năng cao"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Không có sạc không dây"],
+        "date": "2025-03-01"
+      }
+    },
+    {
+      "id": "review_034",
+      "text": "Review: Điện thoại ấn tượng - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 13 lên Realme 11 Pro+. Video quay mượt, chống rung tốt Đa nhiệm mượt, chuyển app nhanh Pin dùng thoải mái cả ngày Sẽ tiếp tục dùng brand này\nƯu điểm: Camera xuất sắc, Pin tốt, Hiệu năng mượt\nNhược điểm: Giá hơi đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_010",
+        "rating": 5,
+        "helpful_count": 89,
+        "verified_purchase": true,
+        "id": "review_034",
+        "user_name": "Lý Thị K",
+        "title": "Điện thoại ấn tượng - Camera xuất sắc",
+        "content": "Nâng cấp từ Xiaomi 13 lên Realme 11 Pro+. Video quay mượt, chống rung tốt Đa nhiệm mượt, chuyển app nhanh Pin dùng thoải mái cả ngày Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera xuất sắc", "Pin tốt", "Hiệu năng mượt"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-07-19"
+      }
+    },
+    {
+      "id": "review_035",
+      "text": "Review: Dell ấn tượng - Màn hình đẹp\nĐánh giá: 5/5\nNội dung: Chuyển từ Acer sang Dell. Cải thiện rõ rệt so với máy cũ Gaming và giải trí Đáng tiền bỏ ra Đáng để đầu tư\nƯu điểm: Màn hình đẹp, Thiết kế tinh tế, Bàn phím có đèn nền\nNhược điểm: SSD hơi nhỏ, Không có card reader, Webcam vị trí hơi thấp",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_001",
+        "rating": 5,
+        "helpful_count": 9,
+        "verified_purchase": false,
+        "id": "review_035",
+        "user_name": "Bùi Thị H",
+        "title": "Dell ấn tượng - Màn hình đẹp",
+        "content": "Chuyển từ Acer sang Dell. Cải thiện rõ rệt so với máy cũ Gaming và giải trí Đáng tiền bỏ ra Đáng để đầu tư",
+        "pros": ["Màn hình đẹp", "Thiết kế tinh tế", "Bàn phím có đèn nền"],
+        "cons": [
+          "SSD hơi nhỏ",
+          "Không có card reader",
+          "Webcam vị trí hơi thấp"
+        ],
+        "date": "2025-08-07"
+      }
+    },
+    {
+      "id": "review_036",
+      "text": "Review: Điện thoại ấn tượng - Camera ấn tượng\nĐánh giá: 4/5\nNội dung: Nâng cấp từ Xiaomi 13 lên Samsung Galaxy S24 Ultra. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Pin dùng thoải mái cả ngày Đáng tiền, recommend\nƯu điểm: Camera ấn tượng, Pin dài, Hiệu năng ổn định\nNhược điểm: Giá cao, Khó cầm một tay, Không có sạc không dây",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_002",
+        "rating": 4,
+        "helpful_count": 31,
+        "verified_purchase": true,
+        "id": "review_036",
+        "user_name": "Mai Thị Q",
+        "title": "Điện thoại ấn tượng - Camera ấn tượng",
+        "content": "Nâng cấp từ Xiaomi 13 lên Samsung Galaxy S24 Ultra. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Pin dùng thoải mái cả ngày Đáng tiền, recommend",
+        "pros": ["Camera ấn tượng", "Pin dài", "Hiệu năng ổn định"],
+        "cons": ["Giá cao", "Khó cầm một tay", "Không có sạc không dây"],
+        "date": "2025-04-09"
+      }
+    },
+    {
+      "id": "review_037",
+      "text": "Review: Laptop tuyệt vời cho văn phòng\nĐánh giá: 5/5\nNội dung: Mình dùng laptop này được 11 tháng cho văn phòng. Build code và compile rất nhanh Độ sáng tốt, làm việc ngoài trời OK Pin dùng được cả ngày làm việc Touchpad responsive\nƯu điểm: Hiệu năng mạnh mẽ, Màn hình đẹp, Pin trâu\nNhược điểm: Hơi dày, ấm khi render, Giá cao",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_003",
+        "rating": 5,
+        "helpful_count": 81,
+        "verified_purchase": false,
+        "id": "review_037",
+        "user_name": "Trần Thị B",
+        "title": "Laptop tuyệt vời cho văn phòng",
+        "content": "Mình dùng laptop này được 11 tháng cho văn phòng. Build code và compile rất nhanh Độ sáng tốt, làm việc ngoài trời OK Pin dùng được cả ngày làm việc Touchpad responsive",
+        "pros": ["Hiệu năng mạnh mẽ", "Màn hình đẹp", "Pin trâu"],
+        "cons": ["Hơi dày", "ấm khi render", "Giá cao"],
+        "date": "2025-02-27"
+      }
+    },
+    {
+      "id": "review_038",
+      "text": "Review: Laptop tuyệt vời cho gaming\nĐánh giá: 3/5\nNội dung: Mình dùng laptop này được 7 tháng cho gaming. Gaming ở setting cao vẫn mượt Độ sáng tốt, làm việc ngoài trời OK Sạc nhanh, tiện lợi Build quality chắc chắn\nƯu điểm: Hiệu năng ổn định, Màn hình đẹp, Pin dài\nNhược điểm: Hơi to, nóng khi gaming, Giá không rẻ",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_003",
+        "rating": 3,
+        "helpful_count": 7,
+        "verified_purchase": false,
+        "id": "review_038",
+        "user_name": "Phan Văn P",
+        "title": "Laptop tuyệt vời cho gaming",
+        "content": "Mình dùng laptop này được 7 tháng cho gaming. Gaming ở setting cao vẫn mượt Độ sáng tốt, làm việc ngoài trời OK Sạc nhanh, tiện lợi Build quality chắc chắn",
+        "pros": ["Hiệu năng ổn định", "Màn hình đẹp", "Pin dài"],
+        "cons": ["Hơi to", "nóng khi gaming", "Giá không rẻ"],
+        "date": "2025-02-25"
+      }
+    },
+    {
+      "id": "review_039",
+      "text": "Review: Dell hài lòng - Màn hình đẹp\nĐánh giá: 5/5\nNội dung: Chuyển từ Dell sang Dell. Trải nghiệm tốt hơn hẳn Gaming và giải trí Rất hài lòng với hiệu năng Sẽ mua lại brand này\nƯu điểm: Màn hình đẹp, Thiết kế đẹp, Cổng kết nối đầy đủ\nNhược điểm: SSD hơi nhỏ, Không có card reader, Dễ bám vân tay",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_001",
+        "rating": 5,
+        "helpful_count": 37,
+        "verified_purchase": true,
+        "id": "review_039",
+        "user_name": "Đặng Văn G",
+        "title": "Dell hài lòng - Màn hình đẹp",
+        "content": "Chuyển từ Dell sang Dell. Trải nghiệm tốt hơn hẳn Gaming và giải trí Rất hài lòng với hiệu năng Sẽ mua lại brand này",
+        "pros": ["Màn hình đẹp", "Thiết kế đẹp", "Cổng kết nối đầy đủ"],
+        "cons": ["SSD hơi nhỏ", "Không có card reader", "Dễ bám vân tay"],
+        "date": "2025-07-06"
+      }
+    },
+    {
+      "id": "review_040",
+      "text": "Review: Điện thoại tốt - Camera chất lượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 13 lên Samsung Galaxy A54 5G. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Wireless charging tiện Tổng thể rất hài lòng\nƯu điểm: Camera chất lượng, Pin dài, Hiệu năng cao\nNhược điểm: Giá cao, Khó cầm một tay, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_007",
+        "rating": 5,
+        "helpful_count": 97,
+        "verified_purchase": true,
+        "id": "review_040",
+        "user_name": "Hoàng Văn E",
+        "title": "Điện thoại tốt - Camera chất lượng",
+        "content": "Nâng cấp từ Xiaomi 13 lên Samsung Galaxy A54 5G. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Nhiệt độ kiểm soát tốt Wireless charging tiện Tổng thể rất hài lòng",
+        "pros": ["Camera chất lượng", "Pin dài", "Hiệu năng cao"],
+        "cons": ["Giá cao", "Khó cầm một tay", "Cáp sạc ngắn"],
+        "date": "2025-04-02"
+      }
+    },
+    {
+      "id": "review_041",
+      "text": "Review: Điện thoại tuyệt vời - Camera đẹp\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 14 lên OnePlus 12. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera đẹp, Pin trâu, Hiệu năng ổn định\nNhược điểm: Giá hơi đắt, Khó cầm một tay, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_005",
+        "rating": 5,
+        "helpful_count": 65,
+        "verified_purchase": true,
+        "id": "review_041",
+        "user_name": "Lê Văn C",
+        "title": "Điện thoại tuyệt vời - Camera đẹp",
+        "content": "Nâng cấp từ iPhone 14 lên OnePlus 12. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Chơi game nặng vẫn ổn định Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera đẹp", "Pin trâu", "Hiệu năng ổn định"],
+        "cons": ["Giá hơi đắt", "Khó cầm một tay", "Cáp sạc ngắn"],
+        "date": "2025-06-03"
+      }
+    },
+    {
+      "id": "review_042",
+      "text": "Review: Laptop tuyệt vời cho gaming\nĐánh giá: 5/5\nNội dung: Mình dùng laptop này được 5 tháng cho gaming. Chạy các phần mềm nặng không lag Góc nhìn rộng, không bị lóa Thời lượng pin khá ổn Bàn phím gõ thoải mái\nƯu điểm: Hiệu năng mạnh mẽ, Màn hình tuyệt vời, Pin dài\nNhược điểm: Hơi to, ấm khi render, Giá cao",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_004",
+        "rating": 5,
+        "helpful_count": 50,
+        "verified_purchase": true,
+        "id": "review_042",
+        "user_name": "Đỗ Thị M",
+        "title": "Laptop tuyệt vời cho gaming",
+        "content": "Mình dùng laptop này được 5 tháng cho gaming. Chạy các phần mềm nặng không lag Góc nhìn rộng, không bị lóa Thời lượng pin khá ổn Bàn phím gõ thoải mái",
+        "pros": ["Hiệu năng mạnh mẽ", "Màn hình tuyệt vời", "Pin dài"],
+        "cons": ["Hơi to", "ấm khi render", "Giá cao"],
+        "date": "2025-05-14"
+      }
+    },
+    {
+      "id": "review_043",
+      "text": "Review: Điện thoại tốt - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 14 lên Realme 11 Pro+. Zoom xa vẫn net, chụp đêm ổn Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend\nƯu điểm: Camera xuất sắc, Pin tốt, Hiệu năng mượt\nNhược điểm: Giá đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_010",
+        "rating": 5,
+        "helpful_count": 33,
+        "verified_purchase": true,
+        "id": "review_043",
+        "user_name": "Ngô Văn L",
+        "title": "Điện thoại tốt - Camera xuất sắc",
+        "content": "Nâng cấp từ Xiaomi 14 lên Realme 11 Pro+. Zoom xa vẫn net, chụp đêm ổn Đa nhiệm mượt, chuyển app nhanh Wireless charging tiện Đáng tiền, recommend",
+        "pros": ["Camera xuất sắc", "Pin tốt", "Hiệu năng mượt"],
+        "cons": ["Giá đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-06-18"
+      }
+    },
+    {
+      "id": "review_044",
+      "text": "Review: Laptop tuyệt vời cho gaming\nĐánh giá: 5/5\nNội dung: Mình dùng laptop này được 6 tháng cho gaming. Build code và compile rất nhanh Độ sáng tốt, làm việc ngoài trời OK Pin hơi yếu khi gaming Thiết kế đẹp, sang trọng\nƯu điểm: Hiệu năng mạnh mẽ, Màn hình chất lượng, Pin tốt\nNhược điểm: Hơi nặng, nóng khi gaming, Giá không rẻ",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_002",
+        "rating": 5,
+        "helpful_count": 87,
+        "verified_purchase": false,
+        "id": "review_044",
+        "user_name": "Ngô Văn L",
+        "title": "Laptop tuyệt vời cho gaming",
+        "content": "Mình dùng laptop này được 6 tháng cho gaming. Build code và compile rất nhanh Độ sáng tốt, làm việc ngoài trời OK Pin hơi yếu khi gaming Thiết kế đẹp, sang trọng",
+        "pros": ["Hiệu năng mạnh mẽ", "Màn hình chất lượng", "Pin tốt"],
+        "cons": ["Hơi nặng", "nóng khi gaming", "Giá không rẻ"],
+        "date": "2025-02-18"
+      }
+    },
+    {
+      "id": "review_045",
+      "text": "Review: Điện thoại xuất sắc - Camera ấn tượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 14 lên iPhone 15. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Nâng cấp đáng giá\nƯu điểm: Camera ấn tượng, Pin trâu, Hiệu năng mượt\nNhược điểm: Giá hơi đắt, To và nặng, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_006",
+        "rating": 5,
+        "helpful_count": 9,
+        "verified_purchase": true,
+        "id": "review_045",
+        "user_name": "Lưu Văn T",
+        "title": "Điện thoại xuất sắc - Camera ấn tượng",
+        "content": "Nâng cấp từ Samsung 14 lên iPhone 15. Camera chụp ảnh rất đẹp, màu sắc tự nhiên Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Nâng cấp đáng giá",
+        "pros": ["Camera ấn tượng", "Pin trâu", "Hiệu năng mượt"],
+        "cons": ["Giá hơi đắt", "To và nặng", "Sạc chậm"],
+        "date": "2025-08-12"
+      }
+    },
+    {
+      "id": "review_046",
+      "text": "Review: Điện thoại tuyệt vời - Camera ấn tượng\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 11 lên Xiaomi Redmi Note 13 Pro+ 5G. Portrait mode và night mode ấn tượng Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Nâng cấp đáng giá\nƯu điểm: Camera ấn tượng, Pin dài, Hiệu năng mượt\nNhược điểm: Giá hơi đắt, Hơi dày, Cáp sạc ngắn",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_008",
+        "rating": 5,
+        "helpful_count": 20,
+        "verified_purchase": true,
+        "id": "review_046",
+        "user_name": "Hồ Văn N",
+        "title": "Điện thoại tuyệt vời - Camera ấn tượng",
+        "content": "Nâng cấp từ Samsung 11 lên Xiaomi Redmi Note 13 Pro+ 5G. Portrait mode và night mode ấn tượng Hiệu năng mượt mà, không lag Pin dùng thoải mái cả ngày Nâng cấp đáng giá",
+        "pros": ["Camera ấn tượng", "Pin dài", "Hiệu năng mượt"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Cáp sạc ngắn"],
+        "date": "2025-08-05"
+      }
+    },
+    {
+      "id": "review_047",
+      "text": "Review: Điện thoại hài lòng - Camera tốt\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Xiaomi 13 lên OPPO Reno11 5G. Portrait mode và night mode ấn tượng Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này\nƯu điểm: Camera tốt, Pin ổn, Hiệu năng cao\nNhược điểm: Giá hơi đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_009",
+        "rating": 5,
+        "helpful_count": 72,
+        "verified_purchase": false,
+        "id": "review_047",
+        "user_name": "Hồ Văn N",
+        "title": "Điện thoại hài lòng - Camera tốt",
+        "content": "Nâng cấp từ Xiaomi 13 lên OPPO Reno11 5G. Portrait mode và night mode ấn tượng Nhiệt độ kiểm soát tốt Pin hơi yếu khi dùng nhiều Sẽ tiếp tục dùng brand này",
+        "pros": ["Camera tốt", "Pin ổn", "Hiệu năng cao"],
+        "cons": ["Giá hơi đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-07-21"
+      }
+    },
+    {
+      "id": "review_048",
+      "text": "Review: Điện thoại ấn tượng - Camera xuất sắc\nĐánh giá: 5/5\nNội dung: Nâng cấp từ Samsung 11 lên Realme 11 Pro+. Zoom xa vẫn net, chụp đêm ổn Chơi game nặng vẫn ổn định Sạc nhanh, tiện lợi Đáng tiền, recommend\nƯu điểm: Camera xuất sắc, Pin tốt, Hiệu năng ổn định\nNhược điểm: Giá đắt, Khó cầm một tay, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_010",
+        "rating": 5,
+        "helpful_count": 10,
+        "verified_purchase": true,
+        "id": "review_048",
+        "user_name": "Trần Thị B",
+        "title": "Điện thoại ấn tượng - Camera xuất sắc",
+        "content": "Nâng cấp từ Samsung 11 lên Realme 11 Pro+. Zoom xa vẫn net, chụp đêm ổn Chơi game nặng vẫn ổn định Sạc nhanh, tiện lợi Đáng tiền, recommend",
+        "pros": ["Camera xuất sắc", "Pin tốt", "Hiệu năng ổn định"],
+        "cons": ["Giá đắt", "Khó cầm một tay", "Sạc chậm"],
+        "date": "2025-05-22"
+      }
+    },
+    {
+      "id": "review_049",
+      "text": "Review: ASUS ấn tượng - Hiệu năng cao\nĐánh giá: 5/5\nNội dung: Chuyển từ Acer sang ASUS. Ban đầu hơi khó quen nhưng giờ thì ổn Học tập và nghiên cứu Rất hài lòng với hiệu năng Sẽ mua lại brand này\nƯu điểm: Hiệu năng cao, Thiết kế tinh tế, Cổng kết nối đầy đủ\nNhược điểm: Không có DVD drive, Không có card reader, Webcam vị trí hơi thấp",
+      "metadata": {
+        "type": "review",
+        "product_id": "laptop_003",
+        "rating": 5,
+        "helpful_count": 67,
+        "verified_purchase": true,
+        "id": "review_049",
+        "user_name": "Lý Thị K",
+        "title": "ASUS ấn tượng - Hiệu năng cao",
+        "content": "Chuyển từ Acer sang ASUS. Ban đầu hơi khó quen nhưng giờ thì ổn Học tập và nghiên cứu Rất hài lòng với hiệu năng Sẽ mua lại brand này",
+        "pros": ["Hiệu năng cao", "Thiết kế tinh tế", "Cổng kết nối đầy đủ"],
+        "cons": [
+          "Không có DVD drive",
+          "Không có card reader",
+          "Webcam vị trí hơi thấp"
+        ],
+        "date": "2025-06-09"
+      }
+    },
+    {
+      "id": "review_050",
+      "text": "Review: Điện thoại tuyệt vời - Camera đẹp\nĐánh giá: 5/5\nNội dung: Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Portrait mode và night mode ấn tượng Chơi game nặng vẫn ổn định Wireless charging tiện Nâng cấp đáng giá\nƯu điểm: Camera đẹp, Pin dài, Hiệu năng cao\nNhược điểm: Giá đắt, Hơi dày, Sạc chậm",
+      "metadata": {
+        "type": "review",
+        "product_id": "phone_008",
+        "rating": 5,
+        "helpful_count": 62,
+        "verified_purchase": true,
+        "id": "review_050",
+        "user_name": "Vũ Thị F",
+        "title": "Điện thoại tuyệt vời - Camera đẹp",
+        "content": "Nâng cấp từ iPhone 12 lên Xiaomi Redmi Note 13 Pro+ 5G. Portrait mode và night mode ấn tượng Chơi game nặng vẫn ổn định Wireless charging tiện Nâng cấp đáng giá",
+        "pros": ["Camera đẹp", "Pin dài", "Hiệu năng cao"],
+        "cons": ["Giá đắt", "Hơi dày", "Sạc chậm"],
+        "date": "2025-03-25"
+      }
     }
   ]
 }
