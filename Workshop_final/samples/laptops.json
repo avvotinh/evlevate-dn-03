@@ -1,0 +1,1616 @@
+{
+  "products": [
+    {
+      "id": "laptop_001",
+      "text": "Dell XPS 15 9520 - Dell\nGiá: 45,000,000 VND\nMô tả: Laptop cao cấp Dell XPS 15 với màn hình 4K tuyệt đẹp, hiệu năng mạnh mẽ cho công việc sáng tạo và lập trình. Thiết kế nhôm nguyên khối sang trọng, bàn phím thoải mái và touchpad rộng rãi.\nThông số kỹ thuật:\n- cpu: Intel Core i7-12700H (14 cores, up to 4.7GHz)\n- ram: 16GB DDR5 4800MHz\n- storage: 512GB PCIe NVMe SSD\n- gpu: NVIDIA GeForce RTX 3050 Ti 4GB\n- display: 15.6 inch 4K+ (3456x2160) OLED, 400 nits, 100% DCI-P3\n- battery: 86Wh, up to 13 hours\n- weight: 1.96kg\n- os: Windows 11 Pro\n- ports: 2x Thunderbolt 4, 1x USB-C 3.2, SD card reader, 3.5mm audio\nFeatures: Màn hình OLED 4K, Thunderbolt 4, Windows Hello (vân tay + IR camera), Killer Wi-Fi 6E, Bàn phím có đèn nền, Loa stereo được tinh chỉnh bởi Waves MaxxAudio\nPros: Màn hình OLED xuất sắc với màu sắc chính xác, Hiệu năng mạnh mẽ cho đa tác vụ, Thiết kế cao cấp, sang trọng, Thời lượng pin tốt cho laptop 4K, Bàn phím và touchpad chất lượng cao\nCons: Giá cao, Có thể nóng khi chạy tác vụ nặng, Webcam vẫn ở vị trí dưới màn hình, Nâng cấp RAM và SSD khó khăn\nUse_Cases: Lập trình và phát triển phần mềm, Thiết kế đồ họa và chỉnh sửa video, Công việc văn phòng cao cấp, Content creation, Machine learning và data science\nĐánh giá: 4.6/5 từ 342 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Dell",
+        "name": "Dell XPS 15 9520",
+        "price": 45000000,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "laptop_001",
+        "currency": "VND",
+        "features": [
+          "Màn hình OLED 4K",
+          "Thunderbolt 4",
+          "Windows Hello (vân tay + IR camera)",
+          "Killer Wi-Fi 6E",
+          "Bàn phím có đèn nền",
+          "Loa stereo được tinh chỉnh bởi Waves MaxxAudio"
+        ],
+        "pros": [
+          "Màn hình OLED xuất sắc với màu sắc chính xác",
+          "Hiệu năng mạnh mẽ cho đa tác vụ",
+          "Thiết kế cao cấp, sang trọng",
+          "Thời lượng pin tốt cho laptop 4K",
+          "Bàn phím và touchpad chất lượng cao"
+        ],
+        "cons": [
+          "Giá cao",
+          "Có thể nóng khi chạy tác vụ nặng",
+          "Webcam vẫn ở vị trí dưới màn hình",
+          "Nâng cấp RAM và SSD khó khăn"
+        ],
+        "use_cases": [
+          "Lập trình và phát triển phần mềm",
+          "Thiết kế đồ họa và chỉnh sửa video",
+          "Công việc văn phòng cao cấp",
+          "Content creation",
+          "Machine learning và data science"
+        ],
+        "review_count": 342,
+        "warranty": "12 tháng",
+        "tags": [
+          "premium",
+          "4k-display",
+          "content-creation",
+          "programming",
+          "ultrabook"
+        ]
+      }
+    },
+    {
+      "id": "laptop_002",
+      "text": "MacBook Air M2 13 inch - Apple\nGiá: 32,000,000 VND\nMô tả: MacBook Air M2 mỏng nhẹ với chip Apple M2 mạnh mẽ, thời lượng pin cực kỳ ấn tượng lên đến 18 giờ. Thiết kế mới với màn hình Liquid Retina và MagSafe trở lại.\nThông số kỹ thuật:\n- cpu: Apple M2 (8-core CPU: 4 performance + 4 efficiency)\n- ram: 8GB unified memory\n- storage: 256GB SSD\n- gpu: 8-core GPU\n- display: 13.6 inch Liquid Retina (2560x1664), 500 nits, P3 color\n- battery: 52.6Wh, up to 18 hours\n- weight: 1.24kg\n- os: macOS Ventura\n- ports: 2x Thunderbolt/USB 4, MagSafe 3, 3.5mm audio\nFeatures: Chip Apple M2 tiết kiệm điện, Màn hình Liquid Retina, MagSafe charging, Touch ID, Fanless design (không quạt, hoàn toàn yên tĩnh), 1080p FaceTime HD camera, Spatial audio với 4 loa\nPros: Thời lượng pin xuất sắc (18 giờ), Hiệu năng mạnh với M2, Hoàn toàn yên tĩnh (không quạt), Màn hình sáng và sắc nét, Mỏng nhẹ, dễ mang theo, Khởi động và xử lý cực nhanh\nCons: RAM chỉ 8GB, không nâng cấp được, Giá cao so với cấu hình, Ít cổng kết nối, SSD dung lượng thấp ở bản base\nUse_Cases: Lập trình web và mobile (iOS), Công việc văn phòng, Học tập và nghiên cứu, Content creation nhẹ, Di chuyển nhiều\nĐánh giá: 4.8/5 từ 567 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Apple",
+        "name": "MacBook Air M2 13 inch",
+        "price": 32000000,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "laptop_002",
+        "currency": "VND",
+        "features": [
+          "Chip Apple M2 tiết kiệm điện",
+          "Màn hình Liquid Retina",
+          "MagSafe charging",
+          "Touch ID",
+          "Fanless design (không quạt, hoàn toàn yên tĩnh)",
+          "1080p FaceTime HD camera",
+          "Spatial audio với 4 loa"
+        ],
+        "pros": [
+          "Thời lượng pin xuất sắc (18 giờ)",
+          "Hiệu năng mạnh với M2",
+          "Hoàn toàn yên tĩnh (không quạt)",
+          "Màn hình sáng và sắc nét",
+          "Mỏng nhẹ, dễ mang theo",
+          "Khởi động và xử lý cực nhanh"
+        ],
+        "cons": [
+          "RAM chỉ 8GB, không nâng cấp được",
+          "Giá cao so với cấu hình",
+          "Ít cổng kết nối",
+          "SSD dung lượng thấp ở bản base"
+        ],
+        "use_cases": [
+          "Lập trình web và mobile (iOS)",
+          "Công việc văn phòng",
+          "Học tập và nghiên cứu",
+          "Content creation nhẹ",
+          "Di chuyển nhiều"
+        ],
+        "review_count": 567,
+        "warranty": "12 tháng",
+        "tags": ["ultraportable", "long-battery", "silent", "macos", "m2-chip"]
+      }
+    },
+    {
+      "id": "laptop_003",
+      "text": "ASUS ROG Strix G15 - ASUS\nGiá: 35,000,000 VND\nMô tả: Laptop gaming mạnh mẽ với AMD Ryzen 7 và RTX 3060, màn hình 300Hz cho trải nghiệm gaming mượt mà. Hệ thống tản nhiệt ROG Intelligent Cooling giữ máy mát mẻ ngay cả khi chơi game nặng.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 7 6800H (8 cores, up to 4.7GHz)\n- ram: 16GB DDR5 4800MHz (2x8GB)\n- storage: 1TB PCIe 4.0 NVMe SSD\n- gpu: NVIDIA GeForce RTX 3060 6GB GDDR6\n- display: 15.6 inch FHD (1920x1080) 300Hz, 3ms, 100% sRGB\n- battery: 90Wh, up to 8 hours\n- weight: 2.3kg\n- os: Windows 11 Home\n- ports: 3x USB 3.2 Type-A, 1x USB-C (DP 1.4), HDMI 2.0b, RJ45, 3.5mm audio\nFeatures: Màn hình 300Hz cho gaming, RGB keyboard 4-zone, ROG Intelligent Cooling, Dolby Atmos audio, Wi-Fi 6E, MUX Switch cho hiệu năng GPU tối đa, Aura Sync lighting\nPros: Hiệu năng gaming mạnh mẽ, Màn hình 300Hz cực mượt, Tản nhiệt hiệu quả, Nâng cấp RAM và SSD dễ dàng, Giá tốt cho cấu hình\nCons: Nặng và cồng kềnh, Pin yếu khi gaming, Ồn khi chạy tác vụ nặng, Thiết kế gaming có thể không phù hợp văn phòng\nUse_Cases: Gaming AAA titles, Game development, 3D rendering và modeling, Video editing nặng, Streaming game\nĐánh giá: 4.5/5 từ 423 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "ASUS",
+        "name": "ASUS ROG Strix G15",
+        "price": 35000000,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "laptop_003",
+        "currency": "VND",
+        "features": [
+          "Màn hình 300Hz cho gaming",
+          "RGB keyboard 4-zone",
+          "ROG Intelligent Cooling",
+          "Dolby Atmos audio",
+          "Wi-Fi 6E",
+          "MUX Switch cho hiệu năng GPU tối đa",
+          "Aura Sync lighting"
+        ],
+        "pros": [
+          "Hiệu năng gaming mạnh mẽ",
+          "Màn hình 300Hz cực mượt",
+          "Tản nhiệt hiệu quả",
+          "Nâng cấp RAM và SSD dễ dàng",
+          "Giá tốt cho cấu hình"
+        ],
+        "cons": [
+          "Nặng và cồng kềnh",
+          "Pin yếu khi gaming",
+          "Ồn khi chạy tác vụ nặng",
+          "Thiết kế gaming có thể không phù hợp văn phòng"
+        ],
+        "use_cases": [
+          "Gaming AAA titles",
+          "Game development",
+          "3D rendering và modeling",
+          "Video editing nặng",
+          "Streaming game"
+        ],
+        "review_count": 423,
+        "warranty": "24 tháng",
+        "tags": ["gaming", "high-refresh", "rtx3060", "amd-ryzen", "rgb"]
+      }
+    },
+    {
+      "id": "laptop_004",
+      "text": "Lenovo ThinkPad X1 Carbon Gen 10 - Lenovo\nGiá: 42,000,000 VND\nMô tả: Laptop doanh nhân cao cấp với độ bền chuẩn quân đội MIL-STD-810H, bàn phím ThinkPad huyền thoại và bảo mật cấp doanh nghiệp. Mỏng nhẹ chỉ 1.12kg nhưng cực kỳ bền bỉ.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1260P (12 cores, up to 4.7GHz)\n- ram: 16GB LPDDR5 5200MHz\n- storage: 512GB PCIe Gen 4 SSD\n- gpu: Intel Iris Xe Graphics\n- display: 14 inch WUXGA (1920x1200) IPS, 400 nits, 100% sRGB\n- battery: 57Wh, up to 15 hours\n- weight: 1.12kg\n- os: Windows 11 Pro\n- ports: 2x Thunderbolt 4, 2x USB-A 3.2, HDMI 2.0, 3.5mm audio\nFeatures: Bàn phím ThinkPad với TrackPoint, Đạt chuẩn quân đội MIL-STD-810H, IR camera với Windows Hello, Fingerprint reader, ThinkShutter camera privacy, Dolby Atmos speaker system, 4G LTE option\nPros: Cực kỳ nhẹ và di động, Bàn phím tốt nhất thị trường, Độ bền cao, chuẩn quân đội, Bảo mật doanh nghiệp, Pin lâu cho laptop Intel\nCons: Giá cao, Thiết kế truyền thống, ít thay đổi, Màn hình chỉ FHD+, Hiệu năng đồ họa hạn chế\nUse_Cases: Business professionals, Lập trình và phát triển, Công việc văn phòng, Di chuyển thường xuyên, Bảo mật cao\nĐánh giá: 4.7/5 từ 289 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Lenovo",
+        "name": "Lenovo ThinkPad X1 Carbon Gen 10",
+        "price": 42000000,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "laptop_004",
+        "currency": "VND",
+        "features": [
+          "Bàn phím ThinkPad với TrackPoint",
+          "Đạt chuẩn quân đội MIL-STD-810H",
+          "IR camera với Windows Hello",
+          "Fingerprint reader",
+          "ThinkShutter camera privacy",
+          "Dolby Atmos speaker system",
+          "4G LTE option"
+        ],
+        "pros": [
+          "Cực kỳ nhẹ và di động",
+          "Bàn phím tốt nhất thị trường",
+          "Độ bền cao, chuẩn quân đội",
+          "Bảo mật doanh nghiệp",
+          "Pin lâu cho laptop Intel"
+        ],
+        "cons": [
+          "Giá cao",
+          "Thiết kế truyền thống, ít thay đổi",
+          "Màn hình chỉ FHD+",
+          "Hiệu năng đồ họa hạn chế"
+        ],
+        "use_cases": [
+          "Business professionals",
+          "Lập trình và phát triển",
+          "Công việc văn phòng",
+          "Di chuyển thường xuyên",
+          "Bảo mật cao"
+        ],
+        "review_count": 289,
+        "warranty": "36 tháng",
+        "tags": ["business", "ultraportable", "durable", "thinkpad", "security"]
+      }
+    },
+    {
+      "id": "laptop_005",
+      "text": "HP Pavilion 15 - HP\nGiá: 18,000,000 VND\nMô tả: Laptop phổ thông đa năng với cấu hình tốt trong tầm giá, phù hợp cho sinh viên và công việc văn phòng. Thiết kế hiện đại với viền màn hình mỏng.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1235U (10 cores, up to 4.4GHz)\n- ram: 8GB DDR4 3200MHz\n- storage: 512GB PCIe NVMe SSD\n- gpu: Intel Iris Xe Graphics\n- display: 15.6 inch FHD (1920x1080) IPS, 250 nits\n- battery: 41Wh, up to 8 hours\n- weight: 1.75kg\n- os: Windows 11 Home\n- ports: 1x USB-C, 2x USB-A 3.2, HDMI 2.1, SD card reader, 3.5mm audio\nFeatures: Màn hình IPS Full HD, Bàn phím có đèn nền, Fast Charge (50% trong 45 phút), B&O audio, Wi-Fi 6, Webcam HD với privacy shutter\nPros: Giá phải chăng, Cấu hình tốt cho tầm giá, Thiết kế đẹp, hiện đại, Đầy đủ cổng kết nối, Nâng cấp RAM và SSD dễ dàng\nCons: Màn hình độ sáng thấp, Pin trung bình, Vỏ nhựa, không cao cấp, Loa yếu\nUse_Cases: Sinh viên, Văn phòng cơ bản, Entertainment nhẹ, Học online, Lập trình cơ bản\nĐánh giá: 4.2/5 từ 512 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "mainstream",
+        "brand": "HP",
+        "name": "HP Pavilion 15",
+        "price": 18000000,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "laptop_005",
+        "currency": "VND",
+        "features": [
+          "Màn hình IPS Full HD",
+          "Bàn phím có đèn nền",
+          "Fast Charge (50% trong 45 phút)",
+          "B&O audio",
+          "Wi-Fi 6",
+          "Webcam HD với privacy shutter"
+        ],
+        "pros": [
+          "Giá phải chăng",
+          "Cấu hình tốt cho tầm giá",
+          "Thiết kế đẹp, hiện đại",
+          "Đầy đủ cổng kết nối",
+          "Nâng cấp RAM và SSD dễ dàng"
+        ],
+        "cons": [
+          "Màn hình độ sáng thấp",
+          "Pin trung bình",
+          "Vỏ nhựa, không cao cấp",
+          "Loa yếu"
+        ],
+        "use_cases": [
+          "Sinh viên",
+          "Văn phòng cơ bản",
+          "Entertainment nhẹ",
+          "Học online",
+          "Lập trình cơ bản"
+        ],
+        "review_count": 512,
+        "warranty": "12 tháng",
+        "tags": ["budget-friendly", "student", "office", "mainstream", "value"]
+      }
+    },
+    {
+      "id": "laptop_006",
+      "text": "Lenovo ThinkPad X1 Carbon Gen 11 - Lenovo\nGiá: 42,000,000 VND\nMô tả: Laptop doanh nghiệp cao cấp với thiết kế carbon fiber siêu nhẹ, bảo mật tối đa và độ bền quân đội. Bàn phím TrackPoint huyền thoại và pin dài cho dân văn phòng.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1365U (10 cores, up to 5.2GHz)\n- ram: 16GB LPDDR5 5200MHz\n- storage: 512GB PCIe NVMe SSD\n- gpu: Intel Iris Xe Graphics\n- display: 14 inch 2.8K (2880x1800) IPS, 400 nits, 100% sRGB\n- battery: 57Wh, up to 15 hours\n- weight: 1.12kg\n- os: Windows 11 Pro\n- ports: 2x Thunderbolt 4, 2x USB-A 3.2, HDMI 2.1, 3.5mm audio\nFeatures: Carbon fiber chassis, MIL-STD-810H durability, TrackPoint + TrackPad, ThinkShutter camera privacy, Rapid Charge (80% in 1 hour), Wi-Fi 6E + 5G optional\nPros: Siêu nhẹ chỉ 1.12kg, Bàn phím xuất sắc, Bảo mật doanh nghiệp, Pin dài 15 tiếng, Độ bền quân đội\nCons: GPU tích hợp yếu, Giá cao, Màn hình không OLED, Loa không ấn tượng\nUse_Cases: Doanh nghiệp và tập đoàn, Lập trình và development, Công tác và di chuyển nhiều, Bảo mật cao\nĐánh giá: 4.6/5 từ 234 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Lenovo",
+        "name": "Lenovo ThinkPad X1 Carbon Gen 11",
+        "price": 42000000,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "laptop_006",
+        "currency": "VND",
+        "features": [
+          "Carbon fiber chassis",
+          "MIL-STD-810H durability",
+          "TrackPoint + TrackPad",
+          "ThinkShutter camera privacy",
+          "Rapid Charge (80% in 1 hour)",
+          "Wi-Fi 6E + 5G optional"
+        ],
+        "pros": [
+          "Siêu nhẹ chỉ 1.12kg",
+          "Bàn phím xuất sắc",
+          "Bảo mật doanh nghiệp",
+          "Pin dài 15 tiếng",
+          "Độ bền quân đội"
+        ],
+        "cons": [
+          "GPU tích hợp yếu",
+          "Giá cao",
+          "Màn hình không OLED",
+          "Loa không ấn tượng"
+        ],
+        "use_cases": [
+          "Doanh nghiệp và tập đoàn",
+          "Lập trình và development",
+          "Công tác và di chuyển nhiều",
+          "Bảo mật cao"
+        ],
+        "review_count": 234,
+        "warranty": "36 tháng",
+        "tags": ["business", "ultralight", "security", "premium", "thinkpad"]
+      }
+    },
+    {
+      "id": "laptop_007",
+      "text": "HP Spectre x360 16 - HP\nGiá: 38,000,000 VND\nMô tả: Laptop 2-in-1 cao cấp với màn hình cảm ứng 16 inch, thiết kế gem-cut sang trọng và hiệu năng mạnh mẽ. Xoay 360 độ linh hoạt cho mọi tác vụ.\nThông số kỹ thuật:\n- cpu: Intel Core i7-12700H (14 cores, up to 4.7GHz)\n- ram: 16GB DDR4 3200MHz\n- storage: 1TB PCIe NVMe SSD\n- gpu: Intel Arc A370M 4GB\n- display: 16 inch 3K+ (3072x1920) OLED Touch, 400 nits, 100% DCI-P3\n- battery: 83Wh, up to 12 hours\n- weight: 2.45kg\n- os: Windows 11 Home\n- ports: 2x Thunderbolt 4, 1x USB-A 3.2, MicroSD, 3.5mm audio\nFeatures: 360-degree hinge, OLED touchscreen, HP Pen included, Bang & Olufsen speakers, Privacy camera kill switch, Fast charge 90W\nPros: Màn hình OLED tuyệt đẹp, Thiết kế 2-in-1 linh hoạt, Chất lượng build cao, Loa B&O chất lượng, Bút stylus đi kèm\nCons: Nặng cho laptop 2-in-1, Pin trung bình, Giá cao, Dễ bám vân tay\nUse_Cases: Thiết kế và sáng tạo, Thuyết trình và họp, Giải trí và media, Sinh viên và học tập\nĐánh giá: 4.3/5 từ 189 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "convertible",
+        "brand": "HP",
+        "name": "HP Spectre x360 16",
+        "price": 38000000,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "laptop_007",
+        "currency": "VND",
+        "features": [
+          "360-degree hinge",
+          "OLED touchscreen",
+          "HP Pen included",
+          "Bang & Olufsen speakers",
+          "Privacy camera kill switch",
+          "Fast charge 90W"
+        ],
+        "pros": [
+          "Màn hình OLED tuyệt đẹp",
+          "Thiết kế 2-in-1 linh hoạt",
+          "Chất lượng build cao",
+          "Loa B&O chất lượng",
+          "Bút stylus đi kèm"
+        ],
+        "cons": [
+          "Nặng cho laptop 2-in-1",
+          "Pin trung bình",
+          "Giá cao",
+          "Dễ bám vân tay"
+        ],
+        "use_cases": [
+          "Thiết kế và sáng tạo",
+          "Thuyết trình và họp",
+          "Giải trí và media",
+          "Sinh viên và học tập"
+        ],
+        "review_count": 189,
+        "warranty": "24 tháng",
+        "tags": ["2-in-1", "touchscreen", "oled", "premium", "convertible"]
+      }
+    },
+    {
+      "id": "laptop_008",
+      "text": "Samsung Legion 13 - Samsung\nGiá: 42,850,233 VND\nMô tả: Laptop gaming Samsung với hiệu năng tốt cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i7-13700H\n- ram: 16GB DDR5\n- storage: 512GB NVMe\n- gpu: RTX 4080 12GB\n- display: 16 inch FHD VA\n- battery: 74Wh\n- weight: 1.6kg\n- os: Ubuntu\nFeatures: Vân tay, Thunderbolt, Bluetooth 5.0, Wi-Fi 6\nPros: Thiết kế đẹp, Tản nhiệt tốt, Màn hình chất lượng, Pin trâu\nCons: Loa không hay, Ít cổng kết nối\nUse_Cases: Thiết kế, Video editing, Văn phòng, Lập trình\nĐánh giá: 4.0/5 từ 120 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Samsung",
+        "name": "Samsung Legion 13",
+        "price": 42850233,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "laptop_008",
+        "currency": "VND",
+        "features": ["Vân tay", "Thunderbolt", "Bluetooth 5.0", "Wi-Fi 6"],
+        "pros": [
+          "Thiết kế đẹp",
+          "Tản nhiệt tốt",
+          "Màn hình chất lượng",
+          "Pin trâu"
+        ],
+        "cons": ["Loa không hay", "Ít cổng kết nối"],
+        "use_cases": ["Thiết kế", "Video editing", "Văn phòng", "Lập trình"],
+        "review_count": 120,
+        "warranty": "36 tháng",
+        "tags": ["gaming", "samsung", "new"]
+      }
+    },
+    {
+      "id": "laptop_009",
+      "text": "Alienware ThinkPad X 13 - Alienware\nGiá: 30,390,692 VND\nMô tả: Laptop ultrabook Alienware với hiệu năng mạnh mẽ cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 16GB LPDDR5\n- storage: 512GB SSD\n- gpu: AMD Radeon Graphics\n- display: 15.6 inch 4K VA\n- battery: 56Wh\n- weight: 2.1kg\n- os: Ubuntu\nFeatures: Thunderbolt, Bàn phím có đèn nền, Vân tay, Wi-Fi 6\nPros: Thiết kế đẹp, Giá hợp lý, Tản nhiệt tốt, Hiệu năng tốt\nCons: Webcam kém, Loa không hay, Hơi nặng\nUse_Cases: Lập trình, Streaming, Business\nĐánh giá: 4.8/5 từ 391 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Alienware",
+        "name": "Alienware ThinkPad X 13",
+        "price": 30390692,
+        "rating": 4.8,
+        "in_stock": true,
+        "id": "laptop_009",
+        "currency": "VND",
+        "features": [
+          "Thunderbolt",
+          "Bàn phím có đèn nền",
+          "Vân tay",
+          "Wi-Fi 6"
+        ],
+        "pros": [
+          "Thiết kế đẹp",
+          "Giá hợp lý",
+          "Tản nhiệt tốt",
+          "Hiệu năng tốt"
+        ],
+        "cons": ["Webcam kém", "Loa không hay", "Hơi nặng"],
+        "use_cases": ["Lập trình", "Streaming", "Business"],
+        "review_count": 391,
+        "warranty": "36 tháng",
+        "tags": ["ultrabook", "alienware", "new"]
+      }
+    },
+    {
+      "id": "laptop_010",
+      "text": "LG ExpertBook 13 - LG\nGiá: 37,534,372 VND\nMô tả: Laptop business LG với hiệu năng tốt cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1365U\n- ram: 32GB DDR4\n- storage: 512GB SSD\n- gpu: Intel Iris Xe\n- display: 15.6 inch FHD IPS\n- battery: 77Wh\n- weight: 1.8kg\n- os: Windows 11 Pro\nFeatures: Vân tay, Bluetooth 5.0, Thunderbolt, Sạc nhanh, HDMI\nPros: Hiệu năng tốt, Thiết kế đẹp, Nâng cấp dễ, Pin trâu, Giá hợp lý\nCons: Hơi nặng, Nóng máy, Ít cổng kết nối, Webcam kém\nUse_Cases: Gaming, Học tập, Business\nĐánh giá: 4.7/5 từ 347 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "LG",
+        "name": "LG ExpertBook 13",
+        "price": 37534372,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "laptop_010",
+        "currency": "VND",
+        "features": [
+          "Vân tay",
+          "Bluetooth 5.0",
+          "Thunderbolt",
+          "Sạc nhanh",
+          "HDMI"
+        ],
+        "pros": [
+          "Hiệu năng tốt",
+          "Thiết kế đẹp",
+          "Nâng cấp dễ",
+          "Pin trâu",
+          "Giá hợp lý"
+        ],
+        "cons": ["Hơi nặng", "Nóng máy", "Ít cổng kết nối", "Webcam kém"],
+        "use_cases": ["Gaming", "Học tập", "Business"],
+        "review_count": 347,
+        "warranty": "12 tháng",
+        "tags": ["business", "lg", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_011",
+      "text": "Acer Nitro 14 - Acer\nGiá: 43,943,675 VND\nMô tả: Laptop gaming Acer với hiệu năng ổn định cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i9-13900H\n- ram: 16GB DDR4\n- storage: 512GB NVMe\n- gpu: RTX 4070 8GB\n- display: 15.6 inch 2K IPS\n- battery: 89Wh\n- weight: 2.7kg\n- os: Ubuntu\nFeatures: Wi-Fi 6, Loa stereo, Bàn phím có đèn nền, Bluetooth 5.0, USB-C, Sạc nhanh\nPros: Màn hình chất lượng, Giá hợp lý, Nâng cấp dễ, Tản nhiệt tốt, Bàn phím thoải mái\nCons: Màn hình tối, Ít cổng kết nối, Giá cao\nUse_Cases: Video editing, Gaming\nĐánh giá: 4.6/5 từ 488 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Acer",
+        "name": "Acer Nitro 14",
+        "price": 43943675,
+        "rating": 4.6,
+        "in_stock": false,
+        "id": "laptop_011",
+        "currency": "VND",
+        "features": [
+          "Wi-Fi 6",
+          "Loa stereo",
+          "Bàn phím có đèn nền",
+          "Bluetooth 5.0",
+          "USB-C",
+          "Sạc nhanh"
+        ],
+        "pros": [
+          "Màn hình chất lượng",
+          "Giá hợp lý",
+          "Nâng cấp dễ",
+          "Tản nhiệt tốt",
+          "Bàn phím thoải mái"
+        ],
+        "cons": ["Màn hình tối", "Ít cổng kết nối", "Giá cao"],
+        "use_cases": ["Video editing", "Gaming"],
+        "review_count": 488,
+        "warranty": "12 tháng",
+        "tags": ["gaming", "acer", "popular"]
+      }
+    },
+    {
+      "id": "laptop_012",
+      "text": "Lenovo ExpertBook 17 - Lenovo\nGiá: 40,825,605 VND\nMô tả: Laptop business Lenovo với hiệu năng cao cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1365U\n- ram: 32GB DDR4\n- storage: 512GB NVMe\n- gpu: AMD Radeon Graphics\n- display: 14 inch 4K OLED\n- battery: 67Wh\n- weight: 1.9kg\n- os: Windows 11 Pro\nFeatures: Webcam HD, Thunderbolt, Bluetooth 5.0\nPros: Nâng cấp dễ, Pin trâu, Thiết kế đẹp, Màn hình chất lượng\nCons: Hơi nặng, Màn hình tối, Webcam kém\nUse_Cases: Văn phòng, Thiết kế, Lập trình, Video editing\nĐánh giá: 3.8/5 từ 166 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Lenovo",
+        "name": "Lenovo ExpertBook 17",
+        "price": 40825605,
+        "rating": 3.8,
+        "in_stock": true,
+        "id": "laptop_012",
+        "currency": "VND",
+        "features": ["Webcam HD", "Thunderbolt", "Bluetooth 5.0"],
+        "pros": [
+          "Nâng cấp dễ",
+          "Pin trâu",
+          "Thiết kế đẹp",
+          "Màn hình chất lượng"
+        ],
+        "cons": ["Hơi nặng", "Màn hình tối", "Webcam kém"],
+        "use_cases": ["Văn phòng", "Thiết kế", "Lập trình", "Video editing"],
+        "review_count": 166,
+        "warranty": "24 tháng",
+        "tags": ["business", "lenovo", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_013",
+      "text": "Samsung IdeaPad 17 - Samsung\nGiá: 12,643,943 VND\nMô tả: Laptop budget Samsung với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1235U\n- ram: 8GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel UHD Graphics\n- display: 16 inch FHD OLED\n- battery: 71Wh\n- weight: 2.8kg\n- os: Windows 11 Pro\nFeatures: USB-C, Loa stereo, Webcam HD, Bluetooth 5.0, Vân tay, HDMI\nPros: Giá hợp lý, Pin trâu, Thiết kế đẹp\nCons: Webcam kém, Màn hình tối, Hơi nặng, Ít cổng kết nối\nUse_Cases: Business, Gaming, Học tập\nĐánh giá: 3.6/5 từ 58 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Samsung",
+        "name": "Samsung IdeaPad 17",
+        "price": 12643943,
+        "rating": 3.6,
+        "in_stock": false,
+        "id": "laptop_013",
+        "currency": "VND",
+        "features": [
+          "USB-C",
+          "Loa stereo",
+          "Webcam HD",
+          "Bluetooth 5.0",
+          "Vân tay",
+          "HDMI"
+        ],
+        "pros": ["Giá hợp lý", "Pin trâu", "Thiết kế đẹp"],
+        "cons": ["Webcam kém", "Màn hình tối", "Hơi nặng", "Ít cổng kết nối"],
+        "use_cases": ["Business", "Gaming", "Học tập"],
+        "review_count": 58,
+        "warranty": "36 tháng",
+        "tags": ["budget", "samsung", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_014",
+      "text": "Acer Gram 17 - Acer\nGiá: 44,334,835 VND\nMô tả: Laptop ultrabook Acer với hiệu năng ổn định cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 8GB LPDDR5\n- storage: 256GB SSD\n- gpu: AMD Radeon Graphics\n- display: 16 inch 4K OLED\n- battery: 46Wh\n- weight: 2.1kg\n- os: Ubuntu\nFeatures: Webcam HD, Thunderbolt, Vân tay, USB-C\nPros: Nâng cấp dễ, Thiết kế đẹp, Tản nhiệt tốt, Giá hợp lý, Pin trâu\nCons: Hơi nặng, Webcam kém\nUse_Cases: Học tập, Streaming, Văn phòng, Thiết kế\nĐánh giá: 4.8/5 từ 43 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Acer",
+        "name": "Acer Gram 17",
+        "price": 44334835,
+        "rating": 4.8,
+        "in_stock": false,
+        "id": "laptop_014",
+        "currency": "VND",
+        "features": ["Webcam HD", "Thunderbolt", "Vân tay", "USB-C"],
+        "pros": [
+          "Nâng cấp dễ",
+          "Thiết kế đẹp",
+          "Tản nhiệt tốt",
+          "Giá hợp lý",
+          "Pin trâu"
+        ],
+        "cons": ["Hơi nặng", "Webcam kém"],
+        "use_cases": ["Học tập", "Streaming", "Văn phòng", "Thiết kế"],
+        "review_count": 43,
+        "warranty": "24 tháng",
+        "tags": ["ultrabook", "acer", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_015",
+      "text": "HP IdeaPad 13 - HP\nGiá: 9,406,766 VND\nMô tả: Laptop budget HP với hiệu năng mạnh mẽ cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1235U\n- ram: 8GB DDR4\n- storage: 512GB SSD\n- gpu: AMD Radeon Graphics\n- display: 14 inch FHD OLED\n- battery: 57Wh\n- weight: 2.1kg\n- os: Windows 11 Pro\nFeatures: HDMI, Wi-Fi 6, USB-C\nPros: Nâng cấp dễ, Giá hợp lý, Màn hình chất lượng\nCons: Ít cổng kết nối, Hơi nặng, Webcam kém, Màn hình tối\nUse_Cases: Streaming, Video editing\nĐánh giá: 4.7/5 từ 476 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "HP",
+        "name": "HP IdeaPad 13",
+        "price": 9406766,
+        "rating": 4.7,
+        "in_stock": true,
+        "id": "laptop_015",
+        "currency": "VND",
+        "features": ["HDMI", "Wi-Fi 6", "USB-C"],
+        "pros": ["Nâng cấp dễ", "Giá hợp lý", "Màn hình chất lượng"],
+        "cons": ["Ít cổng kết nối", "Hơi nặng", "Webcam kém", "Màn hình tối"],
+        "use_cases": ["Streaming", "Video editing"],
+        "review_count": 476,
+        "warranty": "36 tháng",
+        "tags": ["budget", "hp", "popular"]
+      }
+    },
+    {
+      "id": "laptop_016",
+      "text": "Alienware Pavilion 17 - Alienware\nGiá: 12,707,737 VND\nMô tả: Laptop budget Alienware với hiệu năng ổn định cho học tập.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 5500U\n- ram: 4GB DDR4\n- storage: 256GB SSD\n- gpu: Intel UHD Graphics\n- display: 17.3 inch 2K OLED\n- battery: 50Wh\n- weight: 2.0kg\n- os: Ubuntu\nFeatures: Wi-Fi 6, Bàn phím có đèn nền, Thunderbolt\nPros: Pin trâu, Màn hình chất lượng, Hiệu năng tốt, Nâng cấp dễ\nCons: Giá cao, Nóng máy, Hơi nặng\nUse_Cases: Văn phòng, Gaming, Streaming, Học tập\nĐánh giá: 4.6/5 từ 469 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Alienware",
+        "name": "Alienware Pavilion 17",
+        "price": 12707737,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "laptop_016",
+        "currency": "VND",
+        "features": ["Wi-Fi 6", "Bàn phím có đèn nền", "Thunderbolt"],
+        "pros": [
+          "Pin trâu",
+          "Màn hình chất lượng",
+          "Hiệu năng tốt",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Giá cao", "Nóng máy", "Hơi nặng"],
+        "use_cases": ["Văn phòng", "Gaming", "Streaming", "Học tập"],
+        "review_count": 469,
+        "warranty": "24 tháng",
+        "tags": ["budget", "alienware", "popular"]
+      }
+    },
+    {
+      "id": "laptop_017",
+      "text": "MSI ZenBook 17 - MSI\nGiá: 31,167,961 VND\nMô tả: Laptop ultrabook MSI với hiệu năng ổn định cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 16GB LPDDR5\n- storage: 1TB SSD\n- gpu: AMD Radeon Graphics\n- display: 14 inch 2K VA\n- battery: 62Wh\n- weight: 1.6kg\n- os: Ubuntu\nFeatures: Wi-Fi 6, Bàn phím có đèn nền, Loa stereo\nPros: Giá hợp lý, Thiết kế đẹp, Bàn phím thoải mái, Tản nhiệt tốt\nCons: Màn hình tối, Webcam kém\nUse_Cases: Lập trình, Học tập, Business, Video editing\nĐánh giá: 4.1/5 từ 172 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "MSI",
+        "name": "MSI ZenBook 17",
+        "price": 31167961,
+        "rating": 4.1,
+        "in_stock": true,
+        "id": "laptop_017",
+        "currency": "VND",
+        "features": ["Wi-Fi 6", "Bàn phím có đèn nền", "Loa stereo"],
+        "pros": [
+          "Giá hợp lý",
+          "Thiết kế đẹp",
+          "Bàn phím thoải mái",
+          "Tản nhiệt tốt"
+        ],
+        "cons": ["Màn hình tối", "Webcam kém"],
+        "use_cases": ["Lập trình", "Học tập", "Business", "Video editing"],
+        "review_count": 172,
+        "warranty": "24 tháng",
+        "tags": ["ultrabook", "msi", "popular"]
+      }
+    },
+    {
+      "id": "laptop_018",
+      "text": "Dell ThinkPad 17 - Dell\nGiá: 19,490,428 VND\nMô tả: Laptop business Dell với hiệu năng mạnh mẽ cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1335U\n- ram: 16GB DDR4\n- storage: 1TB SSD\n- gpu: AMD Radeon Graphics\n- display: 15.6 inch 2K VA\n- battery: 73Wh\n- weight: 1.9kg\n- os: Windows 11 Pro\nFeatures: Bluetooth 5.0, Webcam HD, Loa stereo, Thunderbolt\nPros: Pin trâu, Tản nhiệt tốt, Nâng cấp dễ\nCons: Pin yếu, Giá cao, Màn hình tối, Webcam kém\nUse_Cases: Streaming, Business, Gaming, Video editing\nĐánh giá: 3.7/5 từ 87 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Dell",
+        "name": "Dell ThinkPad 17",
+        "price": 19490428,
+        "rating": 3.7,
+        "in_stock": false,
+        "id": "laptop_018",
+        "currency": "VND",
+        "features": ["Bluetooth 5.0", "Webcam HD", "Loa stereo", "Thunderbolt"],
+        "pros": ["Pin trâu", "Tản nhiệt tốt", "Nâng cấp dễ"],
+        "cons": ["Pin yếu", "Giá cao", "Màn hình tối", "Webcam kém"],
+        "use_cases": ["Streaming", "Business", "Gaming", "Video editing"],
+        "review_count": 87,
+        "warranty": "24 tháng",
+        "tags": ["business", "dell", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_019",
+      "text": "Acer ExpertBook 17 - Acer\nGiá: 27,838,175 VND\nMô tả: Laptop business Acer với hiệu năng mạnh mẽ cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1335U\n- ram: 16GB DDR4\n- storage: 256GB SSD\n- gpu: Intel Iris Xe\n- display: 16 inch 2K OLED\n- battery: 83Wh\n- weight: 1.7kg\n- os: Windows 11 Pro\nFeatures: Bàn phím có đèn nền, Webcam HD, Thunderbolt\nPros: Bàn phím thoải mái, Thiết kế đẹp, Màn hình chất lượng, Pin trâu\nCons: Màn hình tối, Webcam kém, Giá cao, Ít cổng kết nối\nUse_Cases: Gaming, Học tập\nĐánh giá: 3.8/5 từ 10 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Acer",
+        "name": "Acer ExpertBook 17",
+        "price": 27838175,
+        "rating": 3.8,
+        "in_stock": false,
+        "id": "laptop_019",
+        "currency": "VND",
+        "features": ["Bàn phím có đèn nền", "Webcam HD", "Thunderbolt"],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Thiết kế đẹp",
+          "Màn hình chất lượng",
+          "Pin trâu"
+        ],
+        "cons": ["Màn hình tối", "Webcam kém", "Giá cao", "Ít cổng kết nối"],
+        "use_cases": ["Gaming", "Học tập"],
+        "review_count": 10,
+        "warranty": "12 tháng",
+        "tags": ["business", "acer", "popular"]
+      }
+    },
+    {
+      "id": "laptop_020",
+      "text": "Lenovo Spectre 15 - Lenovo\nGiá: 40,078,807 VND\nMô tả: Laptop ultrabook Lenovo với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 8GB LPDDR5\n- storage: 512GB SSD\n- gpu: Intel UHD Graphics\n- display: 17.3 inch 2K VA\n- battery: 57Wh\n- weight: 1.6kg\n- os: Windows 11 Home\nFeatures: Thunderbolt, Loa stereo, Wi-Fi 6, Webcam HD, USB-C\nPros: Nâng cấp dễ, Pin trâu, Giá hợp lý, Bàn phím thoải mái, Tản nhiệt tốt\nCons: Màn hình tối, Nóng máy, Ít cổng kết nối\nUse_Cases: Gaming, Thiết kế\nĐánh giá: 4.0/5 từ 58 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Lenovo",
+        "name": "Lenovo Spectre 15",
+        "price": 40078807,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "laptop_020",
+        "currency": "VND",
+        "features": [
+          "Thunderbolt",
+          "Loa stereo",
+          "Wi-Fi 6",
+          "Webcam HD",
+          "USB-C"
+        ],
+        "pros": [
+          "Nâng cấp dễ",
+          "Pin trâu",
+          "Giá hợp lý",
+          "Bàn phím thoải mái",
+          "Tản nhiệt tốt"
+        ],
+        "cons": ["Màn hình tối", "Nóng máy", "Ít cổng kết nối"],
+        "use_cases": ["Gaming", "Thiết kế"],
+        "review_count": 58,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "lenovo", "popular"]
+      }
+    },
+    {
+      "id": "laptop_021",
+      "text": "ASUS TUF 16 - ASUS\nGiá: 46,687,942 VND\nMô tả: Laptop gaming ASUS với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 7 7700H\n- ram: 32GB DDR5\n- storage: 512GB SSD\n- gpu: RTX 4080 12GB\n- display: 14 inch 2K VA\n- battery: 54Wh\n- weight: 1.5kg\n- os: Windows 11 Pro\nFeatures: Wi-Fi 6, Bluetooth 5.0, Loa stereo\nPros: Màn hình chất lượng, Nâng cấp dễ, Pin trâu, Giá hợp lý, Bàn phím thoải mái\nCons: Màn hình tối, Loa không hay, Nóng máy\nUse_Cases: Học tập, Gaming\nĐánh giá: 3.6/5 từ 471 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "ASUS",
+        "name": "ASUS TUF 16",
+        "price": 46687942,
+        "rating": 3.6,
+        "in_stock": true,
+        "id": "laptop_021",
+        "currency": "VND",
+        "features": ["Wi-Fi 6", "Bluetooth 5.0", "Loa stereo"],
+        "pros": [
+          "Màn hình chất lượng",
+          "Nâng cấp dễ",
+          "Pin trâu",
+          "Giá hợp lý",
+          "Bàn phím thoải mái"
+        ],
+        "cons": ["Màn hình tối", "Loa không hay", "Nóng máy"],
+        "use_cases": ["Học tập", "Gaming"],
+        "review_count": 471,
+        "warranty": "36 tháng",
+        "tags": ["gaming", "asus", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_022",
+      "text": "MSI Predator 14 - MSI\nGiá: 57,109,577 VND\nMô tả: Laptop gaming MSI với hiệu năng tốt cho học tập.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 9 7900H\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: RTX 4060 8GB\n- display: 14 inch 4K VA\n- battery: 48Wh\n- weight: 2.6kg\n- os: Windows 11 Home\nFeatures: USB-C, Sạc nhanh, Bàn phím có đèn nền, Webcam HD\nPros: Nâng cấp dễ, Thiết kế đẹp, Hiệu năng tốt, Tản nhiệt tốt, Giá hợp lý\nCons: Màn hình tối, Ít cổng kết nối, Pin yếu, Nóng máy\nUse_Cases: Lập trình, Văn phòng, Streaming, Video editing\nĐánh giá: 3.8/5 từ 305 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "MSI",
+        "name": "MSI Predator 14",
+        "price": 57109577,
+        "rating": 3.8,
+        "in_stock": true,
+        "id": "laptop_022",
+        "currency": "VND",
+        "features": ["USB-C", "Sạc nhanh", "Bàn phím có đèn nền", "Webcam HD"],
+        "pros": [
+          "Nâng cấp dễ",
+          "Thiết kế đẹp",
+          "Hiệu năng tốt",
+          "Tản nhiệt tốt",
+          "Giá hợp lý"
+        ],
+        "cons": ["Màn hình tối", "Ít cổng kết nối", "Pin yếu", "Nóng máy"],
+        "use_cases": ["Lập trình", "Văn phòng", "Streaming", "Video editing"],
+        "review_count": 305,
+        "warranty": "12 tháng",
+        "tags": ["gaming", "msi", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_023",
+      "text": "MSI EliteBook 13 - MSI\nGiá: 33,508,979 VND\nMô tả: Laptop business MSI với hiệu năng tốt cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1365U\n- ram: 32GB DDR4\n- storage: 512GB SSD\n- gpu: AMD Radeon Graphics\n- display: 17.3 inch FHD IPS\n- battery: 87Wh\n- weight: 2.4kg\n- os: Windows 11 Pro\nFeatures: Wi-Fi 6, HDMI, USB-C, Sạc nhanh, Bàn phím có đèn nền, Thunderbolt\nPros: Màn hình chất lượng, Bàn phím thoải mái, Pin trâu, Giá hợp lý, Thiết kế đẹp\nCons: Pin yếu, Nóng máy, Hơi nặng\nUse_Cases: Học tập, Lập trình, Gaming\nĐánh giá: 4.3/5 từ 303 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "MSI",
+        "name": "MSI EliteBook 13",
+        "price": 33508979,
+        "rating": 4.3,
+        "in_stock": false,
+        "id": "laptop_023",
+        "currency": "VND",
+        "features": [
+          "Wi-Fi 6",
+          "HDMI",
+          "USB-C",
+          "Sạc nhanh",
+          "Bàn phím có đèn nền",
+          "Thunderbolt"
+        ],
+        "pros": [
+          "Màn hình chất lượng",
+          "Bàn phím thoải mái",
+          "Pin trâu",
+          "Giá hợp lý",
+          "Thiết kế đẹp"
+        ],
+        "cons": ["Pin yếu", "Nóng máy", "Hơi nặng"],
+        "use_cases": ["Học tập", "Lập trình", "Gaming"],
+        "review_count": 303,
+        "warranty": "36 tháng",
+        "tags": ["business", "msi", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_024",
+      "text": "Alienware ThinkPad 17 - Alienware\nGiá: 23,743,909 VND\nMô tả: Laptop business Alienware với hiệu năng cao cho công việc.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 PRO 7530U\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: Intel Iris Xe\n- display: 15.6 inch 2K IPS\n- battery: 47Wh\n- weight: 1.8kg\n- os: Windows 11 Home\nFeatures: HDMI, Bluetooth 5.0, Sạc nhanh, Bàn phím có đèn nền, Loa stereo\nPros: Nâng cấp dễ, Giá hợp lý, Bàn phím thoải mái, Màn hình chất lượng, Tản nhiệt tốt\nCons: Pin yếu, Nóng máy, Webcam kém, Màn hình tối\nUse_Cases: Lập trình, Video editing\nĐánh giá: 4.4/5 từ 278 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Alienware",
+        "name": "Alienware ThinkPad 17",
+        "price": 23743909,
+        "rating": 4.4,
+        "in_stock": false,
+        "id": "laptop_024",
+        "currency": "VND",
+        "features": [
+          "HDMI",
+          "Bluetooth 5.0",
+          "Sạc nhanh",
+          "Bàn phím có đèn nền",
+          "Loa stereo"
+        ],
+        "pros": [
+          "Nâng cấp dễ",
+          "Giá hợp lý",
+          "Bàn phím thoải mái",
+          "Màn hình chất lượng",
+          "Tản nhiệt tốt"
+        ],
+        "cons": ["Pin yếu", "Nóng máy", "Webcam kém", "Màn hình tối"],
+        "use_cases": ["Lập trình", "Video editing"],
+        "review_count": 278,
+        "warranty": "36 tháng",
+        "tags": ["business", "alienware", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_025",
+      "text": "ASUS Latitude 16 - ASUS\nGiá: 29,930,372 VND\nMô tả: Laptop business ASUS với hiệu năng cao cho gaming.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 PRO 7530U\n- ram: 8GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel Iris Xe\n- display: 17.3 inch 4K VA\n- battery: 73Wh\n- weight: 2.6kg\n- os: Windows 11 Home\nFeatures: Thunderbolt, Vân tay, Bluetooth 5.0, Bàn phím có đèn nền, Sạc nhanh\nPros: Bàn phím thoải mái, Giá hợp lý, Hiệu năng tốt, Pin trâu, Thiết kế đẹp\nCons: Nóng máy, Webcam kém, Ít cổng kết nối\nUse_Cases: Học tập, Streaming\nĐánh giá: 4.1/5 từ 294 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "ASUS",
+        "name": "ASUS Latitude 16",
+        "price": 29930372,
+        "rating": 4.1,
+        "in_stock": false,
+        "id": "laptop_025",
+        "currency": "VND",
+        "features": [
+          "Thunderbolt",
+          "Vân tay",
+          "Bluetooth 5.0",
+          "Bàn phím có đèn nền",
+          "Sạc nhanh"
+        ],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Giá hợp lý",
+          "Hiệu năng tốt",
+          "Pin trâu",
+          "Thiết kế đẹp"
+        ],
+        "cons": ["Nóng máy", "Webcam kém", "Ít cổng kết nối"],
+        "use_cases": ["Học tập", "Streaming"],
+        "review_count": 294,
+        "warranty": "24 tháng",
+        "tags": ["business", "asus", "popular"]
+      }
+    },
+    {
+      "id": "laptop_026",
+      "text": "Lenovo Blade 17 - Lenovo\nGiá: 50,778,475 VND\nMô tả: Laptop gaming Lenovo với hiệu năng tốt cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i9-13900H\n- ram: 16GB DDR5\n- storage: 1TB SSD\n- gpu: RX 7600M XT 8GB\n- display: 17.3 inch 2K OLED\n- battery: 55Wh\n- weight: 2.4kg\n- os: Windows 11 Pro\nFeatures: Bàn phím có đèn nền, Loa stereo, Sạc nhanh\nPros: Tản nhiệt tốt, Hiệu năng tốt, Màn hình chất lượng, Bàn phím thoải mái\nCons: Ít cổng kết nối, Loa không hay, Màn hình tối\nUse_Cases: Video editing, Văn phòng\nĐánh giá: 4.6/5 từ 300 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Lenovo",
+        "name": "Lenovo Blade 17",
+        "price": 50778475,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "laptop_026",
+        "currency": "VND",
+        "features": ["Bàn phím có đèn nền", "Loa stereo", "Sạc nhanh"],
+        "pros": [
+          "Tản nhiệt tốt",
+          "Hiệu năng tốt",
+          "Màn hình chất lượng",
+          "Bàn phím thoải mái"
+        ],
+        "cons": ["Ít cổng kết nối", "Loa không hay", "Màn hình tối"],
+        "use_cases": ["Video editing", "Văn phòng"],
+        "review_count": 300,
+        "warranty": "24 tháng",
+        "tags": ["gaming", "lenovo", "popular"]
+      }
+    },
+    {
+      "id": "laptop_027",
+      "text": "Razer Predator 17 - Razer\nGiá: 26,089,377 VND\nMô tả: Laptop gaming Razer với hiệu năng ổn định cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i9-13900H\n- ram: 16GB DDR5\n- storage: 512GB SSD\n- gpu: RX 7600M XT 8GB\n- display: 15.6 inch 4K VA\n- battery: 75Wh\n- weight: 2.2kg\n- os: Windows 11 Home\nFeatures: Vân tay, HDMI, Sạc nhanh, USB-C\nPros: Hiệu năng tốt, Giá hợp lý, Màn hình chất lượng, Tản nhiệt tốt, Bàn phím thoải mái\nCons: Pin yếu, Nóng máy, Giá cao, Hơi nặng\nUse_Cases: Video editing, Văn phòng, Thiết kế\nĐánh giá: 4.4/5 từ 18 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Razer",
+        "name": "Razer Predator 17",
+        "price": 26089377,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "laptop_027",
+        "currency": "VND",
+        "features": ["Vân tay", "HDMI", "Sạc nhanh", "USB-C"],
+        "pros": [
+          "Hiệu năng tốt",
+          "Giá hợp lý",
+          "Màn hình chất lượng",
+          "Tản nhiệt tốt",
+          "Bàn phím thoải mái"
+        ],
+        "cons": ["Pin yếu", "Nóng máy", "Giá cao", "Hơi nặng"],
+        "use_cases": ["Video editing", "Văn phòng", "Thiết kế"],
+        "review_count": 18,
+        "warranty": "24 tháng",
+        "tags": ["gaming", "razer", "new"]
+      }
+    },
+    {
+      "id": "laptop_028",
+      "text": "Samsung Spectre 16 - Samsung\nGiá: 20,721,053 VND\nMô tả: Laptop ultrabook Samsung với hiệu năng ổn định cho công việc.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 7530U\n- ram: 8GB LPDDR5\n- storage: 256GB SSD\n- gpu: AMD Radeon Graphics\n- display: 17.3 inch 4K VA\n- battery: 90Wh\n- weight: 2.5kg\n- os: Windows 11 Pro\nFeatures: Bluetooth 5.0, Thunderbolt, Wi-Fi 6, Sạc nhanh\nPros: Giá hợp lý, Pin trâu, Tản nhiệt tốt\nCons: Ít cổng kết nối, Hơi nặng\nUse_Cases: Văn phòng, Business, Lập trình, Video editing\nĐánh giá: 4.6/5 từ 495 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Samsung",
+        "name": "Samsung Spectre 16",
+        "price": 20721053,
+        "rating": 4.6,
+        "in_stock": false,
+        "id": "laptop_028",
+        "currency": "VND",
+        "features": ["Bluetooth 5.0", "Thunderbolt", "Wi-Fi 6", "Sạc nhanh"],
+        "pros": ["Giá hợp lý", "Pin trâu", "Tản nhiệt tốt"],
+        "cons": ["Ít cổng kết nối", "Hơi nặng"],
+        "use_cases": ["Văn phòng", "Business", "Lập trình", "Video editing"],
+        "review_count": 495,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "samsung", "new"]
+      }
+    },
+    {
+      "id": "laptop_029",
+      "text": "HP ExpertBook 15 - HP\nGiá: 18,654,205 VND\nMô tả: Laptop business HP với hiệu năng tốt cho sáng tạo.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 PRO 7530U\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: AMD Radeon Graphics\n- display: 16 inch FHD VA\n- battery: 75Wh\n- weight: 1.5kg\n- os: Windows 11 Pro\nFeatures: HDMI, Vân tay, USB-C, Thunderbolt\nPros: Pin trâu, Nâng cấp dễ, Hiệu năng tốt, Giá hợp lý\nCons: Nóng máy, Loa không hay\nUse_Cases: Văn phòng, Gaming, Business\nĐánh giá: 4.4/5 từ 127 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "HP",
+        "name": "HP ExpertBook 15",
+        "price": 18654205,
+        "rating": 4.4,
+        "in_stock": false,
+        "id": "laptop_029",
+        "currency": "VND",
+        "features": ["HDMI", "Vân tay", "USB-C", "Thunderbolt"],
+        "pros": ["Pin trâu", "Nâng cấp dễ", "Hiệu năng tốt", "Giá hợp lý"],
+        "cons": ["Nóng máy", "Loa không hay"],
+        "use_cases": ["Văn phòng", "Gaming", "Business"],
+        "review_count": 127,
+        "warranty": "24 tháng",
+        "tags": ["business", "hp", "popular"]
+      }
+    },
+    {
+      "id": "laptop_030",
+      "text": "Dell ThinkPad 16 - Dell\nGiá: 26,029,014 VND\nMô tả: Laptop business Dell với hiệu năng tốt cho sáng tạo.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 PRO 7530U\n- ram: 8GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel Iris Xe\n- display: 14 inch 2K VA\n- battery: 78Wh\n- weight: 2.4kg\n- os: Windows 11 Home\nFeatures: HDMI, Loa stereo, Vân tay, Sạc nhanh, Thunderbolt\nPros: Pin trâu, Thiết kế đẹp, Tản nhiệt tốt\nCons: Loa không hay, Nóng máy, Màn hình tối\nUse_Cases: Thiết kế, Học tập\nĐánh giá: 4.0/5 từ 57 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Dell",
+        "name": "Dell ThinkPad 16",
+        "price": 26029014,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "laptop_030",
+        "currency": "VND",
+        "features": [
+          "HDMI",
+          "Loa stereo",
+          "Vân tay",
+          "Sạc nhanh",
+          "Thunderbolt"
+        ],
+        "pros": ["Pin trâu", "Thiết kế đẹp", "Tản nhiệt tốt"],
+        "cons": ["Loa không hay", "Nóng máy", "Màn hình tối"],
+        "use_cases": ["Thiết kế", "Học tập"],
+        "review_count": 57,
+        "warranty": "24 tháng",
+        "tags": ["business", "dell", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_031",
+      "text": "Lenovo Latitude 17 - Lenovo\nGiá: 25,666,268 VND\nMô tả: Laptop business Lenovo với hiệu năng tốt cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1365U\n- ram: 32GB DDR4\n- storage: 512GB SSD\n- gpu: Intel Iris Xe\n- display: 16 inch FHD VA\n- battery: 65Wh\n- weight: 2.6kg\n- os: Ubuntu\nFeatures: Sạc nhanh, USB-C, Vân tay\nPros: Màn hình chất lượng, Thiết kế đẹp, Giá hợp lý\nCons: Loa không hay, Giá cao, Ít cổng kết nối, Nóng máy\nUse_Cases: Streaming, Lập trình, Video editing, Gaming\nĐánh giá: 4.3/5 từ 432 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Lenovo",
+        "name": "Lenovo Latitude 17",
+        "price": 25666268,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "laptop_031",
+        "currency": "VND",
+        "features": ["Sạc nhanh", "USB-C", "Vân tay"],
+        "pros": ["Màn hình chất lượng", "Thiết kế đẹp", "Giá hợp lý"],
+        "cons": ["Loa không hay", "Giá cao", "Ít cổng kết nối", "Nóng máy"],
+        "use_cases": ["Streaming", "Lập trình", "Video editing", "Gaming"],
+        "review_count": 432,
+        "warranty": "24 tháng",
+        "tags": ["business", "lenovo", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_032",
+      "text": "Samsung ROG 15 - Samsung\nGiá: 30,433,808 VND\nMô tả: Laptop gaming Samsung với hiệu năng cao cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i9-13900H\n- ram: 16GB DDR5\n- storage: 256GB SSD\n- gpu: RTX 4060 8GB\n- display: 15.6 inch 2K OLED\n- battery: 71Wh\n- weight: 1.7kg\n- os: Windows 11 Pro\nFeatures: Loa stereo, Vân tay, USB-C, Thunderbolt, Webcam HD\nPros: Bàn phím thoải mái, Giá hợp lý, Tản nhiệt tốt\nCons: Pin yếu, Màn hình tối, Hơi nặng\nUse_Cases: Streaming, Lập trình, Học tập\nĐánh giá: 4.0/5 từ 417 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Samsung",
+        "name": "Samsung ROG 15",
+        "price": 30433808,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "laptop_032",
+        "currency": "VND",
+        "features": [
+          "Loa stereo",
+          "Vân tay",
+          "USB-C",
+          "Thunderbolt",
+          "Webcam HD"
+        ],
+        "pros": ["Bàn phím thoải mái", "Giá hợp lý", "Tản nhiệt tốt"],
+        "cons": ["Pin yếu", "Màn hình tối", "Hơi nặng"],
+        "use_cases": ["Streaming", "Lập trình", "Học tập"],
+        "review_count": 417,
+        "warranty": "36 tháng",
+        "tags": ["gaming", "samsung", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_033",
+      "text": "Razer ThinkPad X 17 - Razer\nGiá: 38,535,619 VND\nMô tả: Laptop ultrabook Razer với hiệu năng cao cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: Intel UHD Graphics\n- display: 14 inch 4K VA\n- battery: 75Wh\n- weight: 1.3kg\n- os: Ubuntu\nFeatures: Sạc nhanh, Bluetooth 5.0, Thunderbolt, Bàn phím có đèn nền, USB-C\nPros: Nâng cấp dễ, Bàn phím thoải mái, Màn hình chất lượng, Pin trâu\nCons: Hơi nặng, Ít cổng kết nối, Nóng máy, Giá cao\nUse_Cases: Video editing, Lập trình, Văn phòng\nĐánh giá: 4.6/5 từ 481 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Razer",
+        "name": "Razer ThinkPad X 17",
+        "price": 38535619,
+        "rating": 4.6,
+        "in_stock": true,
+        "id": "laptop_033",
+        "currency": "VND",
+        "features": [
+          "Sạc nhanh",
+          "Bluetooth 5.0",
+          "Thunderbolt",
+          "Bàn phím có đèn nền",
+          "USB-C"
+        ],
+        "pros": [
+          "Nâng cấp dễ",
+          "Bàn phím thoải mái",
+          "Màn hình chất lượng",
+          "Pin trâu"
+        ],
+        "cons": ["Hơi nặng", "Ít cổng kết nối", "Nóng máy", "Giá cao"],
+        "use_cases": ["Video editing", "Lập trình", "Văn phòng"],
+        "review_count": 481,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "razer", "popular"]
+      }
+    },
+    {
+      "id": "laptop_034",
+      "text": "Acer VivoBook 14 - Acer\nGiá: 19,770,212 VND\nMô tả: Laptop budget Acer với hiệu năng tốt cho công việc.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 5500U\n- ram: 8GB LPDDR4\n- storage: 1TB SSD\n- gpu: AMD Radeon Graphics\n- display: 14 inch FHD OLED\n- battery: 50Wh\n- weight: 1.6kg\n- os: Windows 11 Pro\nFeatures: Vân tay, Bàn phím có đèn nền, Bluetooth 5.0\nPros: Bàn phím thoải mái, Hiệu năng tốt, Tản nhiệt tốt, Nâng cấp dễ\nCons: Pin yếu, Nóng máy\nUse_Cases: Gaming, Streaming\nĐánh giá: 4.1/5 từ 55 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Acer",
+        "name": "Acer VivoBook 14",
+        "price": 19770212,
+        "rating": 4.1,
+        "in_stock": true,
+        "id": "laptop_034",
+        "currency": "VND",
+        "features": ["Vân tay", "Bàn phím có đèn nền", "Bluetooth 5.0"],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Hiệu năng tốt",
+          "Tản nhiệt tốt",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Pin yếu", "Nóng máy"],
+        "use_cases": ["Gaming", "Streaming"],
+        "review_count": 55,
+        "warranty": "24 tháng",
+        "tags": ["budget", "acer", "popular"]
+      }
+    },
+    {
+      "id": "laptop_035",
+      "text": "LG Nitro 15 - LG\nGiá: 41,197,904 VND\nMô tả: Laptop gaming LG với hiệu năng cao cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i7-13700H\n- ram: 16GB DDR5\n- storage: 512GB SSD\n- gpu: RTX 4060 8GB\n- display: 14 inch 2K IPS\n- battery: 59Wh\n- weight: 1.3kg\n- os: Windows 11 Pro\nFeatures: Wi-Fi 6, Sạc nhanh, Bàn phím có đèn nền, Vân tay, Loa stereo, HDMI\nPros: Bàn phím thoải mái, Giá hợp lý, Nâng cấp dễ\nCons: Ít cổng kết nối, Hơi nặng, Nóng máy\nUse_Cases: Văn phòng, Business, Streaming, Video editing\nĐánh giá: 3.9/5 từ 66 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "LG",
+        "name": "LG Nitro 15",
+        "price": 41197904,
+        "rating": 3.9,
+        "in_stock": true,
+        "id": "laptop_035",
+        "currency": "VND",
+        "features": [
+          "Wi-Fi 6",
+          "Sạc nhanh",
+          "Bàn phím có đèn nền",
+          "Vân tay",
+          "Loa stereo",
+          "HDMI"
+        ],
+        "pros": ["Bàn phím thoải mái", "Giá hợp lý", "Nâng cấp dễ"],
+        "cons": ["Ít cổng kết nối", "Hơi nặng", "Nóng máy"],
+        "use_cases": ["Văn phòng", "Business", "Streaming", "Video editing"],
+        "review_count": 66,
+        "warranty": "36 tháng",
+        "tags": ["gaming", "lg", "new"]
+      }
+    },
+    {
+      "id": "laptop_036",
+      "text": "Alienware XPS 14 - Alienware\nGiá: 35,051,726 VND\nMô tả: Laptop ultrabook Alienware với hiệu năng cao cho sáng tạo.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 7 7730U\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: Intel Iris Xe\n- display: 15.6 inch 2K IPS\n- battery: 63Wh\n- weight: 2.3kg\n- os: Windows 11 Home\nFeatures: Bluetooth 5.0, Webcam HD, Bàn phím có đèn nền, Thunderbolt, HDMI\nPros: Thiết kế đẹp, Hiệu năng tốt, Bàn phím thoải mái, Tản nhiệt tốt\nCons: Giá cao, Hơi nặng, Ít cổng kết nối\nUse_Cases: Streaming, Business\nĐánh giá: 4.5/5 từ 166 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Alienware",
+        "name": "Alienware XPS 14",
+        "price": 35051726,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "laptop_036",
+        "currency": "VND",
+        "features": [
+          "Bluetooth 5.0",
+          "Webcam HD",
+          "Bàn phím có đèn nền",
+          "Thunderbolt",
+          "HDMI"
+        ],
+        "pros": [
+          "Thiết kế đẹp",
+          "Hiệu năng tốt",
+          "Bàn phím thoải mái",
+          "Tản nhiệt tốt"
+        ],
+        "cons": ["Giá cao", "Hơi nặng", "Ít cổng kết nối"],
+        "use_cases": ["Streaming", "Business"],
+        "review_count": 166,
+        "warranty": "24 tháng",
+        "tags": ["ultrabook", "alienware", "new"]
+      }
+    },
+    {
+      "id": "laptop_037",
+      "text": "Acer Inspiron 17 - Acer\nGiá: 10,586,129 VND\nMô tả: Laptop budget Acer với hiệu năng cao cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1235U\n- ram: 4GB DDR4\n- storage: 512GB SSD\n- gpu: Intel UHD Graphics\n- display: 14 inch FHD IPS\n- battery: 76Wh\n- weight: 2.5kg\n- os: Windows 11 Home\nFeatures: Bàn phím có đèn nền, HDMI, Loa stereo, Webcam HD, USB-C, Vân tay\nPros: Bàn phím thoải mái, Nâng cấp dễ, Màn hình chất lượng, Giá hợp lý\nCons: Webcam kém, Giá cao, Pin yếu, Loa không hay\nUse_Cases: Gaming, Lập trình\nĐánh giá: 4.5/5 từ 450 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Acer",
+        "name": "Acer Inspiron 17",
+        "price": 10586129,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "laptop_037",
+        "currency": "VND",
+        "features": [
+          "Bàn phím có đèn nền",
+          "HDMI",
+          "Loa stereo",
+          "Webcam HD",
+          "USB-C",
+          "Vân tay"
+        ],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Nâng cấp dễ",
+          "Màn hình chất lượng",
+          "Giá hợp lý"
+        ],
+        "cons": ["Webcam kém", "Giá cao", "Pin yếu", "Loa không hay"],
+        "use_cases": ["Gaming", "Lập trình"],
+        "review_count": 450,
+        "warranty": "12 tháng",
+        "tags": ["budget", "acer", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_038",
+      "text": "Alienware Swift 14 - Alienware\nGiá: 22,982,556 VND\nMô tả: Laptop ultrabook Alienware với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 16GB DDR4\n- storage: 256GB SSD\n- gpu: Intel Iris Xe\n- display: 17.3 inch 2K IPS\n- battery: 68Wh\n- weight: 2.7kg\n- os: Windows 11 Pro\nFeatures: Vân tay, Bluetooth 5.0, Loa stereo, Webcam HD, Sạc nhanh, Thunderbolt\nPros: Giá hợp lý, Nâng cấp dễ, Pin trâu, Màn hình chất lượng, Thiết kế đẹp\nCons: Nóng máy, Pin yếu, Giá cao\nUse_Cases: Học tập, Video editing\nĐánh giá: 3.8/5 từ 254 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Alienware",
+        "name": "Alienware Swift 14",
+        "price": 22982556,
+        "rating": 3.8,
+        "in_stock": true,
+        "id": "laptop_038",
+        "currency": "VND",
+        "features": [
+          "Vân tay",
+          "Bluetooth 5.0",
+          "Loa stereo",
+          "Webcam HD",
+          "Sạc nhanh",
+          "Thunderbolt"
+        ],
+        "pros": [
+          "Giá hợp lý",
+          "Nâng cấp dễ",
+          "Pin trâu",
+          "Màn hình chất lượng",
+          "Thiết kế đẹp"
+        ],
+        "cons": ["Nóng máy", "Pin yếu", "Giá cao"],
+        "use_cases": ["Học tập", "Video editing"],
+        "review_count": 254,
+        "warranty": "36 tháng",
+        "tags": ["ultrabook", "alienware", "new"]
+      }
+    },
+    {
+      "id": "laptop_039",
+      "text": "Alienware IdeaPad 17 - Alienware\nGiá: 18,910,735 VND\nMô tả: Laptop budget Alienware với hiệu năng ổn định cho gaming.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 3 7320U\n- ram: 8GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel UHD Graphics\n- display: 17.3 inch 2K VA\n- battery: 79Wh\n- weight: 2.5kg\n- os: Windows 11 Pro\nFeatures: Loa stereo, Thunderbolt, Wi-Fi 6, Bluetooth 5.0\nPros: Tản nhiệt tốt, Nâng cấp dễ, Thiết kế đẹp\nCons: Pin yếu, Webcam kém, Màn hình tối\nUse_Cases: Business, Streaming, Học tập\nĐánh giá: 3.7/5 từ 199 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Alienware",
+        "name": "Alienware IdeaPad 17",
+        "price": 18910735,
+        "rating": 3.7,
+        "in_stock": true,
+        "id": "laptop_039",
+        "currency": "VND",
+        "features": ["Loa stereo", "Thunderbolt", "Wi-Fi 6", "Bluetooth 5.0"],
+        "pros": ["Tản nhiệt tốt", "Nâng cấp dễ", "Thiết kế đẹp"],
+        "cons": ["Pin yếu", "Webcam kém", "Màn hình tối"],
+        "use_cases": ["Business", "Streaming", "Học tập"],
+        "review_count": 199,
+        "warranty": "24 tháng",
+        "tags": ["budget", "alienware", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_040",
+      "text": "Samsung ExpertBook 15 - Samsung\nGiá: 25,682,165 VND\nMô tả: Laptop business Samsung với hiệu năng cao cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1335U\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: AMD Radeon Graphics\n- display: 14 inch 4K OLED\n- battery: 58Wh\n- weight: 2.0kg\n- os: Ubuntu\nFeatures: Vân tay, Sạc nhanh, Bluetooth 5.0, Webcam HD, USB-C\nPros: Giá hợp lý, Nâng cấp dễ, Thiết kế đẹp\nCons: Ít cổng kết nối, Pin yếu, Nóng máy\nUse_Cases: Học tập, Video editing, Văn phòng\nĐánh giá: 4.0/5 từ 213 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Samsung",
+        "name": "Samsung ExpertBook 15",
+        "price": 25682165,
+        "rating": 4.0,
+        "in_stock": true,
+        "id": "laptop_040",
+        "currency": "VND",
+        "features": [
+          "Vân tay",
+          "Sạc nhanh",
+          "Bluetooth 5.0",
+          "Webcam HD",
+          "USB-C"
+        ],
+        "pros": ["Giá hợp lý", "Nâng cấp dễ", "Thiết kế đẹp"],
+        "cons": ["Ít cổng kết nối", "Pin yếu", "Nóng máy"],
+        "use_cases": ["Học tập", "Video editing", "Văn phòng"],
+        "review_count": 213,
+        "warranty": "36 tháng",
+        "tags": ["business", "samsung", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_041",
+      "text": "HP ProBook 17 - HP\nGiá: 28,281,352 VND\nMô tả: Laptop business HP với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 PRO 7530U\n- ram: 8GB DDR4\n- storage: 256GB SSD\n- gpu: Intel Iris Xe\n- display: 16 inch FHD VA\n- battery: 78Wh\n- weight: 2.6kg\n- os: Ubuntu\nFeatures: Sạc nhanh, USB-C, Webcam HD\nPros: Thiết kế đẹp, Giá hợp lý, Hiệu năng tốt, Tản nhiệt tốt, Pin trâu\nCons: Pin yếu, Nóng máy, Giá cao\nUse_Cases: Thiết kế, Gaming\nĐánh giá: 4.3/5 từ 420 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "HP",
+        "name": "HP ProBook 17",
+        "price": 28281352,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "laptop_041",
+        "currency": "VND",
+        "features": ["Sạc nhanh", "USB-C", "Webcam HD"],
+        "pros": [
+          "Thiết kế đẹp",
+          "Giá hợp lý",
+          "Hiệu năng tốt",
+          "Tản nhiệt tốt",
+          "Pin trâu"
+        ],
+        "cons": ["Pin yếu", "Nóng máy", "Giá cao"],
+        "use_cases": ["Thiết kế", "Gaming"],
+        "review_count": 420,
+        "warranty": "36 tháng",
+        "tags": ["business", "hp", "popular"]
+      }
+    },
+    {
+      "id": "laptop_042",
+      "text": "Samsung TUF 14 - Samsung\nGiá: 27,008,158 VND\nMô tả: Laptop gaming Samsung với hiệu năng mạnh mẽ cho gaming.\nThông số kỹ thuật:\n- cpu: Intel Core i7-13700H\n- ram: 16GB DDR4\n- storage: 256GB SSD\n- gpu: RTX 4080 12GB\n- display: 15.6 inch FHD OLED\n- battery: 78Wh\n- weight: 2.7kg\n- os: Windows 11 Pro\nFeatures: Loa stereo, USB-C, HDMI\nPros: Bàn phím thoải mái, Nâng cấp dễ, Màn hình chất lượng, Hiệu năng tốt, Thiết kế đẹp\nCons: Hơi nặng, Nóng máy, Pin yếu, Loa không hay\nUse_Cases: Video editing, Học tập, Văn phòng\nĐánh giá: 4.3/5 từ 197 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "gaming",
+        "brand": "Samsung",
+        "name": "Samsung TUF 14",
+        "price": 27008158,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "laptop_042",
+        "currency": "VND",
+        "features": ["Loa stereo", "USB-C", "HDMI"],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Nâng cấp dễ",
+          "Màn hình chất lượng",
+          "Hiệu năng tốt",
+          "Thiết kế đẹp"
+        ],
+        "cons": ["Hơi nặng", "Nóng máy", "Pin yếu", "Loa không hay"],
+        "use_cases": ["Video editing", "Học tập", "Văn phòng"],
+        "review_count": 197,
+        "warranty": "36 tháng",
+        "tags": ["gaming", "samsung", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_043",
+      "text": "MSI XPS 14 - MSI\nGiá: 22,702,391 VND\nMô tả: Laptop ultrabook MSI với hiệu năng ổn định cho học tập.\nThông số kỹ thuật:\n- cpu: Intel Core i7-1360P\n- ram: 16GB DDR4\n- storage: 1TB SSD\n- gpu: Intel Iris Xe\n- display: 17.3 inch 2K IPS\n- battery: 70Wh\n- weight: 1.9kg\n- os: Ubuntu\nFeatures: Loa stereo, Bàn phím có đèn nền, USB-C\nPros: Bàn phím thoải mái, Tản nhiệt tốt, Hiệu năng tốt, Màn hình chất lượng\nCons: Loa không hay, Webcam kém, Hơi nặng, Màn hình tối\nUse_Cases: Business, Văn phòng\nĐánh giá: 4.1/5 từ 321 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "MSI",
+        "name": "MSI XPS 14",
+        "price": 22702391,
+        "rating": 4.1,
+        "in_stock": false,
+        "id": "laptop_043",
+        "currency": "VND",
+        "features": ["Loa stereo", "Bàn phím có đèn nền", "USB-C"],
+        "pros": [
+          "Bàn phím thoải mái",
+          "Tản nhiệt tốt",
+          "Hiệu năng tốt",
+          "Màn hình chất lượng"
+        ],
+        "cons": ["Loa không hay", "Webcam kém", "Hơi nặng", "Màn hình tối"],
+        "use_cases": ["Business", "Văn phòng"],
+        "review_count": 321,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "msi", "new"]
+      }
+    },
+    {
+      "id": "laptop_044",
+      "text": "HP Pavilion 17 - HP\nGiá: 9,420,890 VND\nMô tả: Laptop budget HP với hiệu năng mạnh mẽ cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i3-1215U\n- ram: 8GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel UHD Graphics\n- display: 17.3 inch 2K IPS\n- battery: 76Wh\n- weight: 1.7kg\n- os: Ubuntu\nFeatures: Sạc nhanh, Bluetooth 5.0, Wi-Fi 6, HDMI\nPros: Tản nhiệt tốt, Giá hợp lý, Màn hình chất lượng, Nâng cấp dễ\nCons: Loa không hay, Nóng máy, Ít cổng kết nối, Pin yếu\nUse_Cases: Business, Thiết kế, Lập trình, Gaming\nĐánh giá: 4.2/5 từ 358 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "HP",
+        "name": "HP Pavilion 17",
+        "price": 9420890,
+        "rating": 4.2,
+        "in_stock": false,
+        "id": "laptop_044",
+        "currency": "VND",
+        "features": ["Sạc nhanh", "Bluetooth 5.0", "Wi-Fi 6", "HDMI"],
+        "pros": [
+          "Tản nhiệt tốt",
+          "Giá hợp lý",
+          "Màn hình chất lượng",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Loa không hay", "Nóng máy", "Ít cổng kết nối", "Pin yếu"],
+        "use_cases": ["Business", "Thiết kế", "Lập trình", "Gaming"],
+        "review_count": 358,
+        "warranty": "12 tháng",
+        "tags": ["budget", "hp", "bestseller"]
+      }
+    },
+    {
+      "id": "laptop_045",
+      "text": "Lenovo ZenBook 15 - Lenovo\nGiá: 22,922,934 VND\nMô tả: Laptop ultrabook Lenovo với hiệu năng cao cho gaming.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 7530U\n- ram: 16GB DDR4\n- storage: 512GB SSD\n- gpu: Intel UHD Graphics\n- display: 14 inch 4K IPS\n- battery: 74Wh\n- weight: 2.1kg\n- os: Ubuntu\nFeatures: HDMI, Sạc nhanh, Bluetooth 5.0\nPros: Tản nhiệt tốt, Nâng cấp dễ, Giá hợp lý, Pin trâu\nCons: Ít cổng kết nối, Giá cao\nUse_Cases: Video editing, Lập trình, Văn phòng\nĐánh giá: 4.4/5 từ 178 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Lenovo",
+        "name": "Lenovo ZenBook 15",
+        "price": 22922934,
+        "rating": 4.4,
+        "in_stock": true,
+        "id": "laptop_045",
+        "currency": "VND",
+        "features": ["HDMI", "Sạc nhanh", "Bluetooth 5.0"],
+        "pros": ["Tản nhiệt tốt", "Nâng cấp dễ", "Giá hợp lý", "Pin trâu"],
+        "cons": ["Ít cổng kết nối", "Giá cao"],
+        "use_cases": ["Video editing", "Lập trình", "Văn phòng"],
+        "review_count": 178,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "lenovo", "popular"]
+      }
+    },
+    {
+      "id": "laptop_046",
+      "text": "Razer Aspire 14 - Razer\nGiá: 11,120,666 VND\nMô tả: Laptop budget Razer với hiệu năng ổn định cho sáng tạo.\nThông số kỹ thuật:\n- cpu: Intel Core i3-1215U\n- ram: 8GB LPDDR4\n- storage: 1TB SSD\n- gpu: AMD Radeon Graphics\n- display: 17.3 inch 4K VA\n- battery: 65Wh\n- weight: 2.1kg\n- os: Windows 11 Pro\nFeatures: Bluetooth 5.0, Vân tay, Sạc nhanh, USB-C, Thunderbolt\nPros: Màn hình chất lượng, Thiết kế đẹp, Giá hợp lý, Bàn phím thoải mái, Nâng cấp dễ\nCons: Webcam kém, Nóng máy\nUse_Cases: Thiết kế, Streaming, Gaming, Lập trình\nĐánh giá: 4.5/5 từ 446 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Razer",
+        "name": "Razer Aspire 14",
+        "price": 11120666,
+        "rating": 4.5,
+        "in_stock": false,
+        "id": "laptop_046",
+        "currency": "VND",
+        "features": [
+          "Bluetooth 5.0",
+          "Vân tay",
+          "Sạc nhanh",
+          "USB-C",
+          "Thunderbolt"
+        ],
+        "pros": [
+          "Màn hình chất lượng",
+          "Thiết kế đẹp",
+          "Giá hợp lý",
+          "Bàn phím thoải mái",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Webcam kém", "Nóng máy"],
+        "use_cases": ["Thiết kế", "Streaming", "Gaming", "Lập trình"],
+        "review_count": 446,
+        "warranty": "36 tháng",
+        "tags": ["budget", "razer", "popular"]
+      }
+    },
+    {
+      "id": "laptop_047",
+      "text": "Dell ExpertBook 14 - Dell\nGiá: 37,962,010 VND\nMô tả: Laptop business Dell với hiệu năng cao cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1335U\n- ram: 8GB DDR4\n- storage: 256GB SSD\n- gpu: AMD Radeon Graphics\n- display: 15.6 inch 2K IPS\n- battery: 78Wh\n- weight: 1.7kg\n- os: Windows 11 Pro\nFeatures: HDMI, Sạc nhanh, USB-C, Webcam HD\nPros: Thiết kế đẹp, Hiệu năng tốt, Tản nhiệt tốt, Màn hình chất lượng, Bàn phím thoải mái\nCons: Webcam kém, Màn hình tối\nUse_Cases: Thiết kế, Streaming\nĐánh giá: 4.3/5 từ 59 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "business",
+        "brand": "Dell",
+        "name": "Dell ExpertBook 14",
+        "price": 37962010,
+        "rating": 4.3,
+        "in_stock": true,
+        "id": "laptop_047",
+        "currency": "VND",
+        "features": ["HDMI", "Sạc nhanh", "USB-C", "Webcam HD"],
+        "pros": [
+          "Thiết kế đẹp",
+          "Hiệu năng tốt",
+          "Tản nhiệt tốt",
+          "Màn hình chất lượng",
+          "Bàn phím thoải mái"
+        ],
+        "cons": ["Webcam kém", "Màn hình tối"],
+        "use_cases": ["Thiết kế", "Streaming"],
+        "review_count": 59,
+        "warranty": "24 tháng",
+        "tags": ["business", "dell", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_048",
+      "text": "Alienware Gram 17 - Alienware\nGiá: 38,433,645 VND\nMô tả: Laptop ultrabook Alienware với hiệu năng mạnh mẽ cho công việc.\nThông số kỹ thuật:\n- cpu: Intel Core i5-1340P\n- ram: 16GB DDR4\n- storage: 512GB NVMe\n- gpu: Intel Iris Xe\n- display: 15.6 inch FHD OLED\n- battery: 82Wh\n- weight: 2.8kg\n- os: Windows 11 Pro\nFeatures: HDMI, Sạc nhanh, Thunderbolt\nPros: Màn hình chất lượng, Giá hợp lý, Thiết kế đẹp, Tản nhiệt tốt\nCons: Ít cổng kết nối, Webcam kém, Pin yếu, Loa không hay\nUse_Cases: Streaming, Business\nĐánh giá: 4.2/5 từ 384 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Alienware",
+        "name": "Alienware Gram 17",
+        "price": 38433645,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "laptop_048",
+        "currency": "VND",
+        "features": ["HDMI", "Sạc nhanh", "Thunderbolt"],
+        "pros": [
+          "Màn hình chất lượng",
+          "Giá hợp lý",
+          "Thiết kế đẹp",
+          "Tản nhiệt tốt"
+        ],
+        "cons": ["Ít cổng kết nối", "Webcam kém", "Pin yếu", "Loa không hay"],
+        "use_cases": ["Streaming", "Business"],
+        "review_count": 384,
+        "warranty": "24 tháng",
+        "tags": ["ultrabook", "alienware", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_049",
+      "text": "Dell IdeaPad 15 - Dell\nGiá: 18,572,927 VND\nMô tả: Laptop budget Dell với hiệu năng ổn định cho học tập.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 5500U\n- ram: 8GB LPDDR4\n- storage: 512GB NVMe\n- gpu: AMD Radeon Graphics\n- display: 16 inch 2K VA\n- battery: 52Wh\n- weight: 1.2kg\n- os: Windows 11 Pro\nFeatures: Wi-Fi 6, Loa stereo, HDMI, Thunderbolt, Bàn phím có đèn nền\nPros: Thiết kế đẹp, Tản nhiệt tốt, Giá hợp lý\nCons: Nóng máy, Pin yếu\nUse_Cases: Văn phòng, Video editing, Streaming\nĐánh giá: 4.2/5 từ 18 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "budget",
+        "brand": "Dell",
+        "name": "Dell IdeaPad 15",
+        "price": 18572927,
+        "rating": 4.2,
+        "in_stock": true,
+        "id": "laptop_049",
+        "currency": "VND",
+        "features": [
+          "Wi-Fi 6",
+          "Loa stereo",
+          "HDMI",
+          "Thunderbolt",
+          "Bàn phím có đèn nền"
+        ],
+        "pros": ["Thiết kế đẹp", "Tản nhiệt tốt", "Giá hợp lý"],
+        "cons": ["Nóng máy", "Pin yếu"],
+        "use_cases": ["Văn phòng", "Video editing", "Streaming"],
+        "review_count": 18,
+        "warranty": "36 tháng",
+        "tags": ["budget", "dell", "recommended"]
+      }
+    },
+    {
+      "id": "laptop_050",
+      "text": "Dell Swift 17 - Dell\nGiá: 30,313,545 VND\nMô tả: Laptop ultrabook Dell với hiệu năng cao cho gaming.\nThông số kỹ thuật:\n- cpu: AMD Ryzen 5 7530U\n- ram: 8GB LPDDR5\n- storage: 256GB SSD\n- gpu: AMD Radeon Graphics\n- display: 15.6 inch 2K IPS\n- battery: 50Wh\n- weight: 2.4kg\n- os: Windows 11 Pro\nFeatures: Bàn phím có đèn nền, Webcam HD, USB-C, Wi-Fi 6, Vân tay, Loa stereo\nPros: Thiết kế đẹp, Màn hình chất lượng, Pin trâu, Tản nhiệt tốt, Nâng cấp dễ\nCons: Hơi nặng, Pin yếu\nUse_Cases: Video editing, Streaming, Business\nĐánh giá: 4.5/5 từ 162 người dùng",
+      "metadata": {
+        "type": "product",
+        "category": "laptop",
+        "subcategory": "ultrabook",
+        "brand": "Dell",
+        "name": "Dell Swift 17",
+        "price": 30313545,
+        "rating": 4.5,
+        "in_stock": true,
+        "id": "laptop_050",
+        "currency": "VND",
+        "features": [
+          "Bàn phím có đèn nền",
+          "Webcam HD",
+          "USB-C",
+          "Wi-Fi 6",
+          "Vân tay",
+          "Loa stereo"
+        ],
+        "pros": [
+          "Thiết kế đẹp",
+          "Màn hình chất lượng",
+          "Pin trâu",
+          "Tản nhiệt tốt",
+          "Nâng cấp dễ"
+        ],
+        "cons": ["Hơi nặng", "Pin yếu"],
+        "use_cases": ["Video editing", "Streaming", "Business"],
+        "review_count": 162,
+        "warranty": "12 tháng",
+        "tags": ["ultrabook", "dell", "popular"]
+      }
+    }
+  ]
+}
