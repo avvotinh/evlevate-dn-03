@@ -1,0 +1,60 @@
+# Testing Requirements for E-commerce AI Product Advisor Chatbot
+# Install with: pip install -r requirements-test.txt
+
+# Core testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.1
+pytest-asyncio>=0.21.1
+pytest-timeout>=2.1.0
+pytest-xdist>=3.3.1
+
+# Test utilities
+coverage>=7.2.7
+pytest-html>=3.2.0
+pytest-json-report>=1.5.0
+pytest-benchmark>=4.0.0
+
+# Mocking and fixtures
+responses>=0.23.3
+factory-boy>=3.3.0
+faker>=19.3.0
+
+# Performance testing
+locust>=2.16.1
+memory-profiler>=0.61.0
+psutil>=5.9.5
+
+# UI testing (for Streamlit)
+selenium>=4.11.2
+webdriver-manager>=4.0.0
+streamlit-testing>=0.1.0
+
+# API testing
+httpx>=0.24.1
+aiohttp>=3.8.5
+
+# Data validation
+pydantic>=2.1.1
+jsonschema>=4.19.0
+
+# Logging and monitoring
+structlog>=23.1.0
+pytest-logger>=0.5.1
+
+# Code quality
+flake8>=6.0.0
+black>=23.7.0
+isort>=5.12.0
+mypy>=1.5.1
+
+# Documentation testing
+pytest-doctestplus>=1.0.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Additional utilities for testing
+freezegun>=1.2.2  # For time-based testing
+parameterized>=0.9.0  # For parameterized tests
+testfixtures>=7.2.0  # Additional test fixtures

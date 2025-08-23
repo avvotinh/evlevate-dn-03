@@ -1,0 +1,1668 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="77" skipped="0" tests="164" time="22.215" timestamp="2025-08-23T13:11:48.422195+07:00" hostname="Oren"><testcase classname="tests.integration.test_end_to_end.TestEndToEndWorkflows" name="test_complete_search_workflow" time="1.744"><failure message="AssertionError: Expected 'search_products' to have been called.">self = &lt;MagicMock name='pinecone_service.search_products' id='2827791633776'&gt;
+
+    def assert_called(self):
+        """assert that the mock was called at least once
+        """
+        if self.call_count == 0:
+            msg = ("Expected '%s' to have been called." %
+                   (self._mock_name or 'mock'))
+&gt;           raise AssertionError(msg)
+E           AssertionError: Expected 'search_products' to have been called.
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:948: AssertionError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;tests.integration.test_end_to_end.TestEndToEndWorkflows object at 0x00000292542C7110&gt;
+mock_services = {'llm': &lt;MagicMock name='llm_service' id='2827791633440'&gt;, 'pinecone': &lt;MagicMock name='pinecone_service' id='2827791633104'&gt;}
+
+    def test_complete_search_workflow(self, mock_services):
+        """Test complete search workflow from user input to response"""
+        from src.agents.langgraph_agent import ProductAdvisorLangGraphAgent
+    
+        # Initialize agent
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test complete search workflow
+        response = agent.chat("Tìm laptop Dell dưới 30 triệu", session_id="test_session")
+    
+        # Verify response structure
+        assert response["success"] is True
+        assert response["intent"] == "search"
+        assert "search_products" in response["tools_used"]
+        assert response["response"] is not None
+        assert len(response["response"]) &gt; 0
+    
+        # Verify services were called
+&gt;       mock_services["pinecone"].search_products.assert_called()
+E       AssertionError: Expected 'search_products' to have been called.
+
+tests\integration\test_end_to_end.py:62: AssertionError</failure></testcase><testcase classname="tests.integration.test_end_to_end.TestEndToEndWorkflows" name="test_complete_comparison_workflow" time="1.277" /><testcase classname="tests.integration.test_end_to_end.TestEndToEndWorkflows" name="test_multi_turn_conversation" time="1.475" /><testcase classname="tests.integration.test_end_to_end.TestEndToEndWorkflows" name="test_error_recovery_workflow" time="0.896" /><testcase classname="tests.integration.test_end_to_end.TestEndToEndWorkflows" name="test_greeting_workflow" time="0.305" /><testcase classname="tests.integration.test_end_to_end.TestServiceIntegration" name="test_llm_pinecone_integration" time="0.249" /><testcase classname="tests.integration.test_end_to_end.TestServiceIntegration" name="test_tool_service_integration" time="0.382"><failure message="assert False is True">self = &lt;tests.integration.test_end_to_end.TestServiceIntegration object at 0x00000292542C7750&gt;
+
+    def test_tool_service_integration(self):
+        """Test tool integration with services"""
+        with patch('src.services.pinecone_service.pinecone_service') as mock_pinecone, \
+             patch('src.services.llm_service.llm_service') as mock_llm:
+    
+            # Setup mocks
+            mock_pinecone.search_products.return_value = [
+                {"name": "Dell XPS 13", "price": 25000000}
+            ]
+            mock_llm.generate_response.return_value = "Generated response"
+    
+            from src.tools.search_tool import search_tool
+            from src.tools.generation_tool import generation_tool
+    
+            # Test search tool with service
+            search_result = search_tool.run('{"query": "laptop Dell"}')
+            search_response = json.loads(search_result)
+&gt;           assert search_response["success"] is True
+E           assert False is True
+
+tests\integration\test_end_to_end.py:188: AssertionError</failure></testcase><testcase classname="tests.integration.test_end_to_end.TestAgentToolIntegration" name="test_agent_uses_correct_tools" time="1.189" /><testcase classname="tests.integration.test_end_to_end.TestAgentToolIntegration" name="test_tool_error_handling_in_agent" time="0.915"><failure message="assert ('error' in {'agent_type': 'langgraph', 'context_info': {'context_references_used': False, 'has_previous_context': True, 'previous_products': []}, 'intent': 'search', 'intermediate_steps': [(&lt;src.agents.langgraph_agent.Action object at 0x000002926707C6E0&gt;, '{&quot;success&quot;: false, &quot;error&quot;: &quot;L\\u1ed7i k\\u1ebft n\\u1ed1i c\\u01a1 s\\u1edf d\\u1eef li\\u1ec7u: (401)\\nRe...'), (&lt;src.agents.langgraph_agent.Action object at 0x000002926707C440&gt;, 'Xin lỗi, tôi gặp vấn đề khi tạo câu trả lời. Vui lòng thử lại.')], ...} or True is False)">self = &lt;tests.integration.test_end_to_end.TestAgentToolIntegration object at 0x00000292542C79D0&gt;
+mock_all_services = {'compare': &lt;MagicMock name='compare_tool' id='2827817051408'&gt;, 'llm': &lt;MagicMock name='llm_service' id='2827817052080...ck name='pinecone_service' id='2827817054768'&gt;, 'recommend': &lt;MagicMock name='recommend_tool' id='2827817051072'&gt;, ...}
+
+    def test_tool_error_handling_in_agent(self, mock_all_services):
+        """Test agent handles tool errors gracefully"""
+        from src.agents.langgraph_agent import ProductAdvisorLangGraphAgent
+    
+        # Setup tool to fail
+        mock_all_services["search"].run.side_effect = Exception("Tool error")
+    
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test that agent handles tool error
+        with patch.object(agent, '_classify_intent_with_llm', return_value="search"):
+            response = agent.chat("Tìm laptop Dell", session_id="error_test")
+    
+            # Should handle error gracefully
+&gt;           assert "error" in response or response["success"] is False
+E           assert ('error' in {'agent_type': 'langgraph', 'context_info': {'context_references_used': False, 'has_previous_context': True, 'previous_products': []}, 'intent': 'search', 'intermediate_steps': [(&lt;src.agents.langgraph_agent.Action object at 0x000002926707C6E0&gt;, '{"success": false, "error": "L\\u1ed7i k\\u1ebft n\\u1ed1i c\\u01a1 s\\u1edf d\\u1eef li\\u1ec7u: (401)\\nRe...'), (&lt;src.agents.langgraph_agent.Action object at 0x000002926707C440&gt;, 'Xin lỗi, tôi gặp vấn đề khi tạo câu trả lời. Vui lòng thử lại.')], ...} or True is False)
+
+tests\integration\test_end_to_end.py:275: AssertionError</failure></testcase><testcase classname="tests.integration.test_end_to_end.TestConfigurationIntegration" name="test_config_used_by_services" time="0.248" /><testcase classname="tests.integration.test_end_to_end.TestConfigurationIntegration" name="test_config_validation_integration" time="0.002" /><testcase classname="tests.integration.test_end_to_end.TestMemoryIntegration" name="test_session_memory_persistence" time="1.542" /><testcase classname="tests.integration.test_end_to_end.TestMemoryIntegration" name="test_session_isolation" time="1.512" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_agent_initialization" time="0.053" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_create_graph_structure" time="0.056"><failure message="AttributeError: 'Graph' object has no attribute 'to_dict'">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x000002926561B110&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827816233216'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827816233552'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827816232880'&gt;}
+
+    def test_create_graph_structure(self, mock_dependencies):
+        """Test graph structure creation"""
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Verify graph has required nodes
+&gt;       graph_dict = agent.graph.get_graph().to_dict()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'Graph' object has no attribute 'to_dict'
+
+tests\unit\test_agents.py:54: AttributeError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_classify_intent_with_llm_success" time="0.053"><failure message="AssertionError: assert None == 'search'">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x0000029264A422C0&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827791634448'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827791636464'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827791643856'&gt;}
+
+    def test_classify_intent_with_llm_success(self, mock_dependencies):
+        """Test successful LLM intent classification"""
+        mock_dependencies["llm"].get_langchain_llm.return_value.invoke.return_value.content = "search"
+    
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test intent classification
+        intent = agent._classify_intent_with_llm("Tìm laptop Dell")
+    
+        # Verify result
+&gt;       assert intent == "search"
+E       AssertionError: assert None == 'search'
+
+tests\unit\test_agents.py:81: AssertionError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_classify_intent_with_llm_failure" time="0.057" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_classify_intent_with_rules" time="0.053"><failure message="AssertionError: assert 'search' == 'review'&#10;  &#10;  - review&#10;  + search">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x000002926551EC30&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827817047376'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827817046032'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827817052752'&gt;}
+
+    def test_classify_intent_with_rules(self, mock_dependencies):
+        """Test rule-based intent classification"""
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test various intents
+        test_cases = [
+            ("xin chào", "greeting"),
+            ("tìm laptop dell", "search"),
+            ("so sánh iphone và samsung", "compare"),
+            ("gợi ý điện thoại tốt", "recommend"),
+            ("đánh giá macbook", "review"),
+            ("random text", "direct")
+        ]
+    
+        for user_input, expected_intent in test_cases:
+            intent = agent._classify_intent_with_rules(user_input)
+&gt;           assert intent == expected_intent
+E           AssertionError: assert 'search' == 'review'
+E             
+E             - review
+E             + search
+
+tests\unit\test_agents.py:111: AssertionError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_analyze_intent_node" time="0.056" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_handle_greeting_node" time="0.052" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_search_products_node" time="0.055" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_compare_products_node" time="0.055" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_recommend_products_node" time="0.057" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_get_reviews_node" time="0.053"><failure message="AssertionError: assert 'get_reviews' in ['get_product_reviews']">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x00000292543319A0&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827816230528'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827817049728'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827816230192'&gt;}
+sample_agent_state = {'comparison_results': None, 'context_data': None, 'context_references': None, 'conversation_history': [], ...}
+
+    def test_get_reviews_node(self, mock_dependencies, sample_agent_state):
+        """Test get reviews node"""
+        # Setup mock tool
+        mock_review_tool = Mock()
+        mock_review_tool.run.return_value = json.dumps({
+            "success": True,
+            "reviews": [{"rating": 5, "content": "Great laptop"}]
+        })
+        mock_dependencies["tool_manager"].return_value.get_tool.return_value = mock_review_tool
+    
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test review analysis
+        state = sample_agent_state.copy()
+        state["user_input"] = "Đánh giá Dell XPS 13"
+        state["intent"] = "review"
+    
+        result_state = agent._get_reviews(state)
+    
+        # Verify review results
+        assert "review_results" in result_state
+&gt;       assert "get_reviews" in result_state["tools_used"]
+E       AssertionError: assert 'get_reviews' in ['get_product_reviews']
+
+tests\unit\test_agents.py:235: AssertionError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_generate_response_node" time="0.054" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_handle_error_node" time="0.052" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_route_after_intent_analysis" time="0.056"><failure message="AttributeError: 'ProductAdvisorLangGraphAgent' object has no attribute '_route_after_intent_analysis'">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x0000029265772DD0&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827794181360'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827794185392'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827794183040'&gt;}
+
+    def test_route_after_intent_analysis(self, mock_dependencies):
+        """Test routing after intent analysis"""
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test different routing scenarios
+        test_cases = [
+            ({"intent": "greeting"}, "handle_greeting"),
+            ({"intent": "search"}, "search_products"),
+            ({"intent": "compare"}, "compare_products"),
+            ({"intent": "recommend"}, "recommend_products"),
+            ({"intent": "review"}, "get_reviews"),
+            ({"intent": "direct"}, "generate_response"),
+            ({"intent": "unknown"}, "generate_response")
+        ]
+    
+        for state, expected_route in test_cases:
+&gt;           route = agent._route_after_intent_analysis(state)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'ProductAdvisorLangGraphAgent' object has no attribute '_route_after_intent_analysis'
+
+tests\unit\test_agents.py:283: AttributeError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_route_to_response_or_error" time="0.056"><failure message="AttributeError: 'ProductAdvisorLangGraphAgent' object has no attribute '_route_to_response_or_error'">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x000002925433CA10&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827791631424'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827791634112'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827791642848'&gt;}
+
+    def test_route_to_response_or_error(self, mock_dependencies):
+        """Test routing to response or error"""
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test routing scenarios
+        test_cases = [
+            ({"error_count": 0}, "generate_response"),
+            ({"error_count": 3}, "handle_error"),
+            ({"error_count": 5}, "handle_error")
+        ]
+    
+        for state, expected_route in test_cases:
+&gt;           route = agent._route_to_response_or_error(state)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'ProductAdvisorLangGraphAgent' object has no attribute '_route_to_response_or_error'
+
+tests\unit\test_agents.py:298: AttributeError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_extract_search_params" time="0.054"><failure message="AssertionError: assert 'laptop Dell dưới 20 triệu' == 'laptop Dell'&#10;  &#10;  - laptop Dell&#10;  + laptop Dell dưới 20 triệu">self = &lt;tests.unit.test_agents.TestProductAdvisorLangGraphAgent object at 0x000002925433CF50&gt;
+mock_dependencies = {'generation_tool': &lt;MagicMock name='generation_tool' id='2827791634784'&gt;, 'llm': &lt;MagicMock name='llm_service' id='28...MagicMock name='prompt_manager' id='2827791632432'&gt;, 'tool_manager': &lt;MagicMock name='ToolManager' id='2827791633440'&gt;}
+
+    def test_extract_search_params(self, mock_dependencies):
+        """Test search parameter extraction"""
+        agent = ProductAdvisorLangGraphAgent()
+    
+        # Test parameter extraction
+        test_cases = [
+            ("laptop Dell dưới 20 triệu", {"query": "laptop Dell", "price_max": 20000000}),
+            ("điện thoại Samsung", {"query": "điện thoại Samsung"}),
+            ("laptop gaming", {"query": "laptop gaming"})
+        ]
+    
+        for user_input, expected_params in test_cases:
+            params = agent._extract_search_params(user_input)
+            assert "query" in params
+            for key, value in expected_params.items():
+                if key in params:
+&gt;                   assert params[key] == value
+E                   AssertionError: assert 'laptop Dell dưới 20 triệu' == 'laptop Dell'
+E                     
+E                     - laptop Dell
+E                     + laptop Dell dưới 20 triệu
+
+tests\unit\test_agents.py:317: AssertionError</failure></testcase><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_chat_method" time="0.053" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_chat_method_with_error" time="0.057" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_clear_memory" time="0.099" /><testcase classname="tests.unit.test_agents.TestProductAdvisorLangGraphAgent" name="test_agent_state_structure" time="0.002" /><testcase classname="tests.unit.test_agents.TestAgentManager" name="test_get_agent_manager" time="0.002" /><testcase classname="tests.unit.test_agents.TestAgentManager" name="test_get_langgraph_agent_manager" time="0.002"><failure message="ImportError: cannot import name 'get_langgraph_agent_manager' from 'src.agents.langgraph_agent' (C:\Users\MinhTC\Desktop\Hackaton\evlevate-dn-03\Workshop_final\src\agents\langgraph_agent.py)">self = &lt;tests.unit.test_agents.TestAgentManager object at 0x000002926561B4D0&gt;
+mock_agent_class = &lt;MagicMock name='ProductAdvisorLangGraphAgent' id='2827794181696'&gt;
+
+    @patch('src.agents.langgraph_agent.ProductAdvisorLangGraphAgent')
+    def test_get_langgraph_agent_manager(self, mock_agent_class):
+        """Test get_langgraph_agent_manager function"""
+&gt;       from src.agents.langgraph_agent import get_langgraph_agent_manager
+E       ImportError: cannot import name 'get_langgraph_agent_manager' from 'src.agents.langgraph_agent' (C:\Users\MinhTC\Desktop\Hackaton\evlevate-dn-03\Workshop_final\src\agents\langgraph_agent.py)
+
+tests\unit\test_agents.py:404: ImportError</failure></testcase><testcase classname="tests.unit.test_config.TestConfig" name="test_config_initialization" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_default_values" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_environment_variable_loading" time="0.007" /><testcase classname="tests.unit.test_config.TestConfig" name="test_config_validation_success" time="0.003" /><testcase classname="tests.unit.test_config.TestConfig" name="test_config_validation_failure" time="0.004"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">self = &lt;tests.unit.test_config.TestConfig object at 0x000002926576A0F0&gt;
+
+    @patch.dict(os.environ, {
+        'AZURE_OPENAI_API_ENDPOINT': '',
+        'AZURE_OPENAI_EMBEDDING_API_KEY': '',
+        'AZURE_OPENAI_LLM_API_KEY': ''
+    })
+    def test_config_validation_failure(self):
+        """Test configuration validation failure with missing fields"""
+        # Test that validation fails with missing required fields
+&gt;       with pytest.raises(ValueError, match="Missing required environment variables"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests\unit\test_config.py:82: Failed</failure></testcase><testcase classname="tests.unit.test_config.TestConfig" name="test_get_openai_config" time="0.007"><failure message="AssertionError: assert 'sk-9-fFflHflOhQR-Y9VZcMCg' == 'test_embedding_key'&#10;  &#10;  - test_embedding_key&#10;  + sk-9-fFflHflOhQR-Y9VZcMCg">self = &lt;tests.unit.test_config.TestConfig object at 0x0000029265741040&gt;
+
+    def test_get_openai_config(self):
+        """Test OpenAI configuration retrieval"""
+        with patch.dict(os.environ, {
+            'AZURE_OPENAI_API_ENDPOINT': 'https://test.openai.azure.com/',
+            'AZURE_OPENAI_EMBEDDING_API_KEY': 'test_embedding_key',
+            'AZURE_OPENAI_API_VERSION': '2024-07-01-preview'
+        }):
+            # Reload config to pick up environment variables
+            import importlib
+            from src.config import config
+            importlib.reload(config)
+    
+            openai_config = config.Config.get_openai_config()
+    
+&gt;           assert openai_config["api_key"] == 'test_embedding_key'
+E           AssertionError: assert 'sk-9-fFflHflOhQR-Y9VZcMCg' == 'test_embedding_key'
+E             
+E             - test_embedding_key
+E             + sk-9-fFflHflOhQR-Y9VZcMCg
+
+tests\unit\test_config.py:99: AssertionError</failure></testcase><testcase classname="tests.unit.test_config.TestConfig" name="test_config_immutability" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_search_settings" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_llm_settings" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_ui_settings" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_empty_environment_variables" time="0.005"><failure message="AssertionError: assert 'pcsk_3fZQv8_...4pr6UWVvMpED3' == ''&#10;  &#10;  + pcsk_3fZQv8_As1xDMbGK8G5gVQMzL243ZtkwFe4eUzKP4rQaC2NFfAkw3Bj454pr6UWVvMpED3">self = &lt;tests.unit.test_config.TestConfig object at 0x0000029264E8B2F0&gt;
+
+    @patch.dict(os.environ, {}, clear=True)
+    def test_empty_environment_variables(self):
+        """Test behavior with empty environment variables"""
+        # Reload config with empty environment
+        import importlib
+        from src.config import config
+        importlib.reload(config)
+    
+        # Test that empty strings are returned for missing env vars
+&gt;       assert config.Config.PINECONE_API_KEY == ""
+E       AssertionError: assert 'pcsk_3fZQv8_...4pr6UWVvMpED3' == ''
+E         
+E         + pcsk_3fZQv8_As1xDMbGK8G5gVQMzL243ZtkwFe4eUzKP4rQaC2NFfAkw3Bj454pr6UWVvMpED3
+
+tests\unit\test_config.py:150: AssertionError</failure></testcase><testcase classname="tests.unit.test_config.TestConfig" name="test_model_names" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_numeric_constraints" time="0.002" /><testcase classname="tests.unit.test_config.TestConfig" name="test_custom_endpoint_detection" time="0.006" /><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_llm_service_initialization" time="0.003"><failure message="assert 5000 == 1000&#10; +  where 5000 = &lt;src.services.llm_service.LLMService object at 0x0000029266FD8770&gt;.max_tokens">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x000002926561BB10&gt;
+mock_config = &lt;MagicMock name='Config' id='2827791642848'&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827791632432'&gt;
+
+    @patch('src.services.llm_service.AzureOpenAI')
+    @patch('src.config.config.Config')
+    def test_llm_service_initialization(self, mock_config, mock_azure_openai):
+        """Test LLM service initialization"""
+        # Setup mock config
+        mock_config.AZURE_OPENAI_LLM_MODEL = "GPT-4o-mini"
+        mock_config.TEMPERATURE = 0.7
+        mock_config.MAX_TOKENS = 1000
+        mock_config.AZURE_OPENAI_API_ENDPOINT = "https://test.openai.azure.com/"
+        mock_config.get_openai_config.return_value = {
+            "api_key": "test_key",
+            "api_base": "https://test.openai.azure.com/",
+            "api_version": "2024-07-01-preview"
+        }
+    
+        # Initialize service
+        service = LLMService()
+    
+        # Verify initialization
+        assert service.model == "GPT-4o-mini"
+        assert service.temperature == 0.7
+&gt;       assert service.max_tokens == 1000
+E       assert 5000 == 1000
+E        +  where 5000 = &lt;src.services.llm_service.LLMService object at 0x0000029266FD8770&gt;.max_tokens
+
+tests\unit\test_llm_service.py:56: AssertionError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_custom_endpoint_initialization" time="0.002"><failure message="AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'OpenAI'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x000002926561BC50&gt;
+mock_config = &lt;MagicMock name='Config' id='2827794179008'&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827794180352'&gt;
+
+    @patch('src.services.llm_service.AzureOpenAI')
+    @patch('src.config.config.Config')
+    def test_custom_endpoint_initialization(self, mock_config, mock_azure_openai):
+        """Test initialization with custom endpoint"""
+        # Setup mock config for custom endpoint
+        mock_config.AZURE_OPENAI_API_ENDPOINT = "https://custom.aiportalapi.com/"
+        mock_config.AZURE_OPENAI_LLM_API_KEY = "test_key"
+        mock_config.AZURE_OPENAI_LLM_MODEL = "GPT-4o-mini"
+        mock_config.TEMPERATURE = 0.7
+        mock_config.MAX_TOKENS = 1000
+    
+&gt;       with patch('src.services.llm_service.OpenAI') as mock_openai:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_llm_service.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;unittest.mock._patch object at 0x0000029266EBE0B0&gt;
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+&gt;           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'OpenAI'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1467: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_get_langchain_llm_azure" time="0.002"><failure message="AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'AzureChatOpenAI'">args = (&lt;tests.unit.test_llm_service.TestLLMService object at 0x000002926566E2C0&gt;,)
+keywargs = {}
+
+    @wraps(func)
+    def patched(*args, **keywargs):
+&gt;       with self.decoration_helper(patched,
+                                    args,
+                                    keywargs) as (newargs, newkeywargs):
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1423: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1405: in decoration_helper
+    arg = exit_stack.enter_context(patching)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:530: in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;unittest.mock._patch object at 0x00000292657991D0&gt;
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+&gt;           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'AzureChatOpenAI'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1467: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_get_langchain_llm_custom" time="0.002"><failure message="AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'ChatOpenAI'">args = (&lt;tests.unit.test_llm_service.TestLLMService object at 0x000002926566E3F0&gt;,)
+keywargs = {}
+
+    @wraps(func)
+    def patched(*args, **keywargs):
+&gt;       with self.decoration_helper(patched,
+                                    args,
+                                    keywargs) as (newargs, newkeywargs):
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1423: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:141: in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1405: in decoration_helper
+    arg = exit_stack.enter_context(patching)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\contextlib.py:530: in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;unittest.mock._patch object at 0x0000029265799390&gt;
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+&gt;           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: &lt;module 'src.services.llm_service' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\services\\llm_service.py'&gt; does not have the attribute 'ChatOpenAI'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1467: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_classify_intent_success" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'classify_intent'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x00000292657AC710&gt;
+mock_azure_openai_client = &lt;Mock id='2827794184384'&gt;
+
+    def test_classify_intent_success(self, mock_azure_openai_client):
+        """Test successful intent classification"""
+        with patch('src.services.llm_service.AzureOpenAI', return_value=mock_azure_openai_client):
+            service = LLMService()
+    
+            # Test intent classification
+&gt;           result = service.classify_intent("Tìm laptop Dell")
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'classify_intent'
+
+tests\unit\test_llm_service.py:120: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_classify_intent_failure" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'classify_intent'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029265741260&gt;
+
+    def test_classify_intent_failure(self):
+        """Test intent classification failure"""
+        with patch('src.services.llm_service.AzureOpenAI') as mock_azure_openai:
+            mock_client = Mock()
+            mock_client.chat.completions.create.side_effect = Exception("API Error")
+            mock_azure_openai.return_value = mock_client
+    
+            service = LLMService()
+    
+            # Test intent classification failure
+&gt;           result = service.classify_intent("Tìm laptop Dell")
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'classify_intent'
+
+tests\unit\test_llm_service.py:136: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_generate_response_success" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'generate_response'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029265741370&gt;
+mock_azure_openai_client = &lt;Mock id='2827794185056'&gt;
+
+    def test_generate_response_success(self, mock_azure_openai_client):
+        """Test successful response generation"""
+        # Setup mock response
+        mock_response = Mock()
+        mock_response.choices = [Mock()]
+        mock_response.choices[0].message.content = "Tôi đã tìm thấy laptop Dell phù hợp."
+        mock_azure_openai_client.chat.completions.create.return_value = mock_response
+    
+        with patch('src.services.llm_service.AzureOpenAI', return_value=mock_azure_openai_client):
+            service = LLMService()
+    
+            # Test response generation
+&gt;           result = service.generate_response(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+                prompt="Generate response for laptop search",
+                format_type=ResponseFormat.CONVERSATIONAL
+            )
+E           AttributeError: 'LLMService' object has no attribute 'generate_response'
+
+tests\unit\test_llm_service.py:153: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_generate_response_failure" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'generate_response'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029265721250&gt;
+
+    def test_generate_response_failure(self):
+        """Test response generation failure"""
+        with patch('src.services.llm_service.AzureOpenAI') as mock_azure_openai:
+            mock_client = Mock()
+            mock_client.chat.completions.create.side_effect = Exception("API Error")
+            mock_azure_openai.return_value = mock_client
+    
+            service = LLMService()
+    
+            # Test response generation failure
+&gt;           result = service.generate_response("Test prompt")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'generate_response'
+
+tests\unit\test_llm_service.py:172: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_extract_parameters_success" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'extract_parameters'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029265721550&gt;
+mock_azure_openai_client = &lt;Mock id='2827791634784'&gt;
+
+    def test_extract_parameters_success(self, mock_azure_openai_client):
+        """Test successful parameter extraction"""
+        # Setup mock response with JSON
+        mock_response = Mock()
+        mock_response.choices = [Mock()]
+        mock_response.choices[0].message.content = '{"query": "laptop Dell", "price_max": 20000000}'
+        mock_azure_openai_client.chat.completions.create.return_value = mock_response
+    
+        with patch('src.services.llm_service.AzureOpenAI', return_value=mock_azure_openai_client):
+            service = LLMService()
+    
+            # Test parameter extraction
+&gt;           result = service.extract_parameters("Tìm laptop Dell dưới 20 triệu")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'extract_parameters'
+
+tests\unit\test_llm_service.py:189: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_extract_parameters_invalid_json" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'extract_parameters'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029264E8B4D0&gt;
+mock_azure_openai_client = &lt;Mock id='2827817042672'&gt;
+
+    def test_extract_parameters_invalid_json(self, mock_azure_openai_client):
+        """Test parameter extraction with invalid JSON"""
+        # Setup mock response with invalid JSON
+        mock_response = Mock()
+        mock_response.choices = [Mock()]
+        mock_response.choices[0].message.content = "invalid json response"
+        mock_azure_openai_client.chat.completions.create.return_value = mock_response
+    
+        with patch('src.services.llm_service.AzureOpenAI', return_value=mock_azure_openai_client):
+            service = LLMService()
+    
+            # Test parameter extraction with invalid JSON
+&gt;           result = service.extract_parameters("Tìm laptop Dell")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'extract_parameters'
+
+tests\unit\test_llm_service.py:207: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_health_check_success" time="0.003"><failure message="AttributeError: 'LLMService' object has no attribute 'health_check'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029264E8B5C0&gt;
+mock_azure_openai_client = &lt;Mock id='2827817044688'&gt;
+
+    def test_health_check_success(self, mock_azure_openai_client):
+        """Test successful health check"""
+        # Setup mock response
+        mock_response = Mock()
+        mock_response.choices = [Mock()]
+        mock_response.choices[0].message.content = "OK"
+        mock_azure_openai_client.chat.completions.create.return_value = mock_response
+    
+        with patch('src.services.llm_service.AzureOpenAI', return_value=mock_azure_openai_client):
+            service = LLMService()
+    
+            # Test health check
+&gt;           result = service.health_check()
+                     ^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'health_check'
+
+tests\unit\test_llm_service.py:224: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_health_check_failure" time="0.002"><failure message="AttributeError: 'LLMService' object has no attribute 'health_check'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x0000029265747070&gt;
+
+    def test_health_check_failure(self):
+        """Test health check failure"""
+        with patch('src.services.llm_service.AzureOpenAI') as mock_azure_openai:
+            mock_client = Mock()
+            mock_client.chat.completions.create.side_effect = Exception("Connection Error")
+            mock_azure_openai.return_value = mock_client
+    
+            service = LLMService()
+    
+            # Test health check failure
+&gt;           result = service.health_check()
+                     ^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute 'health_check'
+
+tests\unit\test_llm_service.py:240: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_response_format_enum" time="0.002" /><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_singleton_instance" time="0.002" /><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_format_prompt_for_intent" time="0.002"><failure message="AttributeError: 'LLMService' object has no attribute '_format_prompt_for_intent'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x00000292656E2990&gt;
+
+    def test_format_prompt_for_intent(self):
+        """Test prompt formatting for intent classification"""
+        with patch('src.services.llm_service.AzureOpenAI'):
+            service = LLMService()
+    
+            # Test prompt formatting
+            user_input = "Tìm laptop Dell"
+&gt;           formatted_prompt = service._format_prompt_for_intent(user_input)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute '_format_prompt_for_intent'
+
+tests\unit\test_llm_service.py:268: AttributeError</failure></testcase><testcase classname="tests.unit.test_llm_service.TestLLMService" name="test_format_prompt_for_generation" time="0.002"><failure message="AttributeError: 'LLMService' object has no attribute '_format_prompt_for_generation'">self = &lt;tests.unit.test_llm_service.TestLLMService object at 0x00000292656E2A50&gt;
+
+    def test_format_prompt_for_generation(self):
+        """Test prompt formatting for response generation"""
+        with patch('src.services.llm_service.AzureOpenAI'):
+            service = LLMService()
+    
+            # Test prompt formatting
+            query = "Tìm laptop Dell"
+            context = "Found 3 Dell laptops"
+&gt;           formatted_prompt = service._format_prompt_for_generation(query, context)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'LLMService' object has no attribute '_format_prompt_for_generation'
+
+tests\unit\test_llm_service.py:282: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_pinecone_service_initialization" time="0.003" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_create_embedding_success" time="0.004" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_create_embedding_failure" time="0.003"><failure message="assert [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...] is None">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x000002926566E650&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827815981072'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827815981408'&gt;
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_create_embedding_failure(self, mock_azure_openai, mock_pinecone):
+        """Test embedding creation failure"""
+        mock_client = Mock()
+        mock_client.embeddings.create.side_effect = Exception("API Error")
+        mock_azure_openai.return_value = mock_client
+    
+        service = PineconeService()
+    
+        # Test embedding creation failure
+        result = service.create_embedding("laptop Dell")
+    
+        # Verify failure handling
+&gt;       assert result is None
+E       assert [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...] is None
+
+tests\unit\test_pinecone_service.py:87: AssertionError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_upsert_products_success" time="0.003"><failure message="AttributeError: 'PineconeService' object has no attribute 'upsert_products'. Did you mean: 'search_products'?">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x000002926566E780&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827817049392'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827817047040'&gt;
+mock_embedding_client = &lt;Mock name='AzureOpenAI()' id='2827817051744'&gt;
+sample_products = [{'availability': 'in_stock', 'brand': 'Dell', 'category': 'laptop', 'currency': 'VND', ...}, {'availability': 'in_stock', 'brand': 'Apple', 'category': 'smartphone', 'currency': 'VND', ...}]
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_upsert_products_success(self, mock_azure_openai, mock_pinecone, mock_embedding_client, sample_products):
+        """Test successful product upserting"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_pinecone.return_value = mock_pc
+        mock_azure_openai.return_value = mock_embedding_client
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test product upserting
+&gt;       result = service.upsert_products(sample_products)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PineconeService' object has no attribute 'upsert_products'. Did you mean: 'search_products'?
+
+tests\unit\test_pinecone_service.py:101: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_upsert_products_failure" time="0.003"><failure message="AttributeError: 'PineconeService' object has no attribute 'upsert_products'. Did you mean: 'search_products'?">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x000002926551F0B0&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827817045024'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827817050064'&gt;
+sample_products = [{'availability': 'in_stock', 'brand': 'Dell', 'category': 'laptop', 'currency': 'VND', ...}, {'availability': 'in_stock', 'brand': 'Apple', 'category': 'smartphone', 'currency': 'VND', ...}]
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_upsert_products_failure(self, mock_azure_openai, mock_pinecone, sample_products):
+        """Test product upserting failure"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_index.upsert.side_effect = Exception("Upsert Error")
+        mock_pinecone.return_value = mock_pc
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test product upserting failure
+&gt;       result = service.upsert_products(sample_products)
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PineconeService' object has no attribute 'upsert_products'. Did you mean: 'search_products'?
+
+tests\unit\test_pinecone_service.py:119: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_search_products_success" time="0.005" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_search_products_with_filters" time="0.004" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_search_products_failure" time="0.005"><failure message="Exception: Search Error">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x0000029265721850&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827794184384'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827816230528'&gt;
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_search_products_failure(self, mock_azure_openai, mock_pinecone):
+        """Test product search failure"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_index.query.side_effect = Exception("Search Error")
+        mock_pinecone.return_value = mock_pc
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test product search failure
+&gt;       results = service.search_products("laptop Dell")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_pinecone_service.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src\services\pinecone_service.py:246: in search_products
+    raise e
+src\services\pinecone_service.py:199: in search_products
+    results = self.index.query(
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1169: in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1173: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;Mock name='Pinecone().Index().query' id='2827818528656'&gt;, args = ()
+kwargs = {'filter': {'type': 'product'}, 'include_metadata': True, 'top_k': 5, 'vector': &lt;MagicMock name='AzureOpenAI().embeddings.create().data.__getitem__().embedding' id='2827794178672'&gt;}
+effect = Exception('Search Error')
+
+    def _execute_mock_call(self, /, *args, **kwargs):
+        # separate from _increment_mock_call so that awaited functions are
+        # executed separately from their call, also AsyncMock overrides this method
+    
+        effect = self.side_effect
+        if effect is not None:
+            if _is_exception(effect):
+&gt;               raise effect
+E               Exception: Search Error
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1228: Exception</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_get_index_stats_success" time="0.003" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_get_index_stats_failure" time="0.004"><failure message="assert {} is None">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x0000029264E8B7A0&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827817046704'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827817054096'&gt;
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_get_index_stats_failure(self, mock_azure_openai, mock_pinecone):
+        """Test index stats retrieval failure"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_index.describe_index_stats.side_effect = Exception("Stats Error")
+        mock_pinecone.return_value = mock_pc
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test index stats retrieval failure
+        stats = service.get_index_stats()
+    
+        # Verify failure handling
+&gt;       assert stats is None
+E       assert {} is None
+
+tests\unit\test_pinecone_service.py:245: AssertionError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_delete_all_vectors_success" time="0.004" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_delete_all_vectors_failure" time="0.003" /><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_health_check_success" time="0.003"><failure message="AttributeError: 'PineconeService' object has no attribute 'health_check'">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x00000292657C44B0&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827818526304'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827818529664'&gt;
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_health_check_success(self, mock_azure_openai, mock_pinecone):
+        """Test successful health check"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_pinecone.return_value = mock_pc
+        mock_index.describe_index_stats.return_value = {"total_vector_count": 100}
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test health check
+&gt;       result = service.health_check()
+                 ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PineconeService' object has no attribute 'health_check'
+
+tests\unit\test_pinecone_service.py:293: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_health_check_failure" time="0.003"><failure message="AttributeError: 'PineconeService' object has no attribute 'health_check'">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x0000029265772F70&gt;
+mock_azure_openai = &lt;MagicMock name='AzureOpenAI' id='2827817045360'&gt;
+mock_pinecone = &lt;MagicMock name='Pinecone' id='2827794183376'&gt;
+
+    @patch('src.services.pinecone_service.Pinecone')
+    @patch('src.services.pinecone_service.AzureOpenAI')
+    def test_health_check_failure(self, mock_azure_openai, mock_pinecone):
+        """Test health check failure"""
+        mock_pc, mock_index = self.mock_pinecone_client()
+        mock_index.describe_index_stats.side_effect = Exception("Health Check Error")
+        mock_pinecone.return_value = mock_pc
+    
+        service = PineconeService()
+        service.index = mock_index
+    
+        # Test health check failure
+&gt;       result = service.health_check()
+                 ^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PineconeService' object has no attribute 'health_check'
+
+tests\unit\test_pinecone_service.py:311: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_prepare_product_for_indexing" time="0.003"><failure message="AttributeError: 'PineconeService' object has no attribute '_prepare_product_for_indexing'">self = &lt;tests.unit.test_pinecone_service.TestPineconeService object at 0x00000292656E2E10&gt;
+sample_products = [{'availability': 'in_stock', 'brand': 'Dell', 'category': 'laptop', 'currency': 'VND', ...}, {'availability': 'in_stock', 'brand': 'Apple', 'category': 'smartphone', 'currency': 'VND', ...}]
+
+    def test_prepare_product_for_indexing(self, sample_products):
+        """Test product preparation for indexing"""
+        with patch('src.services.pinecone_service.Pinecone'), \
+             patch('src.services.pinecone_service.AzureOpenAI'):
+            service = PineconeService()
+    
+            # Test product preparation
+            product = sample_products[0]
+&gt;           prepared = service._prepare_product_for_indexing(product)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PineconeService' object has no attribute '_prepare_product_for_indexing'
+
+tests\unit\test_pinecone_service.py:324: AttributeError</failure></testcase><testcase classname="tests.unit.test_pinecone_service.TestPineconeService" name="test_singleton_instance" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptType" name="test_prompt_type_enum_values" time="0.002"><failure message="AssertionError: assert 'SEARCH_SYSTEM' in ['SYSTEM_BASE', 'RECOMMEND_EXPLANATION', 'COMPARE_ANALYSIS', 'FALLBACK_SYSTEM', 'INTENT_CLASSIFICATION', 'SEARCH_EXTRACTION', ...]">self = &lt;tests.unit.test_prompts.TestPromptType object at 0x00000292657D02D0&gt;
+
+    def test_prompt_type_enum_values(self):
+        """Test PromptType enum has required values"""
+        # Test that all expected prompt types exist
+        expected_types = [
+            "INTENT_CLASSIFICATION",
+            "SEARCH_SYSTEM",
+            "COMPARE_SYSTEM",
+            "RECOMMEND_SYSTEM",
+            "REVIEW_SYSTEM",
+            "GENERATION_BASE_SYSTEM",
+            "GENERATION_SEARCH",
+            "GENERATION_COMPARE",
+            "GENERATION_RECOMMEND",
+            "GENERATION_REVIEW",
+            "GENERATION_DIRECT",
+            "ERROR_HANDLING",
+            "GREETING_RESPONSE"
+        ]
+    
+        # Get all enum values
+        actual_types = [prompt_type.name for prompt_type in PromptType]
+    
+        # Verify all expected types exist
+        for expected_type in expected_types:
+&gt;           assert expected_type in actual_types
+E           AssertionError: assert 'SEARCH_SYSTEM' in ['SYSTEM_BASE', 'RECOMMEND_EXPLANATION', 'COMPARE_ANALYSIS', 'FALLBACK_SYSTEM', 'INTENT_CLASSIFICATION', 'SEARCH_EXTRACTION', ...]
+
+tests\unit\test_prompts.py:40: AssertionError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptType" name="test_prompt_type_enum_is_enum" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_prompt_manager_initialization" time="0.008"><failure message="AssertionError: assert False&#10; +  where False = hasattr(&lt;src.prompts.prompt_manager.PromptManager object at 0x0000029265A3B890&gt;, 'prompts')">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657D0550&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029265A3B890&gt;
+
+    def test_prompt_manager_initialization(self, prompt_manager):
+        """Test PromptManager initialization"""
+        assert prompt_manager is not None
+&gt;       assert hasattr(prompt_manager, 'prompts')
+E       AssertionError: assert False
+E        +  where False = hasattr(&lt;src.prompts.prompt_manager.PromptManager object at 0x0000029265A3B890&gt;, 'prompts')
+
+tests\unit\test_prompts.py:59: AssertionError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_intent_classification" time="0.003"><failure message="assert False&#10; +  where False = isinstance(PromptTemplate(input_variables=['user_input'], input_types={}, partial_variables={}, template='Phân tích ý định của người dùng và trả về CHÍNH XÁC một trong các intent sau:\n\nINTENT OPTIONS:\n- greeting: Chào hỏi, cảm ơn, hỏi về AI\n- search: Tìm kiếm thông tin sản phẩm cụ thể, hỏi cấu hình, thông số, giá\n- compare: So sánh 2+ sản phẩm\n- recommend: Xin gợi ý, tư vấn sản phẩm phù hợp với nhu cầu\n- review: Xem đánh giá, nhận xét, reviews của sản phẩm\n- direct: Câu hỏi tổng quát về công nghệ, thuật ngữ, khái niệm\n\nUSER INPUT: &quot;{user_input}&quot;\n\nEXAMPLES:\n- &quot;Xin chào&quot; → greeting\n- &quot;Dell Inspiron 14 5420 cấu hình như thế nào&quot; → search\n- &quot;iPhone 15 vs Samsung S24&quot; → compare\n- &quot;Gợi ý laptop cho sinh viên&quot; → recommend\n- &quot;Tôi muốn xem reviews iPhone 15&quot; → review\n- &quot;Đánh giá về Dell XPS 15&quot; → review\n- &quot;Người dùng nói gì về Samsung S24?&quot; → review\n- &quot;Reviews laptop gaming ASUS ROG&quot; → review\n- &quot;Cảm ơn bạn&quot; → greeting\n- &quot;RAM là gì?&quot; → direct\n- &quot;Sự khác biệt giữa SSD và HDD&quot; → direct\n- &quot;CPU Intel Core i7 nghĩa là gì?&quot; → direct\n- &quot;Làm thế nào để chọn laptop phù hợp?&quot; → direct\n- &quot;Màn hình OLED có ưu điểm gì?&quot; → direct\n- &quot;Xu hướng smartphone 2024&quot; → direct\n\nChỉ trả về TÊN INTENT (greeting/search/compare/recommend/review/direct):'), str)">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657D0690&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x00000292657D39D0&gt;
+
+    def test_get_prompt_intent_classification(self, prompt_manager):
+        """Test getting intent classification prompt"""
+        prompt = prompt_manager.get_prompt(PromptType.INTENT_CLASSIFICATION)
+    
+        # Verify prompt exists and contains expected elements
+        assert prompt is not None
+&gt;       assert isinstance(prompt, str)
+E       assert False
+E        +  where False = isinstance(PromptTemplate(input_variables=['user_input'], input_types={}, partial_variables={}, template='Phân tích ý định của người dùng và trả về CHÍNH XÁC một trong các intent sau:\n\nINTENT OPTIONS:\n- greeting: Chào hỏi, cảm ơn, hỏi về AI\n- search: Tìm kiếm thông tin sản phẩm cụ thể, hỏi cấu hình, thông số, giá\n- compare: So sánh 2+ sản phẩm\n- recommend: Xin gợi ý, tư vấn sản phẩm phù hợp với nhu cầu\n- review: Xem đánh giá, nhận xét, reviews của sản phẩm\n- direct: Câu hỏi tổng quát về công nghệ, thuật ngữ, khái niệm\n\nUSER INPUT: "{user_input}"\n\nEXAMPLES:\n- "Xin chào" → greeting\n- "Dell Inspiron 14 5420 cấu hình như thế nào" → search\n- "iPhone 15 vs Samsung S24" → compare\n- "Gợi ý laptop cho sinh viên" → recommend\n- "Tôi muốn xem reviews iPhone 15" → review\n- "Đánh giá về Dell XPS 15" → review\n- "Người dùng nói gì về Samsung S24?" → review\n- "Reviews laptop gaming ASUS ROG" → review\n- "Cảm ơn bạn" → greeting\n- "RAM là gì?" → direct\n- "Sự khác biệt giữa SSD và HDD" → direct\n- "CPU Intel Core i7 nghĩa là gì?" → direct\n- "Làm thế nào để chọn laptop phù hợp?" → direct\n- "Màn hình OLED có ưu điểm gì?" → direct\n- "Xu hướng smartphone 2024" → direct\n\nChỉ trả về TÊN INTENT (greeting/search/compare/recommend/review/direct):'), str)
+
+tests\unit\test_prompts.py:68: AssertionError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_search_system" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'SEARCH_SYSTEM'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x000002926566E8B0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029266FD96E0&gt;
+
+    def test_get_prompt_search_system(self, prompt_manager):
+        """Test getting search system prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.SEARCH_SYSTEM)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'SEARCH_SYSTEM'
+
+tests\unit\test_prompts.py:75: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_compare_system" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'COMPARE_SYSTEM'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x000002926566E9E0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029266FD95B0&gt;
+
+    def test_get_prompt_compare_system(self, prompt_manager):
+        """Test getting compare system prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.COMPARE_SYSTEM)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'COMPARE_SYSTEM'
+
+tests\unit\test_prompts.py:85: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_recommend_system" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'RECOMMEND_SYSTEM'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657AED50&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926705C050&gt;
+
+    def test_get_prompt_recommend_system(self, prompt_manager):
+        """Test getting recommend system prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.RECOMMEND_SYSTEM)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'RECOMMEND_SYSTEM'
+
+tests\unit\test_prompts.py:94: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_review_system" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'REVIEW_SYSTEM'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029265741BF0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926709E690&gt;
+
+    def test_get_prompt_review_system(self, prompt_manager):
+        """Test getting review system prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.REVIEW_SYSTEM)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'REVIEW_SYSTEM'
+
+tests\unit\test_prompts.py:103: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_base_system" time="0.003"><failure message="AssertionError: assert False&#10; +  where False = isinstance(PromptTemplate(input_variables=[], input_types={}, partial_variables={}, template='Bạn là AI Product Advisor - trợ lý tư vấn sản phẩm điện tử chuyên nghiệp.\n\n#x1F3AF NHIỆM VỤ: Tạo câu trả lời tự nhiên, hữu ích dựa trên thông tin sản phẩm được cung cấp.\n\n⚡ NGUYÊN TẮC:\n- Luôn dựa trên thông tin chính xác từ context\n- Ngôn ngữ tự nhiên, thân thiện như bạn bè am hiểu công nghệ\n- Giải thích thuật ngữ kỹ thuật bằng cách dễ hiểu\n- Đưa ra lời khuyên thiết thực và có căn cứ'), str)">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029265741D00&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926709E250&gt;
+
+    def test_get_prompt_generation_base_system(self, prompt_manager):
+        """Test getting generation base system prompt"""
+        prompt = prompt_manager.get_prompt(PromptType.GENERATION_BASE_SYSTEM)
+    
+        # Verify prompt
+        assert prompt is not None
+&gt;       assert isinstance(prompt, str)
+E       AssertionError: assert False
+E        +  where False = isinstance(PromptTemplate(input_variables=[], input_types={}, partial_variables={}, template='Bạn là AI Product Advisor - trợ lý tư vấn sản phẩm điện tử chuyên nghiệp.\n\n#x1F3AF NHIỆM VỤ: Tạo câu trả lời tự nhiên, hữu ích dựa trên thông tin sản phẩm được cung cấp.\n\n⚡ NGUYÊN TẮC:\n- Luôn dựa trên thông tin chính xác từ context\n- Ngôn ngữ tự nhiên, thân thiện như bạn bè am hiểu công nghệ\n- Giải thích thuật ngữ kỹ thuật bằng cách dễ hiểu\n- Đưa ra lời khuyên thiết thực và có căn cứ'), str)
+
+tests\unit\test_prompts.py:116: AssertionError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_search" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_SEARCH'. Did you mean: 'GENERATION_SEARCH_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029265722650&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x00000292658BC650&gt;
+
+    def test_get_prompt_generation_search(self, prompt_manager):
+        """Test getting generation search prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GENERATION_SEARCH)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_SEARCH'. Did you mean: 'GENERATION_SEARCH_INTENT'?
+
+tests\unit\test_prompts.py:121: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_compare" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_COMPARE'. Did you mean: 'GENERATION_COMPARE_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029265722750&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x00000292658BCB50&gt;
+
+    def test_get_prompt_generation_compare(self, prompt_manager):
+        """Test getting generation compare prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GENERATION_COMPARE)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_COMPARE'. Did you mean: 'GENERATION_COMPARE_INTENT'?
+
+tests\unit\test_prompts.py:130: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_recommend" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_RECOMMEND'. Did you mean: 'GENERATION_RECOMMEND_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029264E8B980&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926584E4E0&gt;
+
+    def test_get_prompt_generation_recommend(self, prompt_manager):
+        """Test getting generation recommend prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GENERATION_RECOMMEND)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_RECOMMEND'. Did you mean: 'GENERATION_RECOMMEND_INTENT'?
+
+tests\unit\test_prompts.py:139: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_review" time="0.002"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_REVIEW'. Did you mean: 'GENERATION_REVIEW_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x0000029264E8BA70&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926584EA80&gt;
+
+    def test_get_prompt_generation_review(self, prompt_manager):
+        """Test getting generation review prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GENERATION_REVIEW)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_REVIEW'. Did you mean: 'GENERATION_REVIEW_INTENT'?
+
+tests\unit\test_prompts.py:148: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_generation_direct" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_DIRECT'. Did you mean: 'GENERATION_DIRECT_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657C6A50&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x000002926726CBB0&gt;
+
+    def test_get_prompt_generation_direct(self, prompt_manager):
+        """Test getting generation direct prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GENERATION_DIRECT)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_DIRECT'. Did you mean: 'GENERATION_DIRECT_INTENT'?
+
+tests\unit\test_prompts.py:157: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_error_handling" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'ERROR_HANDLING'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657C6DD0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x00000292671E3AF0&gt;
+
+    def test_get_prompt_error_handling(self, prompt_manager):
+        """Test getting error handling prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.ERROR_HANDLING)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'ERROR_HANDLING'
+
+tests\unit\test_prompts.py:166: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_greeting_response" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GREETING_RESPONSE'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657735F0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029266EB6F70&gt;
+
+    def test_get_prompt_greeting_response(self, prompt_manager):
+        """Test getting greeting response prompt"""
+&gt;       prompt = prompt_manager.get_prompt(PromptType.GREETING_RESPONSE)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: type object 'PromptType' has no attribute 'GREETING_RESPONSE'
+
+tests\unit\test_prompts.py:175: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_get_prompt_invalid_type" time="0.003" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_format_prompt_with_variables" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_build_generation_prompt" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_build_generation_prompt_minimal" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_build_generation_prompt_error_handling" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_prompt_templates_have_required_placeholders" time="0.002"><failure message="AttributeError: type object 'PromptType' has no attribute 'GENERATION_SEARCH'. Did you mean: 'GENERATION_SEARCH_INTENT'?">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657B56D0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029267073A70&gt;
+
+    def test_prompt_templates_have_required_placeholders(self, prompt_manager):
+        """Test that prompt templates have required placeholders"""
+        # Test specific prompts have expected placeholders
+        test_cases = [
+            (PromptType.INTENT_CLASSIFICATION, ["{user_input}"]),
+&gt;           (PromptType.GENERATION_SEARCH, ["{user_query}", "{search_results}"]),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            (PromptType.GENERATION_COMPARE, ["{user_query}", "{comparison_results}"]),
+            (PromptType.GENERATION_RECOMMEND, ["{user_query}", "{recommendation_results}"]),
+            (PromptType.GENERATION_REVIEW, ["{user_query}", "{review_results}"]),
+            (PromptType.GENERATION_DIRECT, ["{user_query}"])
+        ]
+E       AttributeError: type object 'PromptType' has no attribute 'GENERATION_SEARCH'. Did you mean: 'GENERATION_SEARCH_INTENT'?
+
+tests\unit\test_prompts.py:256: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_prompt_templates_are_vietnamese_friendly" time="0.003"><failure message="AttributeError: type object 'PromptType' has no attribute 'GREETING_RESPONSE'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x000002926578B0B0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x0000029265A82450&gt;
+
+    def test_prompt_templates_are_vietnamese_friendly(self, prompt_manager):
+        """Test that prompt templates support Vietnamese"""
+        # Get a few key prompts
+        prompts_to_test = [
+            PromptType.GENERATION_BASE_SYSTEM,
+&gt;           PromptType.GREETING_RESPONSE,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            PromptType.ERROR_HANDLING
+        ]
+E       AttributeError: type object 'PromptType' has no attribute 'GREETING_RESPONSE'
+
+tests\unit\test_prompts.py:285: AttributeError</failure></testcase><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_singleton_prompt_manager" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_prompt_consistency" time="0.002" /><testcase classname="tests.unit.test_prompts.TestPromptManager" name="test_all_prompt_types_have_prompts" time="0.002"><failure message="AttributeError: 'ChatPromptTemplate' object has no attribute 'strip'">self = &lt;tests.unit.test_prompts.TestPromptManager object at 0x00000292657AB1C0&gt;
+prompt_manager = &lt;src.prompts.prompt_manager.PromptManager object at 0x00000292670091D0&gt;
+
+    def test_all_prompt_types_have_prompts(self, prompt_manager):
+        """Test that all prompt types have corresponding prompts"""
+        missing_prompts = []
+    
+        for prompt_type in PromptType:
+            prompt = prompt_manager.get_prompt(prompt_type)
+&gt;           if prompt is None or prompt.strip() == "":
+                                 ^^^^^^^^^^^^
+
+tests\unit\test_prompts.py:327: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = ChatPromptTemplate(input_variables=['context', 'special_instructions'], input_types={}, partial_variables={}, messages... cần lưu ý (nếu có)\n\n#x1F3A8 NGỮ CẢNH: {context}\n\n#x1F4DD HƯỚNG DẪN ĐẶC BIỆT: {special_instructions}'), additional_kwargs={})])
+item = 'strip'
+
+    def __getattr__(self, item: str) -&gt; Any:
+        private_attributes = object.__getattribute__(self, '__private_attributes__')
+        if item in private_attributes:
+            attribute = private_attributes[item]
+            if hasattr(attribute, '__get__'):
+                return attribute.__get__(self, type(self))  # type: ignore
+    
+            try:
+                # Note: self.__pydantic_private__ cannot be None if self.__private_attributes__ has items
+                return self.__pydantic_private__[item]  # type: ignore
+            except KeyError as exc:
+                raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+        else:
+            # `__pydantic_extra__` can fail to be set if the model is not yet fully initialized.
+            # See `BaseModel.__repr_args__` for more details
+            try:
+                pydantic_extra = object.__getattribute__(self, '__pydantic_extra__')
+            except AttributeError:
+                pydantic_extra = None
+    
+            if pydantic_extra:
+                try:
+                    return pydantic_extra[item]
+                except KeyError as exc:
+                    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}') from exc
+            else:
+                if hasattr(self.__class__, item):
+                    return super().__getattribute__(item)  # Raises AttributeError if appropriate
+                else:
+                    # this is the current error
+&gt;                   raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+E                   AttributeError: 'ChatPromptTemplate' object has no attribute 'strip'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\pydantic\main.py:991: AttributeError</failure></testcase><testcase classname="tests.unit.test_tools.TestToolManager" name="test_tool_manager_initialization" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolManager" name="test_get_all_tools" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolManager" name="test_get_tool_by_name" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolManager" name="test_get_tool_names" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolManager" name="test_describe_tools" time="0.007" /><testcase classname="tests.unit.test_tools.TestSearchTool" name="test_search_tool_initialization" time="0.002"><failure message="assert 'search' in '#x1F50D tìm kiếm sản phẩm theo tiêu chí cụ thể.\n    \n    mục đích: tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    sử dụng khi:\n    - khách hàng tìm sản phẩm cụ thể: &quot;tìm laptop dell&quot;, &quot;iphone 15 pro max&quot;\n    - lọc theo thương hiệu: &quot;laptop hp&quot;, &quot;smartphone samsung&quot;  \n    - lọc theo giá: &quot;laptop dưới 25 triệu&quot;, &quot;điện thoại từ 10-20 triệu&quot;\n    - lọc theo tính năng: &quot;laptop có ssd&quot;, &quot;smartphone camera 48mp&quot;\n    - tìm theo mục đích sử dụng: &quot;laptop gaming&quot;, &quot;smartphone chụp ảnh&quot;\n    \n    không dùng cho: gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    output: danh sách sản phẩm khớp với filters, không có ranking'&#10; +  where '#x1F50D tìm kiếm sản phẩm theo tiêu chí cụ thể.\n    \n    mục đích: tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    sử dụng khi:\n    - khách hàng tìm sản phẩm cụ thể: &quot;tìm laptop dell&quot;, &quot;iphone 15 pro max&quot;\n    - lọc theo thương hiệu: &quot;laptop hp&quot;, &quot;smartphone samsung&quot;  \n    - lọc theo giá: &quot;laptop dưới 25 triệu&quot;, &quot;điện thoại từ 10-20 triệu&quot;\n    - lọc theo tính năng: &quot;laptop có ssd&quot;, &quot;smartphone camera 48mp&quot;\n    - tìm theo mục đích sử dụng: &quot;laptop gaming&quot;, &quot;smartphone chụp ảnh&quot;\n    \n    không dùng cho: gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    output: danh sách sản phẩm khớp với filters, không có ranking' = &lt;built-in method lower of str object at 0x0000029253950B70&gt;()&#10; +    where &lt;built-in method lower of str object at 0x0000029253950B70&gt; = '#x1F50D TÌM KIẾM sản phẩm theo tiêu chí cụ thể.\n    \n    MỤC ĐÍCH: Tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    SỬ DỤNG KHI:\n    - Khách hàng TÌM sản phẩm cụ thể: &quot;tìm laptop Dell&quot;, &quot;iPhone 15 Pro Max&quot;\n    - Lọc theo thương hiệu: &quot;laptop HP&quot;, &quot;smartphone Samsung&quot;  \n    - Lọc theo giá: &quot;laptop dưới 25 triệu&quot;, &quot;điện thoại từ 10-20 triệu&quot;\n    - Lọc theo tính năng: &quot;laptop có SSD&quot;, &quot;smartphone camera 48MP&quot;\n    - Tìm theo mục đích sử dụng: &quot;laptop gaming&quot;, &quot;smartphone chụp ảnh&quot;\n    \n    KHÔNG dùng cho: Gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    OUTPUT: Danh sách sản phẩm khớp với filters, không có ranking'.lower&#10; +      where '#x1F50D TÌM KIẾM sản phẩm theo tiêu chí cụ thể.\n    \n    MỤC ĐÍCH: Tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    SỬ DỤNG KHI:\n    - Khách hàng TÌM sản phẩm cụ thể: &quot;tìm laptop Dell&quot;, &quot;iPhone 15 Pro Max&quot;\n    - Lọc theo thương hiệu: &quot;laptop HP&quot;, &quot;smartphone Samsung&quot;  \n    - Lọc theo giá: &quot;laptop dưới 25 triệu&quot;, &quot;điện thoại từ 10-20 triệu&quot;\n    - Lọc theo tính năng: &quot;laptop có SSD&quot;, &quot;smartphone camera 48MP&quot;\n    - Tìm theo mục đích sử dụng: &quot;laptop gaming&quot;, &quot;smartphone chụp ảnh&quot;\n    \n    KHÔNG dùng cho: Gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    OUTPUT: Danh sách sản phẩm khớp với filters, không có ranking' = SearchTool().description">self = &lt;tests.unit.test_tools.TestSearchTool object at 0x00000292657D0A50&gt;
+mock_pinecone_service = &lt;MagicMock name='pinecone_service' id='2827794177664'&gt;
+
+    @patch('src.tools.search_tool.pinecone_service')
+    def test_search_tool_initialization(self, mock_pinecone_service):
+        """Test SearchTool initialization"""
+        tool = SearchTool()
+    
+        # Verify initialization
+        assert tool.name == "search_products"
+&gt;       assert "search" in tool.description.lower()
+E       assert 'search' in '#x1F50D tìm kiếm sản phẩm theo tiêu chí cụ thể.\n    \n    mục đích: tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    sử dụng khi:\n    - khách hàng tìm sản phẩm cụ thể: "tìm laptop dell", "iphone 15 pro max"\n    - lọc theo thương hiệu: "laptop hp", "smartphone samsung"  \n    - lọc theo giá: "laptop dưới 25 triệu", "điện thoại từ 10-20 triệu"\n    - lọc theo tính năng: "laptop có ssd", "smartphone camera 48mp"\n    - tìm theo mục đích sử dụng: "laptop gaming", "smartphone chụp ảnh"\n    \n    không dùng cho: gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    output: danh sách sản phẩm khớp với filters, không có ranking'
+E        +  where '#x1F50D tìm kiếm sản phẩm theo tiêu chí cụ thể.\n    \n    mục đích: tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    sử dụng khi:\n    - khách hàng tìm sản phẩm cụ thể: "tìm laptop dell", "iphone 15 pro max"\n    - lọc theo thương hiệu: "laptop hp", "smartphone samsung"  \n    - lọc theo giá: "laptop dưới 25 triệu", "điện thoại từ 10-20 triệu"\n    - lọc theo tính năng: "laptop có ssd", "smartphone camera 48mp"\n    - tìm theo mục đích sử dụng: "laptop gaming", "smartphone chụp ảnh"\n    \n    không dùng cho: gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    output: danh sách sản phẩm khớp với filters, không có ranking' = &lt;built-in method lower of str object at 0x0000029253950B70&gt;()
+E        +    where &lt;built-in method lower of str object at 0x0000029253950B70&gt; = '#x1F50D TÌM KIẾM sản phẩm theo tiêu chí cụ thể.\n    \n    MỤC ĐÍCH: Tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    SỬ DỤNG KHI:\n    - Khách hàng TÌM sản phẩm cụ thể: "tìm laptop Dell", "iPhone 15 Pro Max"\n    - Lọc theo thương hiệu: "laptop HP", "smartphone Samsung"  \n    - Lọc theo giá: "laptop dưới 25 triệu", "điện thoại từ 10-20 triệu"\n    - Lọc theo tính năng: "laptop có SSD", "smartphone camera 48MP"\n    - Tìm theo mục đích sử dụng: "laptop gaming", "smartphone chụp ảnh"\n    \n    KHÔNG dùng cho: Gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    OUTPUT: Danh sách sản phẩm khớp với filters, không có ranking'.lower
+E        +      where '#x1F50D TÌM KIẾM sản phẩm theo tiêu chí cụ thể.\n    \n    MỤC ĐÍCH: Tìm sản phẩm dựa trên các bộ lọc và tiêu chí nhất định\n    \n    SỬ DỤNG KHI:\n    - Khách hàng TÌM sản phẩm cụ thể: "tìm laptop Dell", "iPhone 15 Pro Max"\n    - Lọc theo thương hiệu: "laptop HP", "smartphone Samsung"  \n    - Lọc theo giá: "laptop dưới 25 triệu", "điện thoại từ 10-20 triệu"\n    - Lọc theo tính năng: "laptop có SSD", "smartphone camera 48MP"\n    - Tìm theo mục đích sử dụng: "laptop gaming", "smartphone chụp ảnh"\n    \n    KHÔNG dùng cho: Gợi ý hoặc tư vấn sản phẩm phù hợp\n    \n    OUTPUT: Danh sách sản phẩm khớp với filters, không có ranking' = SearchTool().description
+
+tests\unit\test_tools.py:99: AssertionError</failure></testcase><testcase classname="tests.unit.test_tools.TestSearchTool" name="test_search_tool_success" time="0.003" /><testcase classname="tests.unit.test_tools.TestSearchTool" name="test_search_tool_empty_query" time="0.002" /><testcase classname="tests.unit.test_tools.TestSearchTool" name="test_search_tool_pinecone_error" time="0.003" /><testcase classname="tests.unit.test_tools.TestSearchTool" name="test_search_tool_singleton" time="0.002" /><testcase classname="tests.unit.test_tools.TestCompareTool" name="test_compare_tool_initialization" time="0.002"><failure message="assert 'compare' in 'so sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    sử dụng tool này khi:\n    - khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - cần phân tích ưu nhược điểm từng sản phẩm\n    - muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - so sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    input format:\n    {\n        &quot;product_ids&quot;: [&quot;tên hoặc id sản phẩm 1&quot;, &quot;tên hoặc id sản phẩm 2&quot;],\n        &quot;comparison_aspects&quot;: [&quot;khía cạnh 1&quot;, &quot;khía cạnh 2&quot;],\n        &quot;include_reviews&quot;: true/false\n    }\n    \n    ví dụ sử dụng:\n    - {&quot;product_ids&quot;: [&quot;iphone 15&quot;, &quot;iphone 15 pro max&quot;], &quot;comparison_aspects&quot;: [&quot;giá&quot;, &quot;camera&quot;, &quot;hiệu năng&quot;]}\n    - {&quot;product_ids&quot;: [&quot;dell xps 15&quot;, &quot;macbook air m2&quot;], &quot;comparison_aspects&quot;: [&quot;hiệu năng&quot;, &quot;giá&quot;, &quot;pin&quot;]}\n    \n    tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.'&#10; +  where 'so sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    sử dụng tool này khi:\n    - khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - cần phân tích ưu nhược điểm từng sản phẩm\n    - muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - so sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    input format:\n    {\n        &quot;product_ids&quot;: [&quot;tên hoặc id sản phẩm 1&quot;, &quot;tên hoặc id sản phẩm 2&quot;],\n        &quot;comparison_aspects&quot;: [&quot;khía cạnh 1&quot;, &quot;khía cạnh 2&quot;],\n        &quot;include_reviews&quot;: true/false\n    }\n    \n    ví dụ sử dụng:\n    - {&quot;product_ids&quot;: [&quot;iphone 15&quot;, &quot;iphone 15 pro max&quot;], &quot;comparison_aspects&quot;: [&quot;giá&quot;, &quot;camera&quot;, &quot;hiệu năng&quot;]}\n    - {&quot;product_ids&quot;: [&quot;dell xps 15&quot;, &quot;macbook air m2&quot;], &quot;comparison_aspects&quot;: [&quot;hiệu năng&quot;, &quot;giá&quot;, &quot;pin&quot;]}\n    \n    tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.' = &lt;built-in method lower of str object at 0x0000029252D60020&gt;()&#10; +    where &lt;built-in method lower of str object at 0x0000029252D60020&gt; = 'So sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    Sử dụng tool này khi:\n    - Khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - Cần phân tích ưu nhược điểm từng sản phẩm\n    - Muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - So sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    INPUT FORMAT:\n    {\n        &quot;product_ids&quot;: [&quot;tên hoặc ID sản phẩm 1&quot;, &quot;tên hoặc ID sản phẩm 2&quot;],\n        &quot;comparison_aspects&quot;: [&quot;khía cạnh 1&quot;, &quot;khía cạnh 2&quot;],\n        &quot;include_reviews&quot;: true/false\n    }\n    \n    VÍ DỤ SỬ DỤNG:\n    - {&quot;product_ids&quot;: [&quot;iPhone 15&quot;, &quot;iPhone 15 Pro Max&quot;], &quot;comparison_aspects&quot;: [&quot;giá&quot;, &quot;camera&quot;, &quot;hiệu năng&quot;]}\n    - {&quot;product_ids&quot;: [&quot;Dell XPS 15&quot;, &quot;MacBook Air M2&quot;], &quot;comparison_aspects&quot;: [&quot;hiệu năng&quot;, &quot;giá&quot;, &quot;pin&quot;]}\n    \n    Tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.'.lower&#10; +      where 'So sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    Sử dụng tool này khi:\n    - Khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - Cần phân tích ưu nhược điểm từng sản phẩm\n    - Muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - So sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    INPUT FORMAT:\n    {\n        &quot;product_ids&quot;: [&quot;tên hoặc ID sản phẩm 1&quot;, &quot;tên hoặc ID sản phẩm 2&quot;],\n        &quot;comparison_aspects&quot;: [&quot;khía cạnh 1&quot;, &quot;khía cạnh 2&quot;],\n        &quot;include_reviews&quot;: true/false\n    }\n    \n    VÍ DỤ SỬ DỤNG:\n    - {&quot;product_ids&quot;: [&quot;iPhone 15&quot;, &quot;iPhone 15 Pro Max&quot;], &quot;comparison_aspects&quot;: [&quot;giá&quot;, &quot;camera&quot;, &quot;hiệu năng&quot;]}\n    - {&quot;product_ids&quot;: [&quot;Dell XPS 15&quot;, &quot;MacBook Air M2&quot;], &quot;comparison_aspects&quot;: [&quot;hiệu năng&quot;, &quot;giá&quot;, &quot;pin&quot;]}\n    \n    Tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.' = CompareTool().description">self = &lt;tests.unit.test_tools.TestCompareTool object at 0x00000292657D0CD0&gt;
+mock_pinecone_service = &lt;MagicMock name='pinecone_service' id='2827816233552'&gt;
+
+    @patch('src.tools.compare_tool.pinecone_service')
+    def test_compare_tool_initialization(self, mock_pinecone_service):
+        """Test CompareTool initialization"""
+        tool = CompareTool()
+    
+        # Verify initialization
+        assert tool.name == "compare_products"
+&gt;       assert "compare" in tool.description.lower()
+E       assert 'compare' in 'so sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    sử dụng tool này khi:\n    - khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - cần phân tích ưu nhược điểm từng sản phẩm\n    - muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - so sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    input format:\n    {\n        "product_ids": ["tên hoặc id sản phẩm 1", "tên hoặc id sản phẩm 2"],\n        "comparison_aspects": ["khía cạnh 1", "khía cạnh 2"],\n        "include_reviews": true/false\n    }\n    \n    ví dụ sử dụng:\n    - {"product_ids": ["iphone 15", "iphone 15 pro max"], "comparison_aspects": ["giá", "camera", "hiệu năng"]}\n    - {"product_ids": ["dell xps 15", "macbook air m2"], "comparison_aspects": ["hiệu năng", "giá", "pin"]}\n    \n    tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.'
+E        +  where 'so sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    sử dụng tool này khi:\n    - khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - cần phân tích ưu nhược điểm từng sản phẩm\n    - muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - so sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    input format:\n    {\n        "product_ids": ["tên hoặc id sản phẩm 1", "tên hoặc id sản phẩm 2"],\n        "comparison_aspects": ["khía cạnh 1", "khía cạnh 2"],\n        "include_reviews": true/false\n    }\n    \n    ví dụ sử dụng:\n    - {"product_ids": ["iphone 15", "iphone 15 pro max"], "comparison_aspects": ["giá", "camera", "hiệu năng"]}\n    - {"product_ids": ["dell xps 15", "macbook air m2"], "comparison_aspects": ["hiệu năng", "giá", "pin"]}\n    \n    tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.' = &lt;built-in method lower of str object at 0x0000029252D60020&gt;()
+E        +    where &lt;built-in method lower of str object at 0x0000029252D60020&gt; = 'So sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    Sử dụng tool này khi:\n    - Khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - Cần phân tích ưu nhược điểm từng sản phẩm\n    - Muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - So sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    INPUT FORMAT:\n    {\n        "product_ids": ["tên hoặc ID sản phẩm 1", "tên hoặc ID sản phẩm 2"],\n        "comparison_aspects": ["khía cạnh 1", "khía cạnh 2"],\n        "include_reviews": true/false\n    }\n    \n    VÍ DỤ SỬ DỤNG:\n    - {"product_ids": ["iPhone 15", "iPhone 15 Pro Max"], "comparison_aspects": ["giá", "camera", "hiệu năng"]}\n    - {"product_ids": ["Dell XPS 15", "MacBook Air M2"], "comparison_aspects": ["hiệu năng", "giá", "pin"]}\n    \n    Tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.'.lower
+E        +      where 'So sánh chi tiết nhiều sản phẩm cạnh nhau.\n    \n    Sử dụng tool này khi:\n    - Khách hàng muốn so sánh 2-3 sản phẩm cụ thể\n    - Cần phân tích ưu nhược điểm từng sản phẩm\n    - Muốn đưa ra kết luận về sản phẩm phù hợp nhất\n    - So sánh theo khía cạnh cụ thể (giá, hiệu năng, camera, v.v.)\n    \n    INPUT FORMAT:\n    {\n        "product_ids": ["tên hoặc ID sản phẩm 1", "tên hoặc ID sản phẩm 2"],\n        "comparison_aspects": ["khía cạnh 1", "khía cạnh 2"],\n        "include_reviews": true/false\n    }\n    \n    VÍ DỤ SỬ DỤNG:\n    - {"product_ids": ["iPhone 15", "iPhone 15 Pro Max"], "comparison_aspects": ["giá", "camera", "hiệu năng"]}\n    - {"product_ids": ["Dell XPS 15", "MacBook Air M2"], "comparison_aspects": ["hiệu năng", "giá", "pin"]}\n    \n    Tool sẽ tự động tìm sản phẩm theo tên và trả về bảng so sánh chi tiết.' = CompareTool().description
+
+tests\unit\test_tools.py:166: AssertionError</failure></testcase><testcase classname="tests.unit.test_tools.TestCompareTool" name="test_compare_tool_success" time="0.005" /><testcase classname="tests.unit.test_tools.TestCompareTool" name="test_compare_tool_no_products_found" time="0.004" /><testcase classname="tests.unit.test_tools.TestCompareTool" name="test_compare_tool_singleton" time="0.001" /><testcase classname="tests.unit.test_tools.TestRecommendTool" name="test_recommend_tool_initialization" time="0.002"><failure message="assert 'recommend' in '#x1F4A1 tư vấn và gợi ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    mục đích: đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    sử dụng khi:\n    - khách hàng cần tư vấn: &quot;gợi ý laptop cho sinh viên&quot;, &quot;nên mua smartphone nào&quot;\n    - mô tả nhu cầu sử dụng: &quot;cần laptop lập trình&quot;, &quot;smartphone chụp ảnh đẹp&quot;\n    - có ngân sách và yêu cầu: &quot;laptop gaming dưới 30 triệu&quot;, &quot;iphone hay samsung tốt hơn&quot;\n    - không biết chọn gì: &quot;tư vấn laptop phù hợp&quot;, &quot;điện thoại nào đáng mua&quot;\n    - so sánh lựa chọn: &quot;dell hay hp tốt hơn cho văn phòng&quot;\n    \n    không dùng cho: tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    output: top gợi ý có ranking + lý do chi tiết tại sao phù hợp'&#10; +  where '#x1F4A1 tư vấn và gợi ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    mục đích: đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    sử dụng khi:\n    - khách hàng cần tư vấn: &quot;gợi ý laptop cho sinh viên&quot;, &quot;nên mua smartphone nào&quot;\n    - mô tả nhu cầu sử dụng: &quot;cần laptop lập trình&quot;, &quot;smartphone chụp ảnh đẹp&quot;\n    - có ngân sách và yêu cầu: &quot;laptop gaming dưới 30 triệu&quot;, &quot;iphone hay samsung tốt hơn&quot;\n    - không biết chọn gì: &quot;tư vấn laptop phù hợp&quot;, &quot;điện thoại nào đáng mua&quot;\n    - so sánh lựa chọn: &quot;dell hay hp tốt hơn cho văn phòng&quot;\n    \n    không dùng cho: tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    output: top gợi ý có ranking + lý do chi tiết tại sao phù hợp' = &lt;built-in method lower of str object at 0x0000029253BE8430&gt;()&#10; +    where &lt;built-in method lower of str object at 0x0000029253BE8430&gt; = '#x1F4A1 TƯ VẤN và GỢI Ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    MỤC ĐÍCH: Đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    SỬ DỤNG KHI:\n    - Khách hàng CẦN TƯ VẤN: &quot;gợi ý laptop cho sinh viên&quot;, &quot;nên mua smartphone nào&quot;\n    - Mô tả nhu cầu sử dụng: &quot;cần laptop lập trình&quot;, &quot;smartphone chụp ảnh đẹp&quot;\n    - Có ngân sách và yêu cầu: &quot;laptop gaming dưới 30 triệu&quot;, &quot;iPhone hay Samsung tốt hơn&quot;\n    - Không biết chọn gì: &quot;tư vấn laptop phù hợp&quot;, &quot;điện thoại nào đáng mua&quot;\n    - So sánh lựa chọn: &quot;Dell hay HP tốt hơn cho văn phòng&quot;\n    \n    KHÔNG dùng cho: Tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    OUTPUT: Top gợi ý có ranking + lý do chi tiết tại sao phù hợp'.lower&#10; +      where '#x1F4A1 TƯ VẤN và GỢI Ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    MỤC ĐÍCH: Đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    SỬ DỤNG KHI:\n    - Khách hàng CẦN TƯ VẤN: &quot;gợi ý laptop cho sinh viên&quot;, &quot;nên mua smartphone nào&quot;\n    - Mô tả nhu cầu sử dụng: &quot;cần laptop lập trình&quot;, &quot;smartphone chụp ảnh đẹp&quot;\n    - Có ngân sách và yêu cầu: &quot;laptop gaming dưới 30 triệu&quot;, &quot;iPhone hay Samsung tốt hơn&quot;\n    - Không biết chọn gì: &quot;tư vấn laptop phù hợp&quot;, &quot;điện thoại nào đáng mua&quot;\n    - So sánh lựa chọn: &quot;Dell hay HP tốt hơn cho văn phòng&quot;\n    \n    KHÔNG dùng cho: Tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    OUTPUT: Top gợi ý có ranking + lý do chi tiết tại sao phù hợp' = RecommendTool().description">self = &lt;tests.unit.test_tools.TestRecommendTool object at 0x00000292657D0F50&gt;
+mock_pinecone_service = &lt;MagicMock name='pinecone_service' id='2827816233216'&gt;
+
+    @patch('src.tools.recommend_tool.pinecone_service')
+    def test_recommend_tool_initialization(self, mock_pinecone_service):
+        """Test RecommendTool initialization"""
+        tool = RecommendTool()
+    
+        # Verify initialization
+        assert tool.name == "recommend_products"
+&gt;       assert "recommend" in tool.description.lower()
+E       assert 'recommend' in '#x1F4A1 tư vấn và gợi ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    mục đích: đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    sử dụng khi:\n    - khách hàng cần tư vấn: "gợi ý laptop cho sinh viên", "nên mua smartphone nào"\n    - mô tả nhu cầu sử dụng: "cần laptop lập trình", "smartphone chụp ảnh đẹp"\n    - có ngân sách và yêu cầu: "laptop gaming dưới 30 triệu", "iphone hay samsung tốt hơn"\n    - không biết chọn gì: "tư vấn laptop phù hợp", "điện thoại nào đáng mua"\n    - so sánh lựa chọn: "dell hay hp tốt hơn cho văn phòng"\n    \n    không dùng cho: tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    output: top gợi ý có ranking + lý do chi tiết tại sao phù hợp'
+E        +  where '#x1F4A1 tư vấn và gợi ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    mục đích: đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    sử dụng khi:\n    - khách hàng cần tư vấn: "gợi ý laptop cho sinh viên", "nên mua smartphone nào"\n    - mô tả nhu cầu sử dụng: "cần laptop lập trình", "smartphone chụp ảnh đẹp"\n    - có ngân sách và yêu cầu: "laptop gaming dưới 30 triệu", "iphone hay samsung tốt hơn"\n    - không biết chọn gì: "tư vấn laptop phù hợp", "điện thoại nào đáng mua"\n    - so sánh lựa chọn: "dell hay hp tốt hơn cho văn phòng"\n    \n    không dùng cho: tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    output: top gợi ý có ranking + lý do chi tiết tại sao phù hợp' = &lt;built-in method lower of str object at 0x0000029253BE8430&gt;()
+E        +    where &lt;built-in method lower of str object at 0x0000029253BE8430&gt; = '#x1F4A1 TƯ VẤN và GỢI Ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    MỤC ĐÍCH: Đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    SỬ DỤNG KHI:\n    - Khách hàng CẦN TƯ VẤN: "gợi ý laptop cho sinh viên", "nên mua smartphone nào"\n    - Mô tả nhu cầu sử dụng: "cần laptop lập trình", "smartphone chụp ảnh đẹp"\n    - Có ngân sách và yêu cầu: "laptop gaming dưới 30 triệu", "iPhone hay Samsung tốt hơn"\n    - Không biết chọn gì: "tư vấn laptop phù hợp", "điện thoại nào đáng mua"\n    - So sánh lựa chọn: "Dell hay HP tốt hơn cho văn phòng"\n    \n    KHÔNG dùng cho: Tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    OUTPUT: Top gợi ý có ranking + lý do chi tiết tại sao phù hợp'.lower
+E        +      where '#x1F4A1 TƯ VẤN và GỢI Ý sản phẩm phù hợp với nhu cầu cá nhân.\n    \n    MỤC ĐÍCH: Đưa ra gợi ý sản phẩm tối ưu dựa trên phân tích nhu cầu người dùng\n    \n    SỬ DỤNG KHI:\n    - Khách hàng CẦN TƯ VẤN: "gợi ý laptop cho sinh viên", "nên mua smartphone nào"\n    - Mô tả nhu cầu sử dụng: "cần laptop lập trình", "smartphone chụp ảnh đẹp"\n    - Có ngân sách và yêu cầu: "laptop gaming dưới 30 triệu", "iPhone hay Samsung tốt hơn"\n    - Không biết chọn gì: "tư vấn laptop phù hợp", "điện thoại nào đáng mua"\n    - So sánh lựa chọn: "Dell hay HP tốt hơn cho văn phòng"\n    \n    KHÔNG dùng cho: Tìm kiếm sản phẩm cụ thể đã biết tên\n    \n    OUTPUT: Top gợi ý có ranking + lý do chi tiết tại sao phù hợp' = RecommendTool().description
+
+tests\unit\test_tools.py:228: AssertionError</failure></testcase><testcase classname="tests.unit.test_tools.TestRecommendTool" name="test_recommend_tool_success" time="0.004" /><testcase classname="tests.unit.test_tools.TestRecommendTool" name="test_recommend_tool_no_products" time="0.003" /><testcase classname="tests.unit.test_tools.TestRecommendTool" name="test_recommend_tool_singleton" time="0.002" /><testcase classname="tests.unit.test_tools.TestReviewTool" name="test_review_tool_initialization" time="0.002"><failure message="AssertionError: assert 'get_product_reviews' == 'get_reviews'&#10;  &#10;  - get_reviews&#10;  + get_product_reviews">self = &lt;tests.unit.test_tools.TestReviewTool object at 0x00000292657D11D0&gt;
+mock_pinecone_service = &lt;MagicMock name='pinecone_service' id='2827816231872'&gt;
+
+    @patch('src.tools.review_tool.pinecone_service')
+    def test_review_tool_initialization(self, mock_pinecone_service):
+        """Test ReviewTool initialization"""
+        tool = ReviewTool()
+    
+        # Verify initialization
+&gt;       assert tool.name == "get_reviews"
+E       AssertionError: assert 'get_product_reviews' == 'get_reviews'
+E         
+E         - get_reviews
+E         + get_product_reviews
+
+tests\unit\test_tools.py:292: AssertionError</failure></testcase><testcase classname="tests.unit.test_tools.TestReviewTool" name="test_review_tool_success" time="0.005" /><testcase classname="tests.unit.test_tools.TestReviewTool" name="test_review_tool_product_not_found" time="0.003" /><testcase classname="tests.unit.test_tools.TestReviewTool" name="test_review_tool_singleton" time="0.001" /><testcase classname="tests.unit.test_tools.TestGenerationTool" name="test_generation_tool_initialization" time="0.003"><failure message="AssertionError: assert 'answer_with_context' == 'generate_response'&#10;  &#10;  - generate_response&#10;  + answer_with_context">self = &lt;tests.unit.test_tools.TestGenerationTool object at 0x00000292657D1450&gt;
+mock_llm_service = &lt;MagicMock name='llm_service' id='2827794174976'&gt;
+
+    @patch('src.tools.generation_tool.llm_service')
+    def test_generation_tool_initialization(self, mock_llm_service):
+        """Test GenerationTool initialization"""
+        tool = GenerationTool()
+    
+        # Verify initialization
+&gt;       assert tool.name == "generate_response"
+E       AssertionError: assert 'answer_with_context' == 'generate_response'
+E         
+E         - generate_response
+E         + answer_with_context
+
+tests\unit\test_tools.py:358: AssertionError</failure></testcase><testcase classname="tests.unit.test_tools.TestGenerationTool" name="test_generation_tool_success" time="0.002"><failure message="pydantic_core._pydantic_core.ValidationError: 1 validation error for GenerationInput&#10;intent&#10;  Field required [type=missing, input_value={'user_query': '{&quot;query&quot;:...ersation_history&quot;: []}'}, input_type=dict]&#10;    For further information visit https://errors.pydantic.dev/2.11/v/missing">self = &lt;tests.unit.test_tools.TestGenerationTool object at 0x00000292657D1590&gt;
+mock_llm_service = &lt;MagicMock name='llm_service' id='2827794181696'&gt;
+
+    @patch('src.tools.generation_tool.llm_service')
+    def test_generation_tool_success(self, mock_llm_service):
+        """Test successful generation tool execution"""
+        # Setup mock
+        mock_llm_service.generate_response.return_value = "Generated response in Vietnamese"
+    
+        tool = GenerationTool()
+    
+        # Test response generation
+        generation_input = {
+            "query": "What laptop should I buy?",
+            "context": "Found 3 Dell laptops in budget",
+            "intent": "search",
+            "conversation_history": []
+        }
+&gt;       result = tool.run(json.dumps(generation_input))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_tools.py:377: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:888: in run
+    raise error_to_raise
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:850: in run
+    tool_args, tool_kwargs = self._to_args_and_kwargs(
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:765: in _to_args_and_kwargs
+    tool_input = self._parse_input(tool_input, tool_call_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = GenerationTool()
+tool_input = '{"query": "What laptop should I buy?", "context": "Found 3 Dell laptops in budget", "intent": "search", "conversation_history": []}'
+tool_call_id = None
+
+    def _parse_input(
+        self, tool_input: Union[str, dict], tool_call_id: Optional[str]
+    ) -&gt; Union[str, dict[str, Any]]:
+        """Parse and validate tool input using the args schema.
+    
+        Args:
+            tool_input: The raw input to the tool.
+            tool_call_id: The ID of the tool call, if available.
+    
+        Returns:
+            The parsed and validated input.
+    
+        Raises:
+            ValueError: If string input is provided with JSON schema or if
+                InjectedToolCallId is required but not provided.
+            NotImplementedError: If args_schema is not a supported type.
+        """
+        input_args = self.args_schema
+        if isinstance(tool_input, str):
+            if input_args is not None:
+                if isinstance(input_args, dict):
+                    msg = (
+                        "String tool inputs are not allowed when "
+                        "using tools with JSON schema args_schema."
+                    )
+                    raise ValueError(msg)
+                key_ = next(iter(get_fields(input_args).keys()))
+                if issubclass(input_args, BaseModel):
+&gt;                   input_args.model_validate({key_: tool_input})
+E                   pydantic_core._pydantic_core.ValidationError: 1 validation error for GenerationInput
+E                   intent
+E                     Field required [type=missing, input_value={'user_query': '{"query":...ersation_history": []}'}, input_type=dict]
+E                       For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:646: ValidationError</failure></testcase><testcase classname="tests.unit.test_tools.TestGenerationTool" name="test_generation_tool_llm_failure" time="0.003"><failure message="pydantic_core._pydantic_core.ValidationError: 1 validation error for GenerationInput&#10;intent&#10;  Field required [type=missing, input_value={'user_query': '{&quot;query&quot;:...text&quot;: &quot;Test context&quot;}'}, input_type=dict]&#10;    For further information visit https://errors.pydantic.dev/2.11/v/missing">self = &lt;tests.unit.test_tools.TestGenerationTool object at 0x000002926566F820&gt;
+mock_llm_service = &lt;MagicMock name='llm_service' id='2827794178000'&gt;
+
+    @patch('src.tools.generation_tool.llm_service')
+    def test_generation_tool_llm_failure(self, mock_llm_service):
+        """Test generation tool when LLM fails"""
+        # Setup mock to return None (failure)
+        mock_llm_service.generate_response.return_value = None
+    
+        tool = GenerationTool()
+    
+        # Test generation with LLM failure
+        generation_input = {
+            "query": "Test query",
+            "context": "Test context"
+        }
+&gt;       result = tool.run(json.dumps(generation_input))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_tools.py:399: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:888: in run
+    raise error_to_raise
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:850: in run
+    tool_args, tool_kwargs = self._to_args_and_kwargs(
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:765: in _to_args_and_kwargs
+    tool_input = self._parse_input(tool_input, tool_call_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = GenerationTool()
+tool_input = '{"query": "Test query", "context": "Test context"}'
+tool_call_id = None
+
+    def _parse_input(
+        self, tool_input: Union[str, dict], tool_call_id: Optional[str]
+    ) -&gt; Union[str, dict[str, Any]]:
+        """Parse and validate tool input using the args schema.
+    
+        Args:
+            tool_input: The raw input to the tool.
+            tool_call_id: The ID of the tool call, if available.
+    
+        Returns:
+            The parsed and validated input.
+    
+        Raises:
+            ValueError: If string input is provided with JSON schema or if
+                InjectedToolCallId is required but not provided.
+            NotImplementedError: If args_schema is not a supported type.
+        """
+        input_args = self.args_schema
+        if isinstance(tool_input, str):
+            if input_args is not None:
+                if isinstance(input_args, dict):
+                    msg = (
+                        "String tool inputs are not allowed when "
+                        "using tools with JSON schema args_schema."
+                    )
+                    raise ValueError(msg)
+                key_ = next(iter(get_fields(input_args).keys()))
+                if issubclass(input_args, BaseModel):
+&gt;                   input_args.model_validate({key_: tool_input})
+E                   pydantic_core._pydantic_core.ValidationError: 1 validation error for GenerationInput
+E                   intent
+E                     Field required [type=missing, input_value={'user_query': '{"query":...text": "Test context"}'}, input_type=dict]
+E                       For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:646: ValidationError</failure></testcase><testcase classname="tests.unit.test_tools.TestGenerationTool" name="test_generation_tool_singleton" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolIntegration" name="test_all_tools_have_required_attributes" time="0.002" /><testcase classname="tests.unit.test_tools.TestToolIntegration" name="test_tool_names_are_unique" time="0.001" /><testcase classname="tests.unit.test_tools.TestToolIntegration" name="test_tools_return_json_strings" time="1.089"><failure message="Failed: Tool answer_with_context failed to return valid JSON: 1 validation error for GenerationInput&#10;intent&#10;  Field required [type=missing, input_value={'user_query': '{&quot;query&quot;:...t&quot;, &quot;context&quot;: &quot;test&quot;}'}, input_type=dict]&#10;    For further information visit https://errors.pydantic.dev/2.11/v/missing">self = &lt;tests.unit.test_tools.TestToolIntegration object at 0x000002926566FA80&gt;
+
+    def test_tools_return_json_strings(self):
+        """Test that all tools return valid JSON strings"""
+        # This is a basic test with minimal inputs
+        tools_and_inputs = [
+            (search_tool, '{"query": "test"}'),
+            (compare_tool, '{"product_ids": ["test"], "comparison_aspects": ["price"]}'),
+            (recommend_tool, '{"user_needs": "test", "budget": 1000000}'),
+            (review_tool, '{"product_id": "test"}'),
+            (generation_tool, '{"query": "test", "context": "test"}')
+        ]
+    
+        for tool, test_input in tools_and_inputs:
+            with patch('src.services.pinecone_service.pinecone_service'), \
+                 patch('src.services.llm_service.llm_service'):
+                try:
+&gt;                   result = tool.run(test_input)
+                             ^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_tools.py:451: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:888: in run
+    raise error_to_raise
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:850: in run
+    tool_args, tool_kwargs = self._to_args_and_kwargs(
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:765: in _to_args_and_kwargs
+    tool_input = self._parse_input(tool_input, tool_call_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = GenerationTool(), tool_input = '{"query": "test", "context": "test"}'
+tool_call_id = None
+
+    def _parse_input(
+        self, tool_input: Union[str, dict], tool_call_id: Optional[str]
+    ) -&gt; Union[str, dict[str, Any]]:
+        """Parse and validate tool input using the args schema.
+    
+        Args:
+            tool_input: The raw input to the tool.
+            tool_call_id: The ID of the tool call, if available.
+    
+        Returns:
+            The parsed and validated input.
+    
+        Raises:
+            ValueError: If string input is provided with JSON schema or if
+                InjectedToolCallId is required but not provided.
+            NotImplementedError: If args_schema is not a supported type.
+        """
+        input_args = self.args_schema
+        if isinstance(tool_input, str):
+            if input_args is not None:
+                if isinstance(input_args, dict):
+                    msg = (
+                        "String tool inputs are not allowed when "
+                        "using tools with JSON schema args_schema."
+                    )
+                    raise ValueError(msg)
+                key_ = next(iter(get_fields(input_args).keys()))
+                if issubclass(input_args, BaseModel):
+&gt;                   input_args.model_validate({key_: tool_input})
+E                   pydantic_core._pydantic_core.ValidationError: 1 validation error for GenerationInput
+E                   intent
+E                     Field required [type=missing, input_value={'user_query': '{"query":...t", "context": "test"}'}, input_type=dict]
+E                       For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\site-packages\langchain_core\tools\base.py:646: ValidationError
+
+During handling of the above exception, another exception occurred:
+
+self = &lt;tests.unit.test_tools.TestToolIntegration object at 0x000002926566FA80&gt;
+
+    def test_tools_return_json_strings(self):
+        """Test that all tools return valid JSON strings"""
+        # This is a basic test with minimal inputs
+        tools_and_inputs = [
+            (search_tool, '{"query": "test"}'),
+            (compare_tool, '{"product_ids": ["test"], "comparison_aspects": ["price"]}'),
+            (recommend_tool, '{"user_needs": "test", "budget": 1000000}'),
+            (review_tool, '{"product_id": "test"}'),
+            (generation_tool, '{"query": "test", "context": "test"}')
+        ]
+    
+        for tool, test_input in tools_and_inputs:
+            with patch('src.services.pinecone_service.pinecone_service'), \
+                 patch('src.services.llm_service.llm_service'):
+                try:
+                    result = tool.run(test_input)
+                    # Should be valid JSON
+                    json.loads(result)
+                except Exception as e:
+&gt;                   pytest.fail(f"Tool {tool.name} failed to return valid JSON: {e}")
+E                   Failed: Tool answer_with_context failed to return valid JSON: 1 validation error for GenerationInput
+E                   intent
+E                     Field required [type=missing, input_value={'user_query': '{"query":...t", "context": "test"}'}, input_type=dict]
+E                       For further information visit https://errors.pydantic.dev/2.11/v/missing
+
+tests\unit\test_tools.py:455: Failed</failure></testcase><testcase classname="tests.unit.test_tools.TestToolIntegration" name="test_tool_manager_contains_all_tools" time="0.002"><failure message="AssertionError: assert 'get_reviews' in ['search_products', 'compare_products', 'recommend_products', 'get_product_reviews']">self = &lt;tests.unit.test_tools.TestToolIntegration object at 0x000002926566FBB0&gt;
+
+    def test_tool_manager_contains_all_tools(self):
+        """Test that ToolManager contains all expected tools"""
+        manager = ToolManager()
+    
+        # Get all tools from manager
+        manager_tools = manager.get_all_tools()
+        manager_tool_names = [tool.name for tool in manager_tools]
+    
+        # Expected tool names
+        expected_names = [
+            "search_products",
+            "compare_products",
+            "recommend_products",
+            "get_reviews"
+        ]
+    
+        # Verify all expected tools are present
+        for expected_name in expected_names:
+&gt;           assert expected_name in manager_tool_names
+E           AssertionError: assert 'get_reviews' in ['search_products', 'compare_products', 'recommend_products', 'get_product_reviews']
+
+tests\unit\test_tools.py:475: AssertionError</failure></testcase><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_initialization" time="0.003" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_debug" time="0.002" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_info" time="0.002" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_warning" time="0.003" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_error" time="0.003" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_logger_critical" time="0.002" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_get_logger_function" time="0.002" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_setup_logger_function" time="0.003" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_track_time_decorator_success" time="0.003" /><testcase classname="tests.unit.test_utils.TestLogger" name="test_track_time_decorator_failure" time="0.003" /><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_prompt_helper_initialization" time="0.002" /><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_clean_text" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'clean_text'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657D1D10&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x00000292657D25D0&gt;
+
+    def test_clean_text(self, prompt_helper):
+        """Test text cleaning functionality"""
+        # Test cases for text cleaning
+        test_cases = [
+            ("  Hello World  ", "Hello World"),
+            ("Text\nwith\nnewlines", "Text with newlines"),
+            ("Text\twith\ttabs", "Text with tabs"),
+            ("Multiple   spaces", "Multiple spaces"),
+            ("", ""),
+            ("   ", "")
+        ]
+    
+        for input_text, expected_output in test_cases:
+&gt;           result = prompt_helper.clean_text(input_text)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PromptHelper' object has no attribute 'clean_text'
+
+tests\unit\test_utils.py:169: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_truncate_text" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'truncate_text'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x000002926581C050&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029265A0A3F0&gt;
+
+    def test_truncate_text(self, prompt_helper):
+        """Test text truncation"""
+        # Test normal truncation
+        long_text = "This is a very long text that should be truncated"
+&gt;       result = prompt_helper.truncate_text(long_text, max_length=20)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'truncate_text'
+
+tests\unit\test_utils.py:176: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_extract_keywords" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'extract_keywords'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x000002926581C180&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029265A0A780&gt;
+
+    def test_extract_keywords(self, prompt_helper):
+        """Test keyword extraction"""
+        text = "Tìm laptop Dell XPS 13 với giá dưới 20 triệu"
+&gt;       keywords = prompt_helper.extract_keywords(text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'extract_keywords'
+
+tests\unit\test_utils.py:192: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_price" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'format_price'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657AE450&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD8770&gt;
+
+    def test_format_price(self, prompt_helper):
+        """Test price formatting"""
+        # Test various price formats
+        test_cases = [
+            (25000000, "25,000,000 VND"),
+            (1500000, "1,500,000 VND"),
+            (0, "0 VND"),
+            (999, "999 VND")
+        ]
+    
+        for price, expected_format in test_cases:
+&gt;           result = prompt_helper.format_price(price)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PromptHelper' object has no attribute 'format_price'
+
+tests\unit\test_utils.py:211: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_product_list" time="0.003"><failure message="AttributeError: 'PromptHelper' object has no attribute 'format_product_list'. Did you mean: 'format_products_list'?">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657429C0&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD9480&gt;
+sample_products = [{'availability': 'in_stock', 'brand': 'Dell', 'category': 'laptop', 'currency': 'VND', ...}, {'availability': 'in_stock', 'brand': 'Apple', 'category': 'smartphone', 'currency': 'VND', ...}]
+
+    def test_format_product_list(self, prompt_helper, sample_products):
+        """Test product list formatting"""
+&gt;       formatted = prompt_helper.format_product_list(sample_products)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'format_product_list'. Did you mean: 'format_products_list'?
+
+tests\unit\test_utils.py:216: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_comparison_table" time="0.003"><failure message="AssertionError: assert 'Dell XPS 13' in 'Không thể tạo bảng so sánh'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x0000029265742AD0&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD9BA0&gt;
+
+    def test_format_comparison_table(self, prompt_helper):
+        """Test comparison table formatting"""
+        comparison_data = {
+            "Dell XPS 13": {"price": 25000000, "rating": 4.5},
+            "MacBook Air": {"price": 30000000, "rating": 4.6}
+        }
+    
+        formatted = prompt_helper.format_comparison_table(comparison_data)
+    
+        # Verify formatting
+        assert isinstance(formatted, str)
+&gt;       assert "Dell XPS 13" in formatted
+E       AssertionError: assert 'Dell XPS 13' in 'Không thể tạo bảng so sánh'
+
+tests\unit\test_utils.py:236: AssertionError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_extract_price_from_text" time="0.003"><failure message="AttributeError: 'PromptHelper' object has no attribute 'extract_price_from_text'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x0000029265722950&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD8C30&gt;
+
+    def test_extract_price_from_text(self, prompt_helper):
+        """Test price extraction from text"""
+        # Test cases for price extraction
+        test_cases = [
+            ("laptop dưới 20 triệu", 20000000),
+            ("điện thoại từ 15 triệu đến 25 triệu", 15000000),
+            ("giá khoảng 30 triệu", 30000000),
+            ("không có giá", None),
+            ("", None)
+        ]
+    
+        for text, expected_price in test_cases:
+&gt;           result = prompt_helper.extract_price_from_text(text)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PromptHelper' object has no attribute 'extract_price_from_text'
+
+tests\unit\test_utils.py:253: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_vietnamese_text" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'format_vietnamese_text'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x0000029265722B50&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD9810&gt;
+
+    def test_format_vietnamese_text(self, prompt_helper):
+        """Test Vietnamese text formatting"""
+        # Test Vietnamese text handling
+        vietnamese_text = "Tìm điện thoại có màn hình đẹp"
+&gt;       formatted = prompt_helper.format_vietnamese_text(vietnamese_text)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'format_vietnamese_text'
+
+tests\unit\test_utils.py:263: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_safe_format_prompt" time="0.003"><failure message="AttributeError: &lt;module 'src.utils.prompt_helper' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\utils\\prompt_helper.py'&gt; does not have the attribute 'prompt_manager'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x0000029264E8BF20&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD8D60&gt;
+
+    def test_safe_format_prompt(self, prompt_helper):
+        """Test safe prompt formatting"""
+&gt;       with patch('src.utils.prompt_helper.prompt_manager') as mock_prompt_manager:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_utils.py:272: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;unittest.mock._patch object at 0x00000292671E1550&gt;
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+&gt;           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: &lt;module 'src.utils.prompt_helper' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\utils\\prompt_helper.py'&gt; does not have the attribute 'prompt_manager'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1467: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_safe_format_prompt_failure" time="0.003"><failure message="AttributeError: &lt;module 'src.utils.prompt_helper' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\utils\\prompt_helper.py'&gt; does not have the attribute 'prompt_manager'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x000002926582C050&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD8E90&gt;
+
+    def test_safe_format_prompt_failure(self, prompt_helper):
+        """Test safe prompt formatting with failure"""
+&gt;       with patch('src.utils.prompt_helper.prompt_manager') as mock_prompt_manager:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\unit\test_utils.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1497: in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;unittest.mock._patch object at 0x00000292671E1E10&gt;
+
+    def get_original(self):
+        target = self.getter()
+        name = self.attribute
+    
+        original = DEFAULT
+        local = False
+    
+        try:
+            original = target.__dict__[name]
+        except (AttributeError, KeyError):
+            original = getattr(target, name, DEFAULT)
+        else:
+            local = True
+    
+        if name in _builtins and isinstance(target, ModuleType):
+            self.create = True
+    
+        if not self.create and original is DEFAULT:
+&gt;           raise AttributeError(
+                "%s does not have the attribute %r" % (target, name)
+            )
+E           AttributeError: &lt;module 'src.utils.prompt_helper' from 'C:\\Users\\MinhTC\\Desktop\\Hackaton\\evlevate-dn-03\\Workshop_final\\src\\utils\\prompt_helper.py'&gt; does not have the attribute 'prompt_manager'
+
+..\..\..\..\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py:1467: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_conversation_history" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'format_conversation_history'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657FB930&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029266FD9220&gt;
+sample_conversation_history = [{'content': 'Xin chào', 'role': 'user'}, {'content': 'Xin chào! Tôi có thể giúp gì cho bạn?', 'role': 'assistant'}, {... 'Tìm laptop Dell', 'role': 'user'}, {'content': 'Tôi đã tìm thấy một số laptop Dell phù hợp...', 'role': 'assistant'}]
+
+    def test_format_conversation_history(self, prompt_helper, sample_conversation_history):
+        """Test conversation history formatting"""
+&gt;       formatted = prompt_helper.format_conversation_history(sample_conversation_history)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'format_conversation_history'
+
+tests\unit\test_utils.py:298: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_tool_results" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'format_tool_results'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657FBBD0&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x000002926581CE90&gt;
+
+    def test_format_tool_results(self, prompt_helper):
+        """Test tool results formatting"""
+        tool_results = {
+            "search_results": {"products": [{"name": "Dell XPS 13"}]},
+            "comparison_results": {"comparison_table": {"Dell XPS 13": {"price": 25000000}}}
+        }
+    
+&gt;       formatted = prompt_helper.format_tool_results(tool_results)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'PromptHelper' object has no attribute 'format_tool_results'
+
+tests\unit\test_utils.py:313: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_error_message" time="0.002" /><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_format_error_message_exception_handling" time="0.002" /><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_validate_vietnamese_input" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'validate_vietnamese_input'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657E8A10&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029265A0AEA0&gt;
+
+    def test_validate_vietnamese_input(self, prompt_helper):
+        """Test Vietnamese input validation"""
+        # Test cases for Vietnamese validation
+        test_cases = [
+            ("Tìm laptop Dell", True),
+            ("điện thoại Samsung", True),
+            ("Hello World", True),  # English should also be valid
+            ("", False),
+            ("   ", False),
+            ("123456", True),  # Numbers should be valid
+            ("!@#$%", False)  # Only special characters should be invalid
+        ]
+    
+        for text, expected_valid in test_cases:
+&gt;           result = prompt_helper.validate_vietnamese_input(text)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PromptHelper' object has no attribute 'validate_vietnamese_input'
+
+tests\unit\test_utils.py:355: AttributeError</failure></testcase><testcase classname="tests.unit.test_utils.TestPromptHelper" name="test_normalize_query" time="0.002"><failure message="AttributeError: 'PromptHelper' object has no attribute 'normalize_query'">self = &lt;tests.unit.test_utils.TestPromptHelper object at 0x00000292657CC940&gt;
+prompt_helper = &lt;src.utils.prompt_helper.PromptHelper object at 0x0000029265A09BA0&gt;
+
+    def test_normalize_query(self, prompt_helper):
+        """Test query normalization"""
+        # Test query normalization
+        test_cases = [
+            ("  TÌM LAPTOP DELL  ", "tìm laptop dell"),
+            ("Điện Thoại Samsung", "điện thoại samsung"),
+            ("", ""),
+            ("Multiple   Spaces", "multiple spaces")
+        ]
+    
+        for input_query, expected_output in test_cases:
+&gt;           result = prompt_helper.normalize_query(input_query)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'PromptHelper' object has no attribute 'normalize_query'
+
+tests\unit\test_utils.py:369: AttributeError</failure></testcase></testsuite></testsuites>
