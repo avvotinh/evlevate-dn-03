@@ -1,0 +1,338 @@
+{
+  "products": [
+    {
+      "id": "laptop_dell_xps_13_2024",
+      "name": "Dell XPS 13 (2024)",
+      "brand": "Dell",
+      "category": "laptop",
+      "price": 25000000,
+      "currency": "VND",
+      "specifications": {
+        "processor": "Intel Core i7-1165G7",
+        "ram": "16GB LPDDR4x",
+        "storage": "512GB SSD",
+        "display": "13.3 inch FHD+",
+        "graphics": "Intel Iris Xe",
+        "weight": "1.2kg",
+        "battery": "52Wh"
+      },
+      "features": [
+        "Ultrabook",
+        "Long Battery Life",
+        "Premium Design",
+        "Thunderbolt 4",
+        "WiFi 6"
+      ],
+      "rating": 4.5,
+      "review_count": 128,
+      "availability": "in_stock",
+      "images": [
+        "https://example.com/dell-xps-13-1.jpg",
+        "https://example.com/dell-xps-13-2.jpg"
+      ],
+      "description": "Laptop cao cấp Dell XPS 13 với thiết kế mỏng nhẹ, hiệu năng mạnh mẽ cho công việc và giải trí."
+    },
+    {
+      "id": "iphone_15_pro_128gb",
+      "name": "iPhone 15 Pro 128GB",
+      "brand": "Apple",
+      "category": "smartphone",
+      "price": 28000000,
+      "currency": "VND",
+      "specifications": {
+        "processor": "A17 Pro",
+        "ram": "8GB",
+        "storage": "128GB",
+        "display": "6.1 inch Super Retina XDR",
+        "camera": "48MP Pro Camera System",
+        "battery": "3274mAh",
+        "os": "iOS 17"
+      },
+      "features": [
+        "Pro Camera System",
+        "Titanium Design",
+        "Action Button",
+        "USB-C",
+        "5G"
+      ],
+      "rating": 4.7,
+      "review_count": 256,
+      "availability": "in_stock",
+      "images": [
+        "https://example.com/iphone-15-pro-1.jpg",
+        "https://example.com/iphone-15-pro-2.jpg"
+      ],
+      "description": "iPhone 15 Pro với chip A17 Pro mạnh mẽ, camera chuyên nghiệp và thiết kế titanium cao cấp."
+    },
+    {
+      "id": "macbook_air_m2_13inch",
+      "name": "MacBook Air M2 13 inch",
+      "brand": "Apple",
+      "category": "laptop",
+      "price": 30000000,
+      "currency": "VND",
+      "specifications": {
+        "processor": "Apple M2",
+        "ram": "8GB",
+        "storage": "256GB SSD",
+        "display": "13.6 inch Liquid Retina",
+        "graphics": "8-core GPU",
+        "weight": "1.24kg",
+        "battery": "52.6Wh"
+      },
+      "features": [
+        "Apple Silicon M2",
+        "Fanless Design",
+        "All-day Battery",
+        "MagSafe Charging",
+        "1080p FaceTime HD Camera"
+      ],
+      "rating": 4.6,
+      "review_count": 189,
+      "availability": "in_stock",
+      "images": [
+        "https://example.com/macbook-air-m2-1.jpg",
+        "https://example.com/macbook-air-m2-2.jpg"
+      ],
+      "description": "MacBook Air M2 với hiệu năng vượt trội, thiết kế mỏng nhẹ và thời lượng pin cả ngày."
+    },
+    {
+      "id": "samsung_galaxy_s24_ultra",
+      "name": "Samsung Galaxy S24 Ultra",
+      "brand": "Samsung",
+      "category": "smartphone",
+      "price": 32000000,
+      "currency": "VND",
+      "specifications": {
+        "processor": "Snapdragon 8 Gen 3",
+        "ram": "12GB",
+        "storage": "256GB",
+        "display": "6.8 inch Dynamic AMOLED 2X",
+        "camera": "200MP Quad Camera",
+        "battery": "5000mAh",
+        "os": "Android 14"
+      },
+      "features": [
+        "S Pen Built-in",
+        "AI Photography",
+        "120Hz Display",
+        "Titanium Frame",
+        "5G"
+      ],
+      "rating": 4.4,
+      "review_count": 312,
+      "availability": "in_stock",
+      "images": [
+        "https://example.com/galaxy-s24-ultra-1.jpg",
+        "https://example.com/galaxy-s24-ultra-2.jpg"
+      ],
+      "description": "Samsung Galaxy S24 Ultra với camera 200MP, S Pen tích hợp và hiệu năng flagship."
+    },
+    {
+      "id": "asus_rog_strix_g15",
+      "name": "ASUS ROG Strix G15",
+      "brand": "ASUS",
+      "category": "laptop",
+      "price": 35000000,
+      "currency": "VND",
+      "specifications": {
+        "processor": "AMD Ryzen 7 6800H",
+        "ram": "16GB DDR5",
+        "storage": "1TB SSD",
+        "display": "15.6 inch FHD 144Hz",
+        "graphics": "NVIDIA RTX 4060",
+        "weight": "2.3kg",
+        "battery": "90Wh"
+      },
+      "features": [
+        "Gaming Performance",
+        "RGB Keyboard",
+        "144Hz Display",
+        "Advanced Cooling",
+        "Dolby Atmos"
+      ],
+      "rating": 4.3,
+      "review_count": 95,
+      "availability": "in_stock",
+      "images": [
+        "https://example.com/asus-rog-strix-g15-1.jpg",
+        "https://example.com/asus-rog-strix-g15-2.jpg"
+      ],
+      "description": "Laptop gaming ASUS ROG Strix G15 với RTX 4060, màn hình 144Hz cho trải nghiệm gaming tuyệt vời."
+    }
+  ],
+  "reviews": [
+    {
+      "id": "review_dell_xps_13_001",
+      "product_id": "laptop_dell_xps_13_2024",
+      "rating": 5,
+      "title": "Laptop tuyệt vời cho công việc",
+      "content": "Dell XPS 13 có hiệu năng tốt, pin trâu và thiết kế đẹp. Rất phù hợp cho công việc văn phòng và lập trình.",
+      "author": "Nguyễn Văn A",
+      "date": "2024-08-15",
+      "sentiment": "positive",
+      "helpful_count": 15,
+      "verified_purchase": true
+    },
+    {
+      "id": "review_dell_xps_13_002",
+      "product_id": "laptop_dell_xps_13_2024",
+      "rating": 4,
+      "title": "Tốt nhưng hơi đắt",
+      "content": "Chất lượng build tốt, màn hình đẹp. Tuy nhiên giá hơi cao so với cấu hình.",
+      "author": "Trần Thị B",
+      "date": "2024-08-10",
+      "sentiment": "mixed",
+      "helpful_count": 8,
+      "verified_purchase": true
+    },
+    {
+      "id": "review_iphone_15_pro_001",
+      "product_id": "iphone_15_pro_128gb",
+      "rating": 5,
+      "title": "Camera xuất sắc",
+      "content": "Camera iPhone 15 Pro thật sự ấn tượng, chụp ảnh rất đẹp. Chip A17 Pro cũng rất mạnh.",
+      "author": "Lê Văn C",
+      "date": "2024-08-12",
+      "sentiment": "positive",
+      "helpful_count": 22,
+      "verified_purchase": true
+    },
+    {
+      "id": "review_macbook_air_m2_001",
+      "product_id": "macbook_air_m2_13inch",
+      "rating": 5,
+      "title": "Hiệu năng M2 tuyệt vời",
+      "content": "MacBook Air M2 chạy rất mượt, pin lâu, không có tiếng ồn. Hoàn hảo cho công việc sáng tạo.",
+      "author": "Phạm Thị D",
+      "date": "2024-08-08",
+      "sentiment": "positive",
+      "helpful_count": 18,
+      "verified_purchase": true
+    },
+    {
+      "id": "review_samsung_s24_ultra_001",
+      "product_id": "samsung_galaxy_s24_ultra",
+      "rating": 4,
+      "title": "S Pen rất hữu ích",
+      "content": "Galaxy S24 Ultra với S Pen rất tiện cho ghi chú. Camera zoom tốt nhưng pin hơi yếu.",
+      "author": "Hoàng Văn E",
+      "date": "2024-08-05",
+      "sentiment": "mixed",
+      "helpful_count": 12,
+      "verified_purchase": true
+    },
+    {
+      "id": "review_asus_rog_001",
+      "product_id": "asus_rog_strix_g15",
+      "rating": 4,
+      "title": "Gaming mạnh mẽ",
+      "content": "Laptop gaming tốt, chạy game mượt với RTX 4060. Tuy nhiên hơi nóng và nặng.",
+      "author": "Vũ Văn F",
+      "date": "2024-08-03",
+      "sentiment": "positive",
+      "helpful_count": 9,
+      "verified_purchase": true
+    }
+  ],
+  "conversation_flows": [
+    {
+      "id": "flow_search_basic",
+      "name": "Basic Product Search",
+      "steps": [
+        {
+          "user": "Xin chào",
+          "expected_intent": "greeting",
+          "expected_response_contains": ["xin chào", "giúp"]
+        },
+        {
+          "user": "Tìm laptop Dell",
+          "expected_intent": "search",
+          "expected_tools": ["search_products"],
+          "expected_response_contains": ["Dell", "laptop"]
+        },
+        {
+          "user": "Cảm ơn",
+          "expected_intent": "greeting",
+          "expected_response_contains": ["cảm ơn", "giúp"]
+        }
+      ]
+    },
+    {
+      "id": "flow_comparison",
+      "name": "Product Comparison Flow",
+      "steps": [
+        {
+          "user": "So sánh iPhone 15 Pro và Samsung S24 Ultra",
+          "expected_intent": "compare",
+          "expected_tools": ["search_products", "compare_products"],
+          "expected_response_contains": ["iPhone", "Samsung", "so sánh"]
+        },
+        {
+          "user": "Cái nào tốt hơn cho chụp ảnh?",
+          "expected_intent": "compare",
+          "expected_response_contains": ["camera", "chụp ảnh"]
+        }
+      ]
+    },
+    {
+      "id": "flow_recommendation",
+      "name": "Product Recommendation Flow",
+      "steps": [
+        {
+          "user": "Gợi ý laptop cho lập trình dưới 30 triệu",
+          "expected_intent": "recommend",
+          "expected_tools": ["recommend_products"],
+          "expected_response_contains": ["gợi ý", "lập trình", "laptop"]
+        },
+        {
+          "user": "Có model nào khác không?",
+          "expected_intent": "recommend",
+          "expected_response_contains": ["model", "khác"]
+        }
+      ]
+    }
+  ],
+  "test_queries": {
+    "search": [
+      "Tìm laptop Dell",
+      "laptop gaming dưới 40 triệu",
+      "điện thoại Samsung có camera tốt",
+      "MacBook Air M2",
+      "smartphone Android giá rẻ"
+    ],
+    "compare": [
+      "So sánh iPhone 15 Pro và Samsung S24 Ultra",
+      "Dell XPS 13 vs MacBook Air M2",
+      "laptop gaming ASUS vs MSI",
+      "so sánh 3 điện thoại tốt nhất"
+    ],
+    "recommend": [
+      "Gợi ý laptop cho sinh viên",
+      "điện thoại phù hợp với người già",
+      "laptop gaming tốt nhất trong tầm giá",
+      "smartphone có pin trâu"
+    ],
+    "review": [
+      "Đánh giá iPhone 15 Pro",
+      "review Dell XPS 13",
+      "ý kiến về MacBook Air M2",
+      "người dùng nói gì về Samsung S24"
+    ],
+    "greeting": [
+      "Xin chào",
+      "Hello",
+      "Chào bạn",
+      "Hi"
+    ],
+    "edge_cases": [
+      "",
+      "   ",
+      "asdfghjkl",
+      "123456789",
+      "!@#$%^&*()",
+      "laptop giá 1 triệu",
+      "điện thoại có 100 camera"
+    ]
+  }
+}
