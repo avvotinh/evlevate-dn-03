@@ -400,3 +400,9 @@ This project is developed for educational purposes as part of an advanced AI/ML 
 
 **🔬 Research Value**: The dual agent implementation provides a practical comparison between traditional reasoning-acting patterns và modern graph-based agent workflows, valuable for understanding the progression of AI agent architectures.
 
+
+## 📑 Sample Test Tool Output
+- Để tham khảo các hội thoại mẫu và kết quả đầu ra của từng tool (search, compare, recommend, review), hãy xem file:
+   - `samples/sample_tool_test.md`
+- File này chứa các ví dụ thực tế giúp bạn kiểm thử hoặc làm tài liệu hướng dẫn cho project.
+
