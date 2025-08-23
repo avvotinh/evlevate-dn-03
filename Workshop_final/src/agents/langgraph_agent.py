@@ -452,8 +452,8 @@ class ProductAdvisorLangGraphAgent:
                 if previous_products and len(previous_products) >= 2:
                     return {
                         "intent": "compare",
-                        "reason": f"Tham chiếu so sánh từ sản phẩm trước: {', '.join(previous_products[:2])}",
-                        "products": previous_products[:2]  # Thêm products vào để sử dụng later
+                        "reason": f"Tham chiếu so sánh từ sản phẩm trước: {', '.join(previous_products)}",
+                        "products": previous_products  # Sử dụng tất cả sản phẩm có sẵn
                     }
                 elif previous_products and len(previous_products) == 1:
                     # User wants to compare with the previous product
@@ -512,8 +512,8 @@ class ProductAdvisorLangGraphAgent:
                     elif any(word in user_lower for word in ["so sánh", "compare", "khác"]):
                         return {
                             "intent": "compare",
-                            "reason": f"Generic context reference + compare intent: {', '.join(previous_products[:2])}",
-                            "products": previous_products[:2] if len(previous_products) >= 2 else previous_products
+                            "reason": f"Generic context reference + compare intent: {', '.join(previous_products)}",
+                            "products": previous_products  # Sử dụng tất cả sản phẩm có sẵn
                         }
                     else:
                         # Default to search/info about the products
@@ -765,8 +765,8 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
                     # Try to use previous products from context
                     previous_products = state.get("previous_products", [])
                     if len(previous_products) >= 2:
-                        compare_params["product_names"] = previous_products[:2]
-                        logger.info(f"🔗 Using previous products for comparison: {previous_products[:2]}")
+                        compare_params["product_names"] = previous_products  # Sử dụng tất cả sản phẩm có sẵn
+                        logger.info(f"🔗 Using previous products for comparison: {previous_products}")
                     elif len(previous_products) == 1:
                         # Try to extract one more product from current input
                         current_products = compare_params.get("product_names", [])
