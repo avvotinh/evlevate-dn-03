@@ -186,7 +186,8 @@ class ProductAdvisorLangGraphAgent:
                             
                             for i, product in enumerate(products[:3]):  # Top 3 products
                                 if isinstance(product, dict):
-                                    name = product.get("name")
+                                    # Lấy tên sản phẩm từ các key phổ biến
+                                    name = product.get("name") or product.get("title") or product.get("product_name")
                                     if name:
                                         product_names.append(name)
                                         logger.info(f"🔍 Extracted product {i+1}: {name}")
@@ -256,7 +257,12 @@ class ProductAdvisorLangGraphAgent:
                         if products_list:
                             for i, product in enumerate(products_list[:3]):
                                 if isinstance(product, dict):
-                                    name = product.get("name")
+                                    logger.info(f"🔍 Recommendation product {i+1} raw data: {product}")
+                                    # Nếu có key 'product', lấy product['name']
+                                    if "product" in product and isinstance(product["product"], dict):
+                                        name = product["product"].get("name")
+                                    else:
+                                        name = product.get("name") or product.get("title") or product.get("product_name")
                                     if name and name not in product_names:
                                         product_names.append(name)
                                         logger.info(f"🔍 Extracted recommendation product {i+1}: {name}")
@@ -284,7 +290,11 @@ class ProductAdvisorLangGraphAgent:
                     if products_list:
                         for i, product in enumerate(products_list[:3]):
                             if isinstance(product, dict):
-                                name = product.get("name")
+                                logger.info(f"🔍 Recommendation product {i+1} raw data: {product}")
+                                if "product" in product and isinstance(product["product"], dict):
+                                    name = product["product"].get("name")
+                                else:
+                                    name = product.get("name") or product.get("title") or product.get("product_name")
                                 if name and name not in product_names:
                                     product_names.append(name)
                                     logger.info(f"🔍 Extracted recommendation product {i+1}: {name}")

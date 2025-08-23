@@ -148,3 +148,89 @@ Kết luận
 Tổng thể, iPhone 15 Pro nhận được sự khen ngợi từ người dùng về hiệu năng, camera và thời lượng pin. Tuy nhiên, giá cao và một số vấn đề về kích thước và tốc độ sạc cũng là điều cần lưu ý.
 
 Nếu bạn có thêm câu hỏi nào khác hoặc cần thông tin chi tiết hơn, cứ thoải mái hỏi nhé!
+
+---
+
+# Sample Output for Generation Tool
+
+## 1. Tìm kiếm thông tin về iPhone 15
+
+**User:**
+Tìm kiếm thông tin về iPhone 15
+
+**Assistant:**
+Chào bạn! Mình rất vui được giúp bạn tìm hiểu về iPhone 15. Dưới đây là thông tin chi tiết về sản phẩm này, bao gồm các tính năng nổi bật và những đánh giá thực tế.
+
+### iPhone 15
+- Giá: 22,990,000 VND
+- Đánh giá: 4.6/5
+- Thương hiệu: Apple
+- Thể loại: Smartphone
+
+#### Tính Năng Nổi Bật
+- Dynamic Island: Tính năng mới giúp tối ưu hóa không gian hiển thị bằng cách kết hợp thông báo và các hoạt động trong một khu vực nhỏ gọn.
+- Cổng USB-C: Thay thế cho cổng Lightning truyền thống, giúp bạn dễ dàng kết nối và sạc thiết bị.
+- Camera 48MP với 2x zoom: Cho phép chụp ảnh sắc nét hơn với zoom quang học, phù hợp cho những ai yêu thích nhiếp ảnh.
+- Photographic Styles: Tùy chọn để cá nhân hóa phong cách chụp ảnh của bạn, tạo ra hình ảnh theo cách bạn thích.
+- Cinematic mode 4K: Chế độ quay video cho phép tạo ra các video chất lượng cao với hiệu ứng nhoè nền chuyên nghiệp.
+- Action mode: Giúp cải thiện khả năng quay video trong điều kiện chuyển động mạnh, giảm rung lắc.
+- Crash Detection: Tính năng phát hiện tai nạn, tự động gọi cứu hộ trong trường hợp khẩn cấp.
+- Ceramic Shield front: Mặt kính cường lực giúp bảo vệ màn hình tốt hơn so với các thế hệ trước.
+
+#### Bảng Thông Số Kỹ Thuật
+| Thông Số         | Chi tiết                  |
+|------------------|--------------------------|
+| Màn hình         | Super Retina XDR         |
+| Chip             | A16 Bionic               |
+| Bộ nhớ trong     | Tùy chọn 128GB, 256GB, 512GB |
+| Hệ điều hành     | iOS 17                   |
+| Kích thước       | 147.6 x 71.6 x 7.8 mm    |
+| Cân nặng         | 171 g                    |
+
+#### Nhận Định và Lời Khuyên Thực Tế
+iPhone 15 là một trong những smartphone đáng chú ý nhất hiện nay, đặc biệt với những cải tiến về camera và tính năng Dynamic Island. Nếu bạn yêu thích chụp ảnh và quay video, iPhone 15 sẽ đáp ứng rất tốt nhu cầu của bạn với camera 48MP và các chế độ quay phim chất lượng cao.
+
+**Use Cases Thực Tế:**
+- Chụp ảnh: Với camera 48MP, bạn có thể chụp những bức ảnh sắc nét trong điều kiện ánh sáng khác nhau.
+- Quay video: Cinematic mode và Action mode rất hữu ích cho những ai muốn sản xuất nội dung video chuyên nghiệp.
+- Sử dụng hàng ngày: Cổng USB-C mang lại sự tiện lợi trong việc sạc và kết nối với các thiết bị khác.
+
+**Kết Luận**
+Nếu bạn đang tìm kiếm một chiếc smartphone cao cấp với các tính năng hiện đại và khả năng chụp ảnh/video xuất sắc, iPhone 15 là lựa chọn tuyệt vời với mức giá 22,990,000 VND. Chất lượng và hiệu suất của nó thực sự đáng đồng tiền bát gạo.
+
+Nếu bạn cần thêm thông tin hoặc có câu hỏi gì khác về iPhone 15 hoặc các sản phẩm khác, đừng ngần ngại hỏi nhé!
+
+---
+
+## 2. Đánh giá của người dùng về iPhone 15
+
+**User:**
+Đánh giá của người dùng về nó như thế nào?
+
+**Assistant:**
+Chào bạn! Dưới đây là thông tin đánh giá của người dùng về iPhone 15:
+
+### Đánh Giá Tổng Quan
+- Điểm trung bình: 5.0/5
+- Tổng số đánh giá: 1
+
+### Đánh Giá Chi Tiết
+Một người dùng đã có trải nghiệm nâng cấp từ Samsung 14 lên iPhone 15 và chia sẻ như sau:
+
+**Tiêu đề:** "Điện thoại xuất sắc - Camera ấn tượng"
+**Nội dung:** Người dùng đánh giá cao về camera với khả năng chụp ảnh rất đẹp, màu sắc tự nhiên. Hiệu năng của máy mượt mà, không lag, và pin có thể sử dụng thoải mái cả ngày. Họ cảm thấy đây là một nâng cấp đáng giá.
+
+#### Ưu Điểm (Pros)
+- Camera ấn tượng: Chất lượng hình ảnh tuyệt vời, màu sắc tự nhiên.
+- Pin trâu: Sử dụng thoải mái cả ngày mà không cần sạc lại.
+- Hiệu năng mượt: Chạy ứng dụng và trò chơi một cách trơn tru, không bị lag.
+
+#### Nhược Điểm (Cons)
+- Giá hơi đắt: Đây là một trong những lý do khiến người dùng cảm thấy sản phẩm này không dễ tiếp cận.
+- Kích thước lớn và nặng: Một số người dùng có thể cảm thấy không thoải mái khi sử dụng lâu dài.
+- Sạc chậm: Có thể không đáp ứng nhanh chóng nhu cầu sạc trong những tình huống cấp bách.
+
+**Kết Luận**
+Từ đánh giá của người dùng, iPhone 15 rõ ràng là một sản phẩm xuất sắc với hiệu năng tốt và camera ấn tượng, nhưng giá cả và kích thước có thể là những yếu tố cần cân nhắc. Nếu bạn đang tìm kiếm một chiếc smartphone cao cấp với chất lượng và tính năng vượt trội, iPhone 15 là lựa chọn đáng cân nhắc.
+
+Nếu bạn cần thêm thông tin chi tiết hơn về sản phẩm hoặc có câu hỏi khác, hãy cho mình biết nhé!
