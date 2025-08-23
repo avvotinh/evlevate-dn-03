@@ -424,14 +424,25 @@ class ProductAdvisorLangGraphAgent:
         try:
             user_lower = user_input.lower()
             
+            # Enhanced context reference patterns
+            context_reference_patterns = [
+                "sản phẩm đó", "sản phẩm này", "của nó", "của chúng", "chúng",
+                "những sản phẩm", "các sản phẩm", "vừa tìm", "trước đó", "đã tìm",
+                "nó", "chúng nó", "cái đó", "cái này", "2 cái", "hai cái"
+            ]
+            
+            # Check if user is referencing previous context
+            has_context_reference = any(pattern in user_lower for pattern in context_reference_patterns)
+            
+            logger.info(f"🔍 Detecting context references in user input: '{user_lower}'")
+            logger.info(f"🔍 Has context reference: {has_context_reference}")
+            
             # Check for comparison references with previous products
             comparison_patterns = [
                 "so sánh", "compare", "khác nhau", "vs", "versus", "khác gì",
                 "2 sản phẩm", "hai sản phẩm", "cả hai", "2 cái", "hai cái", "2 laptop", "hai laptop",
                 "chúng", "những sản phẩm", "các sản phẩm", "vừa tìm", "trước đó", "đã tìm"
             ]
-
-            logger.info(f"🔍 Detecting context references in user input: '{user_lower}'")
             
             if any(pattern in user_lower for pattern in comparison_patterns):
                 # Check if we have previous products to reference
@@ -455,7 +466,8 @@ class ProductAdvisorLangGraphAgent:
             # Check for review references
             review_patterns = [
                 "review", "đánh giá", "nhận xét", "ý kiến",
-                "chúng có tốt không", "có đáng mua", "người dùng nói gì"
+                "chúng có tốt không", "có đáng mua", "người dùng nói gì",
+                "sản phẩm đó", "sản phẩm này", "của nó", "của chúng"
             ]
             
             if any(pattern in user_lower for pattern in review_patterns):
@@ -463,7 +475,8 @@ class ProductAdvisorLangGraphAgent:
                 if previous_products:
                     return {
                         "intent": "review",
-                        "reason": f"Xem review cho sản phẩm: {', '.join(previous_products)}"
+                        "reason": f"Xem review cho sản phẩm: {', '.join(previous_products)}",
+                        "products": previous_products  # Add products for context
                     }
             
             # Check for follow-up recommendations
@@ -479,6 +492,36 @@ class ProductAdvisorLangGraphAgent:
                         "intent": "recommend",
                         "reason": "Tìm gợi ý thêm dựa trên yêu cầu trước"
                     }
+            
+            # Enhanced: Check for generic context references without specific action
+            if has_context_reference and not any([
+                any(pattern in user_lower for pattern in comparison_patterns),
+                any(pattern in user_lower for pattern in review_patterns),
+                any(pattern in user_lower for pattern in recommend_patterns)
+            ]):
+                # This is a generic reference, need to determine intent from context
+                previous_products = state.get("previous_products", [])
+                if previous_products:
+                    # Try to determine intent from the rest of the query
+                    if any(word in user_lower for word in ["review", "đánh giá", "nhận xét", "ý kiến"]):
+                        return {
+                            "intent": "review",
+                            "reason": f"Generic context reference + review intent: {', '.join(previous_products)}",
+                            "products": previous_products
+                        }
+                    elif any(word in user_lower for word in ["so sánh", "compare", "khác"]):
+                        return {
+                            "intent": "compare",
+                            "reason": f"Generic context reference + compare intent: {', '.join(previous_products[:2])}",
+                            "products": previous_products[:2] if len(previous_products) >= 2 else previous_products
+                        }
+                    else:
+                        # Default to search/info about the products
+                        return {
+                            "intent": "search",
+                            "reason": f"Generic context reference: {', '.join(previous_products)}",
+                            "products": previous_products
+                        }
             
             return None
             
@@ -693,23 +736,6 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         except Exception as e:
             logger.warning(f"⚠️ Failed to extract compare params: {e}")
             return self._fallback_compare_params(user_input)
-            # Fallback: try to extract product names from user input
-            import re
-            # Look for vs, so sánh, khác patterns
-            vs_patterns = [r'(.+?)\s+vs\s+(.+)', r'so sánh\s+(.+?)\s+và\s+(.+)', r'(.+?)\s+khác\s+gì\s+(.+)']
-            product_names = []
-            
-            for pattern in vs_patterns:
-                match = re.search(pattern, user_input, re.IGNORECASE)
-                if match:
-                    product_names = [match.group(1).strip(), match.group(2).strip()]
-                    break
-            
-            return {
-                "product_names": product_names if product_names else [user_input],
-                "comparison_aspects": ["giá", "hiệu năng", "thiết kế"],
-                "include_reviews": True
-            }
 
     def _compare_products(self, state: AgentState) -> AgentState:
         """Enhanced product comparison with context awareness"""
@@ -916,27 +942,59 @@ Bạn đang tìm sản phẩm gì hôm nay?"""
         return state
 
     def _get_reviews(self, state: AgentState) -> AgentState:
-        """Get product reviews with intelligent parameter extraction"""
+        """Get product reviews with context awareness and intelligent parameter extraction"""
         try:
             review_tool = self.tool_manager.get_tool("review")
             if not review_tool:
                 raise Exception("Review tool not available")
 
-            # Extract product name from user input
-            review_params = self._extract_review_params(state["user_input"])
+            # Check for context products first (from context detection)
+            review_params = {}
+            target_product = None
+            
+            if state.get("context_products"):
+                # Use the first context product for reviews
+                context_products = state["context_products"]
+                target_product = context_products[0] if context_products else None
+                logger.info(f"🔗 Using context product for reviews: {target_product}")
+                
+                review_params = {
+                    "product_name": target_product,
+                    "limit": 5,
+                    "sort_by": "newest"
+                }
+            elif state.get("previous_products"):
+                # Use the first previous product if no context products
+                previous_products = state["previous_products"]
+                target_product = previous_products[0] if previous_products else None
+                logger.info(f"🔗 Using previous product for reviews: {target_product}")
+                
+                review_params = {
+                    "product_name": target_product,
+                    "limit": 5,
+                    "sort_by": "newest"
+                }
+            else:
+                # Extract product name from user input as fallback
+                review_params = self._extract_review_params(state["user_input"])
+                target_product = review_params.get("product_name", "unknown")
+                logger.info(f"📝 Extracted product from user input: {target_product}")
             
             # Use the review tool directly
             result = review_tool._run(**review_params)
             state["review_results"] = result
             state["tools_used"].append("get_product_reviews")
             
-            # Add reasoning step
+            # Add reasoning step with context information
             reasoning_step = {
                 "step": len(state.get("reasoning_steps", [])) + 1,
                 "action": "get_product_reviews",
-                "thought": f"Lấy reviews cho sản phẩm: {review_params.get('product_name', 'unknown')}",
+                "thought": f"Lấy reviews cho sản phẩm: {target_product}",
                 "action_input": str(review_params),
-                "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result)
+                "observation": str(result)[:100] + "..." if len(str(result)) > 100 else str(result),
+                "context_source": "context_products" if state.get("context_products") else (
+                    "previous_products" if state.get("previous_products") else "user_input"
+                )
             }
             state["reasoning_steps"].append(reasoning_step)
 
